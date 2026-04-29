@@ -1,0 +1,34 @@
+# ============================================================
+# .htaccess — Password-protect tree.html on johntcrawford.com
+# ============================================================
+# INSTRUCTIONS:
+#   1. Find your server home path via Web SSH Terminal:
+#      Run:  echo $HOME
+#      Example result: /home/johntcra  (use YOUR actual path)
+#
+#   2. Edit the AuthUserFile line below to use your actual path
+#
+#   3. Upload this file to johntcrawford.com root as ".htaccess"
+#      (it replaces or merges with your existing .htaccess)
+#
+#   4. Create .htpasswd via Web SSH Terminal:
+#      Run:  htpasswd -c ~/.htpasswd familyhistory
+#      (it will prompt you to set a password — type it twice)
+#      This creates the file at /home/YOUR_USERNAME/.htpasswd
+#
+# ============================================================
+
+<Files "tree.html">
+  AuthType Basic
+  AuthName "Crawford Family History — Private"
+  AuthUserFile /home/YOUR_USERNAME_HERE/.htpasswd
+  Require valid-user
+</Files>
+
+# If you want to also protect crawford_tree.ged:
+<Files "crawford_tree.ged">
+  AuthType Basic
+  AuthName "Crawford Family History — Private"
+  AuthUserFile /home/YOUR_USERNAME_HERE/.htpasswd
+  Require valid-user
+</Files>

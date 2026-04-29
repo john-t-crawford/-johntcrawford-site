@@ -1,0 +1,11 @@
+{
+  "name": "John T. Crawford",
+  "short_name": "JTC",
+  "icons": [
+    { "src": "/favicon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicon.svg",     "sizes": "any",      "type": "image/svg+xml" }
+  ],
+  "theme_color": "#0F1B2D",
+  "background_color": "#0F1B2D",
+  "display": "browser"
+}

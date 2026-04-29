@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" width="200" height="160">
+  <!-- Body -->
+  <ellipse cx="100" cy="85" rx="38" ry="28" fill="#1a6b8a" stroke="#0d4a63" stroke-width="1.5"/>
+  <!-- Shell pattern lines -->
+  <line x1="100" y1="58" x2="100" y2="113" stroke="#0d4a63" stroke-width="1" opacity="0.5"/>
+  <line x1="82" y1="62" x2="118" y2="108" stroke="#0d4a63" stroke-width="0.8" opacity="0.4"/>
+  <line x1="118" y1="62" x2="82" y2="108" stroke="#0d4a63" stroke-width="0.8" opacity="0.4"/>
+  <!-- Carapace top -->
+  <ellipse cx="100" cy="78" rx="30" ry="18" fill="#2a85a8" stroke="#0d4a63" stroke-width="1"/>
+  <!-- Eyes -->
+  <circle cx="88" cy="68" r="5" fill="#cc2200"/>
+  <circle cx="112" cy="68" r="5" fill="#cc2200"/>
+  <circle cx="88" cy="68" r="2.5" fill="#111"/>
+  <circle cx="112" cy="68" r="2.5" fill="#111"/>
+  <circle cx="89" cy="67" r="1" fill="white"/>
+  <circle cx="113" cy="67" r="1" fill="white"/>
+
+  <!-- LEFT BIG CLAW -->
+  <g transform="translate(55,75) rotate(-30)">
+    <rect x="-22" y="-5" width="22" height="10" rx="5" fill="#cc2200" stroke="#991100" stroke-width="1"/>
+    <!-- upper pincer -->
+    <ellipse cx="-26" cy="-7" rx="10" ry="5" fill="#cc2200" stroke="#991100" stroke-width="1" transform="rotate(-15,-26,-7)"/>
+    <!-- lower pincer -->
+    <ellipse cx="-26" cy="7" rx="9" ry="4" fill="#cc2200" stroke="#991100" stroke-width="1" transform="rotate(15,-26,7)"/>
+  </g>
+
+  <!-- RIGHT BIG CLAW -->
+  <g transform="translate(145,75) rotate(30) scale(-1,1)">
+    <rect x="-22" y="-5" width="22" height="10" rx="5" fill="#cc2200" stroke="#991100" stroke-width="1"/>
+    <ellipse cx="-26" cy="-7" rx="10" ry="5" fill="#cc2200" stroke="#991100" stroke-width="1" transform="rotate(-15,-26,-7)"/>
+    <ellipse cx="-26" cy="7" rx="9" ry="4" fill="#cc2200" stroke="#991100" stroke-width="1" transform="rotate(15,-26,7)"/>
+  </g>
+
+  <!-- LEFT WALKING LEGS (3 legs) -->
+  <line x1="72" y1="80" x2="42" y2="68" stroke="#0d4a63" stroke-width="3" stroke-linecap="round"/>
+  <line x1="42" y1="68" x2="28" y2="58" stroke="#0d4a63" stroke-width="2" stroke-linecap="round"/>
+  <line x1="70" y1="87" x2="38" y2="82" stroke="#0d4a63" stroke-width="3" stroke-linecap="round"/>
+  <line x1="38" y1="82" x2="22" y2="76" stroke="#0d4a63" stroke-width="2" stroke-linecap="round"/>
+  <line x1="70" y1="95" x2="40" y2="98" stroke="#0d4a63" stroke-width="3" stroke-linecap="round"/>
+  <line x1="40" y1="98" x2="24" y2="96" stroke="#0d4a63" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- RIGHT WALKING LEGS (3 legs) -->
+  <line x1="128" y1="80" x2="158" y2="68" stroke="#0d4a63" stroke-width="3" stroke-linecap="round"/>
+  <line x1="158" y1="68" x2="172" y2="58" stroke="#0d4a63" stroke-width="2" stroke-linecap="round"/>
+  <line x1="130" y1="87" x2="162" y2="82" stroke="#0d4a63" stroke-width="3" stroke-linecap="round"/>
+  <line x1="162" y1="82" x2="178" y2="76" stroke="#0d4a63" stroke-width="2" stroke-linecap="round"/>
+  <line x1="130" y1="95" x2="160" y2="98" stroke="#0d4a63" stroke-width="3" stroke-linecap="round"/>
+  <line x1="160" y1="98" x2="176" y2="96" stroke="#0d4a63" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- SWIM FINS (rear paddles) -->
+  <ellipse cx="78" cy="110" rx="12" ry="6" fill="#2a85a8" stroke="#0d4a63" stroke-width="1" transform="rotate(20,78,110)"/>
+  <ellipse cx="122" cy="110" rx="12" ry="6" fill="#2a85a8" stroke="#0d4a63" stroke-width="1" transform="rotate(-20,122,110)"/>
+
+  <!-- Old Bay seasoning dots (Maryland touch) -->
+  <circle cx="95" cy="78" r="1.5" fill="#cc2200" opacity="0.7"/>
+  <circle cx="105" cy="75" r="1.2" fill="#cc8800" opacity="0.7"/>
+  <circle cx="100" cy="82" r="1.5" fill="#cc2200" opacity="0.7"/>
+  <circle cx="93" cy="85" r="1" fill="#cc8800" opacity="0.6"/>
+  <circle cx="108" cy="83" r="1.2" fill="#cc2200" opacity="0.6"/>
+</svg>

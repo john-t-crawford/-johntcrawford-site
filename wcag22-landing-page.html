@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Security headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:; object-src 'none';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The ID's Guide to WCAG 2.2 for Government Programs | John Crawford</title>
+  <meta name="description" content="Free whitepaper: How instructional designers can lead the shift from Section 508 to WCAG 2.2 — and turn compliance into a competitive advantage. By John Crawford, Annapolis MD.">
+  <meta name="keywords" content="WCAG 2.2 government, Section 508 instructional design, WCAG 2.2 whitepaper, Section 508 e-learning, government contractor accessibility, Maryland instructional designer">
+  <meta name="author" content="John T. Crawford">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The ID's Guide to WCAG 2.2 for Government Programs">
+  <meta property="og:description" content="Free whitepaper: How to lead the shift from Section 508 to WCAG 2.2 and turn compliance into a competitive advantage.">
+  <meta property="og:image" content="https://johntcrawford.com/og-banner.png">
+  <meta property="og:url" content="https://johntcrawford.com/wcag22-guide">
+  <meta property="og:type" content="website">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The ID's Guide to WCAG 2.2 for Government Programs",
+    "author": { "@type": "Person", "name": "John T. Crawford", "url": "https://johntcrawford.com" },
+    "publisher": { "@type": "Organization", "name": "John T. Crawford" },
+    "datePublished": "2026-04-01",
+    "description": "How instructional designers can lead the shift from Section 508 to WCAG 2.2 and turn compliance into a competitive advantage.",
+    "keywords": "WCAG 2.2, Section 508, instructional design, government contractor, accessibility"
+  }
+  </script>
+
+  <style>
+    /* ── Reset & Base ────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:   #0D1B2D;
+      --gold:   #C9A84C;
+      --bay:    #1B4F72;
+      --lgrey:  #F5F6F7;
+      --dgrey:  #444444;
+      --mgrey:  #888888;
+      --white:  #FFFFFF;
+      --gold-light: #EDD98A;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--dgrey);
+      background: var(--white);
+    }
+    a { color: var(--bay); }
+    a:hover { color: var(--gold); }
+    img { max-width: 100%; }
+
+    /* ── Nav strip ───────────────────────────────────────────────────────── */
+    .site-nav {
+      background: var(--navy);
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-nav .logo {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: .03em;
+    }
+    .site-nav .logo span { color: var(--gold); }
+    .site-nav a.back {
+      font-size: .85rem;
+      color: var(--gold);
+      text-decoration: none;
+      border: 1px solid var(--gold);
+      padding: 5px 14px;
+      border-radius: 3px;
+      transition: background .2s;
+    }
+    .site-nav a.back:hover { background: var(--gold); color: var(--navy); }
+
+    /* ── Hero ────────────────────────────────────────────────────────────── */
+    .hero {
+      background: var(--navy);
+      padding: 72px 32px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 40px,
+        rgba(201,168,76,.04) 40px,
+        rgba(201,168,76,.04) 41px
+      );
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 2px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.2;
+      max-width: 760px;
+      margin: 0 auto 18px;
+    }
+    .hero h1 em { color: var(--gold); font-style: normal; }
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #9BB5CC;
+      max-width: 620px;
+      margin: 0 auto 36px;
+    }
+    .hero .cta-row {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 30px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); color: var(--navy); }
+    .btn-outline {
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 13px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background .2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { background: rgba(201,168,76,.15); color: var(--gold); }
+    .hero-meta {
+      margin-top: 28px;
+      font-size: .85rem;
+      color: var(--mgrey);
+    }
+    .hero-meta strong { color: #9BB5CC; }
+
+    /* ── Gold divider ────────────────────────────────────────────────────── */
+    .gold-bar {
+      height: 4px;
+      background: linear-gradient(90deg, var(--navy), var(--gold) 40%, var(--gold) 60%, var(--navy));
+    }
+
+    /* ── Section wrapper ─────────────────────────────────────────────────── */
+    .section { padding: 64px 32px; }
+    .section--grey { background: var(--lgrey); }
+    .section--navy { background: var(--navy); }
+    .inner { max-width: 820px; margin: 0 auto; }
+    .inner--wide { max-width: 1100px; margin: 0 auto; }
+
+    /* ── Section headings ────────────────────────────────────────────────── */
+    .section-label {
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    h2.section-title {
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 20px;
+      line-height: 1.25;
+    }
+    h2.section-title--light { color: var(--white); }
+    .section-intro { font-size: 1.05rem; color: var(--dgrey); margin-bottom: 36px; max-width: 680px; }
+
+    /* ── Stat strip ──────────────────────────────────────────────────────── */
+    .stat-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1px;
+      background: rgba(201,168,76,.3);
+      border: 1px solid rgba(201,168,76,.3);
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 40px 0;
+    }
+    .stat-item {
+      background: var(--navy);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label { font-size: .85rem; color: #9BB5CC; line-height: 1.4; }
+
+    /* ── What's inside cards ─────────────────────────────────────────────── */
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+    .topic-card {
+      background: var(--white);
+      border: 1px solid #DDE3EA;
+      border-top: 3px solid var(--gold);
+      border-radius: 4px;
+      padding: 24px 22px;
+    }
+    .topic-card .icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .topic-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .topic-card p { font-size: .9rem; color: var(--mgrey); line-height: 1.5; }
+
+    /* ── Open excerpt ────────────────────────────────────────────────────── */
+    .excerpt-box {
+      background: var(--white);
+      border: 1px solid #DDE3EA;
+      border-left: 5px solid var(--bay);
+      border-radius: 4px;
+      padding: 28px 32px;
+      margin-bottom: 28px;
+    }
+    .excerpt-box h3 { color: var(--navy); font-size: 1.1rem; margin-bottom: 12px; }
+    .excerpt-box p { font-size: .97rem; line-height: 1.75; }
+
+    /* ── Checklist preview ───────────────────────────────────────────────── */
+    .checklist {
+      list-style: none;
+      margin: 20px 0;
+    }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #EEF0F3;
+      font-size: .95rem;
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .check-box {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border: 2px solid #DDE3EA;
+      border-radius: 3px;
+      margin-top: 1px;
+    }
+    .check-label { font-size: .9rem; color: var(--dgrey); }
+    .check-badge {
+      margin-left: auto;
+      flex-shrink: 0;
+      font-size: .72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 2px;
+      letter-spacing: .05em;
+    }
+    .badge-a  { background: #E8F5E9; color: #2E7D32; }
+    .badge-aa { background: #E3F2FD; color: #1565C0; }
+    .blur-row {
+      filter: blur(4px);
+      pointer-events: none;
+      user-select: none;
+      opacity: .55;
+    }
+
+    /* ── Email capture ───────────────────────────────────────────────────── */
+    .capture-section {
+      background: var(--navy);
+      border-radius: 8px;
+      padding: 48px 40px;
+      text-align: center;
+      margin-top: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .capture-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 40px,
+        rgba(201,168,76,.05) 40px,
+        rgba(201,168,76,.05) 41px
+      );
+    }
+    .capture-section * { position: relative; }
+    .capture-section h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .capture-section p {
+      color: #9BB5CC;
+      font-size: 1rem;
+      max-width: 500px;
+      margin: 0 auto 28px;
+    }
+    .capture-form {
+      display: flex;
+      gap: 10px;
+      max-width: 480px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+    .capture-form input[type="email"] {
+      flex: 1;
+      min-width: 220px;
+      padding: 14px 18px;
+      border: 2px solid rgba(201,168,76,.4);
+      border-radius: 4px;
+      background: rgba(255,255,255,.07);
+      color: var(--white);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .capture-form input[type="email"]::placeholder { color: rgba(255,255,255,.4); }
+    .capture-form input[type="email"]:focus { border-color: var(--gold); }
+    .capture-form button {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background .2s;
+      white-space: nowrap;
+    }
+    .capture-form button:hover { background: var(--gold-light); }
+    .capture-fine {
+      margin-top: 14px;
+      font-size: .78rem;
+      color: var(--mgrey);
+    }
+    /* Success state */
+    .success-msg {
+      display: none;
+      color: var(--gold);
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 20px;
+    }
+
+    /* ── WCAG criteria table preview ─────────────────────────────────────── */
+    .criteria-table { width: 100%; border-collapse: collapse; font-size: .9rem; margin-top: 8px; }
+    .criteria-table th {
+      background: var(--navy);
+      color: var(--white);
+      text-align: left;
+      padding: 10px 14px;
+      font-weight: 600;
+    }
+    .criteria-table td { padding: 9px 14px; border-bottom: 1px solid #EEF0F3; }
+    .criteria-table tr:nth-child(even) td { background: var(--lgrey); }
+    .criteria-table tr:last-child td { border-bottom: none; }
+
+    /* ── About strip ─────────────────────────────────────────────────────── */
+    .about-strip {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .about-strip .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--bay);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      color: var(--white);
+      font-weight: 800;
+    }
+    .about-text h3 { color: var(--navy); font-size: 1.1rem; margin-bottom: 6px; }
+    .about-text p { font-size: .92rem; color: var(--dgrey); }
+
+    /* ── Footer ──────────────────────────────────────────────────────────── */
+    footer {
+      background: var(--navy);
+      padding: 32px;
+      text-align: center;
+    }
+    footer p { font-size: .85rem; color: var(--mgrey); }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── Responsive ──────────────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .section { padding: 48px 20px; }
+      .capture-section { padding: 36px 24px; }
+      .capture-form { flex-direction: column; }
+      .capture-form input[type="email"],
+      .capture-form button { width: 100%; }
+      .hero { padding: 52px 20px 44px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="site-nav" aria-label="Site navigation">
+    <a href="https://johntcrawford.com" class="logo" rel="noopener noreferrer" target="_blank">John <span>Crawford</span></a>
+    <a href="https://johntcrawford.com" class="back" rel="noopener noreferrer" target="_blank">← Back to Site</a>
+  </nav>
+  <div class="gold-bar"></div>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-badge">Free Whitepaper — April 2026</div>
+    <h1>The ID's Guide to <em>WCAG 2.2</em><br>for Government Programs</h1>
+    <p class="sub">How instructional designers can lead the shift from Section 508 to WCAG 2.2 — and turn compliance into a competitive advantage.</p>
+    <div class="cta-row">
+      <a href="#download" class="btn-primary">Download the Full PDF ↓</a>
+      <a href="#preview" class="btn-outline">Read the Preview</a>
+    </div>
+    <p class="hero-meta">By <strong>John T. Crawford</strong> · John T. Crawford · Annapolis, Maryland</p>
+  </header>
+  <div class="gold-bar"></div>
+
+  <!-- Stats -->
+  <section class="section section--navy" aria-label="Whitepaper highlights">
+    <div class="inner--wide">
+      <div class="stat-strip">
+        <div class="stat-item">
+          <span class="stat-num">9</span>
+          <span class="stat-label">New or revised WCAG 2.2<br>success criteria explained</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">17</span>
+          <span class="stat-label">QA checklist items ready<br>to sign and deliver</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">3</span>
+          <span class="stat-label">Phase implementation roadmap<br>sized for real timelines</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">5×</span>
+          <span class="stat-label">Average cost to remediate<br>vs. building accessible first</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's inside -->
+  <section class="section section--grey" aria-labelledby="inside-heading">
+    <div class="inner--wide">
+      <p class="section-label">What You'll Get</p>
+      <h2 class="section-title" id="inside-heading">Everything You Need to Lead the WCAG 2.2 Conversation</h2>
+      <p class="section-intro">Written for instructional designers, training program managers, and government contractors in the Maryland–DC corridor.</p>
+
+      <div class="topics-grid">
+        <div class="topic-card">
+          <div class="icon" aria-hidden="true">⚖️</div>
+          <h3>Regulatory Landscape</h3>
+          <p>Why WCAG 2.2 is already appearing in federal RFPs — and what that means for your next proposal.</p>
+        </div>
+        <div class="topic-card">
+          <div class="icon" aria-hidden="true">🔄</div>
+          <h3>508 vs. WCAG 2.2 Mapped</h3>
+          <p>A clear table showing exactly how Section 508, WCAG 2.1, and WCAG 2.2 relate — no legal degree required.</p>
+        </div>
+        <div class="topic-card">
+          <div class="icon" aria-hidden="true">📋</div>
+          <h3>All 9 Changes Explained</h3>
+          <p>Every new or revised criterion translated into plain-language ID impact — drag interactions, focus rings, target sizes, and more.</p>
+        </div>
+        <div class="topic-card">
+          <div class="icon" aria-hidden="true">🗺️</div>
+          <h3>Implementation Roadmap</h3>
+          <p>A three-phase plan: Audit → Remediate → Document. Includes what to test, how to fix it, and how to prove it to a CO.</p>
+        </div>
+        <div class="topic-card">
+          <div class="icon" aria-hidden="true">✅</div>
+          <h3>17-Point QA Checklist</h3>
+          <p>Print it, fill it out, sign it, include it in your deliverable package. Contracting officers love documentation.</p>
+        </div>
+        <div class="topic-card">
+          <div class="icon" aria-hidden="true">🏆</div>
+          <h3>Competitive Positioning</h3>
+          <p>Proposal language, capability statement wording, and the federal compliance opportunity explained.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Open Excerpt -->
+  <section class="section" id="preview" aria-labelledby="preview-heading">
+    <div class="inner">
+      <p class="section-label">Preview</p>
+      <h2 class="section-title" id="preview-heading">From the Whitepaper</h2>
+      <p class="section-intro">The executive summary and partial checklist are open to everyone. Download the PDF for the full 8-section guide.</p>
+
+      <div class="excerpt-box">
+        <h3>Executive Summary</h3>
+        <p>WCAG 2.2, published by the W3C in October 2023, introduces nine new or revised success criteria with direct impact on federal e-learning, training portals, and digital job aids. For government contractors and federal agencies, the update represents both a compliance obligation and a market differentiator.</p>
+        <br>
+        <p>Most contractors treat WCAG compliance as a cost center. The instructional designers who understand it as a capability differentiator win more work and command higher rates. If you build to WCAG 2.2 Level AA, you automatically satisfy WCAG 2.1 and WCAG 2.0 requirements as well — making WCAG 2.2 the single safest target for any government-facing training deliverable.</p>
+      </div>
+
+      <h3 style="color:var(--navy); font-size:1.05rem; margin-bottom:16px;">WCAG 2.2 QA Checklist — Sample</h3>
+      <p style="font-size:.9rem; color:var(--mgrey); margin-bottom:16px;">The full 17-point checklist is in the PDF download. Here's a preview:</p>
+
+      <ul class="checklist" aria-label="WCAG 2.2 checklist preview">
+        <li>
+          <div class="check-box" aria-hidden="true"></div>
+          <span class="check-label">All keyboard-navigable elements have a visible focus indicator ≥2px wide with 3:1 contrast</span>
+          <span class="check-badge badge-aa">AA</span>
+        </li>
+        <li>
+          <div class="check-box" aria-hidden="true"></div>
+          <span class="check-label">All dragging interactions have a single-pointer (click) alternative</span>
+          <span class="check-badge badge-aa">AA</span>
+        </li>
+        <li>
+          <div class="check-box" aria-hidden="true"></div>
+          <span class="check-label">All interactive targets meet minimum 24×24px size</span>
+          <span class="check-badge badge-aa">AA</span>
+        </li>
+        <li>
+          <div class="check-box" aria-hidden="true"></div>
+          <span class="check-label">Help mechanism (if present) appears in consistent location across all pages</span>
+          <span class="check-badge badge-a">A</span>
+        </li>
+        <li>
+          <div class="check-box" aria-hidden="true"></div>
+          <span class="check-label">Authentication does not require solving a cognitive puzzle without an alternative</span>
+          <span class="check-badge badge-aa">AA</span>
+        </li>
+
+        <!-- Blurred rows to tease more content -->
+        <li class="blur-row" aria-hidden="true">
+          <div class="check-box"></div>
+          <span class="check-label">All images have meaningful alt text (or empty alt for decorative)</span>
+          <span class="check-badge badge-a">A</span>
+        </li>
+        <li class="blur-row" aria-hidden="true">
+          <div class="check-box"></div>
+          <span class="check-label">All video content has synchronized captions and audio description</span>
+          <span class="check-badge badge-aa">AA</span>
+        </li>
+      </ul>
+
+      <p style="font-size:.9rem; color:var(--mgrey); text-align:center; margin-top:10px; font-style:italic;">+ 12 more criteria in the full PDF ↓</p>
+    </div>
+  </section>
+
+  <!-- Email Capture -->
+  <section class="section section--grey" id="download" aria-labelledby="download-heading">
+    <div class="inner">
+      <div class="capture-section">
+        <h2 id="download-heading">Get the Full Whitepaper — Free</h2>
+        <p>8 sections, 17-point QA checklist, implementation roadmap, and competitive positioning guide. No spam — one email with your download link.</p>
+
+        <form class="capture-form" id="captureForm" action="#" method="post" novalidate
+              aria-label="Whitepaper download form">
+          <label for="emailInput" class="sr-only">Your email address</label>
+          <input
+            type="email"
+            id="emailInput"
+            name="email"
+            placeholder="your@email.com"
+            required
+            autocomplete="email"
+            aria-required="true"
+            aria-describedby="email-hint"
+          >
+          <button type="submit">Download PDF →</button>
+        </form>
+
+        <div class="success-msg" id="successMsg" role="alert" aria-live="polite">
+          ✓ Check your inbox — your PDF is on the way!
+        </div>
+
+        <p class="capture-fine" id="email-hint">No spam. Unsubscribe anytime. Your email is used only to send this guide.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About the Author -->
+  <section class="section" aria-labelledby="author-heading">
+    <div class="inner">
+      <p class="section-label">The Author</p>
+      <h2 class="section-title" id="author-heading">About John Crawford</h2>
+
+      <div class="about-strip">
+        <div class="avatar" aria-hidden="true">JC</div>
+        <div class="about-text">
+          <h3>John T. Crawford — Instructional Designer, Web Developer &amp; Video Producer</h3>
+          <p>Based in Annapolis, Maryland, John designs accessible training programs for government agencies, healthcare organizations, and private sector clients. He builds in Section 508 and WCAG compliance from the first storyboard, not as an afterthought. His work covers Articulate Storyline and Rise, SCORM/xAPI delivery, facilitated instruction, and accessible PDF job aids.</p>
+          <p style="margin-top:10px;">
+            <a href="https://johntcrawford.com" rel="noopener noreferrer" target="_blank">johntcrawford.com</a> ·
+            <a href="#" class="js-email" data-u="contact" data-d="johntcrawford.com">contact&#64;johntcrawford.com</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 John T. Crawford · Annapolis, Maryland ·
+      <a href="https://johntcrawford.com" rel="noopener noreferrer" target="_blank">johntcrawford.com</a> ·
+      <a href="#" class="js-email" data-u="contact" data-d="johntcrawford.com">contact&#64;johntcrawford.com</a>
+    </p>
+  </footer>
+
+  <!-- Visually hidden utility -->
+  <style>.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }</style>
+
+  <script>
+    // Form submit — swap in success state
+    // Wire this to your actual email service (Mailchimp, ConvertKit, Formspree, etc.)
+    document.getElementById('captureForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value.trim();
+      if (!email || !email.includes('@')) {
+        document.getElementById('emailInput').focus();
+        return;
+      }
+      // TODO: POST email to your service endpoint here
+      // fetch('/api/subscribe', { method:'POST', body: JSON.stringify({email}), headers:{'Content-Type':'application/json'} })
+      this.style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    });
+  </script>
+
+  <script>
+    /* Email bot-protection: assemble href from data attributes at runtime */
+    document.querySelectorAll('a.js-email').forEach(function(a) {
+      a.href = 'mailto:' + a.dataset.u + '@' + a.dataset.d;
+    });
+  </script>
+</body>
+</html>
+                                                                                                                                                                     

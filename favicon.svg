@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
+  <!-- Background -->
+  <circle cx="90" cy="90" r="90" fill="#0F1B2D"/>
+  <!-- Gold wedge: top-left quadrant -->
+  <path d="M90 90 L90 0 A90 90 0 0 0 0 90 Z" fill="#F0A500" opacity="0.30"/>
+  <!-- Red wedge: bottom-right quadrant -->
+  <path d="M90 90 L90 180 A90 90 0 0 0 180 90 Z" fill="#CE1126" opacity="0.22"/>
+  <!-- Inner ring -->
+  <circle cx="90" cy="90" r="78" fill="none" stroke="#F0A500" stroke-width="2" opacity="0.55"/>
+  <!-- Crosshairs -->
+  <line x1="90" y1="14" x2="90" y2="166" stroke="#F0A500" stroke-width="1" opacity="0.30"/>
+  <line x1="14" y1="90" x2="166" y2="90" stroke="#F0A500" stroke-width="1" opacity="0.30"/>
+  <!-- Outer ring edge highlight -->
+  <circle cx="90" cy="90" r="88" fill="none" stroke="#F0A500" stroke-width="1" opacity="0.18"/>
+</svg>

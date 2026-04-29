@@ -1,0 +1,19 @@
+# Claude session internals
+.claude/
+
+# LibreOffice lock files
+.~lock.*
+
+# Personal file lists
+gdrive_filelist.txt
+gdrive_personal_filelist.txt
+
+# Backups
+index_original.html
+
+# Word processor source (keep PDF, not DOCX)
+WCAG22_Government_Whitepaper.docx
+wp_build/
+
+# Stream Deck source icons (not needed on server)
+stream_deck_icons/

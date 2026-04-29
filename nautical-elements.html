@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nautical Design Elements — johntcrawford.com</title>
+<style>
+  :root {
+    --navy: #0d2b45;
+    --bay-blue: #1a6b8a;
+    --crab-red: #cc2200;
+    --sand: #f5efe6;
+    --rope: #c9a96e;
+  }
+  body { margin: 0; font-family: Georgia, serif; background: var(--sand); color: var(--navy); }
+
+  /* ── 1. WAVE DIVIDER ── */
+  .wave-divider {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    margin: 2rem 0;
+  }
+  .wave-divider svg { display: block; }
+
+  /* ── 2. ROPE BORDER ── */
+  .rope-border {
+    border: none;
+    border-top: 6px solid transparent;
+    border-image: repeating-linear-gradient(
+      90deg,
+      var(--rope) 0px, var(--rope) 8px,
+      #a07840 8px, #a07840 12px,
+      var(--rope) 12px, var(--rope) 18px,
+      transparent 18px, transparent 22px
+    ) 6;
+    margin: 1.5rem 0;
+  }
+
+  /* ── 3. NAUTICAL SECTION BADGE ── */
+  .nautical-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--navy);
+    color: white;
+    padding: 0.4rem 1.2rem;
+    border-radius: 2px;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .nautical-badge::before { content: "⚓"; font-size: 1rem; }
+
+  /* ── 4. COMPASS CARD ACCENT ── */
+  .compass-card {
+    border: 2px solid var(--navy);
+    border-radius: 4px;
+    padding: 1.5rem;
+    position: relative;
+    background: white;
+    max-width: 320px;
+  }
+  .compass-card::before {
+    content: "✦";
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 0 8px;
+    color: var(--bay-blue);
+    font-size: 1.4rem;
+  }
+
+  /* ── 5. CRAB WATERMARK / FOOTER ACCENT ── */
+  .crab-accent {
+    opacity: 0.08;
+    position: absolute;
+    right: -20px;
+    bottom: -10px;
+    pointer-events: none;
+  }
+
+  /* ── 6. BUOY BULLET LIST ── */
+  .buoy-list { list-style: none; padding: 0; }
+  .buoy-list li { padding: 0.4rem 0 0.4rem 2rem; position: relative; }
+  .buoy-list li::before {
+    content: "◉";
+    position: absolute;
+    left: 0;
+    color: var(--crab-red);
+    font-size: 0.9rem;
+  }
+
+  /* ── 7. TIDAL PROGRESS BAR ── */
+  .tidal-bar {
+    background: #d0e8f0;
+    border-radius: 999px;
+    height: 10px;
+    overflow: hidden;
+    margin: 0.5rem 0;
+  }
+  .tidal-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--bay-blue), #5bb8d4);
+    animation: tide 3s ease-in-out infinite alternate;
+  }
+  @keyframes tide {
+    from { opacity: 0.7; }
+    to   { opacity: 1; }
+  }
+
+  /* ── DEMO LAYOUT ── */
+  section { max-width: 700px; margin: 0 auto; padding: 2rem 1.5rem; }
+  h2 { font-size: 1rem; color: var(--bay-blue); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  h3 { margin: 0 0 0.5rem; }
+  p  { margin: 0.25rem 0 0.75rem; line-height: 1.6; font-size: 0.95rem; }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO WAVE ══ -->
+<div style="background:var(--navy);color:white;padding:3rem 1.5rem;text-align:center;position:relative;">
+  <h1 style="margin:0;font-size:2rem;letter-spacing:0.05em;">John T. Crawford</h1>
+  <p style="margin:0.5rem 0 0;opacity:0.7;font-size:0.9rem;letter-spacing:0.12em;">MARYLAND · CREATIVE · PROFESSIONAL</p>
+  <!-- Crab watermark in hero -->
+  <div style="position:absolute;right:2rem;bottom:0.5rem;opacity:0.12;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" width="80" height="64">
+      <ellipse cx="100" cy="85" rx="38" ry="28" fill="white"/>
+      <ellipse cx="100" cy="78" rx="30" ry="18" fill="#aad4e8"/>
+      <circle cx="88" cy="68" r="5" fill="white"/><circle cx="112" cy="68" r="5" fill="white"/>
+      <line x1="72" y1="80" x2="42" y2="68" stroke="white" stroke-width="3" stroke-linecap="round"/>
+      <line x1="70" y1="87" x2="38" y2="82" stroke="white" stroke-width="3" stroke-linecap="round"/>
+      <line x1="70" y1="95" x2="40" y2="98" stroke="white" stroke-width="3" stroke-linecap="round"/>
+      <line x1="128" y1="80" x2="158" y2="68" stroke="white" stroke-width="3" stroke-linecap="round"/>
+      <line x1="130" y1="87" x2="162" y2="82" stroke="white" stroke-width="3" stroke-linecap="round"/>
+      <line x1="130" y1="95" x2="160" y2="98" stroke="white" stroke-width="3" stroke-linecap="round"/>
+      <g transform="translate(55,75) rotate(-30)"><rect x="-22" y="-5" width="22" height="10" rx="5" fill="white"/></g>
+      <g transform="translate(145,75) rotate(30) scale(-1,1)"><rect x="-22" y="-5" width="22" height="10" rx="5" fill="white"/></g>
+    </svg>
+  </div>
+</div>
+
+<!-- ══ WAVE DIVIDER ══ -->
+<div class="wave-divider">
+  <svg viewBox="0 0 1200 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="50" width="100%">
+    <path d="M0,30 C150,60 350,0 600,30 C850,60 1050,0 1200,30 L1200,0 L0,0 Z" fill="#0d2b45"/>
+  </svg>
+</div>
+
+<section>
+  <!-- ══ BADGE ══ -->
+  <h2>Section Label</h2>
+  <span class="nautical-badge">About Me</span>
+  <br><br>
+
+  <!-- ══ ROPE DIVIDER ══ -->
+  <h2 style="margin-top:1.5rem;">Rope Divider</h2>
+  <hr class="rope-border">
+
+  <!-- ══ COMPASS CARD ══ -->
+  <h2>Compass Card</h2>
+  <div class="compass-card" style="margin-bottom:1.5rem;">
+    <h3>What I Do</h3>
+    <p>Creative services, training, and digital content production based in Maryland.</p>
+    <ul class="buoy-list">
+      <li>Video Production</li>
+      <li>Web Design</li>
+      <li>Staff Training</li>
+    </ul>
+  </div>
+
+  <!-- ══ TIDAL PROGRESS BARS ══ -->
+  <h2>Tidal Skill Bars</h2>
+  <p style="margin:0;">Web Design</p>
+  <div class="tidal-bar"><div class="tidal-bar-fill" style="width:85%"></div></div>
+  <p style="margin:0;">Video Editing</p>
+  <div class="tidal-bar"><div class="tidal-bar-fill" style="width:90%"></div></div>
+  <p style="margin:0;">Training & Development</p>
+  <div class="tidal-bar"><div class="tidal-bar-fill" style="width:75%"></div></div>
+</section>
+
+<!-- ══ FOOTER WAVE + CRAB ══ -->
+<div class="wave-divider" style="transform:rotate(180deg)">
+  <svg viewBox="0 0 1200 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="40" width="100%">
+    <path d="M0,30 C200,0 400,60 600,30 C800,0 1000,60 1200,30 L1200,0 L0,0 Z" fill="#0d2b45"/>
+  </svg>
+</div>
+<footer style="background:var(--navy);color:white;text-align:center;padding:1.5rem;font-size:0.85rem;letter-spacing:0.08em;">
+  <!-- Crab centered in footer -->
+  <div style="margin-bottom:0.75rem;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" width="60" height="48" style="opacity:0.6">
+      <ellipse cx="100" cy="85" rx="38" ry="28" fill="#2a85a8"/>
+      <ellipse cx="100" cy="78" rx="30" ry="18" fill="#5bb8d4"/>
+      <circle cx="88" cy="68" r="5" fill="#cc2200"/><circle cx="112" cy="68" r="5" fill="#cc2200"/>
+      <line x1="72" y1="80" x2="42" y2="68" stroke="#5bb8d4" stroke-width="3" stroke-linecap="round"/>
+      <line x1="70" y1="87" x2="38" y2="82" stroke="#5bb8d4" stroke-width="3" stroke-linecap="round"/>
+      <line x1="70" y1="95" x2="40" y2="98" stroke="#5bb8d4" stroke-width="3" stroke-linecap="round"/>
+      <line x1="128" y1="80" x2="158" y2="68" stroke="#5bb8d4" stroke-width="3" stroke-linecap="round"/>
+      <line x1="130" y1="87" x2="162" y2="82" stroke="#5bb8d4" stroke-width="3" stroke-linecap="round"/>
+      <line x1="130" y1="95" x2="160" y2="98" stroke="#5bb8d4" stroke-width="3" stroke-linecap="round"/>
+      <g transform="translate(55,75) rotate(-30)"><rect x="-22" y="-5" width="22" height="10" rx="5" fill="#cc2200"/><ellipse cx="-26" cy="-7" rx="10" ry="5" fill="#cc2200" transform="rotate(-15,-26,-7)"/></g>
+      <g transform="translate(145,75) rotate(30) scale(-1,1)"><rect x="-22" y="-5" width="22" height="10" rx="5" fill="#cc2200"/><ellipse cx="-26" cy="-7" rx="10" ry="5" fill="#cc2200" transform="rotate(-15,-26,-7)"/></g>
+    </svg>
+  </div>
+  ⚓ &nbsp; johntcrawford.com &nbsp; · &nbsp; Maryland &nbsp; ⚓
+</footer>
+
+</body>
+</html>

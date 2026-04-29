@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crawford Family History | Private Archive</title>
+  <meta name="description" content="Crawford family genealogy archive — private access for family members." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:  #F0A500;
+      --red:   #CE1126;
+      --navy:  #0F1B2D;
+      --bg:    #0F1B2D;
+      --bg2:   #141F30;
+      --fg:    #F7F4EE;
+      --fg2:   rgba(247,244,238,0.60);
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans:  'Plus Jakarta Sans', system-ui, sans-serif;
+      --mono:  'DM Mono', 'Courier New', monospace;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ── Nav ────────────────────────────────────────────── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(20px, 5vw, 64px);
+      height: 60px;
+      border-bottom: 1px solid rgba(240,165,0,0.12);
+      background: var(--bg);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--fg);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-back {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--fg2);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--gold); }
+
+    /* ── Main content ───────────────────────────────────── */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(48px, 10vw, 120px) clamp(20px, 5vw, 64px);
+    }
+
+    .gate-card {
+      max-width: 560px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Crest / monogram */
+    .crest {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 2rem;
+    }
+
+    .label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    h1 em { font-style: italic; color: var(--fg2); }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto 1.75rem;
+      opacity: 0.7;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--fg2);
+      margin-bottom: 1.25rem;
+    }
+
+    p strong { color: var(--fg); font-weight: 600; }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      background: transparent;
+      border: 1px solid rgba(240,165,0,0.45);
+      border-radius: 4px;
+      color: var(--gold);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .contact-link:hover {
+      background: rgba(240,165,0,0.08);
+      border-color: var(--gold);
+    }
+
+    .lock-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--fg2);
+      margin-top: 2.5rem;
+      padding: 0.4rem 0.85rem;
+      border: 1px solid rgba(247,244,238,0.10);
+      border-radius: 99px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── Footer ─────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--fg2);
+      border-top: 1px solid rgba(247,244,238,0.06);
+    }
+
+    footer a { color: var(--fg2); text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+
+    /* ── Fade-in animation ──────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .gate-card { animation: fadeUp 0.6s ease both; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/">John Crawford</a>
+    <a class="nav-back" href="/">
+      ← Back to portfolio
+    </a>
+  </nav>
+
+  <main>
+    <div class="gate-card">
+
+      <!-- SVG Crest / Monogram -->
+      <div class="crest" role="img" aria-label="Crawford family crest monogram">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+          <circle cx="50" cy="50" r="50" fill="#0F1B2D"/>
+          <path d="M50 50 L50 0 A50 50 0 0 0 0 50 Z" fill="#F0A500" opacity="0.18"/>
+          <path d="M50 50 L50 100 A50 50 0 0 0 100 50 Z" fill="#CE1126" opacity="0.13"/>
+          <circle cx="50" cy="50" r="43" fill="none" stroke="#F0A500" stroke-width="0.6" opacity="0.35"/>
+          <!-- Tree silhouette (simple) -->
+          <polygon points="50,18 38,38 44,38 37,54 43,54 32,72 68,72 57,54 63,54 56,38 62,38" fill="#F0A500" opacity="0.55"/>
+          <rect x="46" y="72" width="8" height="8" fill="#F0A500" opacity="0.40"/>
+          <!-- Bottom rule -->
+          <line x1="28" y1="84" x2="72" y2="84" stroke="#F0A500" stroke-width="1.5" opacity="0.80"/>
+          <line x1="28" y1="87" x2="72" y2="87" stroke="#F0A500" stroke-width="0.6" opacity="0.35"/>
+        </svg>
+      </div>
+
+      <div class="label">Private Archive</div>
+
+      <h1>Crawford Family<br /><em>History &amp; Genealogy</em></h1>
+
+      <div class="divider"></div>
+
+      <p>This archive contains the Crawford family tree, historical records, and generational research — compiled across Maryland, Virginia, and beyond.</p>
+
+      <p><strong>Access is available to family members.</strong> If you'd like to explore the archive or contribute records of your own, reach out and I'll get you set up.</p>
+
+      <a class="contact-link" href="mailto:contact@johntcrawford.com">
+        Request Access →
+      </a>
+
+      <div>
+        <span class="lock-badge">
+          <svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="5" width="8" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M3 5V3.5a2 2 0 0 1 4 0V5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          Password protected
+        </span>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <a href="/">johntcrawford.com</a> &nbsp;·&nbsp; Crawford family archive &nbsp;·&nbsp; Private
+  </footer>
+
+</body>
+</html>

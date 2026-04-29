@@ -1,0 +1,13 @@
+<Files "tree.html">
+  AuthType Basic
+  AuthName "Crawford Family History — Private"
+  AuthUserFile /home/YOUR_USERNAME_HERE/.htpasswd
+  Require valid-user
+</Files>
+
+<Files "crawford_tree.ged">
+  AuthType Basic
+  AuthName "Crawford Family History — Private"
+  AuthUserFile /home/YOUR_USERNAME_HERE/.htpasswd
+  Require valid-user
+</Files>
