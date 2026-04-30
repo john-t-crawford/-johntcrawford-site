@@ -38,7 +38,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" crossorigin="anonymous"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -827,6 +827,7 @@
     .scheme-dot-btn:hover { transform: scale(1.2); }
     .scheme-dot-btn.active { border-color: var(--fg); transform: scale(1.15); }
     .scheme-dot-btn::after { content: attr(title); position: absolute; bottom: 130%; left: 50%; transform: translateX(-50%); background: var(--fg); color: var(--bg); font-size: 0.55rem; letter-spacing: .08em; text-transform: uppercase; padding: 3px 6px; border-radius: 3px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s; }
+    .scheme-dot-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
     .scheme-dot-btn:hover::after, .scheme-dot-btn:focus-visible::after { opacity: 1; }
     .drawer-scheme-row { padding: 16px var(--px); border-bottom: 1px solid var(--border); }
     .drawer-scheme-label { font-size: 0.6rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--fg2); margin-bottom: 10px; display: block; }
