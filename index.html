@@ -1,1 +1,1674 @@
-undefined
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>John Crawford | Instructional Designer & Digital Media Specialist</title>
+  <meta name="description" content="John Crawford — Instructional Designer and Digital Media Specialist based in Annapolis, MD." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://johntcrawford.com/" />
+  <meta property="og:title" content="John Crawford | Instructional Designer &amp; Digital Media Specialist" />
+  <meta property="og:description" content="Evidence-based learning experiences for enterprise teams and government programs." />
+  <meta property="og:site_name" content="John Crawford Portfolio" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="John Crawford | Instructional Designer &amp; Digital Media Specialist" />
+  <meta name="twitter:description" content="Evidence-based learning experiences for enterprise teams and government programs." />
+  <meta name="theme-color" content="#F0A500" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0F1B2D" media="(prefers-color-scheme: dark)" />
+  <link rel="canonical" href="https://johntcrawford.com/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "John Crawford",
+    "jobTitle": "Instructional Designer & Digital Media Specialist",
+    "url": "https://johntcrawford.com",
+    "email": "contact@johntcrawford.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Annapolis", "addressRegion": "MD" },
+    "sameAs": ["https://www.linkedin.com/in/careerjohntcrawford/"],
+    "knowsAbout": ["Instructional Design","eLearning","Section 508 Accessibility","WCAG 2.2","Microsoft Power Platform","Generative AI","Learning Analytics"]
+  }
+  </script>
+  <style>
+    /* ── RESET & TOKENS ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --md-gold:        #F0A500;
+      --md-gold-light:  #FEF3D0;
+      --md-gold-dim:    #B87D00;
+      --md-red:         #CE1126;
+      --md-red-light:   #FCEAEC;
+      --md-black:       #111111;
+      --md-navy:        #0F1B2D;
+      --md-navy-mid:    #1E3A5F;
+      --md-navy-light:  #D6E4F7;
+      --md-white:       #F7F4EE;
+
+      --bg:           #F7F4EE;
+      --bg2:          #EDE9E0;
+      --fg:           #111111;
+      --fg2:          #4A4035;
+      --accent:       #B87D00;
+      --accent-light: #FEF3D0;
+      --cta:          #CE1126;
+      --cta-hover:    #A50D1E;
+      --border:       #D5CEBC;
+      --card:         #FFFFFF;
+
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans:  'Plus Jakarta Sans', system-ui, sans-serif;
+      --mono:  'DM Mono', 'Courier New', monospace;
+      --nav-h: 60px;
+      --px: 20px;
+      --section-py: 72px;
+    }
+    [data-dark="true"] {
+      --bg:           #0F1B2D;
+      --bg2:          #162236;
+      --fg:           #F7F4EE;
+      --fg2:          #C8B99A;
+      --accent:       #F0A500;
+      --accent-light: #2A1F00;
+      --cta:          #CE1126;
+      --cta-hover:    #E8253D;
+      --border:       #243450;
+      --card:         #162236;
+    }
+
+    /* ── ACCESSIBILITY ──────────────────────────────────────── */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+    .skip-link {
+      position: absolute; top: -999px; left: 16px;
+      background: var(--accent); color: white;
+      padding: 10px 20px; border-radius: 0 0 4px 4px;
+      font-size: 0.88rem; font-weight: 600; z-index: 9999;
+      text-decoration: none;
+    }
+    .skip-link:focus { top: 0; }
+    .btn-primary:focus-visible,
+    .btn-secondary:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+    :focus:not(:focus-visible) { outline: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ── BASE ───────────────────────────────────────────────── */
+    html { scroll-behavior: smooth; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    body {
+      font-family: var(--sans);
+      background: var(--bg); color: var(--fg);
+      transition: background 0.3s, color 0.3s;
+      line-height: 1.6; overflow-x: hidden;
+    }
+    ::selection { background: var(--accent); color: white; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+
+    /* ── NAV ────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--px);
+      background: var(--bg);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+    }
+    nav.scrolled { border-color: var(--accent); box-shadow: 0 1px 20px rgba(0,0,0,0.06); border-bottom-width: 2px; }
+    .nav-logo { font-family: var(--serif); font-size: 1.05rem; letter-spacing: -0.01em; transition: color 0.2s; }
+    .nav-logo:hover { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 8px; }
+    .hamburger {
+      display: flex; flex-direction: column; justify-content: center; gap: 5px;
+      width: 44px; height: 44px; padding: 10px;
+      background: none; border: none; cursor: pointer; border-radius: 4px;
+    }
+    .hamburger span {
+      display: block; height: 2px; background: var(--fg);
+      border-radius: 2px; transform-origin: center;
+      transition: transform 0.25s, opacity 0.25s, width 0.25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-drawer {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 200;
+      height: 100%; height: 100dvh;
+      background: var(--bg);
+      display: -webkit-box; display: -webkit-flex; display: flex;
+      -webkit-flex-direction: column; flex-direction: column;
+      visibility: hidden; opacity: 0; pointer-events: none;
+      transition: opacity 0.22s ease, visibility 0s linear 0.22s;
+    }
+    .nav-drawer.open {
+      visibility: visible; opacity: 1; pointer-events: auto;
+      transition: opacity 0.22s ease, visibility 0s linear 0s;
+    }
+    .nav-drawer-header {
+      display: -webkit-box; display: -webkit-flex; display: flex;
+      -webkit-align-items: center; align-items: center;
+      -webkit-justify-content: space-between; justify-content: space-between;
+      padding: 0 var(--px); height: var(--nav-h); min-height: var(--nav-h);
+      border-bottom: 2px solid var(--accent); -webkit-flex-shrink: 0; flex-shrink: 0;
+    }
+    .nav-drawer-logo { font-family: var(--serif); font-size: 1.05rem; color: var(--fg); }
+    .nav-drawer-close {
+      width: 44px; height: 44px; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--fg); font-size: 1.4rem; line-height: 1; padding: 0;
+    }
+    .nav-drawer-inner {
+      display: -webkit-box; display: -webkit-flex; display: flex;
+      -webkit-flex-direction: column; flex-direction: column;
+      -webkit-flex: 1 1 auto; flex: 1 1 auto;
+      min-height: 0; padding: 0; overflow-y: auto; -webkit-overflow-scrolling: touch;
+    }
+    .nav-drawer a {
+      font-size: 1.1rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--fg); padding: 0 var(--px); height: 64px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+      transition: color 0.15s, background 0.15s; -webkit-tap-highlight-color: transparent;
+    }
+    .nav-drawer a:active { color: var(--accent); background: rgba(240,165,0,0.07); }
+    .nav-drawer-footer {
+      padding: 20px var(--px); padding-bottom: max(20px, env(safe-area-inset-bottom));
+      border-top: 1px solid var(--border); -webkit-flex-shrink: 0; flex-shrink: 0;
+    }
+    .nav-drawer-mode {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 8px;
+      padding: 14px 16px; cursor: pointer; font-family: var(--sans);
+      font-size: 0.88rem; font-weight: 600; color: var(--fg); width: 100%;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .nav-drawer-mode-label { display: flex; align-items: center; gap: 10px; }
+    .nav-drawer-mode-icon {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--accent); opacity: 0.85;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; color: #111;
+    }
+    .nav-links { display: none; }
+    .dark-toggle {
+      background: none; border: 1.5px solid var(--border);
+      border-radius: 99px; padding: 6px 12px;
+      cursor: pointer; font-size: 0.76rem; font-weight: 500;
+      color: var(--fg2); transition: all 0.2s; font-family: var(--sans); min-height: 36px;
+    }
+    .dark-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── SHARED SECTION STYLES ──────────────────────────────── */
+    section { padding: var(--section-py) var(--px); }
+    .section-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::before {
+      content: ''; display: inline-block; width: 20px; height: 1.5px;
+      background: var(--accent); opacity: 0.7; flex-shrink: 0;
+    }
+    .section-title {
+      font-family: var(--serif); font-size: clamp(1.8rem, 6vw, 3.4rem);
+      line-height: 1.1; letter-spacing: -0.02em;
+    }
+    .section-title em { font-style: italic; color: var(--accent); }
+
+    /* ── HERO ───────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh; min-height: 100svh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: calc(var(--nav-h) + 40px) var(--px) 56px;
+      position: relative; overflow: hidden;
+    }
+    .hero-deco {
+      position: absolute; top: 120px; right: -50px;
+      width: min(200px, 48vw); height: min(200px, 48vw);
+      pointer-events: none; opacity: 0.45; border-radius: 50%; overflow: hidden;
+    }
+    .hero-eyebrow {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+      animation: fadeUp 0.6s ease both; animation-delay: 0.1s;
+    }
+    .hero h1 { animation: fadeUp 0.7s ease both; animation-delay: 0.2s; }
+    .hero-sub { animation: fadeUp 0.7s ease both; animation-delay: 0.35s; }
+    .hero-ctas { animation: fadeUp 0.6s ease both; animation-delay: 0.5s; }
+    .hero-stats { animation: fadeIn 0.8s ease both; animation-delay: 0.65s; }
+    .hero h1 {
+      font-family: var(--serif); font-size: clamp(2.6rem, 9vw, 6.8rem);
+      line-height: 1.04; letter-spacing: -0.02em;
+      text-wrap: balance; text-wrap: pretty;
+    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero-sub { margin-top: 24px; font-size: 0.98rem; color: var(--fg2); line-height: 1.75; }
+    .hero-ctas { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-stats {
+      margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr;
+      gap: 24px 32px; padding-top: 36px; border-top: 1px solid var(--border);
+    }
+    .stat-num { font-family: var(--serif); font-size: 2rem; line-height: 1; }
+    .stat-num span { color: var(--accent); }
+    .hero-stats > div { position: relative; padding-bottom: 12px; }
+    .hero-stats > div::after {
+      content: ''; position: absolute; bottom: 0; left: 0; width: 24px; height: 1.5px;
+      background: var(--accent); opacity: 0.45;
+    }
+    .stat-label {
+      margin-top: 4px; font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.04em; color: var(--fg2); text-transform: uppercase;
+    }
+
+    /* ── BUTTONS ────────────────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--cta); color: white; padding: 14px 24px; border-radius: 4px;
+      font-size: 0.88rem; font-weight: 600; border: none; cursor: pointer;
+      font-family: var(--sans); min-height: 44px;
+      transition: background 0.2s, transform 0.2s; text-decoration: none;
+    }
+    .btn-primary:hover { background: var(--cta-hover); transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: none; color: var(--fg); padding: 14px 24px; border-radius: 4px;
+      font-size: 0.88rem; font-weight: 500; border: 1.5px solid var(--border);
+      cursor: pointer; font-family: var(--sans); min-height: 44px;
+      transition: border-color 0.2s; text-decoration: none;
+    }
+    .btn-secondary:hover { border-color: var(--fg); }
+
+    /* ── ABOUT ──────────────────────────────────────────────── */
+    .about-grid {
+      display: flex; flex-direction: column; align-items: center; gap: 40px; margin-top: 48px;
+    }
+    .about-photo { width: 180px; height: 180px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+    .about-text p {
+      color: var(--fg2); line-height: 1.8; font-size: 0.97rem; margin-bottom: 18px;
+      text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto;
+    }
+    .about-text p strong { color: var(--fg); font-weight: 600; }
+    .about-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+
+    /* ── JUSTIFY TOGGLE ─────────────────────────────────────── */
+    .justify-toggle-wrap {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+    }
+    .justify-toggle-label {
+      font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--fg2); user-select: none;
+    }
+    .justify-toggle-btns {
+      display: flex; border: 1.5px solid var(--border); border-radius: 4px; overflow: hidden;
+    }
+    .justify-btn {
+      background: none; border: none; cursor: pointer; padding: 5px 9px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--fg2); transition: background 0.15s, color 0.15s;
+      min-height: 32px; min-width: 36px;
+    }
+    .justify-btn + .justify-btn { border-left: 1px solid var(--border); }
+    .justify-btn.active { background: var(--accent); color: #fff; }
+    .justify-btn:hover:not(.active) { background: var(--bg2); color: var(--fg); }
+    .justify-btn svg { display: block; pointer-events: none; }
+    .about-text.align-left p { text-align: left; hyphens: none; -webkit-hyphens: none; }
+    .tag {
+      background: var(--accent-light); color: var(--accent); border: 1px solid var(--accent);
+      padding: 6px 12px; border-radius: 99px; font-size: 0.74rem; font-weight: 600;
+    }
+
+    /* ── SKILLS ─────────────────────────────────────────────── */
+    .skills-section { background: var(--bg2); }
+    .skills-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 48px; }
+    .skill-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 4px; padding: 24px;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .skill-card:hover {
+      border-color: var(--accent); box-shadow: 0 4px 20px rgba(0,0,0,0.08); transform: translateY(-2px);
+    }
+    .skill-card-title { font-weight: 600; font-size: 0.92rem; margin-bottom: 6px; }
+    .skill-card-sub { font-size: 0.78rem; color: var(--fg2); line-height: 1.6; margin-bottom: 20px; }
+    .skill-arc-wrap { display: flex; align-items: center; gap: 12px; margin-top: 16px; }
+    .skill-arc-svg { flex-shrink: 0; }
+    .skill-arc-track { fill: none; stroke: var(--border); stroke-width: 3; stroke-linecap: round; }
+    .skill-arc-fill {
+      fill: none; stroke-width: 3; stroke-linecap: round;
+      transition: stroke-dashoffset 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .skill-level {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--accent);
+    }
+
+    /* ── TOOL STACK ─────────────────────────────────────────── */
+    .jtc-stack-wrap { margin-top: 48px; }
+    .jtc-stack-header {
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: end; gap: 1rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.25rem; margin-bottom: 1.5rem;
+    }
+    .jtc-stack-eyebrow {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--fg2); margin: 0 0 .4rem;
+    }
+    .jtc-stack-title {
+      font-family: var(--serif); font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 400; line-height: 1; color: var(--fg); margin: 0;
+    }
+    .jtc-stack-title em { font-style: italic; color: var(--accent); }
+    .jtc-count {
+      font-family: var(--mono); font-size: 2.8rem; font-weight: 300;
+      color: var(--border); line-height: 1; letter-spacing: -.05em; transition: color .3s ease;
+    }
+    .jtc-filters {
+      display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: 1.5rem; list-style: none; padding: 0;
+    }
+    .jtc-filter-btn {
+      background: transparent; border: 1px solid var(--border); border-radius: 2px;
+      padding: .25rem .7rem; font-family: var(--mono); font-size: .6rem;
+      letter-spacing: .13em; text-transform: uppercase; color: var(--fg2);
+      cursor: pointer; transition: background .18s ease, border-color .18s ease, color .18s ease; line-height: 1.6;
+    }
+    .jtc-filter-btn:hover { background: var(--fg); border-color: var(--fg); color: var(--bg); }
+    .jtc-filter-btn[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .jtc-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
+    }
+    .jtc-card {
+      background: var(--card); padding: 1.25rem 1.1rem 1rem;
+      display: flex; flex-direction: column; gap: .4rem;
+      position: relative; overflow: hidden; cursor: default;
+      animation: jtcFadeUp .4s cubic-bezier(.22,.68,0,1.2) both;
+      transition: transform .18s cubic-bezier(.22,.68,0,1.2);
+    }
+    .jtc-card::before {
+      content: ''; position: absolute; inset: 0; background: var(--accent);
+      transform: scaleY(0); transform-origin: bottom;
+      transition: transform .25s cubic-bezier(.22,.68,0,1.2); z-index: 0;
+    }
+    .jtc-card:hover::before { transform: scaleY(1); }
+    .jtc-card:hover { transform: translateY(-2px); }
+    .jtc-card > * { position: relative; z-index: 1; }
+    .jtc-cat {
+      font-family: var(--mono); font-size: .56rem; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--fg2); transition: color .18s ease; margin: 0;
+    }
+    .jtc-name {
+      font-family: var(--serif); font-size: 1.05rem; line-height: 1.2;
+      color: var(--fg); transition: color .18s ease; margin: 0;
+    }
+    .jtc-card:hover .jtc-cat, .jtc-card:hover .jtc-name { color: #fff; }
+    .jtc-card[data-badge]::after {
+      content: attr(data-badge); position: absolute; top: .7rem; right: .7rem;
+      font-family: var(--mono); font-size: .5rem; letter-spacing: .1em; text-transform: uppercase;
+      background: var(--accent); color: #fff; padding: .1rem .35rem; border-radius: 1px;
+      z-index: 2; transition: opacity .2s ease;
+    }
+    .jtc-card[data-badge="new"]::after { background: var(--md-red); }
+    .jtc-card[data-badge]:hover::after { opacity: 0; }
+    .jtc-card--wide {
+      grid-column: span 2; flex-direction: row; align-items: center;
+      justify-content: space-between; padding: 1.4rem 1.25rem;
+    }
+    .jtc-card--wide .jtc-name { font-size: 1.25rem; }
+    .jtc-arrow {
+      font-size: 1.4rem; color: var(--border);
+      transition: color .18s ease, transform .2s cubic-bezier(.22,.68,0,1.2);
+      flex-shrink: 0; margin-left: 1rem;
+    }
+    .jtc-card--wide:hover .jtc-arrow { color: rgba(255,255,255,.5); transform: translateX(5px); }
+    .jtc-card--hidden { display: none !important; }
+    .jtc-legend {
+      margin-top: 1.5rem; display: flex; gap: 1.25rem; flex-wrap: wrap;
+      list-style: none; padding: 0;
+    }
+    .jtc-legend li {
+      display: flex; align-items: center; gap: .35rem; font-family: var(--mono);
+      font-size: .56rem; letter-spacing: .13em; text-transform: uppercase; color: var(--fg2);
+    }
+    .jtc-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    @keyframes jtcFadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .jtc-card:nth-child(1)  { animation-delay: .03s; }
+    .jtc-card:nth-child(2)  { animation-delay: .06s; }
+    .jtc-card:nth-child(3)  { animation-delay: .09s; }
+    .jtc-card:nth-child(4)  { animation-delay: .12s; }
+    .jtc-card:nth-child(5)  { animation-delay: .15s; }
+    .jtc-card:nth-child(6)  { animation-delay: .18s; }
+    .jtc-card:nth-child(7)  { animation-delay: .21s; }
+    .jtc-card:nth-child(8)  { animation-delay: .24s; }
+    .jtc-card:nth-child(9)  { animation-delay: .27s; }
+    .jtc-card:nth-child(10) { animation-delay: .30s; }
+    .jtc-card:nth-child(11) { animation-delay: .33s; }
+    .jtc-card:nth-child(12) { animation-delay: .36s; }
+    .jtc-card:nth-child(13) { animation-delay: .39s; }
+    .jtc-card:nth-child(14) { animation-delay: .42s; }
+    .jtc-card:nth-child(15) { animation-delay: .45s; }
+    @media (prefers-reduced-motion: reduce) {
+      .jtc-card { animation: none; }
+      .jtc-card::before { transition: none; }
+    }
+    @media (max-width: 540px) {
+      .jtc-stack-header { grid-template-columns: 1fr; }
+      .jtc-count { display: none; }
+      .jtc-card--wide { grid-column: span 1; flex-direction: column; align-items: flex-start; }
+      .jtc-arrow { display: none; }
+    }
+
+    /* ── PROJECTS ───────────────────────────────────────────── */
+    .projects-grid { display: flex; flex-direction: column; gap: 1px; margin-top: 48px; }
+    .project-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 4px; overflow: hidden;
+      transition: border-color 0.25s, box-shadow 0.3s; position: relative;
+    }
+    .project-card::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 0;
+      transition: width 0.35s cubic-bezier(0.4,0,0.2,1); z-index: 1; border-radius: 4px 0 0 4px;
+    }
+    .project-card[data-accent="gold"]::before  { background: var(--md-gold); }
+    .project-card[data-accent="red"]::before   { background: var(--md-red); }
+    .project-card[data-accent="navy"]::before  { background: var(--md-navy); }
+    .project-card.expanded::before { width: 3px; }
+    .project-card.expanded { border-color: var(--accent); box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+    .project-card:hover { border-color: var(--accent); }
+    .project-header:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; border-radius: 4px; }
+    .project-header {
+      display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16px;
+      padding: 24px 20px 24px 24px; cursor: pointer; position: relative; transition: background 0.2s;
+    }
+    .project-header:hover { background: rgba(0,0,0,0.015); }
+    [data-dark="true"] .project-header:hover { background: rgba(255,255,255,0.02); }
+    .project-index {
+      position: absolute; right: 60px; top: 50%; transform: translateY(-50%);
+      font-family: var(--serif); font-size: 5rem; font-weight: 700;
+      color: var(--fg); opacity: 0.035; line-height: 1; pointer-events: none;
+      user-select: none; transition: opacity 0.3s;
+    }
+    .project-card:hover .project-index, .project-card.expanded .project-index { opacity: 0.06; }
+    .project-meta { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+    .project-meta-chip {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+      color: var(--accent); background: var(--accent-light);
+      padding: 2px 7px; border-radius: 2px; border: 1px solid transparent;
+      transition: border-color 0.2s, letter-spacing 0.2s;
+    }
+    .project-header:hover .project-meta-chip { letter-spacing: 0.12em; border-color: var(--accent); }
+    .project-title { font-family: var(--serif); font-size: 1.3rem; letter-spacing: -0.01em; line-height: 1.2; }
+    .project-tagline {
+      margin-top: 6px; font-size: 0.84rem; color: var(--fg2);
+      display: inline-block; position: relative;
+    }
+    .project-tagline::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      height: 1px; width: 0; background: var(--accent);
+      transition: width 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    .project-header:hover .project-tagline::after { width: 100%; }
+    .project-toggle {
+      width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--fg2); transition: border-color 0.2s, color 0.2s, background 0.2s; flex-shrink: 0;
+      min-width: 36px; z-index: 2;
+    }
+    .project-toggle svg { transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); }
+    .project-card.expanded .project-toggle svg { transform: rotate(180deg); }
+    .project-card:hover .project-toggle, .project-card.expanded .project-toggle { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+    .project-body {
+      border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr;
+      overflow: hidden; max-height: 0;
+      transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+    .project-body.open { max-height: 1200px; }
+    .project-details { padding: 28px 24px; border-bottom: 1px solid var(--border); position: relative; }
+    .pbl-steps-wrap { position: relative; }
+    .pbl-steps-wrap::before {
+      content: ''; position: absolute; left: 12px; top: 14px; width: 1px; bottom: 28px;
+      background: linear-gradient(to bottom, var(--accent) 0%, transparent 100%); opacity: 0.25;
+    }
+    .pbl-step { display: flex; gap: 14px; margin-bottom: 22px; align-items: flex-start; }
+    .pbl-step:last-child { margin-bottom: 0; }
+    .pbl-num {
+      width: 26px; height: 26px; border-radius: 50%; background: var(--accent-light); color: var(--accent);
+      border: 1.5px solid var(--accent); display: flex; align-items: center; justify-content: center;
+      font-size: 0.68rem; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+      position: relative; z-index: 1; transition: background 0.2s, transform 0.2s;
+    }
+    .pbl-step:hover .pbl-num { background: var(--accent); color: var(--card); transform: scale(1.1); }
+    .pbl-label { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; opacity: 0.8; }
+    .pbl-text { font-size: 0.86rem; color: var(--fg); line-height: 1.65; }
+    .project-demo { padding: 24px 20px; background: var(--bg2); }
+    .demo-label {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--fg2); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+    }
+    .demo-label::before { content: ''; display: inline-block; width: 16px; height: 1px; background: var(--accent); opacity: 0.6; }
+
+    /* ── WORKFLOW DEMO ───────────────────────────────────────── */
+    @keyframes wf-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 var(--accent); opacity: 1; }
+      50%       { box-shadow: 0 0 0 4px transparent; opacity: 0.7; }
+    }
+    .wf-nodes { display: flex; flex-direction: column; gap: 8px; }
+    .wf-node {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: 4px; padding: 10px 14px;
+      transition: border-color 0.35s, background 0.35s, transform 0.2s;
+    }
+    .wf-node.lit { border-color: var(--accent); background: var(--accent-light); transform: translateX(2px); }
+    .wf-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: background 0.35s; flex-shrink: 0; }
+    .wf-node.lit .wf-dot { background: var(--accent); animation: wf-pulse 1.2s ease-in-out infinite; }
+    .wf-node-text { font-size: 0.8rem; font-weight: 500; }
+    .wf-connector { width: 2px; height: 14px; background: var(--border); margin-left: 18px; transition: background 0.35s, height 0.35s; }
+    .wf-connector.lit { background: var(--accent); }
+    .wf-btn {
+      margin-top: 14px; background: var(--cta); color: white;
+      border: none; border-radius: 4px; padding: 10px 18px;
+      font-size: 0.78rem; font-weight: 600; cursor: pointer;
+      font-family: var(--sans); transition: background 0.2s; min-height: 44px;
+    }
+    .wf-btn:hover { background: var(--cta-hover); }
+
+    /* ── CHART DEMO ─────────────────────────────────────────── */
+    .chart-wrap { position: relative; height: 180px; }
+
+    /* ── GAME DEMO ──────────────────────────────────────────── */
+    .game-q { font-size: 0.88rem; font-weight: 600; margin-bottom: 12px; line-height: 1.5; }
+    .game-opts { display: flex; flex-direction: column; gap: 8px; }
+    .game-opt {
+      background: var(--card); border: 1.5px solid var(--border); border-left-width: 3px;
+      border-radius: 4px; padding: 12px 14px; font-size: 0.82rem;
+      cursor: pointer; transition: border-color 0.18s, border-left-color 0.1s, background 0.18s, transform 0.15s;
+      text-align: left; font-family: var(--sans); color: var(--fg); min-height: 44px;
+    }
+    .game-opt:hover:not(:disabled) { border-color: var(--border); border-left-color: var(--accent); transform: translateX(2px); }
+    .game-opt.correct { border-color: #22c55e; background: #DCFCE7; color: #166534; }
+    .game-opt.wrong   { border-color: #ef4444; background: #FEE2E2; color: #991b1b; }
+    .game-feedback { font-size: 0.82rem; margin-top: 10px; font-weight: 500; min-height: 20px; }
+
+    /* ── TESTIMONIALS ───────────────────────────────────────── */
+    .testimonials-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 48px; }
+    .testimonial-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 4px; padding: 28px 24px; border-left: 3px solid var(--accent);
+      transition: box-shadow 0.2s;
+    }
+    .testimonial-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+    .t-quote { font-size: 2.8rem; color: var(--accent); font-family: var(--serif); line-height: 0.8; margin-bottom: 16px; opacity: 0.7; }
+    .t-text { font-size: 0.9rem; line-height: 1.75; color: var(--fg); margin-bottom: 24px; }
+    .t-author { display: flex; align-items: center; gap: 12px; }
+    .t-avatar {
+      width: 40px; height: 40px; border-radius: 50%; background: var(--accent-light);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.82rem; color: var(--accent); flex-shrink: 0;
+    }
+    .t-name { font-weight: 600; font-size: 0.86rem; }
+    .t-role { font-size: 0.73rem; color: var(--fg2); margin-top: 2px; }
+    .t-read-more {
+      display: inline-block; font-size: 0.82rem; font-weight: 600; color: var(--accent);
+      text-decoration: none; white-space: nowrap; transition: color 0.2s, letter-spacing 0.2s;
+    }
+    .t-read-more:hover { color: var(--cta); letter-spacing: 0.01em; }
+
+    /* ── CREDENTIALS ────────────────────────────────────────── */
+    .creds-section { background: var(--bg2); }
+    .creds-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 48px; }
+    .cred-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: flex; gap: 20px; align-items: flex-start; position: relative; overflow: hidden;
+    }
+    .cred-card::after {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 0;
+      background: var(--md-gold); transition: width 0.25s ease;
+    }
+    .cred-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .cred-card:hover::after { width: 3px; }
+    .cred-icon { width: 56px; height: 56px; flex-shrink: 0; border-radius: 8px; background: var(--bg2); padding: 4px; border: 1px solid var(--border); display: block; line-height: 0; }
+    .cred-issuer { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .cred-name { font-weight: 600; font-size: 0.9rem; line-height: 1.4; }
+
+    /* ── CONTACT ────────────────────────────────────────────── */
+    .contact-section { text-align: center; padding: 80px var(--px); }
+    .contact-section .section-title { margin: 0 auto 20px; }
+    .contact-sub { font-size: 0.95rem; color: var(--fg2); max-width: 480px; margin: 0 auto 40px; line-height: 1.7; }
+    .contact-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      border-top: 2px solid var(--accent); padding: 28px var(--px);
+      display: flex; flex-direction: column; gap: 12px;
+      align-items: center; text-align: center; font-size: 0.76rem; color: var(--fg2);
+    }
+    .footer-links { display: flex; gap: 20px; }
+    footer a:hover { color: var(--accent); }
+
+    /* ── TWEAKS PANEL ───────────────────────────────────────── */
+    .tweaks-panel {
+      position: fixed; bottom: 16px; right: 16px; width: 260px;
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: 8px; padding: 18px; z-index: 400;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15); display: none;
+    }
+    .tweaks-panel.visible { display: block; }
+    .tweaks-title { font-weight: 700; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 14px; color: var(--fg); }
+    .tweak-row { margin-bottom: 12px; }
+    .tweak-label { font-size: 0.73rem; font-weight: 600; color: var(--fg2); margin-bottom: 5px; }
+    .tweak-select { width: 100%; padding: 7px 10px; border-radius: 4px; border: 1px solid var(--border); background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 0.78rem; }
+    .tweak-slider { width: 100%; accent-color: var(--accent); }
+
+    /* ── THEME PILL (mobile-first floating color switcher) ──── */
+    /*
+      Mobile: fixed bottom-left pill, 3 color dots + label
+      Tablet+: collapses to subtle icon-only ring
+    */
+    .theme-pill {
+      position: fixed;
+      bottom: max(20px, env(safe-area-inset-bottom, 20px));
+      left: 16px;
+      z-index: 300;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: 99px;
+      padding: 7px 12px 7px 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.14);
+      transition: border-color 0.25s, box-shadow 0.25s, opacity 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .theme-pill:hover {
+      border-color: var(--accent);
+      box-shadow: 0 6px 28px rgba(0,0,0,0.18);
+    }
+    .theme-pill-label {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--fg2);
+      white-space: nowrap;
+      user-select: none;
+      line-height: 1;
+    }
+    .theme-pill-dots {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    /* Each dot is a button for a11y */
+    .theme-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.18s cubic-bezier(0.22,0.68,0,1.2),
+                  border-color 0.18s ease,
+                  box-shadow 0.18s ease;
+      min-width: 20px;
+      min-height: 20px; /* tap target via pill padding */
+      position: relative;
+    }
+    .theme-dot:hover { transform: scale(1.18); }
+    .theme-dot.active {
+      border-color: var(--fg);
+      transform: scale(1.22);
+      box-shadow: 0 0 0 1px var(--bg), 0 0 0 3px var(--fg);
+    }
+    .theme-dot[data-scheme="gold"]  { background: #F0A500; }
+    .theme-dot[data-scheme="red"]   { background: #CE1126; }
+    .theme-dot[data-scheme="navy"]  { background: #1E3A5F; }
+
+    /* Checkmark inside active dot */
+    .theme-dot.active::after {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.85);
+    }
+
+    /* On desktop hide the pill label to save space */
+    @media (min-width: 768px) {
+      .theme-pill {
+        padding: 7px 10px;
+      }
+      .theme-pill-label { display: none; }
+    }
+
+    /* If tweaks panel is visible (edit mode), shift pill up */
+    .theme-pill--shifted {
+      bottom: max(170px, calc(env(safe-area-inset-bottom, 0px) + 170px));
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .theme-dot, .theme-pill { transition: none; }
+    }
+
+    /* ── DESKTOP ────────────────────────────────────────────── */
+    @media (min-width: 768px) {
+      :root { --px: 48px; --section-py: 112px; --nav-h: 64px; }
+      .hamburger { display: none; }
+      .nav-drawer { display: none; }
+      .nav-links { display: flex; gap: 28px; align-items: center; }
+      .nav-links a {
+        font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+        color: var(--fg2); transition: color 0.2s; min-height: 44px; display: flex; align-items: center;
+      }
+      .nav-links a:hover { color: var(--accent); }
+      .hero-deco { top: 80px; right: -60px; width: 300px; height: 300px; }
+      .hero-stats { grid-template-columns: repeat(4, auto); gap: 48px; }
+      .stat-num { font-size: 2.4rem; }
+      .about-grid { flex-direction: row; align-items: flex-start; gap: 64px; }
+      .about-photo { width: 250px; height: 250px; }
+      .skills-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; }
+      .project-header { padding: 32px 40px 32px 44px; }
+      .project-index { font-size: 6rem; right: 80px; }
+      .project-body { grid-template-columns: 1fr 1.2fr; }
+      .project-body.open { max-height: 560px; }
+      .project-details { padding: 40px 44px; border-bottom: none; border-right: 1px solid var(--border); }
+      .project-demo { padding: 40px; }
+      .testimonials-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+      .creds-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+      footer { flex-direction: row; justify-content: space-between; text-align: left; }
+    }
+    @media (min-width: 1024px) {
+      .skills-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div id="root"></div>
+<script>
+const {
+  useState,
+  useEffect,
+  useRef,
+  useCallback
+} = React;
+
+/* ── COLOR SCHEME DEFINITIONS ──────────────────────────────── */
+const COLOR_SCHEMES = {
+  gold: {
+    label: "Gold · Calvert",
+    light: { accent: '#B87D00', accentLight: '#FEF3D0' },
+    dark:  { accent: '#F0A500', accentLight: '#2A1F00' }
+  },
+  red: {
+    label: "Red · Crossland",
+    light: { accent: '#CE1126', accentLight: '#FCEAEC' },
+    dark:  { accent: '#CE1126', accentLight: '#3A0008' }
+  },
+  navy: {
+    label: "Navy · Chesapeake",
+    light: { accent: '#1E3A5F', accentLight: '#D6E4F7' },
+    dark:  { accent: '#4A90D9', accentLight: '#0D1F35' }
+  }
+};
+
+function applyScheme(scheme, isDark) {
+  const vars = isDark ? COLOR_SCHEMES[scheme].dark : COLOR_SCHEMES[scheme].light;
+  document.documentElement.style.setProperty('--accent', vars.accent);
+  document.documentElement.style.setProperty('--accent-light', vars.accentLight);
+}
+
+const TWEAK_DEFAULTS = {
+  "mdVariant": "gold",
+  "heroSize": 100,
+  "fontStyle": "serif-sans"
+};
+
+const skills = [{
+  title: "Instructional Design",
+  sub: "ADDIE · SAM · Agile ID methodologies",
+  arc: 0.92, level: "Expert"
+}, {
+  title: "Authoring Tools",
+  sub: "Articulate 360 · Captivate · Lectora",
+  arc: 0.90, level: "Expert"
+}, {
+  title: "Enterprise Automation",
+  sub: "Power Platform · SharePoint · Power Automate",
+  arc: 0.78, level: "Advanced"
+}, {
+  title: "Learning Analytics",
+  sub: "Kirkpatrick L1-4 · xAPI/SCORM · ROI dashboards",
+  arc: 0.72, level: "Advanced"
+}, {
+  title: "Video & Multimedia",
+  sub: "Premiere Pro · Camtasia · Motion Graphics",
+  arc: 0.82, level: "Advanced"
+}, {
+  title: "Generative AI Integration",
+  sub: "Claude · Copilot · Gemini · Google Cloud certified",
+  arc: 0.85, level: "Expert"
+}];
+
+const STACK_TOOLS = [
+  { name: "Articulate 360",       cat: "elearning",           badge: "primary", wide: true,  label: "eLearning Authoring" },
+  { name: "Power Automate",       cat: "platform",            badge: "primary", wide: false, label: "Automation" },
+  { name: "Claude Code",          cat: "code ai",             badge: "new",     wide: false, label: "AI Dev" },
+  { name: "Adobe Creative Suite", cat: "creative",            badge: null,      wide: false, label: "Design & Media" },
+  { name: "Camtasia",             cat: "creative elearning",  badge: null,      wide: false, label: "Video Production" },
+  { name: "Jira",                 cat: "platform",            badge: null,      wide: false, label: "Project Management" },
+  { name: "SharePoint",           cat: "platform",            badge: null,      wide: false, label: "Collaboration" },
+  { name: "GitHub Copilot",       cat: "ai code",             badge: null,      wide: false, label: "AI Pair Programming" },
+  { name: "Google Gemini",        cat: "ai",                  badge: null,      wide: false, label: "AI Platform" },
+  { name: "Chart.js",             cat: "code",                badge: null,      wide: false, label: "Data Visualization" },
+  { name: "HTML5 / CSS / JS",     cat: "code elearning",      badge: null,      wide: true,  label: "Web & Standards" },
+  { name: "xAPI / SCORM",         cat: "elearning",           badge: null,      wide: false, label: "LMS Standards" },
+  { name: "Power Apps",           cat: "platform",            badge: null,      wide: false, label: "Low-Code Apps" },
+  { name: "Lectora",              cat: "elearning",           badge: null,      wide: false, label: "eLearning Authoring" },
+  { name: "Figma",                cat: "creative code",       badge: null,      wide: false, label: "UI / UX Design" },
+];
+
+const STACK_FILTERS = [
+  { id: "all",       label: "All" },
+  { id: "elearning", label: "eLearning" },
+  { id: "code",      label: "Code & Dev" },
+  { id: "ai",        label: "AI" },
+  { id: "creative",  label: "Creative" },
+  { id: "platform",  label: "Platform" },
+];
+
+function ToolStack() {
+  const [activeCat, setActiveCat] = useState("all");
+  const visible = STACK_TOOLS.filter(t =>
+    activeCat === "all" || t.cat.split(" ").includes(activeCat)
+  );
+  return React.createElement("div", { className: "jtc-stack-wrap" },
+    React.createElement("div", { className: "jtc-stack-header" },
+      React.createElement("div", null,
+        React.createElement("p", { className: "jtc-stack-eyebrow" }, "Tools & Technologies"),
+        React.createElement("h3", { className: "jtc-stack-title" },
+          "The ", React.createElement("em", null, "Stack")
+        )
+      ),
+      React.createElement("span", {
+        className: "jtc-count",
+        "aria-live": "polite", "aria-atomic": "true", "aria-label": "Tool count"
+      }, String(visible.length).padStart(2, "0"))
+    ),
+    React.createElement("ul", {
+      className: "jtc-filters", role: "list", "aria-label": "Filter tools by category"
+    },
+      STACK_FILTERS.map(f =>
+        React.createElement("li", { key: f.id },
+          React.createElement("button", {
+            className: "jtc-filter-btn",
+            "aria-pressed": activeCat === f.id ? "true" : "false",
+            onClick: () => setActiveCat(f.id)
+          }, f.label)
+        )
+      )
+    ),
+    React.createElement("div", {
+      className: "jtc-grid", role: "list", "aria-label": "Tool stack"
+    },
+      STACK_TOOLS.map((t) => {
+        const isVisible = activeCat === "all" || t.cat.split(" ").includes(activeCat);
+        const cls = ["jtc-card", t.wide ? "jtc-card--wide" : "", !isVisible ? "jtc-card--hidden" : ""].filter(Boolean).join(" ");
+        return React.createElement("div", {
+          key: t.name, className: cls,
+          "data-badge": t.badge || undefined, role: "listitem"
+        },
+          t.wide
+            ? React.createElement(React.Fragment, null,
+                React.createElement("div", null,
+                  React.createElement("p", { className: "jtc-cat" }, t.label),
+                  React.createElement("p", { className: "jtc-name" }, t.name)
+                ),
+                React.createElement("span", { className: "jtc-arrow", "aria-hidden": "true" }, "→")
+              )
+            : React.createElement(React.Fragment, null,
+                React.createElement("p", { className: "jtc-cat" }, t.label),
+                React.createElement("p", { className: "jtc-name" }, t.name)
+              )
+        );
+      })
+    ),
+    React.createElement("ul", { className: "jtc-legend", "aria-label": "Badge legend" },
+      React.createElement("li", null,
+        React.createElement("span", { className: "jtc-dot", style: { background: "var(--accent)" }, "aria-hidden": "true" }),
+        "Primary tool"
+      ),
+      React.createElement("li", null,
+        React.createElement("span", { className: "jtc-dot", style: { background: "var(--md-red)" }, "aria-hidden": "true" }),
+        "Newly added"
+      ),
+      React.createElement("li", null,
+        React.createElement("span", { className: "jtc-dot", style: { background: "var(--border)" }, "aria-hidden": "true" }),
+        "Supporting tool"
+      )
+    )
+  );
+}
+
+/* ── THEME PILL ─────────────────────────────────────────────── */
+function ThemePill({ scheme, onChange, tweaksVisible }) {
+  const schemes = ['gold', 'red', 'navy'];
+  const labels = { gold: 'Gold · Calvert', red: 'Red · Crossland', navy: 'Navy · Chesapeake' };
+
+  return React.createElement("div", {
+    className: `theme-pill${tweaksVisible ? ' theme-pill--shifted' : ''}`,
+    role: "group",
+    "aria-label": "Color scheme selector"
+  },
+    React.createElement("span", { className: "theme-pill-label", "aria-hidden": "true" }, "Theme"),
+    React.createElement("div", { className: "theme-pill-dots" },
+      schemes.map(s =>
+        React.createElement("button", {
+          key: s,
+          className: `theme-dot${scheme === s ? ' active' : ''}`,
+          "data-scheme": s,
+          onClick: () => onChange(s),
+          "aria-label": `${labels[s]} color scheme${scheme === s ? ' (current)' : ''}`,
+          "aria-pressed": scheme === s ? "true" : "false",
+          title: labels[s]
+        })
+      )
+    )
+  );
+}
+
+const projects = [{
+  meta: "Microsoft Power Platform · Teams Integration",
+  title: "Automated Onboarding Workflow System",
+  tagline: "60% reduction in manual HR touchpoints across enterprise onboarding.",
+  problem: "Fragmented onboarding created high administrative friction and inconsistent employee experiences across departments.",
+  solution: "Architected a hands-free lifecycle system using Power Automate and SharePoint to trigger notifications and auto-route documentation.",
+  outcome: "60% reduction in manual HR touchpoints while ensuring 100% compliance on all new-hire documentation workflows.",
+  demo: "workflow"
+}, {
+  meta: "Kirkpatrick Level 4 · Chart.js · Data Visualization",
+  title: "ROI & Learning Impact Dashboard",
+  tagline: "Translating learner KPIs into executive-ready ROI narratives.",
+  problem: "Senior stakeholders lacked visibility into the financial impact of learning investments, making budget justification difficult.",
+  solution: "Developed a dynamic Chart.js dashboard that translates raw learner KPIs into visual ROI narratives for executive audiences.",
+  outcome: "Enabled data-driven L&D investment decisions; surfaced a 12% increase in measurable post-training performance.",
+  demo: "chart"
+}, {
+  meta: "Gamification · HTML5 / JavaScript · Maryland DNR",
+  title: "Bay Quest: The Blue Crab Challenge",
+  tagline: "Game theory applied to Chesapeake Bay environmental education.",
+  problem: "Static environmental content was failing to engage a broad adult audience, resulting in low retention and limited behavior change.",
+  solution: "Designed an HTML5 gamified experience using Maryland DNR data, with high-stakes scoring mechanics to teach Chesapeake Bay ecosystem health.",
+  outcome: "Demonstrated practical application of game theory to complex environmental education; recognized as a portfolio showcase piece.",
+  demo: "game"
+}];
+
+const testimonials = [{
+  preview: "He was instrumental in helping us successfully import over 20,000 team members into our LMS…",
+  name: "Katie", role: "Vice President of Learning and Development", initials: "KW"
+}, {
+  preview: "John has an incredible eye for design and thinks outside the box when faced with a challenge.",
+  name: "Donovan", role: "Corporate Talent Specialist", initials: "DP"
+}, {
+  preview: "John is wonderful to work with!",
+  name: "Jennifer", role: "Learning and Development Specialist", initials: "JH"
+}];
+
+const G = "#F0A500", GL = "#FEF3D0";
+function IconCapella() {
+  return React.createElement("svg", { viewBox: "0 0 64 64", width: "48", height: "48", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+    React.createElement("rect", { x: "12", y: "34", width: "40", height: "20", rx: "2", fill: GL, stroke: G, strokeWidth: "1.5" }),
+    React.createElement("polygon", { points: "32,8 56,22 32,28 8,22", fill: G, opacity: "0.85" }),
+    React.createElement("rect", { x: "52", y: "22", width: "3", height: "14", rx: "1.5", fill: G }),
+    React.createElement("circle", { cx: "53.5", cy: "38", r: "3", fill: G, opacity: "0.7" }),
+    React.createElement("rect", { x: "20", y: "38", width: "10", height: "2", rx: "1", fill: G, opacity: "0.4" }),
+    React.createElement("rect", { x: "20", y: "43", width: "16", height: "2", rx: "1", fill: G, opacity: "0.3" }),
+    React.createElement("rect", { x: "20", y: "48", width: "12", height: "2", rx: "1", fill: G, opacity: "0.2" }),
+    React.createElement("path", { d: "M38 46 L44 46 L44 54 L38 54 Z", fill: G, opacity: "0.6" }),
+    React.createElement("path", { d: "M38 46 L41 42 L44 46", fill: G, opacity: "0.8" })
+  );
+}
+function IconWestwood() {
+  return React.createElement("svg", { viewBox: "0 0 64 64", width: "48", height: "48", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+    React.createElement("rect", { x: "6", y: "12", width: "52", height: "36", rx: "4", fill: GL, stroke: G, strokeWidth: "1.5" }),
+    React.createElement("rect", { x: "6", y: "12", width: "52", height: "9", rx: "4", fill: G, opacity: "0.15" }),
+    React.createElement("circle", { cx: "14", cy: "16.5", r: "2", fill: G, opacity: "0.5" }),
+    React.createElement("circle", { cx: "21", cy: "16.5", r: "2", fill: G, opacity: "0.35" }),
+    React.createElement("circle", { cx: "28", cy: "16.5", r: "2", fill: G, opacity: "0.2" }),
+    React.createElement("path", { d: "M16 30 L22 36 L16 42", stroke: G, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" }),
+    React.createElement("path", { d: "M26 42 L36 42", stroke: G, strokeWidth: "2", strokeLinecap: "round" }),
+    React.createElement("path", { d: "M42 28 L48 34 L42 40", stroke: G, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", opacity: "0.5" })
+  );
+}
+function IconGoogle() {
+  return React.createElement("svg", { viewBox: "0 0 64 64", width: "48", height: "48", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+    React.createElement("path", { d: "M14 30 C14 20 20 14 32 14 C44 14 50 20 50 30 C50 40 44 46 32 46 C20 46 14 40 14 30Z", fill: GL, stroke: G, strokeWidth: "1.5" }),
+    React.createElement("circle", { cx: "32", cy: "30", r: "5", fill: G, opacity: "0.9" }),
+    React.createElement("circle", { cx: "20", cy: "24", r: "2.5", fill: G, opacity: "0.55" }),
+    React.createElement("circle", { cx: "44", cy: "24", r: "2.5", fill: G, opacity: "0.55" }),
+    React.createElement("circle", { cx: "20", cy: "36", r: "2.5", fill: G, opacity: "0.55" }),
+    React.createElement("circle", { cx: "44", cy: "36", r: "2.5", fill: G, opacity: "0.55" }),
+    React.createElement("line", { x1: "32", y1: "25", x2: "20", y2: "24", stroke: G, strokeWidth: "1", opacity: "0.4" }),
+    React.createElement("line", { x1: "32", y1: "25", x2: "44", y2: "24", stroke: G, strokeWidth: "1", opacity: "0.4" }),
+    React.createElement("line", { x1: "32", y1: "35", x2: "20", y2: "36", stroke: G, strokeWidth: "1", opacity: "0.4" }),
+    React.createElement("line", { x1: "32", y1: "35", x2: "44", y2: "36", stroke: G, strokeWidth: "1", opacity: "0.4" })
+  );
+}
+function IconMicrosoft() {
+  return React.createElement("svg", { viewBox: "0 0 64 64", width: "48", height: "48", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+    React.createElement("rect", { x: "8", y: "18", width: "48", height: "30", rx: "3", fill: GL, stroke: G, strokeWidth: "1.5" }),
+    React.createElement("rect", { x: "8", y: "18", width: "48", height: "8", rx: "3", fill: G, opacity: "0.12" }),
+    React.createElement("path", { d: "M14 31 L18 31", stroke: G, strokeWidth: "1.5", strokeLinecap: "round" }),
+    React.createElement("path", { d: "M20 31 L38 31", stroke: G, strokeWidth: "1", strokeLinecap: "round", opacity: "0.5", strokeDasharray: "2 2" }),
+    React.createElement("path", { d: "M14 37 L18 37", stroke: G, strokeWidth: "1.5", strokeLinecap: "round" }),
+    React.createElement("path", { d: "M20 37 L30 37", stroke: G, strokeWidth: "1", strokeLinecap: "round", opacity: "0.5", strokeDasharray: "2 2" }),
+    React.createElement("path", { d: "M14 43 L20 43", stroke: G, strokeWidth: "1.5", strokeLinecap: "round" }),
+    React.createElement("circle", { cx: "46", cy: "37", r: "8", fill: G, opacity: "0.15", stroke: G, strokeWidth: "1.2" }),
+    React.createElement("path", { d: "M42 37 L45 40 L50 34", stroke: G, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
+  );
+}
+function IconArticulate() {
+  return React.createElement("svg", { viewBox: "0 0 64 64", width: "48", height: "48", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+    React.createElement("rect", { x: "10", y: "40", width: "44", height: "14", rx: "2", fill: G, opacity: "0.15", stroke: G, strokeWidth: "1.2" }),
+    React.createElement("rect", { x: "14", y: "28", width: "36", height: "14", rx: "2", fill: G, opacity: "0.3", stroke: G, strokeWidth: "1.2" }),
+    React.createElement("rect", { x: "18", y: "16", width: "28", height: "14", rx: "2", fill: G, opacity: "0.7", stroke: G, strokeWidth: "1.5" }),
+    React.createElement("circle", { cx: "24", cy: "23", r: "2", fill: "white", opacity: "0.8" }),
+    React.createElement("rect", { x: "28", y: "20", width: "12", height: "2", rx: "1", fill: "white", opacity: "0.7" }),
+    React.createElement("rect", { x: "28", y: "24", width: "8", height: "2", rx: "1", fill: "white", opacity: "0.5" }),
+    React.createElement("path", { d: "M44 10 L48 16 L40 16 Z", fill: G })
+  );
+}
+const credIconComponents = {
+  capella: React.createElement(IconCapella, null),
+  westwood: React.createElement(IconWestwood, null),
+  google: React.createElement(IconGoogle, null),
+  microsoft: React.createElement(IconMicrosoft, null),
+  articulate: React.createElement(IconArticulate, null)
+};
+const creds = [{
+  issuer: "Capella University",
+  name: "M.S. Instructional Design & Technology — Summa Cum Laude", icon: "capella"
+}, {
+  issuer: "Westwood College",
+  name: "B.A.S. Web Design & Multimedia", icon: "westwood"
+}, {
+  issuer: "Google Cloud",
+  name: "Generative AI Fundamentals", icon: "google"
+}, {
+  issuer: "Microsoft · LinkedIn",
+  name: "AI & Prompt Engineering Certification", icon: "microsoft"
+}, {
+  issuer: "Articulate",
+  name: "Storyline 360 & Rise 360 Proficiency", icon: "articulate"
+}];
+
+const wfSteps = ["New hire data submitted", "SharePoint record created", "Teams notification triggered", "Docs auto-routed for review", "Compliance check passed ✓"];
+
+function WorkflowDemo() {
+  const [lit, setLit] = useState(-1);
+  const [running, setRunning] = useState(false);
+  const run = () => {
+    if (running) return;
+    setRunning(true);
+    setLit(-1);
+    wfSteps.forEach((_, i) => setTimeout(() => {
+      setLit(i);
+      if (i === wfSteps.length - 1) setRunning(false);
+    }, i * 600 + 100));
+  };
+  return React.createElement("div", null,
+    React.createElement("div", { className: "demo-label" }, "Live Workflow Simulation"),
+    React.createElement("div", { className: "wf-nodes", "aria-live": "polite", "aria-label": "Workflow steps" },
+      wfSteps.map((s, i) => React.createElement(React.Fragment, { key: i },
+        i > 0 && React.createElement("div", { className: `wf-connector${lit >= i ? ' lit' : ''}` }),
+        React.createElement("div", { className: `wf-node${lit >= i ? ' lit' : ''}` },
+          React.createElement("div", { className: "wf-dot" }),
+          React.createElement("div", { className: "wf-node-text" }, s)
+        )
+      ))
+    ),
+    React.createElement("button", {
+      className: "wf-btn", onClick: run, disabled: running,
+      "aria-label": running ? 'Workflow simulation running' : lit === wfSteps.length - 1 ? 'Run workflow simulation again' : 'Run workflow simulation'
+    }, running ? 'Running…' : lit === wfSteps.length - 1 ? 'Run Again' : '▶ Run Simulation')
+  );
+}
+
+function ChartDemo() {
+  const ref = useRef(null);
+  const chartRef = useRef(null);
+  useEffect(() => {
+    if (!ref.current) return;
+    if (chartRef.current) chartRef.current.destroy();
+    const dark = document.documentElement.getAttribute('data-dark') === 'true';
+    const gc = dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.06)';
+    const tc = dark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.45)';
+    chartRef.current = new Chart(ref.current.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+        datasets: [{
+          label: 'Pre-Training KPI', data: [62, 65, 61, 63],
+          backgroundColor: 'rgba(128,128,128,0.25)', borderRadius: 4
+        }, {
+          label: 'Post-Training KPI', data: [72, 74, 76, 78],
+          backgroundColor: '#F0A500', borderRadius: 4
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: tc, boxRadius: 3, font: { size: 10 } } } },
+        scales: {
+          x: { grid: { color: gc }, ticks: { color: tc } },
+          y: { grid: { color: gc }, ticks: { color: tc }, min: 50 }
+        }
+      }
+    });
+    return () => chartRef.current?.destroy();
+  }, []);
+  return React.createElement("div", null,
+    React.createElement("div", { className: "demo-label" }, "Performance KPI: Pre vs. Post Training"),
+    React.createElement("div", { className: "chart-wrap" },
+      React.createElement("canvas", { ref, role: "img", "aria-label": "Bar chart comparing pre-training and post-training KPI scores across Q1 through Q4." })
+    )
+  );
+}
+
+const questions = [{
+  q: "Which species is the primary filter-feeder that keeps the Chesapeake Bay's water clean?",
+  opts: ["Blue Crab", "Striped Bass", "Eastern Oyster", "Atlantic Menhaden"],
+  ans: 2, feedback: "Correct! Oysters filter up to 50 gallons of water per day."
+}, {
+  q: "What is the leading cause of dead zones in the Chesapeake Bay?",
+  opts: ["Overfishing", "Excess nitrogen & phosphorus runoff", "Invasive species", "Saltwater intrusion"],
+  ans: 1, feedback: "Right! Fertilizer runoff causes algae blooms that deplete oxygen."
+}, {
+  q: "Blue crab populations in the Bay have declined primarily due to:",
+  opts: ["Climate change alone", "Overharvesting & habitat loss", "Predation from dolphins", "Reduced salinity"],
+  ans: 1, feedback: "Exactly. Habitat loss and overharvesting are the key drivers."
+}];
+
+function GameDemo() {
+  const [qi, setQi] = useState(0);
+  const [score, setScore] = useState(0);
+  const [chosen, setChosen] = useState(null);
+  const [done, setDone] = useState(false);
+  const q = questions[qi];
+  const pick = i => {
+    if (chosen !== null) return;
+    setChosen(i);
+    if (i === q.ans) setScore(s => s + 1);
+    setTimeout(() => {
+      if (qi < questions.length - 1) { setQi(qi + 1); setChosen(null); }
+      else setDone(true);
+    }, 1200);
+  };
+  const reset = () => { setQi(0); setScore(0); setChosen(null); setDone(false); };
+  if (done) return React.createElement("div", null,
+    React.createElement("div", { className: "demo-label" }, "Bay Quest — Result"),
+    React.createElement("div", { className: "game-q" }, "You scored ", score, "/", questions.length),
+    React.createElement("div", { style: { fontSize: '0.84rem', color: 'var(--fg2)', lineHeight: 1.6, marginBottom: 16 } },
+      score === 3 ? "🦀 Bay Expert!" : score === 2 ? "Nice work — a bit more to learn." : "The Bay needs advocates — dig deeper!"
+    ),
+    React.createElement("button", { className: "wf-btn", onClick: reset }, "Play Again")
+  );
+  return React.createElement("div", null,
+    React.createElement("div", { className: "demo-label" }, "Bay Quest — Q", qi + 1, "/", questions.length, " · Score: ", score),
+    React.createElement("div", { className: "game-q" }, q.q),
+    React.createElement("div", { className: "game-opts", role: "group", "aria-label": `Answer options for: ${q.q}` },
+      q.opts.map((o, i) => React.createElement("button", {
+        key: i,
+        className: `game-opt${chosen === i ? i === q.ans ? ' correct' : ' wrong' : chosen !== null && i === q.ans ? ' correct' : ''}`,
+        onClick: () => pick(i), disabled: chosen !== null
+      }, o))
+    ),
+    chosen !== null && React.createElement("div", {
+      className: "game-feedback", role: "status", "aria-live": "assertive",
+      style: { color: chosen === q.ans ? '#16a34a' : '#dc2626' }
+    }, q.feedback)
+  );
+}
+
+function ProjectCard({ p, index }) {
+  const [open, setOpen] = useState(false);
+  const accents = ['gold', 'red', 'navy'];
+  const accentKey = accents[index % accents.length];
+  const metaChips = p.meta.split(' · ');
+  const bodyId = `project-body-${p.title.replace(/\s+/g, '-').toLowerCase()}`;
+  return React.createElement("div", {
+    className: `project-card${open ? ' expanded' : ''}`,
+    "data-accent": accentKey
+  },
+    React.createElement("div", {
+      className: "project-header",
+      onClick: () => setOpen(!open),
+      onKeyDown: e => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), setOpen(!open)),
+      role: "button", tabIndex: 0, "aria-expanded": open, "aria-controls": bodyId
+    },
+      React.createElement("span", { className: "project-index", "aria-hidden": "true" }, String(index + 1).padStart(2, '0')),
+      React.createElement("div", null,
+        React.createElement("div", { className: "project-meta", "aria-label": "Technologies used" },
+          metaChips.map((chip, i) => React.createElement("span", { key: i, className: "project-meta-chip" }, chip))
+        ),
+        React.createElement("div", { className: "project-title" }, p.title),
+        React.createElement("span", { className: "project-tagline" }, p.tagline)
+      ),
+      React.createElement("div", { className: "project-toggle", "aria-hidden": "true" },
+        React.createElement("svg", { width: "12", height: "12", viewBox: "0 0 14 14", fill: "none", stroke: "currentColor", strokeWidth: "2.2", strokeLinecap: "round", strokeLinejoin: "round", focusable: "false" },
+          React.createElement("title", null, open ? 'Collapse project details' : 'Expand project details'),
+          React.createElement("path", { d: "M2 5l5 5 5-5" })
+        )
+      )
+    ),
+    React.createElement("div", { className: `project-body${open ? ' open' : ''}`, id: bodyId, "aria-hidden": !open },
+      React.createElement("div", { className: "project-details" },
+        React.createElement("div", { className: "pbl-steps-wrap" },
+          [['Problem', p.problem], ['Solution', p.solution], ['Outcome', p.outcome]].map(([label, text], i) =>
+            React.createElement("div", { className: "pbl-step", key: i },
+              React.createElement("div", { className: "pbl-num", "aria-hidden": "true" }, i + 1),
+              React.createElement("div", null,
+                React.createElement("div", { className: "pbl-label" }, label),
+                React.createElement("div", { className: "pbl-text" }, text)
+              )
+            )
+          )
+        )
+      ),
+      React.createElement("div", { className: "project-demo" },
+        p.demo === 'workflow' && React.createElement(WorkflowDemo, null),
+        p.demo === 'chart'    && React.createElement(ChartDemo, null),
+        p.demo === 'game'     && React.createElement(GameDemo, null)
+      )
+    )
+  );
+}
+
+function SkillCard({ s, animate }) {
+  const [progress, setProgress] = useState(0);
+  useEffect(() => { if (animate) setTimeout(() => setProgress(s.arc), 150); }, [animate]);
+  const r = 24, cx = 28, cy = 28;
+  const circumference = Math.PI * r;
+  const dashOffset = circumference * (1 - progress);
+  const arcColor = progress >= 0.85 ? '#22a65a' : progress >= 0.75 ? '#2ecc71' : '#52d68a';
+  return React.createElement("div", { className: "skill-card" },
+    React.createElement("div", { className: "skill-card-title" }, s.title),
+    React.createElement("div", { className: "skill-card-sub" }, s.sub),
+    React.createElement("div", { className: "skill-arc-wrap" },
+      React.createElement("svg", { className: "skill-arc-svg", width: "56", height: "32", viewBox: "0 0 56 32", "aria-hidden": "true" },
+        React.createElement("path", { className: "skill-arc-track", d: `M ${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy}` }),
+        React.createElement("path", { className: "skill-arc-fill", d: `M ${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy}`, stroke: arcColor, strokeDasharray: circumference, strokeDashoffset: dashOffset })
+      ),
+      React.createElement("span", { className: "skill-level" }, s.level)
+    )
+  );
+}
+
+function TweaksPanel({ visible, tweaks, onChange }) {
+  return React.createElement("div", { className: `tweaks-panel${visible ? ' visible' : ''}`, "aria-hidden": !visible },
+    React.createElement("div", { className: "tweaks-title" }, "Tweaks"),
+    React.createElement("div", { className: "tweak-row" },
+      React.createElement("div", { className: "tweak-label" }, "Maryland Accent"),
+      React.createElement("select", {
+        className: "tweak-select", value: tweaks.mdVariant,
+        onChange: e => onChange('mdVariant', e.target.value),
+        "aria-label": "Color scheme selection"
+      },
+        React.createElement("option", { value: "gold" }, "Gold · Calvert"),
+        React.createElement("option", { value: "red"  }, "Red · Crossland"),
+        React.createElement("option", { value: "navy" }, "Navy · Chesapeake")
+      )
+    ),
+    React.createElement("div", { className: "tweak-row" },
+      React.createElement("div", { className: "tweak-label" }, "Font Style"),
+      React.createElement("select", {
+        className: "tweak-select", value: tweaks.fontStyle,
+        onChange: e => onChange('fontStyle', e.target.value)
+      },
+        React.createElement("option", { value: "serif-sans" }, "DM Serif + Jakarta Sans"),
+        React.createElement("option", { value: "all-sans"   }, "All Sans-Serif")
+      )
+    )
+  );
+}
+
+/* ── ABOUT SECTION with justify toggle ──────────────────────── */
+const IconJustify = () => React.createElement("svg", { width: "14", height: "12", viewBox: "0 0 14 12", fill: "currentColor", "aria-hidden": "true" },
+  React.createElement("rect", { x: "0", y: "0",  width: "14", height: "2", rx: "1" }),
+  React.createElement("rect", { x: "0", y: "5",  width: "14", height: "2", rx: "1" }),
+  React.createElement("rect", { x: "0", y: "10", width: "14", height: "2", rx: "1" })
+);
+const IconAlignLeft = () => React.createElement("svg", { width: "14", height: "12", viewBox: "0 0 14 12", fill: "currentColor", "aria-hidden": "true" },
+  React.createElement("rect", { x: "0", y: "0",  width: "14", height: "2", rx: "1" }),
+  React.createElement("rect", { x: "0", y: "5",  width: "10", height: "2", rx: "1" }),
+  React.createElement("rect", { x: "0", y: "10", width: "12", height: "2", rx: "1" })
+);
+
+function AboutSection() {
+  const [align, setAlign] = useState('justify'); // 'justify' | 'left'
+
+  const monogram = React.createElement("svg", { viewBox: "0 0 240 240", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", focusable: "false" },
+    React.createElement("circle", { cx: "120", cy: "120", r: "120", fill: "#0F1B2D" }),
+    React.createElement("path", { d: "M120 120 L120 0 A120 120 0 0 0 0 120 Z", fill: "#F0A500", opacity: "0.20" }),
+    React.createElement("path", { d: "M120 120 L120 240 A120 120 0 0 0 240 120 Z", fill: "#CE1126", opacity: "0.15" }),
+    React.createElement("circle", { cx: "120", cy: "120", r: "104", fill: "none", stroke: "#F0A500", strokeWidth: "0.8", opacity: "0.40" }),
+    React.createElement("line", { x1: "120", y1: "16", x2: "120", y2: "224", stroke: "#F0A500", strokeWidth: "0.5", opacity: "0.18" }),
+    React.createElement("line", { x1: "16", y1: "120", x2: "224", y2: "120", stroke: "#F0A500", strokeWidth: "0.5", opacity: "0.18" }),
+    React.createElement("text", { x: "120", y: "137", textAnchor: "middle", fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "72", fontWeight: "400", fill: "#F7F4EE", fillOpacity: "0.5", letterSpacing: "-1" }, "JTC"),
+    React.createElement("line", { x1: "67", y1: "149", x2: "173", y2: "149", stroke: "#F0A500", strokeWidth: "2", opacity: "0.90" }),
+    React.createElement("line", { x1: "50", y1: "117", x2: "130", y2: "117", stroke: "#F0A500", strokeWidth: "1", opacity: "0.45" })
+  );
+
+  return React.createElement("div", { className: "about-grid" },
+    React.createElement("div", { className: "about-photo", role: "img", "aria-label": "John Crawford initials monogram" },
+      monogram
+    ),
+    React.createElement("div", null,
+      /* Justify toggle */
+      React.createElement("div", { className: "justify-toggle-wrap", role: "group", "aria-label": "Text alignment" },
+        React.createElement("span", { className: "justify-toggle-label" }, "Align"),
+        React.createElement("div", { className: "justify-toggle-btns" },
+          React.createElement("button", {
+            className: `justify-btn${align === 'justify' ? ' active' : ''}`,
+            onClick: () => setAlign('justify'),
+            "aria-pressed": align === 'justify' ? "true" : "false",
+            "aria-label": "Justified text",
+            title: "Justified"
+          }, React.createElement(IconJustify, null)),
+          React.createElement("button", {
+            className: `justify-btn${align === 'left' ? ' active' : ''}`,
+            onClick: () => setAlign('left'),
+            "aria-pressed": align === 'left' ? "true" : "false",
+            "aria-label": "Left-aligned text",
+            title: "Left aligned"
+          }, React.createElement(IconAlignLeft, null))
+        )
+      ),
+      /* Body text */
+      React.createElement("div", { className: `about-text${align === 'left' ? ' align-left' : ''}` },
+        React.createElement("p", null, "I'm a ", React.createElement("strong", null, "hybrid instructional designer and digital media strategist"), " based in the Annapolis–Baltimore corridor. Currently designing eLearning and performance support materials supporting government and enterprise programs."),
+        React.createElement("p", null, "Accessibility isn't an afterthought in my work — ", React.createElement("strong", null, "WCAG 2.2 and Section 508 compliance are built into my design process from day one.")),
+        React.createElement("div", { className: "about-tags" },
+          ["Accessibility Advocate", "WCAG 2.2 · §508 · ARIA 1.2", "Government & Enterprise", "AI-Augmented Practitioner", "Annapolis, MD"].map(t => React.createElement("span", { key: t, className: "tag" }, t))
+        )
+      )
+    )
+  );
+}
+
+function App() {
+  const [dark, setDark] = useState(() =>
+    localStorage.getItem('jc-dark') !== null
+      ? localStorage.getItem('jc-dark') === 'true'
+      : true
+  );
+  const [scheme, setScheme] = useState(() =>
+    localStorage.getItem('jc-scheme') || 'gold'
+  );
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [skillsVisible, setSkillsVisible] = useState(false);
+  const skillsRef = useRef(null);
+  const [tweaksVisible, setTweaksVisible] = useState(false);
+  const [tweaks, setTweaks] = useState({ ...TWEAK_DEFAULTS, mdVariant: localStorage.getItem('jc-scheme') || 'gold' });
+
+  /* Apply dark mode */
+  useEffect(() => {
+    document.documentElement.setAttribute('data-dark', dark);
+    localStorage.setItem('jc-dark', dark);
+    applyScheme(scheme, dark);
+  }, [dark]);
+
+  /* Apply scheme whenever either changes */
+  useEffect(() => {
+    applyScheme(scheme, dark);
+    localStorage.setItem('jc-scheme', scheme);
+    setTweaks(t => ({ ...t, mdVariant: scheme }));
+  }, [scheme, dark]);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setSkillsVisible(true); }, { threshold: 0.1 });
+    if (skillsRef.current) obs.observe(skillsRef.current);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const handler = e => {
+      if (e.data?.type === '__activate_edit_mode')   setTweaksVisible(true);
+      if (e.data?.type === '__deactivate_edit_mode')  setTweaksVisible(false);
+    };
+    window.addEventListener('message', handler);
+    return () => window.removeEventListener('message', handler);
+  }, []);
+
+  const navClick = () => setTimeout(() => setMenuOpen(false), 80);
+
+  const changeTweak = (key, val) => {
+    const next = { ...tweaks, [key]: val };
+    setTweaks(next);
+    if (key === 'mdVariant') {
+      setScheme(val);
+    }
+  };
+
+  const handleSchemeChange = (s) => {
+    setScheme(s);
+  };
+
+  return React.createElement(React.Fragment, null,
+    /* NAV */
+    React.createElement("nav", { className: scrolled ? 'scrolled' : '', role: "navigation", "aria-label": "Main navigation" },
+      React.createElement("div", { className: "nav-logo" }, "John T Crawford"),
+      React.createElement("div", { className: "nav-links" },
+        React.createElement("a", { href: "#about" }, "About"),
+        React.createElement("a", { href: "#expertise" }, "Expertise"),
+        React.createElement("a", { href: "#projects" }, "Projects"),
+        React.createElement("a", { href: "#contact" }, "Contact"),
+        React.createElement("button", { className: "dark-toggle", onClick: () => setDark(d => !d), "aria-label": dark ? 'Switch to light mode' : 'Switch to dark mode' }, dark ? '☀ Light' : '◑ Dark')
+      ),
+      React.createElement("div", { className: "nav-right" },
+        React.createElement("button", { className: `hamburger${menuOpen ? ' open' : ''}`, onClick: () => { setMenuOpen(m => !m); const heroEl = document.getElementById('hero'); if (heroEl) heroEl.scrollIntoView({ behavior: 'smooth' }); }, "aria-label": menuOpen ? 'Close menu' : 'Open menu', "aria-expanded": menuOpen, "aria-controls": "mobile-nav-drawer" },
+          React.createElement("span", null), React.createElement("span", null), React.createElement("span", null)
+        )
+      )
+    ),
+    /* MOBILE DRAWER */
+    React.createElement("nav", { id: "mobile-nav-drawer", className: `nav-drawer${menuOpen ? ' open' : ''}`, "aria-label": "Mobile navigation" },
+      React.createElement("div", { className: "nav-drawer-header" },
+        React.createElement("span", { className: "nav-drawer-logo" }, "John T Crawford"),
+        React.createElement("button", { className: "nav-drawer-close", onClick: () => setMenuOpen(false), "aria-label": "Close menu" }, "✕")
+      ),
+      React.createElement("div", { className: "nav-drawer-inner" },
+        React.createElement("a", { href: "#about", onClick: navClick }, "About"),
+        React.createElement("a", { href: "#expertise", onClick: navClick }, "Expertise"),
+        React.createElement("a", { href: "#projects", onClick: navClick }, "Projects"),
+        React.createElement("a", { href: "#contact", onClick: navClick }, "Contact")
+      ),
+      React.createElement("div", { className: "nav-drawer-footer" },
+        React.createElement("button", { className: "nav-drawer-mode", "aria-label": dark ? 'Switch to light mode' : 'Switch to dark mode', onClick: () => { setDark(d => !d); setMenuOpen(false); } },
+          React.createElement("span", { className: "nav-drawer-mode-label" },
+            React.createElement("span", { className: "nav-drawer-mode-icon" }, dark ? '☀' : '◑'),
+            dark ? 'Switch to Light Mode' : 'Switch to Dark Mode'
+          ),
+          React.createElement("svg", { width: "16", height: "16", viewBox: "0 0 16 16", fill: "none", stroke: "currentColor", strokeWidth: "1.5", opacity: "0.4" },
+            React.createElement("path", { d: "M6 4l4 4-4 4" })
+          )
+        )
+      )
+    ),
+    /* MAIN */
+    React.createElement("main", { id: "main-content" },
+      /* HERO */
+      React.createElement("section", { className: "hero", id: "hero", "aria-label": "Introduction" },
+        React.createElement("div", { className: "hero-deco", "aria-hidden": "true" },
+          React.createElement("svg", { viewBox: "0 0 240 240", xmlns: "http://www.w3.org/2000/svg", width: "100%", height: "100%", focusable: "false", role: "presentation" },
+            React.createElement("circle", { cx: "120", cy: "120", r: "120", fill: "#0F1B2D" }),
+            React.createElement("path", { d: "M120 120 L120 0 A120 120 0 0 0 0 120 Z", fill: "#F0A500", opacity: "0.20" }),
+            React.createElement("path", { d: "M120 120 L120 240 A120 120 0 0 0 240 120 Z", fill: "#CE1126", opacity: "0.15" }),
+            React.createElement("circle", { cx: "120", cy: "120", r: "104", fill: "none", stroke: "#F0A500", strokeWidth: "0.8", opacity: "0.40" }),
+            React.createElement("line", { x1: "120", y1: "16", x2: "120", y2: "224", stroke: "#F0A500", strokeWidth: "0.5", opacity: "0.18" }),
+            React.createElement("line", { x1: "16", y1: "120", x2: "224", y2: "120", stroke: "#F0A500", strokeWidth: "0.5", opacity: "0.18" })
+          )
+        ),
+        React.createElement("div", { className: "hero-eyebrow" }, "Instructional Design & Digital Media"),
+        React.createElement("h1", { style: { letterSpacing: "-2.176px" } },
+          "Learning design that", React.createElement("br", null),
+          React.createElement("em", null, "performs.")
+        ),
+        React.createElement("p", { className: "hero-sub" }, "Crafting evidence-based learning experiences for enterprise teams and government programs. M.S. Instructional Design · Summa Cum Laude."),
+        React.createElement("div", { className: "hero-ctas" },
+          React.createElement("a", { href: "#projects", className: "btn-primary" }, "Explore My Work"),
+          React.createElement("a", { href: "mailto:contact@johntcrawford.com", className: "btn-secondary" }, "Get In Touch")
+        ),
+        React.createElement("div", { className: "hero-stats" },
+          React.createElement("div", null, React.createElement("div", { className: "stat-num" }, "10", React.createElement("span", null, "+")), React.createElement("div", { className: "stat-label" }, "Years Experience")),
+          React.createElement("div", null, React.createElement("div", { className: "stat-num" }, "60", React.createElement("span", null, "%")), React.createElement("div", { className: "stat-label" }, "Admin Reduction")),
+          React.createElement("div", null, React.createElement("div", { className: "stat-num" }, "Zero"), React.createElement("div", { className: "stat-label" }, "Compliance Gaps")),
+          React.createElement("div", null, React.createElement("div", { className: "stat-num" }, React.createElement("span", null, "§"), "508"), React.createElement("div", { className: "stat-label" }, "Accessible"))
+        )
+      ),
+      /* ABOUT */
+      React.createElement("section", { id: "about" },
+        React.createElement("div", { className: "section-label" }, "About"),
+        React.createElement("div", { className: "section-title" }, "The designer", React.createElement("br", null), React.createElement("em", null, "behind the work.")),
+        React.createElement(AboutSection, null)
+      ),
+      /* EXPERTISE / SKILLS */
+      React.createElement("section", { className: "skills-section", id: "expertise", ref: skillsRef, "aria-label": "Expertise and skills" },
+        React.createElement("div", { className: "section-label" }, "Expertise"),
+        React.createElement("div", { className: "section-title" }, "Built to solve complex", React.createElement("br", null), React.createElement("em", null, "learning problems.")),
+        React.createElement("div", { className: "skills-grid" },
+          skills.map((s, i) => React.createElement(SkillCard, { key: i, s, animate: skillsVisible }))
+        ),
+        React.createElement(ToolStack, null)
+      ),
+      /* PROJECTS */
+      React.createElement("section", { id: "projects", "aria-label": "Portfolio projects" },
+        React.createElement("div", { className: "section-label" }, "Portfolio"),
+        React.createElement("div", { className: "section-title" }, "Featured", React.createElement("br", null), React.createElement("em", null, "Projects.")),
+        React.createElement("div", { className: "projects-grid" },
+          projects.map((p, i) => React.createElement(ProjectCard, { key: i, p, index: i }))
+        )
+      ),
+      /* TESTIMONIALS */
+      React.createElement("section", { id: "testimonials", "aria-label": "Testimonials" },
+        React.createElement("div", { className: "section-label" }, "Testimonials"),
+        React.createElement("div", { className: "section-title" }, "Heard from", React.createElement("br", null), React.createElement("em", null, "the field.")),
+        React.createElement("div", { className: "testimonials-grid" },
+          testimonials.map((t, i) =>
+            React.createElement("div", { key: i, className: "testimonial-card" },
+              React.createElement("div", { className: "t-quote" }, "\""),
+              React.createElement("div", { className: "t-text" },
+                t.preview,
+                React.createElement("a", {
+                  href: "https://www.linkedin.com/in/careerjohntcrawford/",
+                  target: "_blank", rel: "noopener noreferrer", className: "t-read-more",
+                  "aria-label": `Read full recommendation from ${t.name} on LinkedIn`
+                }, " Read more on LinkedIn →")
+              ),
+              React.createElement("div", { className: "t-author" },
+                React.createElement("div", { className: "t-avatar" }, t.initials),
+                React.createElement("div", null,
+                  React.createElement("div", { className: "t-name" }, t.name),
+                  React.createElement("div", { className: "t-role" }, t.role)
+                )
+              )
+            )
+          )
+        )
+      ),
+      /* CREDENTIALS */
+      React.createElement("section", { className: "creds-section", "aria-label": "Education and Certifications" },
+        React.createElement("div", { className: "section-label" }, "Credentials"),
+        React.createElement("div", { className: "section-title" }, "Education &", React.createElement("br", null), React.createElement("em", null, "Certifications.")),
+        React.createElement("div", { className: "creds-grid" },
+          creds.map((c, i) => React.createElement("div", { key: i, className: "cred-card" },
+            React.createElement("div", { className: "cred-icon" }, credIconComponents[c.icon]),
+            React.createElement("div", null,
+              React.createElement("div", { className: "cred-issuer" }, c.issuer),
+              React.createElement("div", { className: "cred-name" }, c.name)
+            )
+          ))
+        )
+      ),
+      /* CONTACT */
+      React.createElement("section", { className: "contact-section", id: "contact" },
+        React.createElement("div", { className: "section-label", style: { textAlign: 'center' } }, "Contact"),
+        React.createElement("div", { className: "section-title", style: { textAlign: 'center', margin: '0 auto 20px' } }, "Ready to build", React.createElement("br", null), React.createElement("em", null, "something that works?")),
+        React.createElement("div", { className: "contact-sub" }, "Open to conversations about interesting problems in learning design, instructional strategy, and digital content."),
+        React.createElement("div", { className: "contact-btns" },
+          React.createElement("a", { href: "mailto:contact@johntcrawford.com", className: "btn-primary", "aria-label": "Send John an email" }, "Send a Message"),
+          React.createElement("a", { href: "https://www.linkedin.com/in/careerjohntcrawford/", target: "_blank", rel: "noopener noreferrer", className: "btn-secondary", "aria-label": "Connect on LinkedIn (opens new tab)" }, "Connect on LinkedIn")
+        )
+      )
+    ),
+    /* FOOTER */
+    React.createElement("footer", { role: "contentinfo" },
+      React.createElement("div", null, "© 2026 John Crawford · Annapolis, MD"),
+      React.createElement("div", { className: "footer-links" },
+        React.createElement("a", { href: "mailto:contact@johntcrawford.com" }, "Email"),
+        React.createElement("a", { href: "https://www.linkedin.com/in/careerjohntcrawford/", target: "_blank", rel: "noopener noreferrer" }, "LinkedIn"),
+        React.createElement("a", { href: "https://johntcrawford.com", target: "_blank", rel: "noopener noreferrer" }, "johntcrawford.com")
+      )
+    ),
+    /* FLOATING THEME PILL — always visible */
+    React.createElement(ThemePill, {
+      scheme,
+      onChange: handleSchemeChange,
+      tweaksVisible
+    }),
+    /* DEV TWEAKS PANEL — postMessage activated only */
+    React.createElement(TweaksPanel, { visible: tweaksVisible, tweaks, onChange: changeTweak })
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App, null));
+</script>
+</body>
+</html>
