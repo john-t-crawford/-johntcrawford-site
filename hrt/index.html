@@ -2480,21 +2480,21 @@ window.WOODY.NARRATION = {};
   function ModeGate(props) {
     return h('div', { className: 'card gate' },
       h('h2', null, 'What brings you here?'),
-      h('p', null, 'Ever walked past a tree or shrub in Maryland and wondered what it was? This is a free way to learn 121 of them \u2014 no signup, no app, works offline. Same 121 plants either way; pick how you want to meet them. You can switch anytime using the link in the header.'),
+      h('p', null, 'Ever walked past a tree or shrub in Maryland and thought, we should really be on a first-name basis by now? This is a free way to get acquainted with 121 of them: no signup, no app, works offline, unlike most relationships. Same 121 plants either way; pick how you want to meet them. You can switch anytime using the link in the header.'),
       h('div', { className: 'gate-grid' },
         h('button', { className: 'gate-door', onClick: function () { props.onPick('learn'); } },
           h('span', { className: 'gate-eyebrow' }, 'Guided'),
           h('span', { className: 'gate-title' }, 'Teach me first'),
-          h('span', { className: 'gate-blurb' }, 'A friendly, narrated walkthrough of what to actually look for \u2014 leaf shape, bark, overall shape \u2014 at three depths, using the same plates the game shows you.')),
+          h('span', { className: 'gate-blurb' }, 'A friendly, narrated walkthrough of what to actually look for: leaf shape, bark, overall shape. Because guessing is for suckers, the plant kind, not you. Three depths, using the same plates the game shows you.')),
         h('button', { className: 'gate-door', onClick: function () { props.onPick('practice'); } },
           h('span', { className: 'gate-eyebrow' }, 'Play'),
           h('span', { className: 'gate-title' }, 'Just let me play'),
-          h('span', { className: 'gate-blurb' }, 'See a plant, take your best guess, get instant feedback. Peek at extra clues if you want them \u2014 fewer peeks, higher score. Pick your difficulty and how you answer.'))),
+          h('span', { className: 'gate-blurb' }, 'See a plant, take your best guess, get instant feedback. No pressure, we have all mistaken a viburnum for a lilac. Peek at extra clues if you want them; fewer peeks means a higher score. Pick your difficulty and how you answer.'))),
       Object.keys(PHOTOS).length
         ? h('a', { className: 'gate-photos', href: './sheets.html' },
             h('span', { className: 'gp-txt' },
-              h('b', null, 'Or just browse the photographs'),
-              h('span', null, Object.keys(PHOTOS).length + ' of ' + PLANTS.length + ' specimens have real photographs I took myself, paired with the drawn plate for each.')),
+              h('b', null, 'Or just leaf through the photos'),
+              h('span', null, Object.keys(PHOTOS).length + ' of ' + PLANTS.length + ' specimens have real photographs I took myself, paired with the drawn plate for each. Proof I really do stop and photograph shrubs on purpose.')),
             h('span', { className: 'gp-arrow' }, 'Specimen sheets \u2192'))
         : null);
   }
@@ -2588,7 +2588,7 @@ window.WOODY.NARRATION = {};
     var header = h('header', { className: 'masthead' },
       h('div', null,
         h('h1', null, 'Name That ', h('em', null, 'Plant')),
-        h('p', { className: 'sub' }, 'Trees & shrubs of Maryland \u00b7 ' + PLANTS.length + ' plants to learn')),
+        h('p', { className: 'sub' }, 'Trees & shrubs of Maryland \u00b7 ' + PLANTS.length + ' plants, zero small talk required')),
       mode && !run ? h('button', { className: 'linkish top', onClick: function () { setMode(null); setRun(null); } }, 'Switch mode') : null,
       run ? h('div', { className: 'strip' },
         h('div', null, 'Score', h('b', null, score)),
