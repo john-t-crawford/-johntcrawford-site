@@ -79,6 +79,8 @@ a{color:var(--gold)}
 .pshot .vw{display:block;font:600 .64rem/1.5 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--gold)}
 .pshot .cr{display:block;font:400 .7rem/1.45 var(--mono);color:var(--print-faint)}
 .nophoto{padding:.7rem .8rem;border:1px dashed var(--rule);border-radius:4px;font:400 .82rem/1.5 var(--mono);color:var(--print-faint)}
+.onlyphoto{display:flex;align-items:center;gap:.5rem;margin:.7rem 0 0;min-height:var(--tap);font:600 .82rem/1 var(--sans);color:var(--print-dim);cursor:pointer}
+.onlyphoto input{width:18px;height:18px;accent-color:var(--gold);cursor:pointer}
 </style>
 </head>
 <body>
@@ -108,6 +110,7 @@ a{color:var(--gold)}
       <span>Filter</span>
       <input type="search" id="filter" placeholder="Latin, common name, or family" autocomplete="off">
     </label>
+    <label class="onlyphoto"><input type="checkbox" id="onlyPhotos"> Photographed only</label>
     <p class="note" id="cover"></p>
   </div>
 
@@ -924,18 +927,21 @@ window.WOODY.PLANTS = [
     : 'No photographs loaded. All ' + PLANTS.length + ' specimens are shown with their drawn plates.';
   if (!covered.length) $('empty').classList.remove('hide');
 
-  $('filter').addEventListener('input', function () {
-    var v = this.value.toLowerCase().trim();
+  function refilter() {
+    var v = $('filter').value.toLowerCase().trim();
+    var onlyPhotos = $('onlyPhotos').checked;
     var shown = 0;
     Array.prototype.forEach.call(wrap.children, function (el) {
-      var hit = !v || el.dataset.hay.indexOf(v) > -1;
+      var hit = (!v || el.dataset.hay.indexOf(v) > -1) && (!onlyPhotos || el.dataset.has === '1');
       el.classList.toggle('hide', !hit);
       if (hit) shown++;
     });
-    $('cover').textContent = v ? shown + ' matching specimen' + (shown === 1 ? '' : 's') + '.'
+    $('cover').textContent = (v || onlyPhotos) ? shown + ' matching specimen' + (shown === 1 ? '' : 's') + '.'
       : (covered.length ? covered.length + ' of ' + PLANTS.length + ' specimens have at least one photograph. Those sheets are listed first.'
                         : 'No photographs loaded. All ' + PLANTS.length + ' specimens are shown with their drawn plates.');
-  });
+  }
+  $('filter').addEventListener('input', refilter);
+  $('onlyPhotos').addEventListener('change', refilter);
 })();
 </script>
 </body>

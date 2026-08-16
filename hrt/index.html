@@ -395,6 +395,16 @@ legend{
 .gate-eyebrow{font:600 var(--step--1)/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--print-faint)}
 .gate-title{font:400 var(--step-1)/1.2 var(--serif);color:var(--gold)}
 .gate-blurb{font:400 var(--step--1)/1.5 var(--sans);color:var(--print-dim)}
+.gate-photos{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  min-height:var(--tap);padding:.9rem 1.1rem;
+  background:rgba(234,170,0,.08);border:1px solid rgba(234,170,0,.35);border-radius:5px;
+  text-decoration:none;color:inherit;
+}
+.gate-photos:hover{background:rgba(234,170,0,.14);border-color:var(--gold)}
+.gate-photos .gp-txt b{display:block;font:400 var(--step-0)/1.3 var(--serif);color:var(--gold)}
+.gate-photos .gp-txt span{font:400 var(--step--1)/1.4 var(--sans);color:var(--print-dim)}
+.gate-photos .gp-arrow{flex:none;font:600 var(--step--1)/1 var(--mono);color:var(--gold)}
 
 .tracks{display:grid;grid-template-columns:1fr;gap:.7rem;margin-bottom:1.25rem}
 .track{
@@ -434,9 +444,11 @@ legend{
   border:1px solid rgba(159,192,220,.25);border-radius:3px;
 }
 .exhibit-plate svg{display:block;width:100%;height:auto}
+.exhibit-photo img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:3px}
 .exhibit figcaption{padding:.5rem .1rem 0;font-size:var(--step--1);line-height:1.4}
 .exhibit figcaption b{display:block;font-weight:600;color:var(--print)}
 .exhibit figcaption em{font-style:italic;color:var(--print-faint);font-family:var(--serif)}
+.exhibit-credit{display:block;font-size:.82em;color:var(--print-faint);margin-top:.15rem}
 
 .lesson-nav{display:flex;gap:.6rem;flex-wrap:wrap;margin:var(--gap) 0}
 .audiobar{
@@ -1590,6 +1602,18 @@ window.WOODY.NARRATION = {};
   var h = React.createElement, useState = React.useState, useRef = React.useRef,
       useEffect = React.useEffect, useCallback = React.useCallback;
 
+  // Photographs are optional; W.PHOTOS is populated by the photos.js sidecar.
+  // Exhibits prefer a real photo over the drawn plate when the sidecar has
+  // one for that specimen and view — with no sidecar, lessons run exactly
+  // as before, on plates alone.
+  var PHOTOS = W.PHOTOS || {};
+  var EX_VIEWS = { leaf: ['foliage'], bark: ['bark'], habit: ['habit'], repro: ['fruit', 'flower'] };
+  function exhibitPhoto(id, kind) {
+    var shots = PHOTOS[id] || [], views = EX_VIEWS[kind] || [], i;
+    for (i = 0; i < shots.length; i++) if (views.indexOf(shots[i].view) > -1) return shots[i];
+    return null;
+  }
+
   /* =============================================================
      AUDIO ENGINE
      ============================================================= */
@@ -1949,11 +1973,19 @@ window.WOODY.NARRATION = {};
         exhibits.length ? h('div', { className: 'exhibits' }, exhibits.map(function (x) {
           var p = W.PLANTS.filter(function (q) { return q.id === x[0]; })[0];
           if (!p) return null;
+          var shot = exhibitPhoto(x[0], x[1]);
           return h('figure', { className: 'exhibit', key: x[0] + x[1] },
-            h('div', { className: 'exhibit-plate', role: 'img',
-              'aria-label': x[2] + '. ' + p.common + '.',
-              dangerouslySetInnerHTML: { __html: W.svg(x[1], p) } }),
-            h('figcaption', null, h('b', null, x[2]), h('em', null, p.latin)));
+            shot
+              ? h('div', { className: 'exhibit-plate exhibit-photo' },
+                  h('img', {
+                    src: shot.src, loading: 'lazy', decoding: 'async',
+                    alt: x[2] + '. ' + p.common + ', photographed ' + (shot.view || 'foliage') + '.'
+                  }))
+              : h('div', { className: 'exhibit-plate', role: 'img',
+                  'aria-label': x[2] + '. ' + p.common + '.',
+                  dangerouslySetInnerHTML: { __html: W.svg(x[1], p) } }),
+            h('figcaption', null, h('b', null, x[2]), h('em', null, p.latin),
+              shot ? h('span', { className: 'exhibit-credit' }, shot.credit || 'Photographed by John T. Crawford') : null));
         })) : null),
 
       h('div', { className: 'lesson-nav stickybar' },
@@ -2457,7 +2489,14 @@ window.WOODY.NARRATION = {};
         h('button', { className: 'gate-door', onClick: function () { props.onPick('practice'); } },
           h('span', { className: 'gate-eyebrow' }, 'Play'),
           h('span', { className: 'gate-title' }, 'Just let me play'),
-          h('span', { className: 'gate-blurb' }, 'See a plant, take your best guess, get instant feedback. Peek at extra clues if you want them \u2014 fewer peeks, higher score. Pick your difficulty and how you answer.'))));
+          h('span', { className: 'gate-blurb' }, 'See a plant, take your best guess, get instant feedback. Peek at extra clues if you want them \u2014 fewer peeks, higher score. Pick your difficulty and how you answer.'))),
+      Object.keys(PHOTOS).length
+        ? h('a', { className: 'gate-photos', href: './sheets.html' },
+            h('span', { className: 'gp-txt' },
+              h('b', null, 'Or just browse the photographs'),
+              h('span', null, Object.keys(PHOTOS).length + ' of ' + PLANTS.length + ' specimens have real photographs I took myself, paired with the drawn plate for each.')),
+            h('span', { className: 'gp-arrow' }, 'Specimen sheets \u2192'))
+        : null);
   }
 
   function App() {
