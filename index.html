@@ -98,7 +98,13 @@
     .nav-drawer-mode-label{display:flex;align-items:center;gap:10px;}
     .nav-drawer-mode-icon{width:20px;height:20px;border-radius:50%;background:var(--md-gold);opacity:0.85;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:#111;}
     .nav-links{display:none;}
-    .dark-toggle{background:none;border:1.5px solid var(--border);border-radius:99px;padding:6px 12px;cursor:pointer;font-size:0.76rem;font-weight:500;color:var(--fg2);transition:all 0.2s;font-family:var(--sans);min-height:36px;}
+    .settings-wrap{display:none;position:relative;}
+    .settings-toggle{display:flex;align-items:center;gap:6px;background:none;border:1.5px solid var(--border);border-radius:99px;padding:6px 12px;cursor:pointer;font-size:0.76rem;font-weight:500;color:var(--fg2);transition:all 0.2s;font-family:var(--sans);min-height:44px;}
+    .settings-toggle:hover,.settings-toggle[aria-expanded="true"]{border-color:var(--accent);color:var(--accent);}
+    .settings-panel{position:absolute;top:calc(100% + 8px);right:0;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:12px;min-width:220px;box-shadow:0 10px 30px rgba(0,0,0,0.18);z-index:60;}
+    .settings-panel .dark-toggle,.settings-panel .nav-justify-btn{width:100%;justify-content:flex-start;gap:8px;}
+    .settings-panel .scheme-picker{padding:6px 8px;}
+    .dark-toggle{background:none;border:1.5px solid var(--border);border-radius:99px;padding:6px 12px;cursor:pointer;font-size:0.76rem;font-weight:500;color:var(--fg2);transition:all 0.2s;font-family:var(--sans);min-height:36px;display:flex;align-items:center;}
     .dark-toggle:hover{border-color:var(--accent);color:var(--accent);}
     section{padding:var(--section-py) var(--px);scroll-margin-top:calc(var(--nav-h) + 12px);}
     .section-label{font-size:0.7rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
@@ -300,7 +306,7 @@
     @keyframes preloaderEnterFade{0%{opacity:0;transform:translateY(6px);}100%{opacity:1;transform:translateY(0);}}
     @media(min-width:768px){
       :root{--px:48px;--section-py:112px;--nav-h:64px;}
-      .hamburger{display:none;}.nav-drawer{display:none;}.nav-links{display:flex;gap:28px;align-items:center;}.scheme-picker{display:flex;}.nav-justify-btn{display:flex;}
+      .hamburger{display:none;}.nav-drawer{display:none;}.nav-links{display:flex;gap:28px;align-items:center;}.settings-wrap{display:flex;}.settings-panel .scheme-picker{display:flex;}.settings-panel .nav-justify-btn{display:flex;}
       .nav-links a{font-size:0.8rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--fg2);transition:color 0.2s;min-height:44px;display:flex;align-items:center;}
       .nav-links a:hover{color:var(--accent);}
       .hero-deco{top:80px;right:-30px;width:150px;height:150px;}
@@ -477,6 +483,8 @@ function App(){
   const[dark,setDark]=useState(()=>localStorage.getItem('jc-dark')!==null?localStorage.getItem('jc-dark')==='true':true);
   const[scrolled,setScrolled]=useState(false);
   const[menuOpen,setMenuOpen]=useState(false);
+  const[settingsOpen,setSettingsOpen]=useState(false);
+  const settingsRef=useRef(null);
   const[skillsVisible,setSkillsVisible]=useState(false);
   const skillsRef=useRef(null);
   const[tweaksVisible,setTweaksVisible]=useState(false);
@@ -486,6 +494,7 @@ function App(){
   useEffect(()=>{document.documentElement.setAttribute('data-dark',dark);localStorage.setItem('jc-dark',dark);const savedScheme=localStorage.getItem('jc-scheme')||tweaks.colorScheme||'maryland';applyColorScheme(savedScheme,dark);if(savedScheme==='maryland'&&tweaks.mdVariant==='red'){document.documentElement.style.setProperty('--accent','#CE1126');document.documentElement.style.setProperty('--accent-light',dark?'#3A0008':'#FCEAEC');}},[dark]);
   useEffect(()=>{const onScroll=()=>setScrolled(window.scrollY>20);window.addEventListener('scroll',onScroll);return()=>window.removeEventListener('scroll',onScroll);},[]);
   useEffect(()=>{document.documentElement.setAttribute('data-justify',justify);localStorage.setItem('jc-justify',justify);},[justify]);
+  useEffect(()=>{if(!settingsOpen)return;const onDown=e=>{if(settingsRef.current&&!settingsRef.current.contains(e.target))setSettingsOpen(false);};const onKey=e=>{if(e.key==='Escape')setSettingsOpen(false);};document.addEventListener('mousedown',onDown);document.addEventListener('keydown',onKey);return()=>{document.removeEventListener('mousedown',onDown);document.removeEventListener('keydown',onKey);};},[settingsOpen]);
   useEffect(()=>{var active=isJulyFourthWindow();setHolidayTheme(active);document.body.classList.toggle('holiday-theme',active);},[]);
   useEffect(()=>{const obs=new IntersectionObserver(([e])=>{if(e.isIntersecting)setSkillsVisible(true);},{threshold:0.1});if(skillsRef.current)obs.observe(skillsRef.current);return()=>obs.disconnect();},[]);
   useEffect(()=>{const handler=e=>{if(e.data?.type==='__activate_edit_mode')setTweaksVisible(true);if(e.data?.type==='__deactivate_edit_mode')setTweaksVisible(false);};window.addEventListener('message',handler);return()=>window.removeEventListener('message',handler);},[]);
@@ -496,13 +505,20 @@ function App(){
     React.createElement("nav",{className:scrolled?'scrolled':'',role:"navigation","aria-label":"Main navigation"},
       React.createElement("div",{className:"nav-logo"},"John T Crawford"),
       React.createElement("div",{className:"nav-links"},
-        React.createElement("a",{href:"#about"},"About"),React.createElement("a",{href:"#services"},"Services"),React.createElement("a",{href:"#expertise"},"Expertise"),React.createElement("a",{href:"#projects"},"Projects"),React.createElement("a",{href:"#contact"},"Contact"),
-        React.createElement("button",{className:"dark-toggle",onClick:()=>setDark(d=>!d),"aria-label":dark?'Switch to light mode':'Switch to dark mode'},dark?'☀ Light':'◑ Dark'),
-        React.createElement("div",{className:"scheme-picker",role:"group","aria-label":"Color scheme"},Object.entries(COLOR_SCHEMES).map(([key,scheme])=>React.createElement("button",{key,className:`scheme-dot-btn${tweaks.colorScheme===key?' active':''}`,style:{background:scheme.light['--accent']},onClick:()=>changeTweak('colorScheme',key),"aria-pressed":tweaks.colorScheme===key?"true":"false","aria-label":`${scheme.label} color scheme`,title:scheme.label})))
+        React.createElement("a",{href:"#about"},"About"),React.createElement("a",{href:"#services"},"Services"),React.createElement("a",{href:"#expertise"},"Expertise"),React.createElement("a",{href:"#projects"},"Projects"),React.createElement("a",{href:"#contact"},"Contact")
       ),
       React.createElement("div",{className:"nav-right"},
-        React.createElement("button",{className:`nav-justify-btn${justify?' active':''}`,onClick:()=>setJustify(j=>!j),"aria-pressed":justify?"true":"false","aria-label":justify?"Switch to left-aligned text":"Switch to justified text",title:justify?"Justified text: On":"Justified text: Off"},
-          React.createElement("svg",{width:"18",height:"18",viewBox:"0 0 18 18",fill:"none","aria-hidden":"true"},React.createElement("line",{x1:"1",y1:"4",x2:"17",y2:"4",stroke:"currentColor",strokeWidth:"1.8",strokeLinecap:"round"}),React.createElement("line",{x1:"1",y1:"9",x2:"17",y2:"9",stroke:"currentColor",strokeWidth:"1.8",strokeLinecap:"round"}),React.createElement("line",{x1:"1",y1:"14",x2:"17",y2:"14",stroke:"currentColor",strokeWidth:"1.8",strokeLinecap:"round"}))
+        React.createElement("div",{className:"settings-wrap",ref:settingsRef},
+          React.createElement("button",{className:"settings-toggle","aria-label":"Display settings","aria-expanded":settingsOpen,"aria-controls":"nav-settings-panel",onClick:()=>setSettingsOpen(o=>!o)},
+            React.createElement("svg",{width:"18",height:"18",viewBox:"0 0 20 20",fill:"none","aria-hidden":"true"},React.createElement("circle",{cx:"10",cy:"10",r:"2.6",stroke:"currentColor",strokeWidth:"1.6"}),React.createElement("path",{d:"M10 2.5v2.2M10 15.3v2.2M17.5 10h-2.2M4.7 10H2.5M15.1 4.9l-1.6 1.6M6.5 13.6l-1.6 1.6M15.1 15.1l-1.6-1.6M6.5 6.4L4.9 4.8",stroke:"currentColor",strokeWidth:"1.6",strokeLinecap:"round"})),
+            "Settings"),
+          settingsOpen&&React.createElement("div",{id:"nav-settings-panel",className:"settings-panel",role:"group","aria-label":"Display settings"},
+            React.createElement("button",{className:"dark-toggle",onClick:()=>setDark(d=>!d),"aria-label":dark?'Switch to light mode':'Switch to dark mode'},dark?'☀ Light mode':'◑ Dark mode'),
+            React.createElement("div",{className:"scheme-picker",role:"group","aria-label":"Color scheme"},Object.entries(COLOR_SCHEMES).map(([key,scheme])=>React.createElement("button",{key,className:`scheme-dot-btn${tweaks.colorScheme===key?' active':''}`,style:{background:scheme.light['--accent']},onClick:()=>changeTweak('colorScheme',key),"aria-pressed":tweaks.colorScheme===key?"true":"false","aria-label":`${scheme.label} color scheme`,title:scheme.label}))),
+            React.createElement("button",{className:`nav-justify-btn${justify?' active':''}`,onClick:()=>setJustify(j=>!j),"aria-pressed":justify?"true":"false","aria-label":justify?"Switch to left-aligned text":"Switch to justified text"},
+              React.createElement("svg",{width:"18",height:"18",viewBox:"0 0 18 18",fill:"none","aria-hidden":"true"},React.createElement("line",{x1:"1",y1:"4",x2:"17",y2:"4",stroke:"currentColor",strokeWidth:"1.8",strokeLinecap:"round"}),React.createElement("line",{x1:"1",y1:"9",x2:"17",y2:"9",stroke:"currentColor",strokeWidth:"1.8",strokeLinecap:"round"}),React.createElement("line",{x1:"1",y1:"14",x2:"17",y2:"14",stroke:"currentColor",strokeWidth:"1.8",strokeLinecap:"round"})),
+              justify?"Justified text: On":"Justified text: Off")
+          )
         ),
         React.createElement("button",{className:`hamburger${menuOpen?' open':''}`,onClick:()=>setMenuOpen(m=>!m),"aria-label":menuOpen?'Close menu':'Open menu',"aria-expanded":menuOpen,"aria-controls":"mobile-nav-drawer"},React.createElement("span"),React.createElement("span"),React.createElement("span"))
       )
