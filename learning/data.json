@@ -1,0 +1,151 @@
+{
+  "profile": {
+    "platform": "LinkedIn Learning (formerly Lynda.com)",
+    "note": "Lynda.com rebranded to LinkedIn Learning in 2017. All certificates below carry the current LinkedIn Learning branding."
+  },
+  "courses": [
+    {
+      "title": "Mapping to Learn with Figma",
+      "type": "Course",
+      "category": "Design & Creative Tools",
+      "skills": ["Concept Mapping", "Figma (Software)"],
+      "instructor": "Head of Content Strategy, Learning",
+      "date": "2024-06-01",
+      "durationMinutes": 31,
+      "certId": "fa6a767ff6123340f637f54dad8800395b406462de0c5c491c66a425793c99c1",
+      "pdf": "certs/figma-concept-mapping.pdf"
+    },
+    {
+      "title": "Premiere Pro Essential Training (2022–2024)",
+      "type": "Course",
+      "category": "Design & Creative Tools",
+      "skills": ["Adobe Premiere Pro"],
+      "instructor": "Head of Content Strategy, Learning",
+      "date": "2024-06-03",
+      "durationMinutes": 398,
+      "certId": "ee21ca195d9ba697997085cb99f56c88e48488e7fe728fb2e635467430faed32",
+      "pdf": "certs/premiere-pro-essential-training.pdf"
+    },
+    {
+      "title": "Essential Skills in Adobe Premiere Pro Professional Certificate",
+      "type": "Learning Path",
+      "category": "Design & Creative Tools",
+      "skills": ["Adobe Premiere Pro"],
+      "instructor": "Head of Content Strategy, Learning",
+      "date": "2024-06-03",
+      "durationMinutes": 398,
+      "certId": "502cc7dd975e48a2dc31dadf445f60e6bfd2d25ec38d6e54ad2a1afbc475ab05",
+      "pdf": "certs/premiere-pro-professional-certificate.pdf"
+    },
+    {
+      "title": "InDesign Quick Tips",
+      "type": "Course",
+      "category": "Design & Creative Tools",
+      "skills": ["Adobe InDesign"],
+      "instructor": "Head of Content Strategy, Learning",
+      "date": "2024-06-06",
+      "durationMinutes": 23,
+      "certId": "8b27a1de89c8545c92713eedbcb59328713f7cbbc52d49b0791ec266a5e82f35",
+      "pdf": "certs/indesign-quick-tips.pdf"
+    },
+    {
+      "title": "Getting Started with AI Assistant in Articulate 360",
+      "type": "Course",
+      "category": "AI & Prompt Engineering",
+      "skills": ["Articulate 360", "Artificial Intelligence (AI)"],
+      "instructor": "Shea Hanson, Head of Learning Content Strategy",
+      "date": "2025-10-21",
+      "durationMinutes": 101,
+      "certId": "3dc35c7f70bc1564fe502ab2bd608c5372735b1817d479796f9090b85ff2f3d3",
+      "pdf": "certs/ai-assistant-articulate-360.pdf"
+    },
+    {
+      "title": "Introduction to Conversational AI",
+      "type": "Course",
+      "category": "AI & Prompt Engineering",
+      "skills": ["Generative AI", "Artificial Intelligence for Business", "Conversational AI"],
+      "instructor": "Shea Hanson, Head of Learning Content Strategy",
+      "date": "2025-10-22",
+      "durationMinutes": 33,
+      "certId": "6f6299f44bf0fa75d0220bd6c475db3e85445d160f31e7a086e78f17a9799462",
+      "pdf": "certs/intro-conversational-ai.pdf"
+    },
+    {
+      "title": "Prompt Engineering: How to Talk to the AIs",
+      "type": "Course",
+      "category": "AI & Prompt Engineering",
+      "skills": ["Generative AI", "Large Language Models (LLM)", "Artificial Intelligence (AI)"],
+      "instructor": "Shea Hanson, Head of Learning Content Strategy",
+      "date": "2025-10-22",
+      "durationMinutes": 29,
+      "certId": "c4f97d2ed257cd46815776e78835c758e32ed8aac9534088cb5a77fafec7d334",
+      "pdf": "certs/prompt-engineering.pdf"
+    },
+    {
+      "title": "Accessible Elearning in Articulate 360",
+      "type": "Course",
+      "category": "Instructional Design & eLearning",
+      "skills": ["Distance Learning", "Instructional Design", "Higher Education"],
+      "instructor": "Shea Hanson, Head of Learning Content Strategy",
+      "date": "2025-10-26",
+      "durationMinutes": 166,
+      "certId": "e975369a57626f9ac7500373ffda71b52249f00fd2366aca4bc4035f4aa128c1",
+      "pdf": "certs/accessible-elearning-articulate-360.pdf"
+    },
+    {
+      "title": "Transform Classroom Training to E-Learning with Articulate 360",
+      "type": "Course",
+      "category": "Instructional Design & eLearning",
+      "skills": ["Education", "Instructional Design", "Articulate 360"],
+      "instructor": "Shea Hanson, Head of Learning Content Strategy",
+      "date": "2025-11-01",
+      "durationMinutes": 315,
+      "certId": "01a4348a86e0b1e85200db76397894aa5b740416e60f7b56b20080c61e4a529d",
+      "pdf": "certs/transform-classroom-training.pdf"
+    },
+    {
+      "title": "Google Gemini: Get Started with Google's AI Assistant",
+      "type": "Course",
+      "category": "AI & Prompt Engineering",
+      "skills": ["Artificial Intelligence (AI)", "Artificial Intelligence for Business", "Google Gemini"],
+      "instructor": "Shea Hanson, Head of Learning Content Strategy",
+      "date": "2025-11-02",
+      "durationMinutes": 41,
+      "certId": "de1e4ab9e33a5ad3ac6b70d1574bd11ea2b5d0efa0e821da689be03e68adfb9c",
+      "pdf": "certs/google-gemini.pdf"
+    },
+    {
+      "title": "Becoming Indistractable",
+      "type": "Course",
+      "category": "Productivity",
+      "skills": ["Productivity Improvement"],
+      "instructor": "Shea Hanson, Head of Learning Content Strategy",
+      "date": "2026-01-02",
+      "durationMinutes": 32,
+      "certId": "ff3efc7ceb8fcbdd94c82446f2eb05ff79db063f02ea30004c50d993106f4fc0",
+      "pdf": "certs/becoming-indistractable.pdf"
+    },
+    {
+      "title": "Claude Code 101: From Prompt to Product",
+      "type": "Course",
+      "category": "AI & Prompt Engineering",
+      "skills": ["Anthropic Claude", "Software Development", "Artificial Intelligence (AI)"],
+      "instructor": "Shea Hanson, Head of Learning Content Strategy",
+      "date": "2026-08-16",
+      "durationMinutes": 58,
+      "certId": "9489ee523ae67384e97e5c028eb4d342197efb30198c7a17ebf29c0838f8ed7a",
+      "pdf": "certs/claude-code-101.pdf"
+    },
+    {
+      "title": "Applying Learning Science to Training and Development",
+      "type": "Course",
+      "category": "Instructional Design & eLearning",
+      "skills": ["Training and Development (HR)", "Learning Sciences", "Employee Learning & Development"],
+      "instructor": "Shea Hanson, Head of Learning Content Strategy",
+      "date": "2025-10-23",
+      "durationMinutes": 35,
+      "certId": "72ceecb56efff9cdf29e2b61380bde36893ff121138bd2d99d0f1978465dd4d0",
+      "pdf": "certs/applying-learning-science.pdf"
+    }
+  ]
+}
