@@ -1313,18 +1313,6 @@ function IconCapella() {
     React.createElement("path", { d: "M38 46 L41 42 L44 46", fill: G, opacity: "0.8" })
   );
 }
-function IconWestwood() {
-  return React.createElement("svg", { viewBox: "0 0 64 64", width: "48", height: "48", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-    React.createElement("rect", { x: "6", y: "12", width: "52", height: "36", rx: "4", fill: GL, stroke: G, strokeWidth: "1.5" }),
-    React.createElement("rect", { x: "6", y: "12", width: "52", height: "9", rx: "4", fill: G, opacity: "0.15" }),
-    React.createElement("circle", { cx: "14", cy: "16.5", r: "2", fill: G, opacity: "0.5" }),
-    React.createElement("circle", { cx: "21", cy: "16.5", r: "2", fill: G, opacity: "0.35" }),
-    React.createElement("circle", { cx: "28", cy: "16.5", r: "2", fill: G, opacity: "0.2" }),
-    React.createElement("path", { d: "M16 30 L22 36 L16 42", stroke: G, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" }),
-    React.createElement("path", { d: "M26 42 L36 42", stroke: G, strokeWidth: "2", strokeLinecap: "round" }),
-    React.createElement("path", { d: "M42 28 L48 34 L42 40", stroke: G, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", opacity: "0.5" })
-  );
-}
 function IconGoogle() {
   return React.createElement("svg", { viewBox: "0 0 64 64", width: "48", height: "48", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
     React.createElement("path", { d: "M14 30 C14 20 20 14 32 14 C44 14 50 20 50 30 C50 40 44 46 32 46 C20 46 14 40 14 30Z", fill: GL, stroke: G, strokeWidth: "1.5" }),
@@ -1365,7 +1353,6 @@ function IconArticulate() {
 }
 const credIconComponents = {
   capella: React.createElement(IconCapella, null),
-  westwood: React.createElement(IconWestwood, null),
   google: React.createElement(IconGoogle, null),
   microsoft: React.createElement(IconMicrosoft, null),
   articulate: React.createElement(IconArticulate, null)
@@ -1374,10 +1361,6 @@ const creds = [{
   issuer: "Capella University",
   name: "M.S. Instructional Design & Technology — Summa Cum Laude",
   icon: "capella"
-}, {
-  issuer: "Westwood College",
-  name: "B.A.S. Web Design & Multimedia",
-  icon: "westwood"
 }, {
   issuer: "Google Cloud",
   name: "Generative AI Fundamentals",
