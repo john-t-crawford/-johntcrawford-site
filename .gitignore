@@ -17,3 +17,12 @@ wp_build/
 
 # Stream Deck source icons (not needed on server)
 stream_deck_icons/
+
+# Server-side deploy script (contains a live secret key, must not be public)
+deploy.php
+
+# htaccess backups
+.htaccess.bak.*
+
+# Deploy webhook receiver (server infra, contains .htdigest credentials)
+johntcrawford-site.git/

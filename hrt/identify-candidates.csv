@@ -1,0 +1,95 @@
+file,error,candidate_1_latin,candidate_1_common,candidate_1_score,candidate_1_curriculum_id,candidate_2_latin,candidate_2_common,candidate_2_score,candidate_2_curriculum_id,candidate_3_latin,candidate_3_common,candidate_3_score,candidate_3_curriculum_id
+2026-08-09_08-12-25_657.jpg,,Prunus cerasifera,"Cherry plum, myrobalan",0.870,,Corylus maxima,Giant filbert,0.051,,Cornus sanguinea,Common dogwood,0.006,
+2026-08-09_08-12-34_471.jpg,,Prunus cerasifera,"Cherry plum, myrobalan",0.806,,Prunus × cistena,Purple leaf sand cherry,0.079,pru-cis,Prunus virginiana,Chokecherry,0.019,
+2026-08-09_08-12-44_836.jpg,,Prunus cerasifera,"Cherry plum, myrobalan",0.838,,Cercis canadensis,Eastern Redbud,0.028,cer-can,Cercis siliquastrum,Judas tree,0.013,
+2026-08-09_08-12-52_582.jpg,,Prunus × yedoensis,Yoshino cherry,0.809,pru-cis,Prunus cerasus,Sour cherry,0.054,,Prunus serrulata,Japanese flowering cherry,0.046,pru-ser
+2026-08-09_08-12-58_306.jpg,,Prunus × yedoensis,Yoshino cherry,0.814,pru-cis,Prunus avium,Wild cherry,0.032,,Prunus serrulata,Japanese flowering cherry,0.031,pru-ser
+2026-08-09_08-13-07_161.jpg,,Prunus × yedoensis,Yoshino cherry,0.840,pru-cis,Prunus serrulata,Japanese flowering cherry,0.032,pru-ser,Prunus campanulata,Taiwan cherry,0.031,
+2026-08-09_08-13-45_311.jpg,,Quercus palustris,Pin Oak,0.648,que-pal,Quercus ellipsoidalis,Hill's oak,0.193,,Liquidambar styraciflua,Sweetgum,0.037,liq-sty
+2026-08-09_08-13-51_633.jpg,,Quercus palustris,Pin Oak,0.655,que-pal,Quercus coccinea,Scarlet Oak,0.060,,Quercus ellipsoidalis,Hill's oak,0.059,
+2026-08-09_08-13-57_249.jpg,,Quercus phellos,Willow oak,0.318,que-phe,Quercus palustris,Pin Oak,0.168,que-pal,Quercus velutina,Black oak,0.143,
+2026-08-09_08-14-06_056.jpg,,Acer platanoides,Norway maple,0.396,ace-pla,Liquidambar styraciflua,Sweetgum,0.061,liq-sty,Acer pseudoplatanus,Sycamore maple,0.057,
+2026-08-09_08-14-12_699.jpg,,Acer saccharum,Sugar maple,0.159,ace-sac,Acer cappadocicum,Cappadocian maple,0.144,,Acer pictum,Painted Maple,0.141,
+2026-08-09_08-14-17_871.jpg,,Liquidambar styraciflua,Sweetgum,0.177,liq-sty,Koelreuteria paniculata,Goldenrain tree,0.067,koe-pan,Acer saccharum,Sugar maple,0.063,ace-sac
+2026-08-09_08-14-36_297.jpg,,Liquidambar styraciflua,Sweetgum,0.912,liq-sty,Liquidambar orientalis,Storax,0.044,,Acer × freemanii,Freeman Maple,0.005,
+2026-08-09_08-14-43_746.jpg,,Liquidambar styraciflua,Sweetgum,0.572,liq-sty,Liquidambar orientalis,Storax,0.083,,Liquidambar formosana,Formosan gum,0.044,
+2026-08-09_08-14-50_120.jpg,,Liquidambar styraciflua,Sweetgum,0.960,liq-sty,Liquidambar formosana,Formosan gum,0.006,,Acer truncatum,Shantung maple,0.005,
+2026-08-09_08-14-59_910.jpg,,Prunus × yedoensis,Yoshino cherry,0.310,pru-cis,Prunus cerasus,Sour cherry,0.162,,Prunus avium,Wild cherry,0.141,
+2026-08-09_08-15-06_011.jpg,,Prunus × yedoensis,Yoshino cherry,0.488,pru-cis,Prunus serrulata,Japanese flowering cherry,0.100,pru-ser,Prunus × subhirtella,Winter flowering cherry,0.073,pru-cis
+2026-08-09_08-15-16_801.jpg,,Prunus × yedoensis,Yoshino cherry,0.678,pru-cis,Prunus cerasus,Sour cherry,0.085,,Prunus avium,Wild cherry,0.012,
+2026-08-09_08-15-32_434.jpg,,Chamaecyparis pisifera,Sawara cypress,0.369,,Juniperus sabina,Savin,0.071,,Juniperus × pfitzeriana,Pfitzer juniper,0.058,
+2026-08-09_08-15-37_713.jpg,,Euonymus alatus,Burning bush,0.441,euo-ala,Aesculus parviflora,Bottlebrush buckeye,0.182,aes-par,Lindera benzoin,Northern spicebush,0.019,
+2026-08-09_08-16-18_237.jpg,,Pinus strobus,Eastern white pine,0.517,pin-str,Pinus wallichiana,Blue Pine,0.078,,Pinus pinea,Italian stone pine,0.035,
+2026-08-09_08-16-23_686.jpg,,Pinus strobus,Eastern white pine,0.662,pin-str,Pinus wallichiana,Blue Pine,0.040,,Pinus armandi,Armand Pine,0.015,
+2026-08-09_08-16-29_597.jpg,,Cedrus atlantica,Atlas cedar,0.198,,Pinus strobus,Eastern white pine,0.178,pin-str,Cedrus deodara,Deodar,0.129,
+2026-08-09_08-17-27_883.jpg,,Prunus × yedoensis,Yoshino cherry,0.411,pru-cis,Prunus serrulata,Japanese flowering cherry,0.070,pru-ser,Magnolia kobus,Kobus magnolia,0.042,
+2026-08-09_08-17-41_003.jpg,,Prunus × yedoensis,Yoshino cherry,0.885,pru-cis,Prunus serrulata,Japanese flowering cherry,0.020,pru-ser,Prunus sargentii,Sargent's cherry,0.009,
+2026-08-09_08-17-45_206.jpg,,Prunus × yedoensis,Yoshino cherry,0.122,pru-cis,Prunus × subhirtella,Winter flowering cherry,0.081,pru-cis,Zelkova serrata,Japanese zelkova,0.060,zel-ser
+2026-08-09_08-18-49_592.jpg,,Berberis julianae,Chinese Barberry,0.930,,Berberis gagnepainii,Gagnepain's Barberry,0.027,,Berberis darwinii,Darwin's barberry,0.002,
+2026-08-09_08-19-42_249.jpg,,Acer platanoides,Norway maple,0.118,ace-pla,Acer pseudoplatanus,Sycamore maple,0.060,,Acer campestre,Field maple,0.053,
+2026-08-09_08-19-49_433.jpg,,Acer rubrum,Red maple,0.631,ace-rub,Acer × freemanii,Freeman Maple,0.138,,Acer tataricum,Tatarian maple,0.040,
+2026-08-09_08-19-55_736.jpg,,Quercus palustris,Pin Oak,0.174,que-pal,Quercus velutina,Black oak,0.085,,Pyrus calleryana,Bradford pear,0.065,pyr-cal
+2026-08-09_08-20-59_325.jpg,,Pinus strobus,Eastern white pine,0.222,pin-str,Pinus pinaster,Maritime pine,0.144,,Taxodium distichum,Bald cypress,0.047,tax-dis
+2026-08-09_08-21-08_129.jpg,,Pinus strobus,Eastern white pine,0.192,pin-str,Pinus strobiformis,Southwestern white pine,0.169,,Pinus wallichiana,Blue Pine,0.096,
+2026-08-09_08-21-13_535.jpg,,Pinus strobus,Eastern white pine,0.147,pin-str,Pinus wallichiana,Blue Pine,0.130,,Cedrus deodara,Deodar,0.109,
+2026-08-09_08-21-32_177.jpg,,Malus baccata,Siberian Crab Apple,0.097,,Prunus virginiana,Chokecherry,0.094,,Prunus padus,Bird cherry,0.041,
+2026-08-09_08-21-39_815.jpg,,Malus prunifolia,Plumleaf crab apple,0.295,,Malus baccata,Siberian Crab Apple,0.203,,Malus sylvestris,Crab apple,0.130,
+2026-08-09_08-21-44_520.jpg,,Pyrus spinosa,Almond leaved Pear,0.047,,Sarcomphalus mistol,,0.040,,Quercus engelmannii,Engelmann oak,0.034,
+2026-08-09_08-25-16_632.jpg,,Lagerstroemia indica,Crapemyrtle,0.762,lag-ind,Lagerstroemia speciosa,Queen's crape myrtle,0.129,,Syringa vulgaris,Common lilac,0.017,syr-vul
+2026-08-09_08-25-23_841.jpg,,Lagerstroemia speciosa,Queen's crape myrtle,0.630,,Lagerstroemia indica,Crapemyrtle,0.256,lag-ind,Margaritaria discoidea,Bushveld peacock berry,0.003,
+2026-08-09_08-25-27_221.jpg,,Lagerstroemia indica,Crapemyrtle,0.704,lag-ind,Lagerstroemia speciosa,Queen's crape myrtle,0.121,,Stewartia pseudocamellia,Japanese stewartia,0.034,ste-pse
+2026-08-09_08-25-42_785.jpg,,Viburnum recognitum,Southern Arrowwood,0.634,,Viburnum dentatum,Arrow wood viburnum,0.284,vib-den,Corylus avellana,Common hazel,0.016,
+2026-08-09_08-26-30_119.jpg,,Pinus parviflora,Japanese white pine,0.725,,Pinus sylvestris,Scots pine,0.045,,Abies concolor,Colorado white fir,0.041,abi-con
+2026-08-09_08-26-33_436.jpg,,Pinus parviflora,Japanese white pine,0.660,,Abies concolor,Colorado white fir,0.056,abi-con,Pinus sylvestris,Scots pine,0.048,
+2026-08-09_08-26-37_920.jpg,,Pinus parviflora,Japanese white pine,0.954,,Pinus cembra,Arolla pine,0.007,,Pinus sylvestris,Scots pine,0.005,
+2026-08-09_08-26-41_832.jpg,,Pinus parviflora,Japanese white pine,0.896,,Pinus cembra,Arolla pine,0.030,,Pinus mugo,Dwarf mountain pine,0.012,pin-mug
+2026-08-09_08-27-02_916.jpg,,Viburnum carlesii,Koreanspice viburnum,0.519,vib-car,Hibiscus sabdariffa,Roselle,0.053,,Hydrangea arborescens,Smooth hydrangea,0.038,
+2026-08-09_08-27-36_283.jpg,,Salix × pendulina,Pendulous willow,0.360,,Salix babylonica,Weeping willow,0.282,sal-bab,Salix humboldtiana,Humboldt's Willow,0.125,
+2026-08-09_08-27-45_624.jpg,,Salix × pendulina,Pendulous willow,0.492,,Salix babylonica,Weeping willow,0.212,sal-bab,Salix alba,White willow,0.069,
+2026-08-09_08-27-52_724.jpg,,Salix babylonica,Weeping willow,0.322,sal-bab,Salix × pendulina,Pendulous willow,0.303,,Melaleuca viminalis,Red bottlebrush,0.031,
+2026-08-09_08-28-03_907.jpg,,Berberis thunbergii,Japanese barberry,0.555,ber-thu,Physocarpus opulifolius,Nine Bark,0.040,phy-opu,Cotoneaster acutifolius,Peking cotoneaster,0.027,
+2026-08-09_08-28-07_617.jpg,,Berberis thunbergii,Japanese barberry,0.855,ber-thu,Berberis vulgaris,Common barberry,0.032,,Berberis fendleri,Colorado barberry,0.009,
+2026-08-09_08-28-28_307.jpg,,Nepeta racemosa,Persian Catmint,0.787,,Nepeta × faassenii,Catmint,0.133,,Nepeta cataria,Catnip,0.005,
+2026-08-09_08-29-06_873.jpg,,Prunus laurocerasus,Cherry laurel,0.343,pru-lau,Umbellularia californica,California laurel,0.314,,Salix pentandra,Laurel willow,0.051,
+2026-08-09_08-29-11_733.jpg,,Prunus laurocerasus,Cherry laurel,0.344,pru-lau,Umbellularia californica,California laurel,0.096,,Trachelospermum jasminoides,Star jasmine,0.043,
+2026-08-09_08-29-37_333.jpg,,Nandina domestica,Nandina,0.604,nan-dom,Ligustrum ovalifolium,Garden privet,0.028,,Diervilla lonicera,Northern Bush Honeysuckle,0.028,
+2026-08-09_08-29-42_180.jpg,,Nandina domestica,Nandina,0.898,nan-dom,Ligustrum ovalifolium,Garden privet,0.004,,Cotoneaster glabratus,Glabrous Cotoneaster,0.003,
+2026-08-09_08-29-52_717.jpg,,Cornus alba,Siberian dogwood,0.891,,Pittosporum tenuifolium,Kohuhu,0.009,,Ficus benjamina,Weeping fig,0.005,
+2026-08-09_08-29-57_389.jpg,,Cornus alba,Siberian dogwood,0.891,,Cornus controversa,Giant dogwood,0.011,,Cornus sericea,Red osier dogwood,0.007,cor-ser
+2026-08-09_08-30-19_585.jpg,,Picea abies,Norway Spruce,0.362,pic-abi,Taxus baccata,Yew,0.080,,Pseudotsuga menziesii,Douglas fir,0.044,
+2026-08-09_08-30-27_632.jpg,,Picea rubens,Red spruce,0.357,,Picea orientalis,Caucasian spruce,0.190,,Picea sitchensis,Sitka spruce,0.120,
+2026-08-09_08-30-33_233.jpg,,Cedrus deodara,Deodar,0.317,,Picea laxa,White spruce,0.090,,Picea abies,Norway Spruce,0.077,pic-abi
+2026-08-09_08-31-05_998.jpg,,Quercus phellos,Willow oak,0.385,que-phe,Salix euxina,Crack Willow,0.184,,Salix alba,White willow,0.077,
+2026-08-09_08-31-15_844.jpg,,Quercus phellos,Willow oak,0.979,que-phe,Quercus hemisphaerica,Darlington oak,0.003,,Quercus incana,Bluejack Oak,0.002,
+2026-08-09_08-31-25_261.jpg,,Quercus phellos,Willow oak,0.194,que-phe,Quercus palustris,Pin Oak,0.168,que-pal,Quercus falcata,Southern red oak,0.082,
+2026-08-09_08-31-40_636.jpg,,Pinus strobus,Eastern white pine,0.451,pin-str,Pinus wallichiana,Blue Pine,0.158,,Pinus pinea,Italian stone pine,0.063,
+2026-08-09_08-31-50_915.jpg,,Pinus strobus,Eastern white pine,0.473,pin-str,Pinus wallichiana,Blue Pine,0.322,,Pinus peuce,Macedonian pine,0.031,
+2026-08-09_08-31-56_305.jpg,,Cedrus deodara,Deodar,0.317,,Pinus strobus,Eastern white pine,0.206,pin-str,Pinus wallichiana,Blue Pine,0.092,
+2026-08-09_08-32-07_882.jpg,,Spiraea japonica,Japanese Spiraea,0.835,spi-jap,Spiraea tomentosa,Steeplebush,0.050,,Spiraea alba,White Meadowsweet,0.036,
+2026-08-09_08-33-01_580.jpg,,Taxus cuspidata,Japanese yew,0.671,,Taxus canadensis,Canadian Yew,0.236,,Taxus × media,Hybrid yew,0.034,tax-med
+2026-08-09_08-33-48_382.jpg,,Quercus palustris,Pin Oak,0.313,que-pal,Metasequoia glyptostroboides,Dawn Redwood,0.125,met-gly,Gleditsia triacanthos,Honey locust,0.110,gle-tri
+2026-08-09_08-33-56_760.jpg,,Gleditsia triacanthos,Honey locust,0.327,gle-tri,Gleditsia aquatica,Water locust,0.263,,Gleditsia sinensis,Chinese honey locust,0.098,
+2026-08-09_08-34-03_480.jpg,,Gleditsia triacanthos,Honey locust,0.708,gle-tri,Acer × freemanii,Freeman Maple,0.022,,Acer rubrum,Red maple,0.018,ace-rub
+2026-08-09_08-34-34_111.jpg,,Nepeta racemosa,Persian Catmint,0.649,,Nepeta × faassenii,Catmint,0.174,,Origanum syriacum,Biblical hyssop,0.020,
+2026-08-09_08-34-40_194.jpg,,Buxus microphylla,Japanese Box,0.926,,Ilex crenata,Japanese holly,0.022,ile-cre,Searsia crenata,Blue fruit Currant-rhus,0.015,
+2026-08-09_08-34-52_721.jpg,,Hemerocallis lilioasphodelus,Yellow daylily,0.798,,Hemerocallis minor,Small daylily,0.133,,Hemerocallis middendorffii,Amur day lily,0.052,
+2026-08-09_08-36-00_758.jpg,,Morus alba,White mulberry,0.121,,Acer negundo,Boxelder,0.100,,Morus indica,Indian Mulberry,0.070,
+2026-08-09_08-36-10_554.jpg,,Acer buergerianum,Trident maple,0.296,,Acer rubrum,Red maple,0.267,ace-rub,Acer × freemanii,Freeman Maple,0.086,
+2026-08-09_08-36-14_591.jpg,,Pyrus calleryana,Bradford pear,0.071,pyr-cal,Gleditsia triacanthos,Honey locust,0.055,gle-tri,Acer rubrum,Red maple,0.052,ace-rub
+2026-08-09_08-37-56_698.jpg,,Platanus occidentalis,American sycamore,0.523,,Platanus × hispanica,London planetree,0.234,pla-ace,Platanus orientalis,Oriental plane,0.076,
+2026-08-09_08-38-04_251.jpg,,Platanus × hispanica,London planetree,0.526,pla-ace,Platanus occidentalis,American sycamore,0.128,,Platanus orientalis,Oriental plane,0.114,
+2026-08-09_08-38-09_293.jpg,,Platanus × hispanica,London planetree,0.517,pla-ace,Corymbia torelliana,Cadaghi,0.090,,Platanus orientalis,Oriental plane,0.051,
+2026-08-09_08-38-16_835.jpg,,Quercus palustris,Pin Oak,0.266,que-pal,Liquidambar styraciflua,Sweetgum,0.157,liq-sty,Acer × freemanii,Freeman Maple,0.109,
+2026-08-09_08-38-22_876.jpg,,Quercus buckleyi,Texas red oak,0.204,,Quercus ellipsoidalis,Hill's oak,0.185,,Quercus palustris,Pin Oak,0.162,que-pal
+2026-08-09_08-38-27_299.jpg,,Hibiscus syriacus,Rose Of Sharon,0.086,hib-syr,Amelanchier × lamarckii,Juneberry,0.085,,Amelanchier canadensis,Juneberry,0.048,ame-can
+2026-08-09_08-38-47_045.jpg,,Pinus halepensis,Aleppo pine,0.122,,Pinus wallichiana,Blue Pine,0.120,,Pinus pinaster,Maritime pine,0.110,
+2026-08-09_08-38-55_094.jpg,,Pinus strobiformis,Southwestern white pine,0.277,,Pinus monticola,Western white pine,0.156,,Pinus strobus,Eastern white pine,0.137,pin-str
+2026-08-09_08-38-59_691.jpg,,Pinus strobus,Eastern white pine,0.400,pin-str,Pinus cembra,Arolla pine,0.016,,Pinus wallichiana,Blue Pine,0.010,
+2026-08-09_08-40-10_779.jpg,,Hesperocyparis lusitanica,Cypress,0.217,,Juniperus virginiana,Eastern red cedar,0.190,jun-vir,Hesperocyparis macrocarpa,Monterey cypress,0.092,
+2026-08-09_08-40-16_717.jpg,,Callitris preissii,Rottnest Island pine,0.442,,Juniperus ashei,Ashe Juniper,0.155,,Juniperus turbinata,Mediterranean juniper,0.068,
+2026-08-09_08-40-21_598.jpg,,Hesperocyparis lusitanica,Cypress,0.125,,Juniperus virginiana,Eastern red cedar,0.095,jun-vir,Juniperus thurifera,Incense juniper,0.047,
+2026-08-09_08-49-41_278.jpg,,Lagerstroemia indica,Crapemyrtle,0.907,lag-ind,Lagerstroemia speciosa,Queen's crape myrtle,0.077,,,,,
+2026-08-09_08-49-48_571.jpg,,Lagerstroemia speciosa,Queen's crape myrtle,0.506,,Lagerstroemia indica,Crapemyrtle,0.442,lag-ind,Lagerstroemia limii,,0.002,
+2026-08-09_08-49-52_322.jpg,,Lagerstroemia indica,Crapemyrtle,0.898,lag-ind,Lagerstroemia speciosa,Queen's crape myrtle,0.075,,Luma apiculata,Chilean myrtle,0.005,
+2026-08-09_08-50-19_709.jpg,,Euonymus alatus,Burning bush,0.549,euo-ala,Forsythia viridissima,Greenstem forsythia,0.019,,Aesculus parviflora,Bottlebrush buckeye,0.018,aes-par
+2026-08-09_08-50-26_069.jpg,,Viburnum rhytidophyllum,Leatherleaf viburnum,0.778,,Viburnum lantana,Wayfaring tree,0.035,,Viburnum carlesii,Koreanspice viburnum,0.025,vib-car

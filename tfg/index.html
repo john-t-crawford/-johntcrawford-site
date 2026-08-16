@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light only">
+<meta name="description" content="A practical mobile optimization and SEO field guide for timberfalls.us — Divi 5 responsive workflow, prioritized fixes, and AI prompt templates. Prepared by John T. Crawford.">
+<meta name="robots" content="noindex">
+<title>Timberfalls.us — Mobile &amp; SEO Field Guide | Crawford Creations</title>
+<style>
+/* ============================================================
+   Crawford Creations · Maryland Design System
+   Single-file, zero-dependency, WCAG 2.2 baseline
+   ============================================================ */
+:root{
+  color-scheme:light only;
+  --md-gold:#EAAA00;
+  --md-navy:#0F1B2D;
+  --md-red:#CE1126;
+  --navy-soft:#25364D;
+  --paper:#FBFAF7;
+  --card:#FFFFFF;
+  --ink:#16202E;
+  --ink-soft:#445061;
+  --line:#E3DFD5;
+  --gold-tint:#FCF3DB;
+  --font-display:Charter,'Bitstream Charter','Sitka Text',Cambria,Georgia,serif;
+  --font-body:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --font-mono:ui-monospace,'Cascadia Code',Menlo,Consolas,'Liberation Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--paper)}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:1.0625rem;
+  line-height:1.65;
+}
+.skip-link{
+  position:absolute;left:-9999px;top:0;
+  background:var(--md-navy);color:#fff;
+  padding:.75rem 1.25rem;z-index:100;
+  font-weight:600;text-decoration:none;border-radius:0 0 .5rem 0;
+}
+.skip-link:focus{left:0}
+:focus-visible{
+  outline:3px solid var(--md-navy);
+  outline-offset:2px;
+  border-radius:2px;
+}
+.on-dark :focus-visible{outline-color:var(--md-gold)}
+/* ---------- Maryland flag divider strip ---------- */
+.md-strip{display:flex;height:8px;width:100%}
+.md-strip span{flex:1}
+.md-strip span:nth-child(1){background:var(--md-gold)}
+.md-strip span:nth-child(2){background:var(--md-navy)}
+.md-strip span:nth-child(3){background:var(--md-red)}
+.md-strip span:nth-child(4){background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+/* ---------- Header ---------- */
+header.masthead{
+  background:var(--md-navy);
+  color:#fff;
+  padding:3.5rem 1.5rem 3rem;
+}
+.masthead-inner{max-width:56rem;margin:0 auto}
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:.8125rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--md-gold);
+  margin:0 0 1rem;
+}
+h1{
+  font-family:var(--font-display);
+  font-size:clamp(1.9rem,5vw,3rem);
+  line-height:1.12;
+  margin:0 0 .75rem;
+  font-weight:700;
+  letter-spacing:-.01em;
+}
+.masthead .lede{
+  font-size:clamp(1.05rem,2.2vw,1.25rem);
+  color:#D7DEE9;
+  max-width:44rem;
+  margin:0 0 1.5rem;
+}
+.masthead .meta{
+  font-family:var(--font-mono);
+  font-size:.85rem;
+  color:#9FB0C6;
+}
+.masthead .meta strong{color:#fff;font-weight:600}
+.how-to-read{
+  margin-top:1.75rem;
+  border:1px solid rgba(234,170,0,.45);
+  border-radius:8px;
+  padding:1rem 1.25rem;
+  background:rgba(234,170,0,.08);
+  font-size:.98rem;
+  color:#E4E9F1;
+  max-width:44rem;
+}
+.how-to-read strong{color:var(--md-gold)}
+/* ---------- In-page nav ---------- */
+nav.toc{
+  background:var(--card);
+  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:50;
+}
+nav.toc ul{
+  max-width:56rem;margin:0 auto;padding:0 1rem;
+  display:flex;flex-wrap:wrap;gap:.25rem;
+  list-style:none;
+}
+nav.toc a{
+  display:inline-block;
+  padding:.9rem .85rem;
+  color:var(--md-navy);
+  text-decoration:none;
+  font-weight:600;
+  font-size:.9375rem;
+  border-bottom:3px solid transparent;
+}
+nav.toc a:hover{border-bottom-color:var(--md-gold)}
+/* ---------- Layout ---------- */
+main{max-width:56rem;margin:0 auto;padding:0 1.5rem 4rem}
+section{padding-top:3rem}
+h2{
+  font-family:var(--font-display);
+  font-size:clamp(1.5rem,3.5vw,2.1rem);
+  line-height:1.2;
+  margin:0 0 .35rem;
+  color:var(--md-navy);
+}
+.section-kicker{
+  font-family:var(--font-mono);
+  font-size:.8125rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--md-red);
+  margin:0 0 .5rem;
+}
+.section-intro{color:var(--ink-soft);max-width:44rem;margin:0 0 1.75rem}
+h3{
+  font-family:var(--font-display);
+  font-size:1.3rem;
+  margin:0 0 .5rem;
+  color:var(--md-navy);
+}
+h4{font-size:1.05rem;margin:1.25rem 0 .4rem;color:var(--md-navy)}
+a{color:#0B4EA2}
+a:hover{color:var(--md-navy)}
+code{
+  font-family:var(--font-mono);
+  font-size:.9em;
+  background:var(--gold-tint);
+  border:1px solid #F0DFAE;
+  border-radius:4px;
+  padding:.1em .35em;
+  overflow-wrap:anywhere;
+}
+pre.code-block{
+  background:var(--md-navy);
+  color:#E4E9F1;
+  border-radius:8px;
+  padding:1rem 1.15rem;
+  overflow-x:auto;
+  font-family:var(--font-mono);
+  font-size:.82rem;
+  line-height:1.6;
+}
+/* ---------- Finding cards ---------- */
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-left:5px solid var(--md-navy);
+  border-radius:10px;
+  padding:1.5rem 1.5rem 1.25rem;
+  margin:0 0 1.5rem;
+  box-shadow:0 1px 3px rgba(15,27,45,.06);
+}
+.card.fix-now{border-left-color:var(--md-red)}
+.card.quick-win{border-left-color:var(--md-gold)}
+.badge{
+  display:inline-block;
+  font-family:var(--font-mono);
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:.3rem .6rem;
+  border-radius:4px;
+  margin-bottom:.75rem;
+}
+.badge.fix-now{background:var(--md-red);color:#fff}
+.badge.high{background:var(--md-navy);color:#fff}
+.badge.quick-win{background:var(--md-navy);color:var(--md-gold)}
+.plain{
+  font-size:1.08rem;
+  margin:0 0 .5rem;
+}
+.plain strong{color:var(--md-navy)}
+/* ---------- Progressive disclosure levels ---------- */
+details.level{
+  margin-top:.75rem;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--paper);
+}
+details.level summary{
+  cursor:pointer;
+  padding:.85rem 1rem;
+  font-weight:600;
+  font-size:.95rem;
+  color:var(--md-navy);
+  list-style:none;
+  min-height:44px;
+  display:flex;align-items:center;
+}
+details.level summary::-webkit-details-marker{display:none}
+details.level summary::before{content:"▸";color:var(--md-red);margin-right:.6rem;font-size:.9rem}
+details.level[open] summary::before{content:"▾"}
+details.level .level-body{padding:0 1.15rem 1.1rem;font-size:.98rem}
+details.level .level-body > :first-child{margin-top:0}
+details.level.deep{background:#F4F1E9}
+/* ---------- Concept grid ---------- */
+.concepts{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(15.5rem,1fr));
+  gap:1rem;
+  margin:1.5rem 0 2rem;
+  padding:0;list-style:none;
+}
+.concepts li{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-top:4px solid var(--md-gold);
+  border-radius:8px;
+  padding:1.1rem 1.15rem;
+}
+.concepts li strong{display:block;color:var(--md-navy);margin-bottom:.3rem;font-size:1rem}
+.concepts li span{font-size:.92rem;color:var(--ink-soft)}
+/* ---------- Viewport simulator ---------- */
+.simulator{
+  background:var(--md-navy);
+  border-radius:14px;
+  padding:1.75rem;
+  margin:2rem 0;
+  color:#fff;
+}
+.simulator h3{color:#fff}
+.simulator .sim-sub{color:#B8C4D6;font-size:.95rem;margin:0 0 1.25rem;max-width:40rem}
+.sim-controls{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.25rem}
+.sim-controls button{
+  font-family:var(--font-mono);
+  font-size:.85rem;font-weight:700;
+  padding:.7rem 1.1rem;
+  min-height:44px;
+  border-radius:6px;
+  border:2px solid var(--md-gold);
+  background:transparent;
+  color:var(--md-gold);
+  cursor:pointer;
+}
+.sim-controls button[aria-pressed="true"]{
+  background:var(--md-gold);
+  color:var(--md-navy);
+}
+.sim-controls button:hover{background:rgba(234,170,0,.18)}
+.sim-controls button[aria-pressed="true"]:hover{background:var(--md-gold)}
+.browser-frame{
+  background:#E8E4DA;
+  border-radius:10px;
+  padding:.6rem;
+  overflow-x:auto;
+}
+.browser-bar{display:flex;gap:.4rem;padding:.2rem .3rem .6rem}
+.browser-bar i{width:.7rem;height:.7rem;border-radius:50%;background:#C9C3B4;display:block}
+.demo-viewport{
+  container-type:inline-size;
+  background:#fff;
+  border:1px solid #D5CFC0;
+  border-radius:6px;
+  margin:0 auto;
+  width:100%;
+  max-width:100%;
+  transition:max-width .45s ease;
+  overflow:hidden;
+}
+.demo-viewport[data-size="tablet"]{max-width:600px}
+.demo-viewport[data-size="phone"]{max-width:370px}
+.demo-hero{
+  background:var(--md-navy);
+  color:#fff;
+  padding:clamp(1rem,5cqw,2.25rem);
+  text-align:center;
+}
+.demo-hero .demo-h{
+  font-family:var(--font-display);
+  font-size:clamp(1.15rem,5.5cqw,2rem);
+  margin:0 0 .4rem;line-height:1.15;
+}
+.demo-hero p{margin:0 auto;max-width:34rem;font-size:clamp(.82rem,2.8cqw,1rem);color:#C9D3E1}
+.demo-row{
+  display:flex;
+  gap:clamp(.75rem,3cqw,1.5rem);
+  padding:clamp(1rem,4cqw,2rem);
+}
+.demo-col{
+  flex:1;
+  border:2px dashed var(--md-gold);
+  border-radius:8px;
+  padding:clamp(.75rem,3cqw,1.25rem);
+  background:var(--gold-tint);
+  color:var(--ink);
+}
+.demo-col strong{color:var(--md-navy);display:block;margin-bottom:.25rem;font-size:clamp(.9rem,3cqw,1.05rem)}
+.demo-col span{font-size:clamp(.78rem,2.6cqw,.92rem);color:var(--ink-soft)}
+.demo-cta{
+  display:inline-block;
+  margin-top:.75rem;
+  background:var(--md-red);
+  color:#fff;
+  font-weight:700;
+  font-size:clamp(.8rem,2.8cqw,.95rem);
+  padding:.55rem 1rem;
+  border-radius:6px;
+  text-decoration:none;
+}
+@container (max-width:600px){
+  .demo-row{flex-direction:column}
+}
+.sim-readout{
+  margin-top:1rem;
+  font-family:var(--font-mono);
+  font-size:.85rem;
+  color:var(--md-gold);
+}
+.sim-readout strong{color:#fff}
+/* ---------- Prompt blocks ---------- */
+.prompt{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:10px;
+  margin:0 0 1.25rem;
+  overflow:hidden;
+}
+.prompt-head{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;
+  background:var(--md-navy);
+  color:#fff;
+  padding:.6rem .75rem .6rem 1.1rem;
+}
+.prompt-head h4{margin:0;color:#fff;font-size:.95rem;font-family:var(--font-body)}
+.copy-btn{
+  font-family:var(--font-mono);
+  font-size:.8rem;font-weight:700;
+  min-height:44px;
+  padding:.5rem 1rem;
+  border-radius:6px;
+  border:2px solid var(--md-gold);
+  background:transparent;
+  color:var(--md-gold);
+  cursor:pointer;
+  white-space:nowrap;
+}
+.copy-btn:hover{background:rgba(234,170,0,.18)}
+.copy-btn.copied{background:var(--md-gold);color:var(--md-navy)}
+.prompt pre{
+  margin:0;padding:1.1rem 1.25rem;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  font-family:var(--font-mono);
+  font-size:.86rem;
+  line-height:1.6;
+}
+/* ---------- Steps ---------- */
+ol.steps{padding-left:1.4rem;margin:0 0 1.5rem}
+ol.steps li{margin-bottom:.6rem}
+/* ---------- Checklist ---------- */
+.checklist{list-style:none;padding:0;margin:1.5rem 0}
+.checklist li{margin-bottom:.4rem}
+.checklist label{
+  display:flex;align-items:flex-start;gap:.75rem;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:.8rem 1rem;
+  cursor:pointer;
+  min-height:44px;
+}
+.checklist input[type="checkbox"]{
+  width:1.35rem;height:1.35rem;
+  margin-top:.15rem;
+  accent-color:var(--md-navy);
+  flex-shrink:0;
+}
+.checklist input:checked + span{color:var(--ink-soft);text-decoration:line-through}
+.checklist-note{font-size:.88rem;color:var(--ink-soft);font-style:italic}
+/* ---------- Callout ---------- */
+.callout{
+  background:var(--gold-tint);
+  border:1px solid #F0DFAE;
+  border-left:5px solid var(--md-gold);
+  border-radius:8px;
+  padding:1.1rem 1.25rem;
+  margin:1.5rem 0;
+}
+.callout strong{color:var(--md-navy)}
+/* ---------- Footer ---------- */
+footer.colophon{
+  background:var(--md-navy);
+  color:#C9D3E1;
+  padding:2.5rem 1.5rem;
+}
+.colophon-inner{max-width:56rem;margin:0 auto}
+.colophon a{color:var(--md-gold)}
+.colophon .sig{
+  font-family:var(--font-display);
+  font-size:1.2rem;
+  color:#fff;
+  margin:0 0 .25rem;
+}
+.colophon p{margin:.25rem 0;font-size:.95rem}
+.visually-hidden{
+  position:absolute;width:1px;height:1px;
+  margin:-1px;padding:0;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+/* ---------- Print: expand all detail levels ---------- */
+@media print{
+  nav.toc,.sim-controls,.copy-btn{display:none}
+  details.level{border:none;background:none}
+  details.level summary{padding-left:0}
+  details.level .level-body{display:block;padding-left:0}
+  details > *{display:block}
+  header.masthead,.simulator,footer.colophon{background:#fff !important;color:#000 !important}
+  .masthead .lede,.masthead .meta,.sim-sub,.how-to-read{color:#333 !important}
+  h1,.simulator h3,.colophon .sig{color:#000 !important}
+  body{font-size:11pt}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="masthead on-dark">
+  <div class="masthead-inner">
+    <p class="eyebrow">Crawford Creations · Field Guide</p>
+    <h1>Timberfalls.us<br>Mobile &amp; SEO Field Guide</h1>
+    <p class="lede">A do-it-yourself playbook for making the Timberfalls site work beautifully on phones and show up properly in search — built around Divi&nbsp;5's real tools, with AI prompts you can copy and run.</p>
+    <p class="meta">Prepared for <strong>Jason Woodruff · Timberfalls</strong> &nbsp;·&nbsp; by <strong>John T. Crawford</strong> &nbsp;·&nbsp; July 2026</p>
+    <div class="how-to-read">
+      <strong>How to read this guide:</strong> every finding starts with the plain-English version — what's wrong and what to do, in a sentence or two. When you want more, open <em>"Why this matters"</em> for the reasoning or <em>"Step-by-step fix"</em> for the exact instructions and code. Skim the surface or go deep; both paths work.
+    </div>
+  </div>
+</header>
+<div class="md-strip" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+<nav class="toc" aria-label="Guide sections">
+  <ul>
+    <li><a href="#fix-today">1 · Fix Today</a></li>
+    <li><a href="#divi5">2 · Divi 5 Mobile Method</a></li>
+    <li><a href="#seo">3 · SEO Starter</a></li>
+    <li><a href="#checklist">Checklist</a></li>
+  </ul>
+</nav>
+
+<main id="main">
+
+<!-- ================= TIER 1 ================= -->
+<section id="fix-today" aria-labelledby="fix-today-h">
+  <p class="section-kicker">Tier 1</p>
+  <h2 id="fix-today-h">Fix Today — Four Findings on Your Live Site</h2>
+  <p class="section-intro">These came from a review of your live homepage. Each is specific, verifiable, and fixable in under an hour — clearing real obstacles for phone users and search engines before you touch a single layout.</p>
+
+  <article class="card fix-now">
+    <span class="badge fix-now">Fix Now</span>
+    <h3>1. Your site tells phones "don't let people zoom"</h3>
+    <p class="plain"><strong>The short version:</strong> Divi ships with a setting baked into its code that blocks pinch-to-zoom on phones. There's no switch for it in Theme Options — but a free plugin fixes it in two minutes, no code needed.</p>
+
+    <details class="level">
+      <summary>Why this matters</summary>
+      <div class="level-body">
+        <p>Zooming is how people with less-than-perfect vision read small text and inspect detail — and your audience of hobbyist woodworkers studying CNC technique leans on it more than most. Blocking it is a recognized accessibility failure (WCAG guideline 1.4.4, "Resize Text").</p>
+        <p>It also shows up as a flagged error in Google's PageSpeed accessibility audit, dragging down a score you'll want green when you start working on SEO. Some modern phone browsers quietly ignore the block and allow zoom anyway — but not all do, and the audit penalty applies either way. Sites have jumped 15–20 accessibility points from this one fix.</p>
+      </div>
+    </details>
+
+    <details class="level deep">
+      <summary>Step-by-step fix (two options)</summary>
+      <div class="level-body">
+        <h4>Option A — Code Snippets plugin, no child theme needed (recommended)</h4>
+        <p>The free <strong>Code Snippets</strong> plugin (search it in Plugins → Add New; over 900,000 active installs) lets you paste PHP code into WordPress safely — no theme editing, no files. It's the most widely recommended method across the Divi community in 2025–2026.</p>
+        <ol class="steps">
+          <li>Install and activate <strong>Code Snippets</strong> from the Plugin Directory.</li>
+          <li>Go to <strong>Snippets → Add New</strong>. Give it a name like "Fix Divi zoom."</li>
+          <li>Paste this code exactly:</li>
+        </ol>
+<pre class="code-block">// Remove Divi's zoom-blocking viewport tag
+function tf_remove_divi_viewport() {
+  remove_action( 'wp_head', 'et_add_viewport_meta' );
+}
+add_action( 'wp_loaded', 'tf_remove_divi_viewport' );
+
+// Replace it with an accessible, zoom-friendly version
+function tf_zoom_friendly_viewport() {
+  echo '&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=1, viewport-fit=cover" /&gt;';
+}
+add_action( 'wp_head', 'tf_zoom_friendly_viewport' );</pre>
+        <ol class="steps" start="4">
+          <li>Set the snippet to run <strong>everywhere</strong>, then click <strong>Save Changes and Activate</strong>.</li>
+          <li>Clear your site cache (if you use a caching plugin or Cloudflare), then test on your phone — pinch-zoom should now work.</li>
+          <li>Re-run PageSpeed Insights. This single fix routinely moves accessibility scores up 15–20 points.</li>
+        </ol>
+        <p><strong>Why these values:</strong> <code>maximum-scale=5.0</code> is the minimum Google's audit requires (not 2.0 — 5× zoom). <code>user-scalable=1</code> explicitly enables scaling. <code>viewport-fit=cover</code> prevents content from being hidden behind iPhone notches and rounded corners as a bonus.</p>
+        <h4>Option B — Divi child theme's functions.php (cleanest, if you already have one)</h4>
+        <p>Paste the same code block above into your child theme's <code>functions.php</code>. Never edit Divi's <em>parent</em> theme files directly — theme updates will erase your changes. If you don't have a child theme set up yet, Option A is faster and equally effective.</p>
+        <p>Not sure which to choose or want a guided walkthrough? Use <strong>Prompt 1</strong> in Section 2.</p>
+      </div>
+    </details>
+  </article>
+
+  <article class="card fix-now">
+    <span class="badge fix-now">Fix Now</span>
+    <h3>2. Your images are invisible to Google — and to screen readers</h3>
+    <p class="plain"><strong>The short version:</strong> Your hero and menu-card images have names like <code>ChatGPT-Image-May-19-2026-06_03_17-PM.png</code> and no real descriptions. Rename future uploads, and add a one-line description ("alt text") to every existing image in the Media Library.</p>
+
+    <details class="level">
+      <summary>Why this matters</summary>
+      <div class="level-body">
+        <p>Google can't "see" pictures — it reads their filenames and alt text. Right now those say nothing about CNC, Carveco, or woodworking, so your images earn you zero search visibility, including in Google Images where woodworkers genuinely browse for project ideas.</p>
+        <p>Alt text is also what a screen reader speaks aloud. Your image cards are your main navigation — Academy, Shop, Discord, Sell. A visitor using a screen reader currently hears a ChatGPT timestamp where your most important buttons should be.</p>
+      </div>
+    </details>
+
+    <details class="level deep">
+      <summary>Step-by-step fix</summary>
+      <div class="level-body">
+        <ol class="steps">
+          <li><strong>Future uploads:</strong> rename files before uploading — <code>timberfalls-academy-carveco-courses.png</code>, not a timestamp. WordPress locks the filename at upload, so this is a habit, not a retrofit.</li>
+          <li><strong>Existing images:</strong> in <strong>Media Library</strong>, click each image and fill the <strong>Alt Text</strong> field. Describe what it shows and where it leads: <em>"Timberfalls Academy — Carveco Maker video courses."</em></li>
+          <li><strong>One Divi quirk:</strong> an Image module copies the alt text at the moment you insert the image. If you edit alt text in the Media Library later, modules already on the page keep the old version — so also check each image module (settings → Advanced → Attributes) and update its alt there.</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+
+  <article class="card">
+    <span class="badge high">High</span>
+    <h3>3. Three footer links go nowhere, and one social icon is mislabeled</h3>
+    <p class="plain"><strong>The short version:</strong> In your footer, <strong>Facebook, Instagram, and Contact</strong> are placeholder links (they point to "#" — literally nothing). And the X&nbsp;(Twitter) icon in your header is labeled <em>"Follow on Facebook"</em> — a copy-paste leftover. Five minutes in the Theme Builder fixes all four.</p>
+
+    <details class="level">
+      <summary>Why this matters</summary>
+      <div class="level-body">
+        <p>Dead links read as "unfinished" to visitors weighing whether to buy a course, and they waste the limited attention search engines give your site on each visit. The mislabeled icon is an accessibility defect too: a screen-reader user is told they're headed to Facebook and lands on X.</p>
+        <p>These are the cheapest trust wins on the whole list.</p>
+      </div>
+    </details>
+
+    <details class="level deep">
+      <summary>Step-by-step fix</summary>
+      <div class="level-body">
+        <ol class="steps">
+          <li>Open <strong>Divi → Theme Builder</strong> and edit your global footer template.</li>
+          <li>Replace each <code>#</code> link with the real URL — or remove the link entirely until the destination exists. (An honest absence beats a dead link.)</li>
+          <li>In the header's social-follow module, open the X icon's settings and correct its title/label to <em>"Follow on X."</em></li>
+          <li>While you're there: your footer's Coaching, Sell, and Dashboard links use different web addresses than the same links in your main menu. Click every footer link once and confirm each lands where you expect.</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+
+  <article class="card quick-win">
+    <span class="badge quick-win">Quick Win</span>
+    <h3>4. Your homepage introduces itself to Google as "Home"</h3>
+    <p class="plain"><strong>The short version:</strong> When someone shares timberfalls.us in a Facebook woodworking group — your exact audience — the preview card is titled "Home." The homepage title is your single strongest search lever, and right now it's spent on nothing. Fix it in Rank Math (Section 3) in two minutes.</p>
+
+    <details class="level">
+      <summary>Why this matters</summary>
+      <div class="level-body">
+        <p>The page title is what shows as the blue headline in Google results and as the bold text on shared-link preview cards. It's weighed heavily for ranking and it's what convinces a human to click. You want it carrying the words your customers actually type: <em>CNC files, Carveco training, CNC designs</em> — not "Home."</p>
+      </div>
+    </details>
+
+    <details class="level deep">
+      <summary>Step-by-step fix</summary>
+      <div class="level-body">
+        <ol class="steps">
+          <li>Install Rank Math first (Section 3, item 2).</li>
+          <li>Edit the homepage, and in the Rank Math panel set the title to something like: <em>"CNC Files, Designs &amp; Carveco Maker Training | Timberfalls."</em></li>
+          <li>Write a one-to-two sentence description mentioning the Academy, the design shop, and 1-on-1 coaching — that's the gray text under the blue headline in Google.</li>
+          <li>Rank Math automatically makes the shared-link preview title match. Test it by pasting your URL into a Facebook post draft (you don't have to publish).</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+</section>
+
+<!-- ================= TIER 2 ================= -->
+<section id="divi5" aria-labelledby="divi5-h">
+  <p class="section-kicker">Tier 2</p>
+  <h2 id="divi5-h">The Divi 5 Mobile Method</h2>
+  <p class="section-intro">Divi 5's mobile tools are genuinely different from Divi 4 — better, but different enough that most tutorials (and most AI answers, unless you tell them otherwise) describe the old version. Learn five concepts and one workflow, and every mobile fix becomes the same repeatable move.</p>
+
+  <h3>Five concepts that do all the work</h3>
+  <ul class="concepts">
+    <li><strong>Seven breakpoints, three on by default</strong><span>A "breakpoint" is a screen width where your layout is allowed to change. Divi 5 offers seven — Phone through Ultra&nbsp;Wide — with Phone, Tablet, and Desktop active out of the box. Manage them via the three-dot menu next to the device icons in the builder's top bar (<em>Sitewide Responsive Breakpoints</em>). The default three are enough until a layout genuinely breaks between them.</span></li>
+    <li><strong>The Responsive Editor panel</strong><span>Next to nearly every setting sits a small responsive icon. Click it to see and edit that setting for <em>every</em> screen size side-by-side — no bouncing between preview modes. It turns <strong>blue</strong> wherever a per-device override exists, so you can spot every mobile customization at a glance.</span></li>
+    <li><strong>Inheritance flows downward</strong><span>Any screen size you leave blank simply copies the next larger one. Desktop is the master value; a Phone override changes Phone <em>only</em>. This is your safety net — you can fix mobile aggressively without ever touching the desktop design.</span></li>
+    <li><strong>Fluid sizing with clamp()</strong><span>Divi 5's input fields accept modern CSS math. <code>clamp(1.5rem, 4vw, 3rem)</code> for a heading means: never smaller than the first number, never bigger than the last, scale smoothly in between. One fluid value often replaces three separate per-device overrides.</span></li>
+    <li><strong>One gotcha: visibility toggles</strong><span>The show/hide-this-element-per-device switches currently work only for the original three sizes (Phone, Tablet, Desktop) — not the extra custom breakpoints. Plan any "hide this on mobile" moves around those three.</span></li>
+    <li><strong>Structure Templates for quick column changes</strong><span>Need a three-column desktop row to become a single column on phones? Use <em>Structure Templates</em> at the row level — it swaps column layouts per breakpoint without rebuilding the section. Much faster than recreating a layout from scratch for mobile.</span></li>
+  </ul>
+
+  <!-- Signature element: live viewport simulator -->
+  <div class="simulator on-dark">
+    <h3>See it: how a desktop row becomes a mobile stack</h3>
+    <p class="sim-sub">This is a live demo, not a video. The mock page below uses the same mechanics Divi 5 uses — width-based breakpoints and <code style="background:rgba(234,170,0,.15);border-color:rgba(234,170,0,.4);color:#EAAA00">clamp()</code> font sizing. Switch the viewport and watch the columns stack, the padding compress, and the type scale itself.</p>
+    <div class="sim-controls" role="group" aria-label="Simulated viewport width">
+      <button type="button" data-size="desktop" aria-pressed="true">Desktop</button>
+      <button type="button" data-size="tablet" aria-pressed="false">Tablet · 600px</button>
+      <button type="button" data-size="phone" aria-pressed="false">Phone · 370px</button>
+    </div>
+    <div class="browser-frame">
+      <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="demo-viewport" data-size="desktop">
+        <div class="demo-hero">
+          <p class="demo-h">Master Carveco. Create Without Limits.</p>
+          <p>This heading uses clamp() — it sizes itself to the viewport with zero per-device overrides.</p>
+        </div>
+        <div class="demo-row">
+          <div class="demo-col">
+            <strong>Column A · Learn</strong>
+            <span>Below 600px, this row's direction flips from side-by-side to stacked — the single most common mobile fix.</span>
+            <br><a class="demo-cta" href="#divi5" onclick="return false">Join the Academy</a>
+          </div>
+          <div class="demo-col">
+            <strong>Column B · Shop</strong>
+            <span>Padding here is fluid too: it compresses as the viewport narrows, so content keeps room to breathe.</span>
+            <br><a class="demo-cta" href="#divi5" onclick="return false">Browse Designs</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="sim-readout" aria-live="polite">Viewing: <strong id="sim-state">Desktop — columns side-by-side, type at maximum</strong></p>
+  </div>
+
+  <h3>The repeatable workflow</h3>
+  <ol class="steps">
+    <li><strong>Lock desktop first.</strong> Your desktop layout is where you want it — treat it as read-only from here on.</li>
+    <li><strong>Switch the canvas to Phone</strong> using the device icons in the top bar, and scroll the entire page top to bottom. Note every break: overflowing text, oversized images, cramped buttons, sections in the wrong order.</li>
+    <li><strong>Fix each break at the Phone breakpoint only.</strong> Click the element to open its settings. Use the <em>state picker</em> inside the settings panel to select the Phone breakpoint — this keeps responsive and interaction-state editing (Hover, Focus, Sticky) in one workflow. Set a Phone-specific value via the Responsive Editor for the offending property. Inheritance guarantees desktop is untouched.</li>
+    <li><strong>Prefer fluid values over stacked overrides.</strong> Overriding a font size at three screen sizes? Replace all three with one <code>clamp()</code> value at the desktop level instead.</li>
+    <li><strong>Fix type once with presets.</strong> Edit the H1/H2/body <em>presets</em> (not individual modules) with per-breakpoint sizes, and every heading site-wide inherits the fix.</li>
+    <li><strong>Audit with the blue icons.</strong> Turn on the Modified Settings filter in an element's options to list only changed settings — your map of every responsive override, and the first place to look when something misbehaves later.</li>
+    <li><strong>Verify on a real phone.</strong> The builder preview is good; your actual thumb on your actual phone is the truth. Check tap targets especially — buttons and links should be comfortably tappable (roughly 44px or larger).</li>
+  </ol>
+
+  <h3>AI prompts, pre-loaded with your context</h3>
+  <p>These are written so the AI knows you're on <strong>Divi 5</strong>, not Divi 4 — that single detail is the difference between accurate answers and confidently wrong ones. Copy, paste into Claude or ChatGPT, fill any [brackets], and go.</p>
+
+  <div class="prompt">
+    <div class="prompt-head">
+      <h4>Prompt 1 — Fix the zoom-blocking viewport tag</h4>
+      <button type="button" class="copy-btn" data-copy="p1">Copy</button>
+    </div>
+    <pre id="p1">My WordPress site (timberfalls.us) runs the Divi 5 theme. Divi outputs a viewport meta tag with maximum-scale=1.0 and user-scalable=0 by default, which blocks pinch-zoom and fails accessibility audits (WCAG 1.4.4). There is no Theme Options switch for this. I want to fix it using the free Code Snippets plugin (no child theme required). Walk me through: (1) installing Code Snippets, (2) adding a snippet that uses add_action('wp_loaded') to call remove_action('wp_head','et_add_viewport_meta'), then a second add_action('wp_head') that outputs a replacement tag with maximum-scale=5.0, user-scalable=1, and viewport-fit=cover, (3) activating the snippet safely, (4) clearing my cache afterward, and (5) verifying the fix worked in PageSpeed Insights and on my phone. I am not a developer — explain each step in plain language.</pre>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-head">
+      <h4>Prompt 2 — Full mobile audit workflow for Divi 5</h4>
+      <button type="button" class="copy-btn" data-copy="p2">Copy</button>
+    </div>
+    <pre id="p2">I'm using Divi 5 — the new version with the Responsive Editor panel, up to 7 customizable breakpoints, and support for clamp()/vw/calc() in input fields. Do NOT give me Divi 4 instructions. My desktop layout is finished and must not change. Give me a step-by-step workflow to audit and fix my site for phones: switching the canvas to the Phone breakpoint, using the Responsive Editor to set Phone-only overrides for padding, font size, and image width, how value inheritance works so desktop stays untouched, when to use clamp() instead of per-device overrides, and how to use the Modified Settings filter to review everything I changed.</pre>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-head">
+      <h4>Prompt 3 — Fix one specific broken section (reusable template)</h4>
+      <button type="button" class="copy-btn" data-copy="p3">Copy</button>
+    </div>
+    <pre id="p3">Divi 5 (not Divi 4 — it has the Responsive Editor and inheritance-based breakpoints). On my [SECTION NAME, e.g., homepage hero] at phone width, the problem is: [DESCRIBE — e.g., the two columns don't stack / the heading overflows / the button is cut off / there's a huge gap]. The desktop version is correct and must not change. Tell me exactly which element settings to open, which values to override at the Phone breakpoint using the Responsive Editor, and what values to try first. If a fluid value like clamp() would solve it in one setting instead of several overrides, show me that value.</pre>
+  </div>
+</section>
+
+<!-- ================= TIER 3 ================= -->
+<section id="seo" aria-labelledby="seo-h">
+  <p class="section-kicker">Tier 3</p>
+  <h2 id="seo-h">SEO Starter — Structure First, Then Measure</h2>
+  <p class="section-intro">You don't need an agency to get the fundamentals right. Timberfalls has something most sites would kill for: a genuinely specific niche — Carveco training plus CNC design files — with clear buyer language. The job is making sure Google can see that.</p>
+
+  <h3>1. Give every page one clear job</h3>
+  <p class="plain">Search engines reward sites where each page targets one clear intent — one kind of visitor, one goal.</p>
+  <details class="level">
+    <summary>What that means for each of your pages</summary>
+    <div class="level-body">
+      <ul>
+        <li><strong>Homepage</strong> → broad brand terms: <em>CNC files, CNC designs, Carveco training</em> (see Finding&nbsp;4 — this is the title fix).</li>
+        <li><strong>Academy page</strong> → learning intent: <em>Carveco Maker course, learn CNC carving, CNC training for beginners</em>.</li>
+        <li><strong>Shop &amp; individual designs</strong> → buying intent: <em>CNC-ready files, STL/SVG designs for [project type]</em>. Every product page needs its own descriptive title, not a filename.</li>
+        <li><strong>Coaching page</strong> → service intent: <em>1-on-1 Carveco coaching</em> — and those glowing testimonials you already have are exactly what should live here, near the booking button.</li>
+      </ul>
+      <p>Within each page: one H1 that states the topic, then H2s for sections. Divi makes it tempting to pick heading levels for their looks — pick them for structure and control the looks with presets instead.</p>
+    </div>
+  </details>
+
+  <h3>2. Install an SEO plugin and run its setup wizard</h3>
+  <p class="plain"><strong>Start with Yoast SEO (free).</strong> It's the most beginner-friendly option — every suggestion comes with a plain-English explanation of what to fix and why, using a simple red/yellow/green system. For a first SEO setup, that guided approach is more valuable than a longer feature list.</p>
+  <details class="level">
+    <summary>Why Yoast first — and when to consider Rank Math instead</summary>
+    <div class="level-body">
+      <p>In 2026, the two dominant WordPress SEO plugins are <strong>Yoast SEO</strong> and <strong>Rank Math</strong>, and both handle the fundamentals (titles, descriptions, sitemaps, schema, Open Graph) competently. The difference is who they're built for:</p>
+      <p><strong>Yoast</strong> is the better starting point if you're new to SEO. Its traffic-light scoring system, readability analysis, and per-suggestion explanations teach you SEO while you use it — you'll understand <em>why</em> a fix matters, not just that it needs doing. 10+ million active installs, excellent Divi compatibility, and 15 years of WordPress support track record.</p>
+      <p><strong>Rank Math</strong> is the better choice once you're comfortable with the basics, or if you want maximum features for free: its free tier includes a redirect manager, 404 monitoring, Google Search Console integration inside WordPress, and 18 schema types — features Yoast gates behind a paid Premium plan. The trade-off is a steeper learning curve; the settings panel is dense, and it can feel overwhelming for a first setup.</p>
+      <p><strong>The one firm rule:</strong> never run both at the same time. Duplicate meta tags, competing sitemaps, and conflicting schema markup will actively hurt your SEO. Pick one, install it, and if you later want to switch, Rank Math's setup wizard imports all your Yoast data automatically.</p>
+      <p>During either plugin's setup wizard, connect your Google account when prompted — it links Google Search Console automatically and starts collecting the real-world search data you'll need for the next step.</p>
+    </div>
+  </details>
+
+  <h3>3. Measure with free tools, then let AI read the report</h3>
+  <p class="plain">Two free Google tools tell you everything: <strong>PageSpeed Insights</strong> (pagespeed.web.dev) scores your mobile experience and lists exact problems, and <strong>Google Search Console</strong> shows the real search terms people use to find you — which beats guessing keywords. Run PageSpeed, then paste the results into Prompt&nbsp;4 and let AI turn the report into a ranked to-do list.</p>
+  <details class="level">
+    <summary>How to run PageSpeed Insights (2 minutes)</summary>
+    <div class="level-body">
+      <ol class="steps">
+        <li>Go to <strong>pagespeed.web.dev</strong>, enter <code>timberfalls.us</code>, and run the test.</li>
+        <li>Make sure the <strong>Mobile</strong> tab is selected — that's the score Google cares about most, and the one your visitors live in.</li>
+        <li>Scroll past the scores to the diagnostics list. Select and copy that text.</li>
+        <li>Paste it into Prompt&nbsp;4 below. Re-run the test after each round of fixes to watch the scores climb — the zoom fix from Finding&nbsp;1 alone should move your accessibility number.</li>
+      </ol>
+    </div>
+  </details>
+
+  <div class="prompt">
+    <div class="prompt-head">
+      <h4>Prompt 4 — Turn a PageSpeed report into a ranked action plan</h4>
+      <button type="button" class="copy-btn" data-copy="p4">Copy</button>
+    </div>
+    <pre id="p4">I run Timberfalls (timberfalls.us), a WordPress + Divi 5 site selling CNC design files and Carveco Maker training, with an Academy (courses), a Shop (digital downloads), and 1-on-1 coaching. Here are my PageSpeed Insights results for mobile: [PASTE THE REPORT TEXT HERE]. Rank the top 5 fixes by SEO impact versus effort for a non-developer site owner. For each: what it means in plain language, whether it's fixable inside Divi 5 / Rank Math / a WordPress setting, and the exact steps. Flag anything that genuinely requires a developer so I don't waste time on it.</pre>
+  </div>
+
+  <div class="callout">
+    <strong>The off-ramp:</strong> if after the fundamentals you want deeper technical SEO (site speed engineering, schema strategy, link building), that's the point to hire it out rather than grind through it. A freelancer on Upwork or similar who specializes specifically in <em>"WordPress e-commerce SEO"</em> or <em>"WordPress course site SEO"</em> is the budget-friendly route — and you'll be a far better client for having done the groundwork above, because you'll know exactly what you're paying for.
+  </div>
+</section>
+
+<!-- ================= CHECKLIST ================= -->
+<section id="checklist" aria-labelledby="checklist-h">
+  <p class="section-kicker">Track It</p>
+  <h2 id="checklist-h">The Whole Plan, One Checklist</h2>
+  <p class="section-intro">Work top to bottom. <span class="checklist-note">Checkmarks persist while this browser tab is open (nothing is stored permanently or sent anywhere).</span></p>
+  <ul class="checklist">
+    <li><label><input type="checkbox" data-key="c1"><span>Enable pinch-zoom — free plugin or child-theme snippet (Finding 1 / Prompt 1)</span></label></li>
+    <li><label><input type="checkbox" data-key="c2"><span>Add real alt text to every image in the Media Library and in each Divi image module; adopt descriptive filenames for all future uploads (Finding 2)</span></label></li>
+    <li><label><input type="checkbox" data-key="c3"><span>Repair the "#" footer links and the mislabeled X icon; click-test every footer link (Finding 3)</span></label></li>
+    <li><label><input type="checkbox" data-key="c4"><span>Install Rank Math, run the setup wizard, connect Google Search Console</span></label></li>
+    <li><label><input type="checkbox" data-key="c5"><span>Rewrite the homepage title and description with real keywords (Finding 4)</span></label></li>
+    <li><label><input type="checkbox" data-key="c6"><span>Walk the full site at the Phone breakpoint and list every layout break (Section 2, Step 2)</span></label></li>
+    <li><label><input type="checkbox" data-key="c7"><span>Fix each break with Phone-only overrides in the Responsive Editor (Prompts 2 &amp; 3)</span></label></li>
+    <li><label><input type="checkbox" data-key="c8"><span>Convert repeated font-size overrides to <code>clamp()</code> values and update the heading presets</span></label></li>
+    <li><label><input type="checkbox" data-key="c9"><span>Test on a real phone — layout, tap targets, and pinch-zoom now working</span></label></li>
+    <li><label><input type="checkbox" data-key="c10"><span>Run PageSpeed Insights (mobile) and feed the report to Prompt 4; work the ranked list</span></label></li>
+  </ul>
+</section>
+
+</main>
+
+<div class="md-strip" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+<footer class="colophon on-dark">
+  <div class="colophon-inner">
+    <p class="sig">John T. Crawford</p>
+    <p>Lead Digital Learning Architect &amp; AI Strategist · Crawford Creations</p>
+    <p><a href="mailto:career@johntcrawford.com">career@johntcrawford.com</a> · <a href="https://johntcrawford.com">johntcrawford.com</a></p>
+    <p style="margin-top:1rem;font-size:.85rem;color:#8FA0B8">Findings based on a review of the timberfalls.us homepage, July 2026. This guide is a single self-contained HTML file — it works offline, prints with all detail sections expanded, and stores nothing beyond this browser session.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- Viewport simulator ---------- */
+  var viewport = document.querySelector(".demo-viewport");
+  var stateOut = document.getElementById("sim-state");
+  var simButtons = document.querySelectorAll(".sim-controls button");
+  var stateText = {
+    desktop: "Desktop — columns side-by-side, type at maximum",
+    tablet:  "Tablet · 600px — the stacking threshold: columns just flipped",
+    phone:   "Phone · 370px — stacked, padding compressed, clamp() at minimum"
+  };
+  simButtons.forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var size = btn.getAttribute("data-size");
+      viewport.setAttribute("data-size", size);
+      simButtons.forEach(function(b){ b.setAttribute("aria-pressed", b === btn ? "true" : "false"); });
+      if (stateOut) stateOut.textContent = stateText[size] || size;
+    });
+  });
+
+  /* ---------- Copy-to-clipboard for prompts ---------- */
+  document.querySelectorAll(".copy-btn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var target = document.getElementById(btn.getAttribute("data-copy"));
+      if (!target) return;
+      var text = target.textContent;
+      function done(){
+        var prev = btn.textContent;
+        btn.textContent = "Copied ✓";
+        btn.classList.add("copied");
+        setTimeout(function(){
+          btn.textContent = prev;
+          btn.classList.remove("copied");
+        }, 1800);
+      }
+      function fallback(){
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "absolute";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); done(); } catch(e){}
+        document.body.removeChild(ta);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(function(){ fallback(); });
+      } else { fallback(); }
+    });
+  });
+
+  /* ---------- Checklist persistence (sessionStorage only) ---------- */
+  var boxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+  boxes.forEach(function(box){
+    var key = "tf-guide-" + box.getAttribute("data-key");
+    try {
+      if (sessionStorage.getItem(key) === "1") box.checked = true;
+    } catch(e){}
+    box.addEventListener("change", function(){
+      try {
+        if (box.checked) sessionStorage.setItem(key, "1");
+        else sessionStorage.removeItem(key);
+      } catch(e){}
+    });
+  });
+})();
+</script>
+</body>
+</html>

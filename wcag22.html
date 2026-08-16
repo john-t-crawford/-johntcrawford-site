@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="WCAG 2.2 / Section 508 ID Guide for federal contractors — a practical implementation reference covering the 13 changes in WCAG 2.2 and how they map to §508 Trusted Tester procedures.">
+  <meta name="theme-color" content="#1a3a6e">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="/favicon.ico">
+  <title>WCAG 2.2 / §508 ID Guide for Federal Contractors — John Crawford</title>
+  <style>
+    /* ========================================================================
+       wcag22.html — WCAG 2.2 / §508 whitepaper landing page
+       Design intent: clean, accessible, professional for a federal-contractor
+       audience. AAA color contrast, visible focus, full keyboard reachability,
+       no motion that violates prefers-reduced-motion, semantic landmarks.
+       ======================================================================== */
+    :root {
+      --c-navy:    #1a3a6e;
+      --c-navy-2:  #15305c;
+      --c-blue:    #1a56a0;
+      --c-blue-2:  #378ADD;
+      --c-amber:   #c89320;
+      --c-text:    #1a2138;
+      --c-text-2:  #4a5572;
+      --c-bg:      #ffffff;
+      --c-bg-2:    #f6f8fc;
+      --c-bg-3:    #eef2f8;
+      --c-border:  #d8dde8;
+      --c-success: #0a6b4a;
+      --c-error:   #b51e2a;
+      --shadow:    0 8px 24px rgba(20,30,60,0.08);
+      --shadow-lg: 0 14px 40px rgba(20,30,60,0.12);
+      --radius:    10px;
+      --radius-sm: 6px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, system-ui, sans-serif;
+      color: var(--c-text);
+      background: var(--c-bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--c-blue); text-decoration: underline; text-underline-offset: 2px; }
+    a:hover { color: var(--c-navy); }
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 3px solid var(--c-amber);
+      outline-offset: 2px;
+      border-radius: 3px;
+    }
+
+    /* SKIP LINK — keyboard-first navigation */
+    .skip-link {
+      position: absolute; left: 8px; top: 8px;
+      padding: 10px 16px;
+      background: var(--c-navy); color: #fff;
+      text-decoration: none; border-radius: var(--radius-sm);
+      font-weight: 600; font-size: 14px;
+      transform: translateY(-200%);
+      transition: transform .15s;
+      z-index: 999;
+    }
+    .skip-link:focus { transform: translateY(0); color: #fff; }
+
+    /* HEADER */
+    .site-header {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--c-border);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--c-text);
+    }
+    .brand-mark {
+      width: 38px; height: 38px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--c-navy), var(--c-blue), var(--c-blue-2));
+      color: #fff; font-weight: 800; font-size: 13px;
+      display: flex; align-items: center; justify-content: center;
+      letter-spacing: -.3px;
+    }
+    .brand-text { font-weight: 700; font-size: 15px; }
+    .brand-text .sub { display: block; font-weight: 500; font-size: 11.5px; color: var(--c-text-2); margin-top: 1px; }
+    .nav { display: flex; gap: 24px; }
+    .nav a { color: var(--c-text-2); text-decoration: none; font-size: 14px; font-weight: 500; }
+    .nav a:hover { color: var(--c-navy); text-decoration: underline; }
+
+    /* HERO */
+    .hero {
+      padding: 64px 24px 56px;
+      background: linear-gradient(180deg, var(--c-bg-2) 0%, var(--c-bg) 100%);
+      border-bottom: 1px solid var(--c-border);
+    }
+    .hero-inner { max-width: 960px; margin: 0 auto; }
+    .badge {
+      display: inline-block;
+      padding: 5px 12px;
+      background: var(--c-bg-3); color: var(--c-navy);
+      border: 1px solid var(--c-border);
+      border-radius: 100px;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: .04em; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(28px, 4.2vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      color: var(--c-navy);
+      font-weight: 800;
+    }
+    .lede {
+      font-size: clamp(16px, 1.8vw, 19px);
+      color: var(--c-text-2);
+      max-width: 720px;
+      line-height: 1.55;
+      margin: 0 0 32px;
+    }
+    .meta-row {
+      display: flex; flex-wrap: wrap; gap: 18px;
+      font-size: 13.5px; color: var(--c-text-2);
+      margin-bottom: 28px;
+    }
+    .meta-item { display: inline-flex; align-items: center; gap: 6px; }
+    .meta-item::before {
+      content: ""; display: inline-block;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--c-amber);
+    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 22px;
+      font-size: 15px; font-weight: 600;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid transparent;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background .12s, border-color .12s, color .12s, transform .08s;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary {
+      background: var(--c-navy); color: #fff;
+      border-color: var(--c-navy);
+    }
+    .btn-primary:hover { background: var(--c-navy-2); border-color: var(--c-navy-2); color: #fff; }
+    .btn-secondary {
+      background: transparent; color: var(--c-navy);
+      border-color: var(--c-border);
+    }
+    .btn-secondary:hover { background: var(--c-bg-2); border-color: var(--c-text-2); color: var(--c-navy); }
+
+    /* MAIN */
+    main { max-width: 960px; margin: 0 auto; padding: 56px 24px; }
+    section + section { margin-top: 48px; }
+    h2 {
+      margin: 0 0 12px;
+      font-size: clamp(22px, 2.6vw, 28px);
+      line-height: 1.25;
+      letter-spacing: -0.3px;
+      color: var(--c-navy);
+      font-weight: 700;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 17px; font-weight: 700;
+      color: var(--c-text);
+    }
+    p { margin: 0 0 14px; }
+    .section-lede { font-size: 16px; color: var(--c-text-2); max-width: 720px; margin-bottom: 32px; }
+
+    /* VALUE PROPS */
+    .props { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+    .prop {
+      padding: 20px;
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius);
+      background: var(--c-bg);
+    }
+    .prop-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--c-bg-3); color: var(--c-navy);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 16px;
+      margin-bottom: 12px;
+    }
+    .prop p { font-size: 14.5px; color: var(--c-text-2); margin: 0; }
+
+    /* WHATS-INSIDE LIST */
+    .inside-list {
+      list-style: none; padding: 0; margin: 0;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px;
+    }
+    @media (max-width: 620px) { .inside-list { grid-template-columns: 1fr; } }
+    .inside-list li {
+      padding: 10px 14px 10px 38px;
+      position: relative;
+      font-size: 14.5px;
+      color: var(--c-text);
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius-sm);
+      background: var(--c-bg);
+    }
+    .inside-list li::before {
+      content: "✓";
+      position: absolute; left: 12px; top: 10px;
+      color: var(--c-success);
+      font-weight: 800; font-size: 14px;
+    }
+
+    /* FORM CARD */
+    .capture {
+      padding: 32px;
+      background: var(--c-bg-2);
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .capture-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    @media (max-width: 720px) { .capture-grid { grid-template-columns: 1fr; gap: 24px; } }
+    .form { display: flex; flex-direction: column; gap: 14px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label {
+      font-size: 13px; font-weight: 600; color: var(--c-text);
+    }
+    .field input {
+      padding: 11px 13px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--c-text);
+      background: var(--c-bg);
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius-sm);
+      transition: border-color .12s, box-shadow .12s;
+    }
+    .field input:focus {
+      outline: none;
+      border-color: var(--c-blue-2);
+      box-shadow: 0 0 0 3px rgba(55,138,221,0.18);
+    }
+    .field-hint { font-size: 12.5px; color: var(--c-text-2); }
+    .field-error {
+      font-size: 13px; color: var(--c-error);
+      display: none;
+    }
+    .field.has-error input { border-color: var(--c-error); }
+    .field.has-error .field-error { display: block; }
+    .honeypot {
+      position: absolute !important;
+      left: -10000px !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+    }
+    .submit { margin-top: 4px; }
+    .submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    .form-msg {
+      margin-top: 8px;
+      font-size: 14px;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      display: none;
+    }
+    .form-msg.success { display: block; background: #e6f6ef; color: var(--c-success); border: 1px solid #b7e2ce; }
+    .form-msg.error   { display: block; background: #fceeee; color: var(--c-error);   border: 1px solid #f1c4c8; }
+    .form-msg a { color: inherit; font-weight: 700; }
+
+    /* CAPTURE COPY */
+    .capture-copy h2 { font-size: 22px; margin-bottom: 10px; }
+    .capture-copy p { color: var(--c-text-2); font-size: 14.5px; }
+    .capture-copy .privacy { font-size: 12.5px; margin-top: 16px; color: var(--c-text-2); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--c-border);
+      padding: 28px 24px;
+      background: var(--c-bg-2);
+      color: var(--c-text-2);
+      font-size: 13px;
+    }
+    .footer-inner {
+      max-width: 960px; margin: 0 auto;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-inner a { color: var(--c-text-2); }
+
+    /* SCREEN READER ONLY */
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important; height: 1px !important;
+      padding: 0 !important; margin: -1px !important;
+      overflow: hidden !important; clip: rect(0,0,0,0) !important;
+      white-space: nowrap !important; border: 0 !important;
+    }
+  </style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header" role="banner">
+  <a class="brand" href="/" aria-label="John Crawford home">
+    <span class="brand-mark" aria-hidden="true">JC</span>
+    <span class="brand-text">John Crawford<span class="sub">Instructional design · Accessibility</span></span>
+  </a>
+  <nav class="nav" aria-label="Primary">
+    <a href="/">Home</a>
+    <a href="/#services">Services</a>
+    <a href="/#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" aria-labelledby="hero-h1">
+  <div class="hero-inner">
+    <span class="badge">Whitepaper · 2026 edition</span>
+    <h1 id="hero-h1">The WCAG 2.2 &amp; §508 ID Guide for Federal Contractors</h1>
+    <p class="lede">A field guide to the 13 changes in WCAG 2.2 and how they map to Section 508 Trusted Tester procedures — written for instructional designers, developers, and program managers who have to ship accessible deliverables to federal agencies.</p>
+    <div class="meta-row">
+      <span class="meta-item">42-page PDF</span>
+      <span class="meta-item">Plain English, no legalese</span>
+      <span class="meta-item">Includes code samples &amp; checklists</span>
+      <span class="meta-item">Free</span>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#get">Get the whitepaper</a>
+      <a class="btn btn-secondary" href="#whats-inside">See what's inside</a>
+    </div>
+  </div>
+</section>
+
+<main id="main">
+
+  <section aria-labelledby="why-h2">
+    <h2 id="why-h2">Why this guide exists</h2>
+    <p class="section-lede">Most accessibility guidance lives in two places: the W3C's normative spec (rigorous but dense) and vendor blog posts (digestible but incomplete). Federal contractors need a third option — a practical reference that holds up under a Trusted Tester evaluation but reads like it was written by someone who has shipped a deliverable.</p>
+    <div class="props">
+      <div class="prop">
+        <div class="prop-icon" aria-hidden="true">2.2</div>
+        <h3>The 13 new criteria, plainly</h3>
+        <p>Every WCAG 2.2 success criterion explained with what changed, who it affects, and a "this looks compliant when…" example.</p>
+      </div>
+      <div class="prop">
+        <div class="prop-icon" aria-hidden="true">§508</div>
+        <h3>Mapped to Trusted Tester</h3>
+        <p>Each criterion is cross-referenced to the §508 ICT Testing Baseline so you can demonstrate compliance during a federal audit.</p>
+      </div>
+      <div class="prop">
+        <div class="prop-icon" aria-hidden="true">&lt;/&gt;</div>
+        <h3>Real code, not pseudocode</h3>
+        <p>HTML, ARIA, and CSS examples for the patterns auditors flag most often: focus visible, dragging, target size, redundant entry.</p>
+      </div>
+      <div class="prop">
+        <div class="prop-icon" aria-hidden="true">✓</div>
+        <h3>Audit-ready checklists</h3>
+        <p>Three printable checklists — designer, developer, and project lead — calibrated to what Section 508 evaluators actually verify.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="whats-inside" aria-labelledby="inside-h2">
+    <h2 id="inside-h2">What's inside</h2>
+    <ul class="inside-list">
+      <li>Focus Not Obscured (Minimum &amp; Enhanced) — what counts as obscured</li>
+      <li>Focus Appearance — the new contrast and size rules</li>
+      <li>Dragging Movements — the single-pointer alternative test</li>
+      <li>Target Size (Minimum) — exemptions you can rely on</li>
+      <li>Consistent Help — page-by-page checklist</li>
+      <li>Redundant Entry — patterns that pass and fail</li>
+      <li>Accessible Authentication — minimum and enhanced</li>
+      <li>Visible Controls — clarifications since drafting</li>
+      <li>Section 508 ICT Baseline crosswalk</li>
+      <li>Trusted Tester procedure references</li>
+      <li>VPAT 2.5 mapping shorthand</li>
+      <li>Document remediation order of operations</li>
+    </ul>
+  </section>
+
+  <section id="get" aria-labelledby="get-h2">
+    <h2 id="get-h2">Get the guide</h2>
+    <div class="capture">
+      <div class="capture-grid">
+        <div class="capture-copy">
+          <h2 style="color:var(--c-text)">No fluff, no follow-up sequence.</h2>
+          <p>One email asking what you thought after you've read it. That's it. Your address won't be sold, traded, or added to a marketing list.</p>
+          <p class="privacy">By submitting you agree to receive a single email with the download link. Your address is stored only to prevent abuse and to let me ask for feedback. <a href="/privacy.html">Privacy policy</a>.</p>
+        </div>
+
+        <form class="form" id="capture-form" novalidate>
+          <div class="field" id="field-email">
+            <label for="email">Work email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-hint email-error" inputmode="email">
+            <span id="email-hint" class="field-hint">.gov / .mil welcome.</span>
+            <span id="email-error" class="field-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="field" id="field-name">
+            <label for="name">Name <span style="font-weight:400;color:var(--c-text-2)">(optional)</span></label>
+            <input type="text" id="name" name="name" autocomplete="name" maxlength="100" aria-describedby="name-error">
+            <span id="name-error" class="field-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <!-- Honeypot field — hidden from humans, irresistible to bots. Do not remove. -->
+          <div class="honeypot" aria-hidden="true">
+            <label for="website">Website (leave blank)</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <input type="hidden" name="source" value="wcag22">
+
+          <button type="submit" class="btn btn-primary submit" id="submit-btn">
+            <span id="submit-label">Send me the guide</span>
+          </button>
+
+          <div id="form-msg" class="form-msg" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="about-h2">
+    <h2 id="about-h2">About the author</h2>
+    <p>John Crawford is an instructional designer and accessibility specialist who has shipped Section 508 / WCAG 2.x conformant courseware, web applications, and federal-contractor deliverables for the better part of a decade. He writes about practical accessibility at <a href="https://johntcrawford.com">johntcrawford.com</a>.</p>
+  </section>
+
+</main>
+
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <span>© <span id="year">2026</span> John Crawford · <a href="https://johntcrawford.com">johntcrawford.com</a></span>
+    <span><a href="/privacy.html">Privacy</a> · <a href="mailto:contact@crawfordcreationsllc.com">contact@crawfordcreationsllc.com</a></span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ── FORM SUBMIT ────────────────────────────────────────────────────────
+  // Posts to /api/email-capture.php and replaces the form with a success or
+  // error message. Falls back to a normal POST if JS is disabled or the
+  // browser blocks fetch — the .php endpoint handles either form-encoded
+  // POST or JSON, so it works with both paths.
+  (function() {
+    var form    = document.getElementById('capture-form');
+    var btn     = document.getElementById('submit-btn');
+    var btnLbl  = document.getElementById('submit-label');
+    var msg     = document.getElementById('form-msg');
+    var emailEl = document.getElementById('email');
+    var nameEl  = document.getElementById('name');
+
+    function fieldError(name, txt) {
+      var f = document.getElementById('field-' + name);
+      var e = document.getElementById(name + '-error');
+      if (txt) {
+        f.classList.add('has-error');
+        e.textContent = txt;
+      } else {
+        f.classList.remove('has-error');
+        e.textContent = '';
+      }
+    }
+
+    function showMsg(kind, html) {
+      msg.className = 'form-msg ' + kind;
+      msg.innerHTML = html;
+    }
+
+    function setBusy(busy) {
+      btn.disabled = busy;
+      btnLbl.textContent = busy ? 'Sending…' : 'Send me the guide';
+    }
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      fieldError('email', '');
+      fieldError('name', '');
+      msg.className = 'form-msg';
+      msg.innerHTML = '';
+
+      var email = (emailEl.value || '').trim();
+      var name  = (nameEl.value  || '').trim();
+
+      // Lightweight client-side check; server is the source of truth.
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        fieldError('email', 'Please enter a valid email address.');
+        emailEl.focus();
+        return;
+      }
+
+      setBusy(true);
+      try {
+        var fd = new FormData(form);
+        var res = await fetch('/api/email-capture.php', {
+          method: 'POST',
+          body: fd,
+          credentials: 'same-origin'
+        });
+        var data = await res.json().catch(function() { return {}; });
+
+        if (res.ok && data.status === 'ok') {
+          var html = '<strong>Thanks — check your inbox</strong> for the download link.';
+          if (data.download) {
+            html += ' If your mail is slow, you can also <a href="' + data.download + '">download it directly</a>.';
+          }
+          form.querySelector('.field#field-email').style.display = 'none';
+          form.querySelector('.field#field-name').style.display  = 'none';
+          btn.style.display = 'none';
+          showMsg('success', html);
+        } else if (data.fields) {
+          if (data.fields.email) fieldError('email', data.fields.email);
+          if (data.fields.name)  fieldError('name', data.fields.name);
+          showMsg('error', data.message || 'Please fix the highlighted fields.');
+        } else {
+          showMsg('error', (data.message || 'Something went wrong. Please try again or email contact@crawfordcreationsllc.com directly.'));
+        }
+      } catch (err) {
+        showMsg('error', 'Network error — please try again, or email contact@crawfordcreationsllc.com directly.');
+      } finally {
+        setBusy(false);
+      }
+    });
+  })();
+</script>
+</body>
+</html>

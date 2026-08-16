@@ -1,0 +1,1231 @@
+{
+  "_readme": "Fill src/credit/license for each specimen, then run: node build-photos.js. Leave an entry empty to skip it \u2014 the trainer falls back to the drawn plate. view must be one of: foliage, bark, habit, flower, fruit.",
+  "_sources": [
+    "USDA ARS Image Gallery \u2014 https://www.ars.usda.gov/oc/images/image-gallery/ \u2014 public domain, no attribution required",
+    "USDA PLANTS Database \u2014 https://plants.usda.gov/home/imageSearch \u2014 US Government work, public domain",
+    "USDA NRCS Photo Gallery \u2014 public domain",
+    "Wikimedia Commons \u2014 verify per-file: CC0/PD are clean, CC BY-SA propagates share-alike to your file",
+    "Britton & Brown, Illustrated Flora of the Northern United States (1913) \u2014 public domain botanical plates",
+    "AVOID for DoD work: Forestry Images / Bugwood / IPM Images \u2014 educational non-commercial only"
+  ],
+  "photos": {
+    "pin-str": [
+      {
+        "latin": "Pinus strobus",
+        "common": "Eastern white pine",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "pin-vir": [
+      {
+        "latin": "Pinus virginiana",
+        "common": "Virginia pine",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "pin-nig": [
+      {
+        "latin": "Pinus nigra",
+        "common": "Austrian pine",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "pin-mug": [
+      {
+        "latin": "Pinus mugo",
+        "common": "Mugo pine",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "pic-abi": [
+      {
+        "latin": "Picea abies",
+        "common": "Norway spruce",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "pic-pun": [
+      {
+        "latin": "Picea pungens",
+        "common": "Colorado blue spruce",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "tsu-can": [
+      {
+        "latin": "Tsuga canadensis",
+        "common": "Eastern hemlock",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "abi-con": [
+      {
+        "latin": "Abies concolor",
+        "common": "White fir",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "jun-vir": [
+      {
+        "latin": "Juniperus virginiana",
+        "common": "Eastern red cedar",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "jun-hor": [
+      {
+        "latin": "Juniperus horizontalis",
+        "common": "Creeping juniper",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "thu-occ": [
+      {
+        "latin": "Thuja occidentalis",
+        "common": "American arborvitae",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "cha-obt": [
+      {
+        "latin": "Chamaecyparis obtusa",
+        "common": "Hinoki falsecypress",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "tax-dis": [
+      {
+        "latin": "Taxodium distichum",
+        "common": "Bald cypress",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "met-gly": [
+      {
+        "latin": "Metasequoia glyptostroboides",
+        "common": "Dawn redwood",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "tax-med": [
+      {
+        "latin": "Taxus \u00d7 media",
+        "common": "Anglojap yew",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "gin-bil": [
+      {
+        "latin": "Ginkgo biloba",
+        "common": "Ginkgo",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "lir-tul": [
+      {
+        "latin": "Liriodendron tulipifera",
+        "common": "Tuliptree",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "mag-gra": [
+      {
+        "latin": "Magnolia grandiflora",
+        "common": "Southern magnolia",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "mag-vir": [
+      {
+        "latin": "Magnolia virginiana",
+        "common": "Sweetbay magnolia",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "mag-sou": [
+      {
+        "latin": "Magnolia \u00d7 soulangeana",
+        "common": "Saucer magnolia",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "mag-ste": [
+      {
+        "latin": "Magnolia stellata",
+        "common": "Star magnolia",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "que-alb": [
+      {
+        "latin": "Quercus alba",
+        "common": "White oak",
+        "view": "foliage",
+        "src": "",
+        "credit": "USDA-NRCS PLANTS Database",
+        "license": "Public domain"
+      },
+      {
+        "latin": "Quercus alba",
+        "common": "White oak",
+        "view": "bark",
+        "src": "",
+        "credit": "USDA ARS Image Gallery",
+        "license": "Public domain"
+      }
+    ],
+    "que-rub": [
+      {
+        "latin": "Quercus rubra",
+        "common": "Northern red oak",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "que-pal": [
+      {
+        "latin": "Quercus palustris",
+        "common": "Pin oak",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "que-phe": [
+      {
+        "latin": "Quercus phellos",
+        "common": "Willow oak",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "fag-gra": [
+      {
+        "latin": "Fagus grandifolia",
+        "common": "American beech",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "fag-syl": [
+      {
+        "latin": "Fagus sylvatica",
+        "common": "European beech",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "bet-nig": [
+      {
+        "latin": "Betula nigra",
+        "common": "River birch",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "car-car": [
+      {
+        "latin": "Carpinus caroliniana",
+        "common": "American hornbeam",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "ost-vir": [
+      {
+        "latin": "Ostrya virginiana",
+        "common": "Hophornbeam",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "cor-ame": [
+      {
+        "latin": "Corylus americana",
+        "common": "American hazelnut",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "jug-nig": [
+      {
+        "latin": "Juglans nigra",
+        "common": "Black walnut",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "car-ova": [
+      {
+        "latin": "Carya ovata",
+        "common": "Shagbark hickory",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "ace-rub": [
+      {
+        "latin": "Acer rubrum",
+        "common": "Red maple",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "ace-sac": [
+      {
+        "latin": "Acer saccharum",
+        "common": "Sugar maple",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "ace-pal": [
+      {
+        "latin": "Acer palmatum",
+        "common": "Japanese maple",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "ace-pla": [
+      {
+        "latin": "Acer platanoides",
+        "common": "Norway maple",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "ace-gri": [
+      {
+        "latin": "Acer griseum",
+        "common": "Paperbark maple",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "aes-par": [
+      {
+        "latin": "Aesculus parviflora",
+        "common": "Bottlebrush buckeye",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "aes-hip": [
+      {
+        "latin": "Aesculus hippocastanum",
+        "common": "Horsechestnut",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "fra-ame": [
+      {
+        "latin": "Fraxinus americana",
+        "common": "White ash",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "syr-vul": [
+      {
+        "latin": "Syringa vulgaris",
+        "common": "Common lilac",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "for-int": [
+      {
+        "latin": "Forsythia \u00d7 intermedia",
+        "common": "Border forsythia",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "chi-vir": [
+      {
+        "latin": "Chionanthus virginicus",
+        "common": "White fringetree",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "lig-jap": [
+      {
+        "latin": "Ligustrum japonicum",
+        "common": "Japanese privet",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "ame-can": [
+      {
+        "latin": "Amelanchier canadensis",
+        "common": "Serviceberry",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "mal-spp": [
+      {
+        "latin": "Malus spp.",
+        "common": "Flowering crabapple",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "pru-ser": [
+      {
+        "latin": "Prunus serrulata",
+        "common": "Japanese flowering cherry",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "pru-lau": [
+      {
+        "latin": "Prunus laurocerasus",
+        "common": "Cherrylaurel",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "pru-cis": [
+      {
+        "latin": "Prunus \u00d7 cistena",
+        "common": "Purpleleaf sand cherry",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "pyr-cal": [
+      {
+        "latin": "Pyrus calleryana",
+        "common": "Callery pear",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "spi-jap": [
+      {
+        "latin": "Spiraea japonica",
+        "common": "Japanese spirea",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "ros-rug": [
+      {
+        "latin": "Rosa rugosa",
+        "common": "Rugosa rose",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "cha-spe": [
+      {
+        "latin": "Chaenomeles speciosa",
+        "common": "Flowering quince",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "phy-opu": [
+      {
+        "latin": "Physocarpus opulifolius",
+        "common": "Ninebark",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "ker-jap": [
+      {
+        "latin": "Kerria japonica",
+        "common": "Japanese kerria",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "aro-arb": [
+      {
+        "latin": "Aronia arbutifolia",
+        "common": "Red chokeberry",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "cor-flo": [
+      {
+        "latin": "Cornus florida",
+        "common": "Flowering dogwood",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "cor-kou": [
+      {
+        "latin": "Cornus kousa",
+        "common": "Kousa dogwood",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "cor-ser": [
+      {
+        "latin": "Cornus sericea",
+        "common": "Redosier dogwood",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "rho-cat": [
+      {
+        "latin": "Rhododendron catawbiense",
+        "common": "Catawba rhododendron",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "kal-lat": [
+      {
+        "latin": "Kalmia latifolia",
+        "common": "Mountain laurel",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "pie-jap": [
+      {
+        "latin": "Pieris japonica",
+        "common": "Japanese pieris",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "leu-fon": [
+      {
+        "latin": "Leucothoe fontanesiana",
+        "common": "Drooping leucothoe",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "vac-cor": [
+      {
+        "latin": "Vaccinium corymbosum",
+        "common": "Highbush blueberry",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "ile-opa": [
+      {
+        "latin": "Ilex opaca",
+        "common": "American holly",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "ile-cre": [
+      {
+        "latin": "Ilex crenata",
+        "common": "Japanese holly",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "ile-gla": [
+      {
+        "latin": "Ilex glabra",
+        "common": "Inkberry",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "ile-ver": [
+      {
+        "latin": "Ilex verticillata",
+        "common": "Winterberry",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "vib-pli": [
+      {
+        "latin": "Viburnum plicatum f. tomentosum",
+        "common": "Doublefile viburnum",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "vib-den": [
+      {
+        "latin": "Viburnum dentatum",
+        "common": "Arrowwood viburnum",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "vib-car": [
+      {
+        "latin": "Viburnum carlesii",
+        "common": "Koreanspice viburnum",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "sam-can": [
+      {
+        "latin": "Sambucus canadensis",
+        "common": "American elderberry",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "wei-flo": [
+      {
+        "latin": "Weigela florida",
+        "common": "Old-fashioned weigela",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "abe-gra": [
+      {
+        "latin": "Abelia \u00d7 grandiflora",
+        "common": "Glossy abelia",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "hyd-mac": [
+      {
+        "latin": "Hydrangea macrophylla",
+        "common": "Bigleaf hydrangea",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "hyd-que": [
+      {
+        "latin": "Hydrangea quercifolia",
+        "common": "Oakleaf hydrangea",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "phi-cor": [
+      {
+        "latin": "Philadelphus coronarius",
+        "common": "Sweet mockorange",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "deu-gra": [
+      {
+        "latin": "Deutzia gracilis",
+        "common": "Slender deutzia",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "ham-vir": [
+      {
+        "latin": "Hamamelis virginiana",
+        "common": "Common witchhazel",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "liq-sty": [
+      {
+        "latin": "Liquidambar styraciflua",
+        "common": "Sweetgum",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "fot-gar": [
+      {
+        "latin": "Fothergilla gardenii",
+        "common": "Dwarf fothergilla",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "cer-can": [
+      {
+        "latin": "Cercis canadensis",
+        "common": "Eastern redbud",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "gle-tri": [
+      {
+        "latin": "Gleditsia triacanthos var. inermis",
+        "common": "Thornless honeylocust",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "cla-ken": [
+      {
+        "latin": "Cladrastis kentukea",
+        "common": "American yellowwood",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "bux-sem": [
+      {
+        "latin": "Buxus sempervirens",
+        "common": "Common boxwood",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "pla-ace": [
+      {
+        "latin": "Platanus \u00d7 acerifolia",
+        "common": "London planetree",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "ulm-ame": [
+      {
+        "latin": "Ulmus americana",
+        "common": "American elm",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "zel-ser": [
+      {
+        "latin": "Zelkova serrata",
+        "common": "Japanese zelkova",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "cel-occ": [
+      {
+        "latin": "Celtis occidentalis",
+        "common": "Common hackberry",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "nys-syl": [
+      {
+        "latin": "Nyssa sylvatica",
+        "common": "Black gum",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "til-cor": [
+      {
+        "latin": "Tilia cordata",
+        "common": "Littleleaf linden",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "sal-bab": [
+      {
+        "latin": "Salix babylonica",
+        "common": "Weeping willow",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "lag-ind": [
+      {
+        "latin": "Lagerstroemia indica",
+        "common": "Crapemyrtle",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "euo-ala": [
+      {
+        "latin": "Euonymus alatus",
+        "common": "Burning bush",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "ber-thu": [
+      {
+        "latin": "Berberis thunbergii",
+        "common": "Japanese barberry",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "nan-dom": [
+      {
+        "latin": "Nandina domestica",
+        "common": "Heavenly bamboo",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "mah-bea": [
+      {
+        "latin": "Mahonia bealei",
+        "common": "Leatherleaf mahonia",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "cle-aln": [
+      {
+        "latin": "Clethra alnifolia",
+        "common": "Summersweet",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "ite-vir": [
+      {
+        "latin": "Itea virginica",
+        "common": "Virginia sweetspire",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "cal-flo": [
+      {
+        "latin": "Calycanthus floridus",
+        "common": "Carolina allspice",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "hib-syr": [
+      {
+        "latin": "Hibiscus syriacus",
+        "common": "Rose of Sharon",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "cal-dic": [
+      {
+        "latin": "Callicarpa dichotoma",
+        "common": "Beautyberry",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "cat-spe": [
+      {
+        "latin": "Catalpa speciosa",
+        "common": "Northern catalpa",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "koe-pan": [
+      {
+        "latin": "Koelreuteria paniculata",
+        "common": "Goldenrain tree",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "ste-pse": [
+      {
+        "latin": "Stewartia pseudocamellia",
+        "common": "Japanese stewartia",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "oxy-arb": [
+      {
+        "latin": "Oxydendrum arboreum",
+        "common": "Sourwood",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "hal-car": [
+      {
+        "latin": "Halesia carolina",
+        "common": "Carolina silverbell",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "sty-jap": [
+      {
+        "latin": "Styrax japonicus",
+        "common": "Japanese snowbell",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "cot-cog": [
+      {
+        "latin": "Cotinus coggygria",
+        "common": "Smokebush",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "sas-alb": [
+      {
+        "latin": "Sassafras albidum",
+        "common": "Sassafras",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "asi-tri": [
+      {
+        "latin": "Asimina triloba",
+        "common": "Pawpaw",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "rhu-typ": [
+      {
+        "latin": "Rhus typhina",
+        "common": "Staghorn sumac",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "mor-rub": [
+      {
+        "latin": "Morus rubra",
+        "common": "Red mulberry",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "dio-vir": [
+      {
+        "latin": "Diospyros virginiana",
+        "common": "Common persimmon",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "pau-tom": [
+      {
+        "latin": "Paulownia tomentosa",
+        "common": "Princess tree",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "ros-rug2": [
+      {
+        "latin": "Rosa multiflora",
+        "common": "Multiflora rose",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "sal-bab2": [
+      {
+        "latin": "Salix discolor",
+        "common": "Pussy willow",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "hed-hel": [
+      {
+        "latin": "Hedera helix",
+        "common": "English ivy",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "par-qui": [
+      {
+        "latin": "Parthenocissus quinquefolia",
+        "common": "Virginia creeper",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ],
+    "cam-rad": [
+      {
+        "latin": "Campsis radicans",
+        "common": "Trumpet creeper",
+        "view": "foliage",
+        "src": "",
+        "credit": "",
+        "license": ""
+      }
+    ]
+  }
+}

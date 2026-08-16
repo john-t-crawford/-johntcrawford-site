@@ -1,0 +1,343 @@
+# ============================================================================
+#  .htaccess — johntcrawford.com
+#  Production-ready hardening: HTTPS, security headers, compression, caching,
+#  bot blocking, hotlink protection, directory hardening.
+#
+#  Drop this file in /public_html/ on your SiteGround/cPanel hosting.
+#  Each block is wrapped in <IfModule> guards so the server won't 500 if a
+#  module isn't loaded — every section degrades gracefully.
+#
+#  Tested patterns for Apache 2.4 + mod_rewrite, mod_headers, mod_deflate,
+#  mod_expires, mod_filter, mod_setenvif. All standard on SiteGround cPanel.
+#
+#  Last reviewed: 2026-04-29
+# ============================================================================
+
+
+# ── 1. ENGINE, ENCODING, DEFAULT FILE ───────────────────────────────────────
+# Default file served when a directory is requested (preserved from your
+# previous .htaccess — needed so johntcrawford.com/ resolves to index.html).
+DirectoryIndex index.html
+
+# Default charset for text responses (helps when meta charset is missing).
+AddDefaultCharset UTF-8
+
+# Hide the server's identity in error pages and headers.
+ServerSignature Off
+
+# Follow symlinks but not from arbitrary owners (safer than +FollowSymLinks).
+Options +FollowSymLinks -Indexes -MultiViews
+
+# Disable unsafe HTTP methods. Only GET/POST/HEAD are needed for a static site.
+<LimitExcept GET POST HEAD>
+  Require all denied
+</LimitExcept>
+
+
+# ── 2. FORCE HTTPS ──────────────────────────────────────────────────────────
+# Redirect every http:// request to https:// with a permanent 301.
+# Apply BEFORE any other redirect rule so the canonical scheme is locked in.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # If the request did NOT come in over HTTPS, redirect.
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # OPTIONAL: force non-www (johntcrawford.com is the canonical host).
+  # Uncomment the next two lines if you want www.johntcrawford.com → johntcrawford.com.
+  # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  # RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+
+# ── 3. SECURITY HEADERS ─────────────────────────────────────────────────────
+# Modern hardening for a static HTML portfolio site.
+# If any header breaks something, comment it out one at a time to isolate.
+<IfModule mod_headers.c>
+
+  # HSTS — tells browsers to ALWAYS use HTTPS for the next year.
+  # Only enable AFTER confirming HTTPS works site-wide. The "preload" directive
+  # is required if you want to submit johntcrawford.com to hstspreload.org.
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+  # Stop your site from being framed by other origins (clickjacking defense).
+  Header always set X-Frame-Options "DENY"
+
+  # Stop browsers from MIME-sniffing responses (forces the declared Content-Type).
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Send only the origin (not the full URL) when navigating to other sites.
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Disable browser features your portfolio site doesn't need.
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), accelerometer=(), gyroscope=()"
+
+  # Cross-origin isolation — safe defaults for a static site.
+  Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
+  Header always set Cross-Origin-Embedder-Policy "unsafe-none"
+  Header always set Cross-Origin-Resource-Policy "same-origin"
+
+  # Content-Security-Policy.
+  # CONSERVATIVE default: allows your own origin + inline styles/scripts (Bay Quest
+  # and many of your inline-CSS pages need them) + Google Fonts + common image hosts.
+  # If you load external scripts (analytics, embeds), add their domains here.
+  # When in doubt, start with "Content-Security-Policy-Report-Only" (rename below)
+  # to log violations without blocking, then promote to enforcing.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
+
+  # Remove headers that leak server info.
+  Header unset X-Powered-By
+  Header unset Server
+  Header unset X-AspNet-Version
+  Header unset X-AspNetMvc-Version
+
+  # Make sure cached HTML pages still revalidate so security headers update fast.
+  <FilesMatch "\.(html|htm|xml|txt|json)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  # CORS — preserved from your previous .htaccess but SCOPED to the file types
+  # that actually need cross-origin (web fonts via @font-face from another origin,
+  # SVG sprites, and JSON fetched by JS). HTML pages don't normally need CORS,
+  # so leaving them out tightens security without breaking anything.
+  <FilesMatch "\.(woff|woff2|ttf|otf|eot|svg|json)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+  # If you need wide-open CORS on every response (e.g. another site fetches your
+  # HTML via JS), comment out the FilesMatch block above and uncomment the line below.
+  # Header set Access-Control-Allow-Origin "*"
+</IfModule>
+
+
+# ── 4. GZIP / DEFLATE COMPRESSION ───────────────────────────────────────────
+# Compresses text-based responses on the fly. Typical 60-80% size reduction.
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/atom+xml
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/x-font-ttf
+  AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+  AddOutputFilterByType DEFLATE font/opentype
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE image/x-icon
+
+  # Don't compress already-compressed assets.
+  SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|webp|avif|woff2?|zip|gz|br|mp4|webm|pdf)$ no-gzip dont-vary
+</IfModule>
+
+
+# ── 5. BROWSER CACHING ──────────────────────────────────────────────────────
+# Tell browsers to cache static assets aggressively but revalidate HTML.
+# If you cache-bust by adding ?v= query strings, these long TTLs are safe.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                                "access plus 1 month"
+
+  # Documents — short TTL so updates show up quickly.
+  ExpiresByType text/html                       "access plus 0 seconds"
+  ExpiresByType text/xml                        "access plus 0 seconds"
+  ExpiresByType application/xml                 "access plus 0 seconds"
+  ExpiresByType application/json                "access plus 0 seconds"
+
+  # Manifest / service worker.
+  ExpiresByType application/manifest+json       "access plus 1 week"
+  ExpiresByType application/x-web-app-manifest+json "access plus 0 seconds"
+
+  # CSS, JS — 1 month (use cache-busting filenames or ?v= in URLs).
+  ExpiresByType text/css                        "access plus 1 month"
+  ExpiresByType text/javascript                 "access plus 1 month"
+  ExpiresByType application/javascript          "access plus 1 month"
+  ExpiresByType application/x-javascript        "access plus 1 month"
+
+  # Fonts — 1 year, immutable.
+  ExpiresByType font/woff                       "access plus 1 year"
+  ExpiresByType font/woff2                      "access plus 1 year"
+  ExpiresByType application/font-woff           "access plus 1 year"
+  ExpiresByType application/font-woff2          "access plus 1 year"
+  ExpiresByType application/x-font-ttf          "access plus 1 year"
+  ExpiresByType application/vnd.ms-fontobject   "access plus 1 year"
+
+  # Images — 1 year.
+  ExpiresByType image/jpeg                      "access plus 1 year"
+  ExpiresByType image/jpg                       "access plus 1 year"
+  ExpiresByType image/png                       "access plus 1 year"
+  ExpiresByType image/gif                       "access plus 1 year"
+  ExpiresByType image/webp                      "access plus 1 year"
+  ExpiresByType image/avif                      "access plus 1 year"
+  ExpiresByType image/svg+xml                   "access plus 1 year"
+  ExpiresByType image/x-icon                    "access plus 1 year"
+
+  # Media.
+  ExpiresByType video/mp4                       "access plus 1 year"
+  ExpiresByType video/webm                      "access plus 1 year"
+  ExpiresByType audio/mpeg                      "access plus 1 year"
+</IfModule>
+
+# Add immutable cache hint to long-cached assets (only works alongside ExpiresByType above).
+<IfModule mod_headers.c>
+  <FilesMatch "\.(?:css|js|woff2?|ttf|otf|eot|jpg|jpeg|png|gif|webp|avif|svg|ico|mp4|webm|mp3)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+
+# ── 6. BLOCK SENSITIVE FILES ────────────────────────────────────────────────
+# Stop direct access to dotfiles, version-control, configs, backups, logs.
+<FilesMatch "^\.(?:env|env\..*|git.*|svn|hg|bzr|DS_Store|htaccess|htpasswd|bak|swp|swo|orig)$">
+  Require all denied
+</FilesMatch>
+
+<FilesMatch "(?i)\.(bak|backup|old|orig|original|tmp|temp|swp|swo|log|sql|sqlite|sqlite3|db|conf|config|ini|yml|yaml|env|lock|md|txt~|cfg)$">
+  Require all denied
+</FilesMatch>
+
+# Block .git, .svn, vendor, node_modules folders entirely if any get uploaded by mistake.
+RedirectMatch 404 /\.git
+RedirectMatch 404 /\.svn
+RedirectMatch 404 /\.env
+RedirectMatch 404 /vendor/.*
+RedirectMatch 404 /node_modules/.*
+
+# Disable PHP execution in upload directories (defense in depth — even if you
+# don't have an /uploads folder yet, this protects you if you add one later).
+<IfModule mod_php.c>
+  <Directory "uploads">
+    php_flag engine off
+  </Directory>
+</IfModule>
+<FilesMatch "^uploads/.*\.(?:php|phtml|phar|pl|py|jsp|asp|sh|cgi)$">
+  Require all denied
+</FilesMatch>
+
+
+# ── 7. BAD-BOT BLOCKING ─────────────────────────────────────────────────────
+# Block known content scrapers, vulnerability scanners, and abusive bots
+# by user-agent string. Legitimate bots (Googlebot, Bingbot, etc.) are NOT
+# in this list. Add or remove as needed — keep this list short and current.
+<IfModule mod_setenvif.c>
+  SetEnvIfNoCase User-Agent "AhrefsBot"          bad_bot
+  SetEnvIfNoCase User-Agent "SemrushBot"         bad_bot
+  SetEnvIfNoCase User-Agent "MJ12bot"            bad_bot
+  SetEnvIfNoCase User-Agent "DotBot"             bad_bot
+  SetEnvIfNoCase User-Agent "PetalBot"           bad_bot
+  SetEnvIfNoCase User-Agent "SeznamBot"          bad_bot
+  SetEnvIfNoCase User-Agent "BLEXBot"            bad_bot
+  SetEnvIfNoCase User-Agent "DataForSeoBot"      bad_bot
+  SetEnvIfNoCase User-Agent "ZoominfoBot"        bad_bot
+  SetEnvIfNoCase User-Agent "serpstatbot"        bad_bot
+  SetEnvIfNoCase User-Agent "Bytespider"         bad_bot
+  SetEnvIfNoCase User-Agent "ClaudeBot"          bad_bot
+  SetEnvIfNoCase User-Agent "GPTBot"             bad_bot
+  SetEnvIfNoCase User-Agent "CCBot"              bad_bot
+  SetEnvIfNoCase User-Agent "anthropic-ai"       bad_bot
+  SetEnvIfNoCase User-Agent "Google-Extended"    bad_bot
+  SetEnvIfNoCase User-Agent "PerplexityBot"      bad_bot
+  SetEnvIfNoCase User-Agent "Amazonbot"          bad_bot
+  SetEnvIfNoCase User-Agent "FacebookBot"        bad_bot
+  SetEnvIfNoCase User-Agent "ImagesiftBot"       bad_bot
+  SetEnvIfNoCase User-Agent "Diffbot"            bad_bot
+  SetEnvIfNoCase User-Agent "omgili"             bad_bot
+  SetEnvIfNoCase User-Agent "Riddler"            bad_bot
+  SetEnvIfNoCase User-Agent "ZmEu"               bad_bot
+  SetEnvIfNoCase User-Agent "Nimbostratus-Bot"   bad_bot
+  SetEnvIfNoCase User-Agent "wpscan"             bad_bot
+  SetEnvIfNoCase User-Agent "nikto"              bad_bot
+  SetEnvIfNoCase User-Agent "sqlmap"             bad_bot
+  SetEnvIfNoCase User-Agent "fimap"              bad_bot
+  SetEnvIfNoCase User-Agent "masscan"            bad_bot
+  SetEnvIfNoCase User-Agent "nmap"               bad_bot
+  SetEnvIfNoCase User-Agent "libwww-perl"        bad_bot
+  SetEnvIfNoCase User-Agent "^$"                 bad_bot
+
+  # Block requests with the bad_bot env set.
+  <RequireAll>
+    Require all granted
+    Require not env bad_bot
+  </RequireAll>
+</IfModule>
+
+
+# ── 8. HOTLINK PROTECTION ───────────────────────────────────────────────────
+# Stop other sites from embedding your images. Allowlists your own domain,
+# Google (image search), and direct browser visits (empty referer).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_REFERER} !^$
+  RewriteCond %{HTTP_REFERER} !^https?://(www\.)?johntcrawford\.com [NC]
+  RewriteCond %{HTTP_REFERER} !^https?://(www\.)?crawfordcreationsllc\.com [NC]
+  RewriteCond %{HTTP_REFERER} !^https?://([^.]+\.)?google\.(com|[a-z]{2,3})/ [NC]
+  RewriteCond %{HTTP_REFERER} !^https?://([^.]+\.)?bing\.com/ [NC]
+  RewriteCond %{HTTP_REFERER} !^https?://([^.]+\.)?duckduckgo\.com/ [NC]
+  RewriteCond %{HTTP_REFERER} !^https?://linkedin\.com/ [NC]
+  RewriteRule \.(jpe?g|png|gif|webp|avif|bmp)$ - [F,NC]
+</IfModule>
+
+
+# ── 9. CLEAN URL HANDLING ───────────────────────────────────────────────────
+# Strip trailing slashes from non-directory URLs (canonicalization).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.+)/$ /$1 [R=301,L]
+</IfModule>
+
+
+# ── 10. CUSTOM ERROR PAGES ──────────────────────────────────────────────────
+# Replace these paths with your own pages once you create them.
+# Static pages must exist at the listed paths or you'll get a 500 instead.
+# ErrorDocument 400 /errors/400.html
+# ErrorDocument 401 /errors/401.html
+# ErrorDocument 403 /errors/403.html
+# ErrorDocument 404 /errors/404.html
+# ErrorDocument 500 /errors/500.html
+
+
+# ── 11. PASSWORD-PROTECT GENEALOGY (template) ───────────────────────────────
+# To enable: create an .htpasswd file (cPanel → Password-Protect Directories
+# OR via Web SSH:  htpasswd -c /home/USERNAME/.htpasswd john
+# Then uncomment and update AuthUserFile to the absolute server path.
+#
+# <Files "genealogy.html">
+#   AuthType Basic
+#   AuthName "Crawford Family Archive"
+#   AuthUserFile "/home/YOUR_CPANEL_USER/.htpasswd"
+#   Require valid-user
+# </Files>
+# <Files "tree.html">
+#   AuthType Basic
+#   AuthName "Crawford Family Archive"
+#   AuthUserFile "/home/YOUR_CPANEL_USER/.htpasswd"
+#   Require valid-user
+# </Files>
+
+
+# ── 12. MIME TYPE FIXES ─────────────────────────────────────────────────────
+# Ensure modern formats are served with the correct Content-Type so browsers
+# render them and the security headers above apply correctly.
+<IfModule mod_mime.c>
+  AddType image/svg+xml                .svg .svgz
+  AddType image/webp                   .webp
+  AddType image/avif                   .avif
+  AddType application/font-woff        .woff
+  AddType application/font-woff2       .woff2
+  AddType application/manifest+json    .webmanifest
+  AddType text/cache-manifest          .appcache
+  AddEncoding gzip                     .svgz
+</IfModule>
+
+
+# ── 13. FAVICON 404 SUPPRESSION ─────────────────────────────────────────────
+# Until you upload favicon.ico, prevent every missing-favicon hit from filling
+# error logs. Remove this once your favicon is uploaded.
+<F

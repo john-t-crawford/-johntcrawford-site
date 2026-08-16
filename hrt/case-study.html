@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Building the Woody Ornamentals Trainer — Case Study</title>
+<meta name="description" content="How a 1988 plant-ID course became an offline, procedurally-illustrated identification trainer for 121 woody ornamentals — and the licensing dead-end that led somewhere better.">
+<meta property="og:title" content="Building the Woody Ornamentals Trainer — Case Study">
+<meta property="og:description" content="Licensing constraints, a lobe-generator bug, and 484 procedurally generated plates: the build notes behind the Woody Ornamentals trainer.">
+<meta property="og:type" content="article">
+<style>
+:root{
+  --ground-deep:#0A1626;
+  --print:#E8F1FA;
+  --print-dim:#9FC0DC;
+  --print-faint:#5C87AD;
+  --gold:#EAAA00;
+  --gold-deep:#8A6500;
+  --red-lift:#FF5C6E;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+*{box-sizing:border-box}
+html{background:var(--ground-deep)}
+body{
+  margin:0;background:var(--ground-deep);color:var(--print);
+  font:400 17px/1.65 var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+.shell{max-width:680px;margin:0 auto;padding:3.5rem 1.5rem 6rem}
+a{color:var(--gold);text-decoration-color:rgba(234,170,0,.4)}
+a:hover{text-decoration-color:var(--gold)}
+.back{
+  display:inline-block;font:600 13px/1 var(--mono);letter-spacing:.08em;
+  text-transform:uppercase;color:var(--print-dim);text-decoration:none;
+  border:1px solid rgba(159,192,220,.3);border-radius:999px;padding:.5rem 1rem;
+  margin-bottom:2.5rem;
+}
+.back:hover{color:var(--gold);border-color:rgba(234,170,0,.5)}
+.kicker{
+  font:600 13px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--print-faint);margin:0 0 .75rem;
+}
+h1{
+  font:400 clamp(1.9rem,4.5vw,2.6rem)/1.2 var(--sans);margin:0 0 .5rem;
+  letter-spacing:-.01em;
+}
+h1 em{font-style:italic;color:var(--gold)}
+.dek{color:var(--print-dim);font-size:1.05rem;margin:0 0 2.5rem;max-width:52ch}
+.meta{
+  display:flex;gap:1.5rem;flex-wrap:wrap;font:500 13px/1 var(--mono);
+  color:var(--print-faint);border-top:1px solid rgba(159,192,220,.2);
+  border-bottom:1px solid rgba(159,192,220,.2);padding:1rem 0;margin-bottom:2.5rem;
+}
+.meta b{color:var(--print)}
+h2{
+  font:600 13px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold);margin:2.75rem 0 1rem;
+}
+p{margin:0 0 1.1rem;color:var(--print)}
+.lede{color:var(--print-dim)}
+ul,ol{margin:0 0 1.1rem;padding-left:1.3rem}
+li{margin-bottom:.4rem}
+code{
+  font:400 .85em/1 var(--mono);background:rgba(159,192,220,.12);
+  padding:.15em .4em;border-radius:4px;color:var(--print-dim);
+}
+blockquote{
+  margin:1.5rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:2px solid var(--gold-deep);
+  color:var(--print-dim);font-style:italic;
+}
+.callout{
+  background:rgba(159,192,220,.07);border:1px solid rgba(159,192,220,.18);
+  border-radius:10px;padding:1.1rem 1.3rem;margin:1.5rem 0;
+}
+.callout p:last-child{margin-bottom:0}
+.callout .label{
+  font:600 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--print-faint);margin-bottom:.5rem;display:block;
+}
+.cta{
+  margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(159,192,220,.2);
+  display:flex;gap:1rem;flex-wrap:wrap;
+}
+.btn{
+  display:inline-block;font:600 14px/1 var(--sans);text-decoration:none;
+  padding:.85rem 1.4rem;border-radius:8px;
+}
+.btn-primary{background:var(--gold);color:#1A1200}
+.btn-ghost{border:1px solid rgba(159,192,220,.35);color:var(--print)}
+.footnote{margin-top:3rem;font-size:13px;color:var(--print-faint)}
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <a class="back" href="./">&larr; Open the trainer</a>
+
+  <p class="kicker">Case study</p>
+  <h1>Teaching a computer to <em>see</em> a hophornbeam</h1>
+  <p class="dek">Notes from building an offline visual identification trainer for 121 woody
+  ornamentals — and the licensing dead-end that turned into the better idea.</p>
+
+  <div class="meta">
+    <span><b>Stack</b> — single-file HTML, React (no build step), SVG</span>
+    <span><b>Scope</b> — 121 species, 484 generated plates</span>
+    <span><b>Size</b> — 251 KB, zero external requests</span>
+  </div>
+
+  <p class="lede">This started as a straightforward request: turn a 1988 college
+  plant-ID course into something I could drill with again. It ended up being
+  less about plants and more about what happens when you can't get the assets
+  you planned on, and have to build the thing that makes them unnecessary.</p>
+
+  <h2>The brief</h2>
+  <p>HRT 116, <em>Woody Ornamental Plants</em>, was a two-credit summer course —
+  a compressed few weeks covering roughly a hundred species, taught walk-and-name
+  on live material with a practical identification final. Not a lecture course.
+  That format mattered later: the trainer needed to reward identifying a plant on
+  the least evidence possible, the way a field final does, not on recognizing a
+  full glossy photograph.</p>
+
+  <h2>Where the photo plan broke</h2>
+  <p>The first version leaned on real photographs — a manifest with 121 empty
+  <code>src</code> slots, ready to fill from Wikimedia Commons. It didn't survive
+  contact with the actual licensing landscape. A quick survey of Commons results
+  for these species turned up mostly CC BY-SA 3.0, where share-alike would have
+  obligated the whole project to redistribute under a compatible license. Getting
+  around that meant hunting public-domain-only files one species at a time —
+  dozens of searches, with the identification itself unverified at the end of
+  each one. For a tool whose entire point is teaching correct IDs, shipping a
+  guess felt worse than shipping nothing.</p>
+
+  <div class="callout">
+    <span class="label">Decision</span>
+    <p>Stop trying to source 121 photographs. Solve the actual problem — resolving
+    confusable species pairs — with something that doesn't depend on finding the
+    right image at all.</p>
+  </div>
+
+  <h2>Comparison mode</h2>
+  <p>The photos were meant to help with one specific failure: two similar species
+  getting mixed up. So that became the feature directly. Miss an identification
+  and a "Compare side by side" button appears, putting the specimen you called
+  next to the one it actually was — all four generated plates each, plus a diff
+  table of only the characters that separate them.</p>
+  <p>Because it's derived from the morphological specs rather than authored per
+  pair, it works for any of the 121 species against any other, with no hand-written
+  comparison content to maintain.</p>
+
+  <h2>The bug the comparison mode caught</h2>
+  <p>Building comparison mode surfaced a real data error: <em>Quercus rubra</em>
+  and <em>Q. palustris</em> were rendering almost identically. The lobe generator's
+  exponent was inverted, giving the pointed-lobed species a shallower sinus instead
+  of a narrower one. Once fixed, sinus depth became an actual parameter — white oak
+  rounded and shallow, red oak cut about halfway, pin oak cut nearly to the midrib
+  with narrow struts — and "lobing" is now a row in the diff table. All 484 plates
+  were regenerated from the corrected spec.</p>
+
+  <h2>The thirty photos that still matter</h2>
+  <p>Line art can't do everything. Bark color and exfoliation pattern — paperbark
+  maple's cinnamon curl, river birch's salmon-buff peel — are color characters a
+  cyanotype line drawing deliberately can't carry. So the photo plan didn't
+  disappear; it got smaller and more targeted. <a href="./PHOTO-SOURCING.md">The
+  sourcing worksheet</a> narrows 121 species down to 30 images across three tiers:
+  twelve confusable clusters where a photo resolves what the drawing can't, six
+  bark shots where color <em>is</em> the identification, and an optional seasonal
+  set.</p>
+  <p>Two small scripts enforce the discipline around that: <a href="./verify-photos.js">a
+  license auditor</a> that classifies every manifest URL as clean, attribution-required,
+  share-alike, or blocked, and fails the build on any of the last two — and <a
+  href="./build-photos.js">a build script</a> that inlines whatever's been sourced
+  and verified into the trainer as a sidecar file. As of this writing the manifest's
+  <code>src</code> fields are still blank on purpose: confirming that a photograph
+  really is <em>Ostrya</em> and not <em>Carpinus</em> is the one step that can't be
+  automated, and it's the step where an error would teach the wrong thing.</p>
+
+  <h2>What the 1988 curriculum got right — and wrong</h2>
+  <p>Cross-checking the species list against what a 1988 mid-Atlantic ornamental
+  course would actually have taught turned up something the syllabus alone couldn't:
+  five species on the list — Japanese barberry, burning bush, Callery pear, nandina,
+  and Japanese privet among them — were standard nursery stock at the time and are
+  now Maryland-regulated or regionally discouraged invasives. Eleven species across
+  the full list carry that flag today, cross-referenced against the <a
+  href="https://mda.maryland.gov/plants-pests/Pages/maryland_invasive_plants_prevention_and_control.aspx">Maryland
+  Department of Agriculture's current invasive plant list</a>. The trainer keeps the
+  course's original 121-species scope intact — it's still testing the curriculum as
+  taught — but a specimen's verdict card now notes when its status has changed since.</p>
+
+  <h2>What shipped</h2>
+  <ul>
+    <li>121 species, 484 procedurally generated cyanotype plates (four views each)</li>
+    <li>Evidence-economy scoring — points reward identifying on less information, closer to how the original course actually tested</li>
+    <li>Comparison mode, derived from specs rather than authored per species pair</li>
+    <li>A 30-image photo worksheet with per-source licensing rules, plus a license auditor that blocks the build on a bad one</li>
+    <li>Eleven current invasive-status flags layered onto the original 1988 list</li>
+    <li>Single HTML file, 251 KB, no external requests, sessionStorage only</li>
+  </ul>
+
+  <p class="footnote">Built with Claude. The full build tooling — the sourcing
+  worksheet, the license verifier, and the photo build script — ships alongside
+  the trainer rather than staying private, on the theory that the process is
+  worth as much as the artifact.</p>
+
+  <div class="cta">
+    <a class="btn btn-primary" href="./">Open the trainer</a>
+    <a class="btn btn-ghost" href="./PHOTO-SOURCING.md">Read the sourcing worksheet</a>
+  </div>
+
+</div>
+</body>
+</html>
