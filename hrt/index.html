@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Woody Ornamentals — Visual Identification Trainer</title>
-<meta name="description" content="Learn or practise: a narrated three-level lesson track plus an offline identification trainer covering 121 woody ornamental plants of Maryland and the mid-Atlantic.">
-<meta property="og:title" content="Woody Ornamentals — Visual Identification Trainer">
-<meta property="og:description" content="Two branches: a narrated slideshow at beginner, intermediate, and advanced depth, and an offline identification trainer scored on how little evidence you needed. 121 specimens, 484 procedurally generated plates.">
+<title>Name That Plant — Maryland Tree &amp; Shrub ID</title>
+<meta name="description" content="Ever wonder what that tree in your yard is? Play a free game to learn 121 trees and shrubs you'll actually see in Maryland — no signup, no app, works offline.">
+<meta property="og:title" content="Name That Plant — Maryland Tree &amp; Shrub ID">
+<meta property="og:description" content="A free, offline game for learning 121 Maryland trees and shrubs. See a plant, take your best guess, get instant feedback — plus a friendly lesson track if you want to start slower.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://johntcrawford.com/hrt/">
 <meta name="author" content="John T. Crawford">
@@ -19,19 +19,19 @@
 <meta property="og:image" content="https://johntcrawford.com/hrt/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Cyanotype-style botanical plates beside the title Woody Ornamentals, a visual identification trainer.">
+<meta property="og:image:alt" content="Cyanotype-style botanical plates beside the title Name That Plant, a Maryland tree and shrub identification game.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Woody Ornamentals — Visual Identification Trainer">
-<meta name="twitter:description" content="121 woody ornamentals of Maryland and the mid-Atlantic. 484 drawn plates, works offline.">
+<meta name="twitter:title" content="Name That Plant — Maryland Tree &amp; Shrub ID">
+<meta name="twitter:description" content="121 Maryland trees and shrubs. Free, no app, works offline.">
 <meta name="twitter:image" content="https://johntcrawford.com/hrt/og-image.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"SoftwareApplication","@id":"https://johntcrawford.com/hrt/#app","name":"Woody Ornamentals — Visual Identification Trainer","url":"https://johntcrawford.com/hrt/","applicationCategory":"EducationalApplication","operatingSystem":"Any modern web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"An offline visual identification trainer covering 121 woody ornamental plants of Maryland and the mid-Atlantic, using 484 procedurally generated botanical plates.","featureList":["Guided lesson track at three levels with voice-over narration","484 procedurally generated cyanotype plates","Evidence-economy scoring","Side-by-side diagnostic comparison","WCAG 2.2 AA conformance","Works fully offline"],"author":{"@id":"https://johntcrawford.com/#person"},"isAccessibleForFree":true,"accessibilityFeature":["alternativeText","structuralNavigation","highContrastDisplay","readingOrder"],"accessibilityHazard":["noFlashingHazard","noMotionSimulationHazard"],"accessibilityAPI":"ARIA","inLanguage":"en-US"},
+{"@type":"SoftwareApplication","@id":"https://johntcrawford.com/hrt/#app","name":"Name That Plant — Maryland Tree & Shrub ID","url":"https://johntcrawford.com/hrt/","applicationCategory":"EducationalApplication","operatingSystem":"Any modern web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"A free, offline game for learning 121 trees and shrubs you'll actually see in Maryland and the mid-Atlantic, using 484 procedurally generated botanical plates.","featureList":["Guided lesson track at three levels with voice-over narration","484 procedurally generated cyanotype plates","Score by how few clues you needed","Side-by-side look-alike comparison","WCAG 2.2 AA conformance","Works fully offline"],"author":{"@id":"https://johntcrawford.com/#person"},"isAccessibleForFree":true,"accessibilityFeature":["alternativeText","structuralNavigation","highContrastDisplay","readingOrder"],"accessibilityHazard":["noFlashingHazard","noMotionSimulationHazard"],"accessibilityAPI":"ARIA","inLanguage":"en-US"},
 {"@type":"Person","@id":"https://johntcrawford.com/#person","name":"John T. Crawford","url":"https://johntcrawford.com/","jobTitle":"Instructional Designer and Digital Media Specialist"},
 {"@type":"BreadcrumbList","itemListElement":[
 {"@type":"ListItem","position":1,"name":"Home","item":"https://johntcrawford.com/"},
 {"@type":"ListItem","position":2,"name":"Projects","item":"https://johntcrawford.com/#projects"},
-{"@type":"ListItem","position":3,"name":"Woody Ornamentals Trainer","item":"https://johntcrawford.com/hrt/"}]}
+{"@type":"ListItem","position":3,"name":"Name That Plant","item":"https://johntcrawford.com/hrt/"}]}
 ]}
 </script>
 
@@ -253,8 +253,8 @@ body::before{
 }
 .opt:hover:not(:disabled){background:var(--ground-lift);border-color:var(--print-dim)}
 .opt:disabled{cursor:default}
-.opt .latin{font:italic 400 var(--step-0)/1.25 var(--serif)}
-.opt .common{font:400 var(--step--1)/1.3 var(--sans);color:var(--print-dim)}
+.opt .latin{font:italic 400 var(--step--1)/1.3 var(--serif);color:var(--print-dim)}
+.opt .common{font:400 var(--step-0)/1.25 var(--sans)}
 .opt.correct{border-color:var(--gold);background:rgba(234,170,0,.16)}
 .opt.correct .latin,.opt.correct .common{color:var(--gold)}
 .opt.wrong{border-color:var(--red-lift);background:rgba(206,17,38,.18)}
@@ -309,9 +309,9 @@ body::before{
 }
 .cmp-grid{display:grid;grid-template-columns:1fr;gap:var(--gap)}
 @media(min-width:560px){.cmp-grid{grid-template-columns:1fr 1fr}}
-.cmp-col h3{margin:0 0 .6rem;font:400 var(--step-0)/1.25 var(--serif)}
-.cmp-col h3 em{display:block;font-style:italic;color:var(--gold)}
-.cmp-col h3 span{font:400 var(--step--1)/1.4 var(--sans);color:var(--print-dim)}
+.cmp-col h3{margin:0 0 .6rem;font:400 var(--step-0)/1.25 var(--sans)}
+.cmp-col h3 em{display:block;font-style:italic;font:italic 400 var(--step--1)/1.4 var(--serif);color:var(--print-dim)}
+.cmp-col h3 span{font:400 var(--step-0)/1.25 var(--sans);color:var(--gold)}
 .cmp-plates{display:grid;grid-template-columns:1fr 1fr;gap:.4rem}
 .cmp-cell{
   background:rgba(10,22,38,.4);border:1px solid rgba(159,192,220,.22);border-radius:3px;
@@ -357,7 +357,8 @@ legend{
 .tally{width:100%;border-collapse:collapse;font-size:var(--step--1);margin-top:.5rem}
 .tally th,.tally td{text-align:left;padding:.55rem .4rem;border-bottom:1px solid var(--rule)}
 .tally th{font:600 var(--step--1)/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--print-faint)}
-.tally .latin{font:italic 400 var(--step-0)/1.2 var(--serif)}
+.tally .latin{font:italic 400 var(--step--1)/1.2 var(--serif);color:var(--print-dim)}
+.tally .common{font:400 var(--step-0)/1.2 var(--sans)}
 .tally .res{font:600 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}
 .tally .res.ok{color:var(--gold)}
 .tally .res.no{color:var(--red-lift)}
@@ -1706,8 +1707,8 @@ window.WOODY.NARRATION = {};
      ============================================================= */
   var TRACKS = {
     beginner: {
-      name: 'Beginner',
-      blurb: 'You have never keyed a plant out. Start with how to look at one.',
+      name: 'Just Curious',
+      blurb: 'Never tried to identify a plant before. Start here — how to actually look at one.',
       minutes: '~14 min',
       slides: [
         { t: 'Identification is a sequence, not a memory',
@@ -1768,8 +1769,8 @@ window.WOODY.NARRATION = {};
     },
 
     intermediate: {
-      name: 'Intermediate',
-      blurb: 'You know the vocabulary. Learn to combine characters and beat the confusable pairs.',
+      name: 'Getting the Hang of It',
+      blurb: 'You know the basic terms. Now learn to tell apart the plants that get mixed up a lot.',
       minutes: '~9 min',
       slides: [
         { t: 'No single character identifies a plant',
@@ -1809,8 +1810,8 @@ window.WOODY.NARRATION = {};
     },
 
     advanced: {
-      name: 'Advanced',
-      blurb: 'You can key most of the list. Here are the residual hard problems.',
+      name: 'Show Me the Tricky Ones',
+      blurb: 'You can already name most of these. Here are the genuinely hard cases left.',
       minutes: '~5 min',
       slides: [
         { t: 'Work the discriminating character first',
@@ -1848,13 +1849,13 @@ window.WOODY.NARRATION = {};
   function TrackPicker(props) {
     return h('div', null,
       h('div', { className: 'card' },
-        h('h2', null, 'Choose a level'),
-        h('p', null, 'Each track covers the same material at a different depth. The more you already know, the shorter it gets \u2014 an advanced learner needs the hard splits, not the vocabulary.'),
+        h('h2', null, 'Pick your starting point'),
+        h('p', null, 'Same material, three depths. The more you already know, the shorter it goes \u2014 pick whichever sounds like you.'),
         h('ol', { className: 'howto' },
-          h('li', null, h('b', null, 'Pick a level below.'), ' If you are unsure, start at Beginner \u2014 it takes about fourteen minutes and you can leave at any slide.'),
+          h('li', null, h('b', null, 'Pick a level below.'), ' Not sure? Start with Just Curious \u2014 about fourteen minutes, and you can leave any time.'),
           h('li', null, h('b', null, 'Move with the Next button'), ' at the bottom of each slide, or the left and right arrow keys.'),
           h('li', null, h('b', null, 'Turn on voice-over if you want it.'), ' It reads the slide aloud. Nothing plays until you press it, and you can stop it mid-sentence.'),
-          h('li', null, h('b', null, 'Finish the last slide'), ' to go straight into practice on the same 121 specimens.')),
+          h('li', null, h('b', null, 'Finish the last slide'), ' to go straight into the game with the same 121 plants.')),
         h('div', { className: 'tracks' }, ORDER.map(function (k) {
           var t = TRACKS[k];
           return h('button', { key: k, className: 'track', onClick: function () { props.onPick(k); } },
@@ -2266,11 +2267,11 @@ window.WOODY.NARRATION = {};
   }
 
   var PANELS = [
-    { key: 'leaf', tag: 'Foliage', label: 'Foliage', cost: 0 },
+    { key: 'leaf', tag: 'Leaves', label: 'Leaves', cost: 0 },
     { key: 'bark', tag: 'Bark', label: 'Bark', cost: 15 },
-    { key: 'habit', tag: 'Habit', label: 'Habit', cost: 15 },
-    { key: 'repro', tag: 'Fruit / flower', label: 'Fruit or flower', cost: 20 },
-    { key: 'photo', tag: 'Photograph', label: 'Photograph', cost: 30, photo: true }
+    { key: 'habit', tag: 'Shape', label: 'Overall shape', cost: 15 },
+    { key: 'repro', tag: 'Fruit / flower', label: 'Fruit or flowers', cost: 20 },
+    { key: 'photo', tag: 'Photo', label: 'Real photo', cost: 30, photo: true }
   ];
   // A photograph is the strongest evidence on the plate, so it carries the
   // steepest cost — and it only appears for specimens the sidecar covers.
@@ -2300,7 +2301,7 @@ window.WOODY.NARRATION = {};
 
     if (!open) {
       return h('div', { className: 'panel locked' },
-        h('span', null, meta.label, h('br'), 'not exposed'));
+        h('span', null, meta.label, h('br'), 'not shown yet'));
     }
 
     if (meta.photo) {
@@ -2338,7 +2339,7 @@ window.WOODY.NARRATION = {};
     var kinds = ['leaf', 'bark', 'habit', 'repro'];
     function column(p, tone) {
       return h('div', { className: 'cmp-col' },
-        h('h3', null, h('em', null, p.latin), h('span', null, p.common)),
+        h('h3', null, h('span', null, p.common), h('em', null, p.latin)),
         h('div', { className: 'cmp-plates' }, kinds.map(function (k) {
           return h('div', {
             className: 'cmp-cell', key: k, role: 'img', 'aria-label': describe(k, p),
@@ -2349,16 +2350,16 @@ window.WOODY.NARRATION = {};
     return h('section', { className: 'compare', 'aria-label': 'Side-by-side comparison' },
       h('div', { className: 'cmp-grid' }, column(a), column(b)),
       rows.length ? h('table', { className: 'diff' },
-        h('caption', null, 'Characters that separate them'),
+        h('caption', null, 'What actually tells them apart'),
         h('thead', null, h('tr', null,
-          h('th', { scope: 'col' }, 'Character'),
+          h('th', { scope: 'col' }, 'Look at the'),
           h('th', { scope: 'col' }, a.common),
           h('th', { scope: 'col' }, b.common))),
         h('tbody', null, rows.map(function (r, i) {
           return h('tr', { key: i },
             h('th', { scope: 'row' }, r.label), h('td', null, r.a), h('td', null, r.b));
         })))
-        : h('p', { className: 'cn' }, 'These two share every character the plates record \u2014 separate them in the field on habitat and scale.'),
+        : h('p', { className: 'cn' }, 'These two look almost identical on paper \u2014 in real life, tell them apart by where they grow and their size.'),
       h('button', { className: 'btn btn-ghost', onClick: props.onClose }, 'Close comparison'));
   }
 
@@ -2384,25 +2385,25 @@ window.WOODY.NARRATION = {};
       }));
     }
     return h('div', { className: 'card' },
-      h('h2', null, 'How a run works'),
+      h('h2', null, 'How this game works'),
       h('ol', { className: 'howto' },
-        h('li', null, h('b', null, 'Start with foliage alone.'), ' Each specimen opens showing one drawn plate \u2014 leaves on a twig. Study the leaf shape, the margin, and how the leaves sit on the stem.'),
-        h('li', null, h('b', null, 'Name it if you can.'), ' Choose from the options, or type the name, below the plate. A correct answer on foliage alone is worth the full 100 points.'),
-        h('li', null, h('b', null, 'Reveal more only when stuck.'), ' Bark and habit cost 15 points each, fruit costs 20. The running value of the specimen is shown above those buttons, and never drops below 25.'),
-        h('li', null, h('b', null, 'Read the verdict before moving on.'), ' It lists every diagnostic character, so a miss tells you what you failed to see \u2014 and offers a side-by-side comparison with whatever you guessed instead.'),
-        h('li', null, h('b', null, 'Finish the run to see the record.'), ' Missed specimens can be drilled again immediately.')),
+        h('li', null, h('b', null, 'You start with just the leaves.'), ' Each round shows one drawn plate \u2014 leaves on a twig. Look at the leaf shape, the edge, and how the leaves sit on the stem.'),
+        h('li', null, h('b', null, 'Take your best guess.'), ' Choose from the options, or type the name, below the plate. Guessing right from the leaves alone is worth the full 100 points.'),
+        h('li', null, h('b', null, 'Stuck? Ask for another clue.'), ' Bark and shape cost 15 points each, fruit or flowers cost 20. The score you would still earn is shown above those buttons, and never drops below 25.'),
+        h('li', null, h('b', null, 'See how you did.'), ' It lists what actually gives the plant away, so a miss tells you what to look for next time \u2014 and you can see it side-by-side with what you guessed instead.'),
+        h('li', null, h('b', null, 'Finish the round to see your results.'), ' You can immediately replay anything you missed.')),
       h('p', null, 'Set the three options below, then start. Your progress is kept until you close the tab.'),
-      h('fieldset', null, h('legend', null, 'Specimens in this run'),
+      h('fieldset', null, h('legend', null, 'How many plants'),
         radios('len', len, setLen, [{ v: 10, t: '10' }, { v: 20, t: '20' }, { v: 40, t: '40' }, { v: 999, t: 'All ' + PLANTS.length }])),
-      h('fieldset', null, h('legend', null, 'Difficulty band'),
-        radios('tier', tier, setTier, [{ v: 'all', t: 'All tiers' }, { v: 'easy', t: 'Distinctive (1\u20132)' }, { v: 'hard', t: 'Confusable (2\u20133)' }])),
-      h('fieldset', null, h('legend', null, 'Determination method'),
+      h('fieldset', null, h('legend', null, 'How hard'),
+        radios('tier', tier, setTier, [{ v: 'all', t: 'Mix it up' }, { v: 'easy', t: 'Easier' }, { v: 'hard', t: 'Tricky look-alikes' }])),
+      h('fieldset', null, h('legend', null, 'How you answer'),
         radios('mode', mode, setMode, [{ v: 4, t: 'Choose from 4' }, { v: 6, t: 'Choose from 6' }, { v: 0, t: 'Type the name' }])),
-      mode === 0 ? h('fieldset', null, h('legend', null, 'Naming standard'),
-        radios('naming', naming, setNaming, [{ v: 'either', t: 'Latin or common' }, { v: 'latin', t: 'Latin binomial only' }]),
+      mode === 0 ? h('fieldset', null, h('legend', null, 'Scientific names'),
+        radios('naming', naming, setNaming, [{ v: 'either', t: 'Common name is fine' }, { v: 'latin', t: 'Show scientific names only' }]),
         h('p', { className: 'setup-note' },
-          'Common names are not a controlled vocabulary \u2014 one plant carries several and some are shared between unrelated plants. Latin-only is how the material was originally examined.')) : null,
-      h('button', { className: 'btn btn-primary', onClick: begin }, 'Start the run')
+          'Common names can be fuzzy \u2014 one plant can have several, and some names are shared between unrelated plants. Scientific-names-only is stricter, and closer to how this material was originally taught.')) : null,
+      h('button', { className: 'btn btn-primary', onClick: begin }, 'Let\u2019s play')
     );
   }
 
@@ -2416,23 +2417,23 @@ window.WOODY.NARRATION = {};
     var missed = log.filter(function (e) { return !e.ok; });
     return h('div', null,
       h('div', { className: 'card' },
-        h('h2', null, 'Run complete'),
-        h('p', null, right + ' of ' + log.length + ' determined correctly \u2014 ' + pct + '%. ' +
-          props.score + ' points earned across ' + log.length + ' plates.'),
+        h('h2', null, 'Nice work!'),
+        h('p', null, 'You got ' + right + ' of ' + log.length + ' right \u2014 ' + pct + '%. ' +
+          props.score + ' points across ' + log.length + ' plants.'),
         h('div', { style: { display: 'flex', gap: '.6rem', flexWrap: 'wrap' } },
-          h('button', { className: 'btn btn-primary', onClick: props.onAgain }, 'Run again'),
-          missed.length ? h('button', { className: 'btn btn-ghost', onClick: props.onDrill }, 'Drill the ' + missed.length + ' missed') : null)),
+          h('button', { className: 'btn btn-primary', onClick: props.onAgain }, 'Play again'),
+          missed.length ? h('button', { className: 'btn btn-ghost', onClick: props.onDrill }, 'Try the ' + missed.length + ' I missed') : null)),
       h('div', { className: 'card' },
-        h('h2', null, 'Determination record'),
+        h('h2', null, 'How you did, plant by plant'),
         h('table', { className: 'tally' },
-          h('caption', { className: 'visually-hidden' }, 'Every specimen in this run with your determination'),
+          h('caption', { className: 'visually-hidden' }, 'Every plant in this round with your guess'),
           h('thead', null, h('tr', null,
-            h('th', { scope: 'col' }, 'Specimen'), h('th', { scope: 'col' }, 'Your call'), h('th', { scope: 'col' }, 'Result'))),
+            h('th', { scope: 'col' }, 'Plant'), h('th', { scope: 'col' }, 'Your guess'), h('th', { scope: 'col' }, 'Result'))),
           h('tbody', null, log.map(function (e, i) {
             return h('tr', { key: i },
-              h('td', null, h('span', { className: 'latin' }, e.plant.latin), h('br'), e.plant.common),
+              h('td', null, h('span', { className: 'common' }, e.plant.common), h('br'), h('span', { className: 'latin' }, e.plant.latin)),
               h('td', null, e.given || '\u2014'),
-              h('td', null, h('span', { className: 'res ' + (e.ok ? 'ok' : 'no') }, e.ok ? 'correct' : 'missed')));
+              h('td', null, h('span', { className: 'res ' + (e.ok ? 'ok' : 'no') }, e.ok ? 'right' : 'missed')));
           }))))
     );
   }
@@ -2447,16 +2448,16 @@ window.WOODY.NARRATION = {};
   function ModeGate(props) {
     return h('div', { className: 'card gate' },
       h('h2', null, 'What brings you here?'),
-      h('p', null, 'The same 121 specimens either way \u2014 the difference is whether they are being explained to you or asked of you. Pick one now; you can switch at any point using the link in the header.'),
+      h('p', null, 'Ever walked past a tree or shrub in Maryland and wondered what it was? This is a free way to learn 121 of them \u2014 no signup, no app, works offline. Same 121 plants either way; pick how you want to meet them. You can switch anytime using the link in the header.'),
       h('div', { className: 'gate-grid' },
         h('button', { className: 'gate-door', onClick: function () { props.onPick('learn'); } },
           h('span', { className: 'gate-eyebrow' }, 'Guided'),
-          h('span', { className: 'gate-title' }, 'I am here to learn'),
-          h('span', { className: 'gate-blurb' }, 'A narrated slideshow that teaches the characters \u2014 arrangement, margin, venation, bark, habit \u2014 at three depths, illustrated with the same plates the trainer uses.')),
+          h('span', { className: 'gate-title' }, 'Teach me first'),
+          h('span', { className: 'gate-blurb' }, 'A friendly, narrated walkthrough of what to actually look for \u2014 leaf shape, bark, overall shape \u2014 at three depths, using the same plates the game shows you.')),
         h('button', { className: 'gate-door', onClick: function () { props.onPick('practice'); } },
-          h('span', { className: 'gate-eyebrow' }, 'Assessed'),
-          h('span', { className: 'gate-title' }, 'I am here to practise'),
-          h('span', { className: 'gate-blurb' }, 'Timed-format determination against generated plates, scored on how little evidence you needed. Three difficulty bands and free-text recall.'))));
+          h('span', { className: 'gate-eyebrow' }, 'Play'),
+          h('span', { className: 'gate-title' }, 'Just let me play'),
+          h('span', { className: 'gate-blurb' }, 'See a plant, take your best guess, get instant feedback. Peek at extra clues if you want them \u2014 fewer peeks, higher score. Pick your difficulty and how you answer.'))));
   }
 
   function App() {
@@ -2547,8 +2548,8 @@ window.WOODY.NARRATION = {};
 
     var header = h('header', { className: 'masthead' },
       h('div', null,
-        h('h1', null, 'Woody ', h('em', null, 'Ornamentals')),
-        h('p', { className: 'sub' }, 'Visual determination \u00b7 Maryland & mid-Atlantic \u00b7 ' + PLANTS.length + ' specimens')),
+        h('h1', null, 'Name That ', h('em', null, 'Plant')),
+        h('p', { className: 'sub' }, 'Trees & shrubs of Maryland \u00b7 ' + PLANTS.length + ' plants to learn')),
       mode && !run ? h('button', { className: 'linkish top', onClick: function () { setMode(null); setRun(null); } }, 'Switch mode') : null,
       run ? h('div', { className: 'strip' },
         h('div', null, 'Score', h('b', null, score)),
@@ -2571,17 +2572,17 @@ window.WOODY.NARRATION = {};
       var plant = q.plant;
       body = h('div', null,
         h('div', { className: 'accession' },
-          h('span', null, 'Accession ' + String(idx + 1).padStart(3, '0') + ' / ' + String(run.length).padStart(3, '0')),
+          h('span', null, 'Plant ' + String(idx + 1).padStart(3, '0') + ' / ' + String(run.length).padStart(3, '0')),
           h('span', { className: 'tier', 'data-t': String(plant.tier) },
-            'Tier ' + plant.tier + ' \u00b7 ' + (plant.tier === 1 ? 'distinctive' : plant.tier === 2 ? 'moderate' : 'confusable'))),
+            plant.tier === 1 ? 'Easy ID' : plant.tier === 2 ? 'Takes a look' : 'Tricky twins')),
 
         h('div', { className: 'nowdo' + (verdict ? ' quiet' : '') },
-          h('span', { className: 'lbl' }, verdict ? 'Next' : 'Do this'),
+          h('span', { className: 'lbl' }, verdict ? 'Next' : 'Your turn'),
           h('span', null, verdict
-            ? 'Read the characters below, then continue to the next specimen.'
+            ? 'Check the clues below, then move on to the next plant.'
             : (q.options
-                ? 'Study the plate, then pick the name below. Reveal more evidence only if you cannot decide.'
-                : 'Study the plate, then type the name below and press Determine. Reveal more evidence only if you cannot decide.'))),
+                ? 'Take a look, then pick the name below. Stuck? Ask for another clue.'
+                : 'Take a look, then type the name below and press Guess. Stuck? Ask for another clue.'))),
 
         h('div', { className: 'plate' },
           h('div', { className: 'plate-grid' },
@@ -2590,11 +2591,11 @@ window.WOODY.NARRATION = {};
             }))),
 
         h('div', { className: 'evhead' },
-          h('h3', null, 'Stuck? Expose more evidence'),
+          h('h3', null, 'Stuck? Ask for another clue'),
           h('span', { className: 'worth', 'aria-live': 'polite' },
-            verdict ? '\u2014' : 'This specimen is now worth ' + Math.max(25, 100 - penalty()) + ' points')),
+            verdict ? '\u2014' : 'Guess now and score ' + Math.max(25, 100 - penalty()) + ' points')),
 
-        h('div', { className: 'evidence', role: 'group', 'aria-label': 'Expose additional evidence' },
+        h('div', { className: 'evidence', role: 'group', 'aria-label': 'Ask for another clue' },
           panelsFor(plant).filter(function (m) { return m.cost > 0; }).map(function (m) {
             return h('button', {
               key: m.key, type: 'button', className: 'ev-btn', disabled: !!verdict,
@@ -2604,7 +2605,7 @@ window.WOODY.NARRATION = {};
           })),
 
         h('div', { className: 'determination' },
-          h('span', { className: 'det-label', id: 'detlab' }, 'Determination'),
+          h('span', { className: 'det-label', id: 'detlab' }, 'Your guess'),
           q.options
             ? h('div', { className: 'options', role: 'group', 'aria-labelledby': 'detlab' },
                 q.options.map(function (o) {
@@ -2614,9 +2615,9 @@ window.WOODY.NARRATION = {};
                     else if (!verdict.ok && norm(o.latin) === norm(verdict.given || '')) cls += ' wrong';
                   }
                   return h('button', { key: o.id, type: 'button', className: cls, disabled: !!verdict, onClick: function () { choose(o); } },
-                    h('span', { className: 'latin' }, o.latin),
                     h('span', { className: 'common' }, o.common),
-                    verdict && o.id === plant.id ? h('span', { className: 'mark' }, 'correct determination') : null);
+                    h('span', { className: 'latin' }, o.latin),
+                    verdict && o.id === plant.id ? h('span', { className: 'mark' }, 'that\u2019s the one') : null);
                 }))
             : h('div', { className: 'recall' },
                 h('label', { className: 'visually-hidden', htmlFor: 'recall' }, 'Type the Latin binomial or common name'),
@@ -2626,22 +2627,22 @@ window.WOODY.NARRATION = {};
                   onChange: function (ev) { setTyped(ev.target.value); },
                   onKeyDown: function (ev) { if (ev.key === 'Enter') submitTyped(); }
                 }),
-                h('button', { className: 'btn btn-primary', disabled: !!verdict, onClick: submitTyped }, 'Determine'),
+                h('button', { className: 'btn btn-primary', disabled: !!verdict, onClick: submitTyped }, 'Guess'),
                 h('span', { className: 'hintline' }, latinOnly
-                  ? 'Latin binomial only. Minor misspellings are accepted; genus alone is not.'
-                  : 'Latin binomial or any common name the plant is honestly known by. Minor misspellings are accepted; genus alone is not.'))),
+                  ? 'Scientific name only. Small misspellings are fine; the genus alone is not enough.'
+                  : 'Scientific name or any common name the plant is honestly known by. Small misspellings are fine; the genus alone is not enough.'))),
 
         h('div', { 'aria-live': 'polite' },
           verdict ? h('div', { className: 'verdict' + (verdict.ok ? '' : ' miss') },
             h('h2', { tabIndex: -1, ref: vRef },
-              (verdict.ok ? 'Correct \u2014 ' : 'Missed \u2014 ') , h('em', null, plant.latin)),
-            h('p', { className: 'cn' }, plant.common + ' \u00b7 ' + plant.fam +
+              (verdict.ok ? 'Got it \u2014 ' : 'Not quite \u2014 ') , plant.common),
+            h('p', { className: 'cn' }, h('em', null, plant.latin), ' \u00b7 ' + plant.fam +
               (verdict.ok ? ' \u00b7 ' + verdict.pts + ' points' : '')),
             verdict.near ? h('p', { className: 'cn' }, verdict.near) : null,
             h('dl', null,
-              h('dt', null, 'Foliage'), h('dd', null, describe('leaf', plant)),
+              h('dt', null, 'Leaves'), h('dd', null, describe('leaf', plant)),
               h('dt', null, 'Bark'), h('dd', null, describe('bark', plant)),
-              h('dt', null, 'Habit'), h('dd', null, describe('habit', plant)),
+              h('dt', null, 'Shape'), h('dd', null, describe('habit', plant)),
               h('dt', null, 'Fruit'), h('dd', null, describe('repro', plant)),
               invasiveNote(plant) ? h('dt', null, 'Status') : null,
               invasiveNote(plant) ? h('dd', null, invasiveNote(plant)) : null,
@@ -2655,10 +2656,10 @@ window.WOODY.NARRATION = {};
               (!verdict.ok && verdict.calledPlant) ? h('button', {
                 className: 'btn btn-ghost',
                 onClick: function () { setCmp(cmp ? null : { a: verdict.calledPlant, b: plant }); }
-              }, cmp ? 'Hide comparison' : 'Compare side by side') : null,
+              }, cmp ? 'Hide comparison' : 'These two get mixed up — compare them') : null,
               h('button', { className: 'btn btn-primary', onClick: next },
-                idx + 1 < run.length ? 'Next specimen' : 'See the record'),
-              h('button', { className: 'btn btn-ghost', onClick: function () { setRun(null); } }, 'End run')),
+                idx + 1 < run.length ? 'Next plant' : 'See how I did'),
+              h('button', { className: 'btn btn-ghost', onClick: function () { setRun(null); } }, 'Stop here')),
             cmp ? h(Compare, { a: cmp.a, b: cmp.b, onClose: function () { setCmp(null); } }) : null) : null)
       );
     }
@@ -2666,12 +2667,12 @@ window.WOODY.NARRATION = {};
     return h('div', { className: 'shell' }, header,
       h('main', { id: 'main' }, body),
       h('p', { className: 'footnote' },
-        'Drawn plates are generated from morphological specs \u2014 diagnostic character is drawn, not depicted. ' +
-        'Photographs, where present, come from the photos.js sidecar and carry their own credit and licence. ' +
-        'Every panel carries a text description of the same characters. Runs are held in sessionStorage ' +
-        'and clear when the tab closes. The species list reflects a 1988 mid-Atlantic ornamental horticulture ' +
-        'curriculum; eleven of the 121 specimens are flagged with a current invasive-species status in their ' +
-        'verdict card, since several were standard nursery stock at the time and are regulated or discouraged today.'),
+        'Every plate here is drawn from the plant\u2019s real characters, not traced from a photo. ' +
+        'Real photos, where available, come from the photos.js sidecar and carry their own credit and licence. ' +
+        'Every image also has a plain-text description for screen readers. Your progress is kept in this browser tab ' +
+        'and clears when you close it \u2014 nothing is uploaded anywhere. This list started as a 1988 Maryland ' +
+        'horticulture course; eleven of the 121 plants are flagged as invasive or discouraged in Maryland today, ' +
+        'even though they were standard nursery stock back then.'),
       h('p', { className: 'footnote' },
         h('a', { href: './case-study.html', style: { color: 'var(--gold)' } }, 'How this was built \u2192'),
         ' \u00b7 ',
