@@ -10,14 +10,14 @@
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>Learning Dashboard | John Crawford — LinkedIn Learning &amp; Lynda.com History</title>
-<meta name="description" content="John Crawford's continuous-learning record on LinkedIn Learning (formerly Lynda.com) — searchable course history with verified certificates in instructional design, AI, and creative tools." />
+<title>Learning &amp; Credentials | John Crawford</title>
+<meta name="description" content="John Crawford's verified professional-development record — degrees, honor societies, software certifications, and course history across Lynda.com, LinkedIn Learning, Adobe, and Capella University." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://johntcrawford.com/learning/" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://johntcrawford.com/learning/" />
-<meta property="og:title" content="Learning Dashboard | John Crawford" />
-<meta property="og:description" content="Searchable LinkedIn Learning / Lynda.com course history with verified certificates." />
+<meta property="og:title" content="Learning & Credentials | John Crawford" />
+<meta property="og:description" content="Searchable, verified record of degrees, certifications, and course history spanning 2019 to today." />
 <meta name="theme-color" content="#F0A500" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#0F1B2D" media="(prefers-color-scheme: dark)" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,70 +28,94 @@
 :root{
   --bg:#F7F4EE;--bg2:#EDE9E0;--fg:#111111;--fg2:#4A4035;--accent:#B87D00;--accent-light:#FEF3D0;--cta:#CE1126;--border:#D5CEBC;--card:#FFFFFF;
   --serif:'DM Serif Display',Georgia,serif;--sans:'Plus Jakarta Sans',system-ui,sans-serif;--mono:'DM Mono','Courier New',monospace;
-  --nav-h:64px;--px:20px;
+  --nav-h:60px;--px:16px;
 }
 [data-dark="true"]{--bg:#0F1B2D;--bg2:#162236;--fg:#F7F4EE;--fg2:#C8B99A;--accent:#F0A500;--accent-light:#2A1F00;--cta:#E8253D;--border:#243450;--card:#162236;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--fg);font-family:var(--sans);line-height:1.6;transition:background .2s,color .2s;min-height:100vh;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);line-height:1.6;transition:background .2s,color .2s;min-height:100vh;overflow-x:hidden;}
 a{color:inherit;}
 ::selection{background:var(--accent);color:var(--bg);}
 .skip-link{position:absolute;left:-9999px;top:0;background:var(--accent);color:var(--bg);padding:10px 16px;z-index:200;}
 .skip-link:focus{left:12px;top:12px;}
 
-nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);padding:0 var(--px);background:var(--bg);border-bottom:1px solid var(--border);}
-.nav-logo{font-family:var(--serif);font-size:1.1rem;}
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);padding:0 var(--px);background:var(--bg);border-bottom:1px solid var(--border);gap:8px;}
+.nav-logo{font-family:var(--serif);font-size:1rem;flex:0 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .nav-logo a{text-decoration:none;}
-.nav-right{display:flex;align-items:center;gap:16px;}
-.nav-right a{font-size:.78rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--fg2);text-decoration:none;}
+.nav-right{display:flex;align-items:center;gap:10px;flex:0 0 auto;}
+.nav-right a{font-size:.74rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--fg2);text-decoration:none;min-height:44px;display:none;align-items:center;}
 .nav-right a:hover{color:var(--accent);}
-.dark-toggle{background:none;border:1px solid var(--border);color:var(--fg);border-radius:20px;padding:6px 14px;font-family:var(--sans);font-size:.78rem;cursor:pointer;min-height:36px;}
+.dark-toggle{background:none;border:1px solid var(--border);color:var(--fg);border-radius:20px;padding:8px 12px;font-family:var(--sans);font-size:.74rem;cursor:pointer;min-height:40px;min-width:40px;}
 .dark-toggle:hover{border-color:var(--accent);color:var(--accent);}
+@media (min-width:560px){.nav-right a{display:flex;}}
 
-.hero{padding:56px var(--px) 40px;max-width:1080px;margin:0 auto;}
-.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
-h1{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,5vw,3rem);line-height:1.1;margin-bottom:16px;}
-.hero p{color:var(--fg2);max-width:640px;font-size:1.02rem;}
-.hero-note{margin-top:12px;font-size:.85rem;color:var(--fg2);border-left:2px solid var(--accent);padding-left:12px;}
+.hero{padding:36px var(--px) 28px;max-width:1080px;margin:0 auto;}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(1.75rem,7vw,2.75rem);line-height:1.12;margin-bottom:14px;}
+.hero p{color:var(--fg2);max-width:680px;font-size:.98rem;}
+.hero-note{margin-top:12px;font-size:.82rem;color:var(--fg2);border-left:2px solid var(--accent);padding-left:12px;}
 
-.stats-row{max-width:1080px;margin:0 auto;padding:0 var(--px) 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;}
-.stat-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;}
-.stat-num{font-family:var(--serif);font-size:1.9rem;color:var(--accent);}
-.stat-label{font-size:.78rem;color:var(--fg2);text-transform:uppercase;letter-spacing:.05em;margin-top:4px;}
+.featured-section{max-width:1080px;margin:0 auto;padding:0 var(--px) 28px;}
+.featured-label{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg2);margin-bottom:10px;}
+.featured-scroll{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.featured-scroll::-webkit-scrollbar{display:none;}
+.featured-card{scroll-snap-align:start;flex:0 0 auto;width:250px;background:linear-gradient(155deg,var(--card),var(--bg2));border:1px solid var(--accent);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:8px;}
+.featured-kind{font-family:var(--mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);}
+.featured-title{font-family:var(--serif);font-size:1.05rem;line-height:1.25;}
+.featured-issuer{font-size:.78rem;color:var(--fg2);}
+.featured-date{font-size:.72rem;color:var(--fg2);font-family:var(--mono);margin-top:auto;}
+.featured-link{font-size:.78rem;font-weight:600;color:var(--accent);text-decoration:none;min-height:32px;display:inline-flex;align-items:center;}
 
-.chart-section{max-width:1080px;margin:0 auto;padding:0 var(--px) 40px;}
-.chart-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;}
-.chart-card h2{font-family:var(--serif);font-weight:400;font-size:1.2rem;margin-bottom:16px;}
-.bar-row{display:grid;grid-template-columns:200px 1fr auto;align-items:center;gap:12px;margin-bottom:12px;font-size:.86rem;}
-.bar-track{background:var(--bg2);border-radius:6px;height:10px;overflow:hidden;}
+.stats-row{max-width:1080px;margin:0 auto;padding:0 var(--px) 28px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;}
+.stat-num{font-family:var(--serif);font-size:1.6rem;color:var(--accent);}
+.stat-label{font-size:.72rem;color:var(--fg2);text-transform:uppercase;letter-spacing:.04em;margin-top:2px;}
+@media (min-width:560px){.stats-row{grid-template-columns:repeat(4,1fr);}.stat-card{padding:18px;}.stat-num{font-size:1.9rem;}}
+
+.chart-section{max-width:1080px;margin:0 auto;padding:0 var(--px) 28px;}
+.chart-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;}
+.chart-card h2{font-family:var(--serif);font-weight:400;font-size:1.1rem;margin-bottom:14px;}
+.bar-row{display:grid;grid-template-columns:1fr;gap:4px;margin-bottom:12px;font-size:.82rem;}
+.bar-row-head{display:flex;justify-content:space-between;gap:8px;}
+.bar-val{font-family:var(--mono);color:var(--fg2);font-size:.74rem;white-space:nowrap;}
+.bar-track{background:var(--bg2);border-radius:6px;height:8px;overflow:hidden;}
 .bar-fill{height:100%;background:var(--accent);border-radius:6px;transition:width .5s ease;}
-.bar-val{font-family:var(--mono);color:var(--fg2);font-size:.78rem;}
+@media (min-width:640px){.bar-row{grid-template-columns:180px 1fr auto;align-items:center;}.bar-row-head{display:contents;}}
 
-.controls{max-width:1080px;margin:0 auto;padding:0 var(--px) 20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
-.search-input{flex:1;min-width:220px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--fg);font-family:var(--sans);font-size:.92rem;}
+.controls-wrap{max-width:1080px;margin:0 auto;padding:0 var(--px) 14px;}
+.controls{display:flex;flex-direction:column;gap:10px;}
+.search-input{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px 14px;color:var(--fg);font-family:var(--sans);font-size:1rem;width:100%;min-height:44px;}
 .search-input:focus{outline:2px solid var(--accent);outline-offset:1px;}
-.filter-chip{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:8px 16px;font-size:.8rem;cursor:pointer;color:var(--fg2);min-height:38px;}
+.select-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.select-row select{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:11px 10px;color:var(--fg);font-family:var(--sans);font-size:.84rem;min-height:44px;width:100%;}
+@media (min-width:640px){.controls{flex-direction:row;flex-wrap:wrap;align-items:center;}.search-input{flex:1;min-width:220px;width:auto;}.select-row{display:contents;}.select-row select{width:auto;}}
+
+.chip-row{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.chip-row::-webkit-scrollbar{display:none;}
+.filter-chip{flex:0 0 auto;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:9px 15px;font-size:.78rem;cursor:pointer;color:var(--fg2);min-height:40px;white-space:nowrap;}
 .filter-chip.active{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:600;}
 .filter-chip:hover{border-color:var(--accent);}
-.sort-select{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 12px;color:var(--fg);font-family:var(--sans);font-size:.85rem;}
 
-.results-count{max-width:1080px;margin:0 auto;padding:0 var(--px) 12px;font-size:.82rem;color:var(--fg2);font-family:var(--mono);}
+.results-count{max-width:1080px;margin:0 auto;padding:0 var(--px) 12px;font-size:.8rem;color:var(--fg2);font-family:var(--mono);}
 
-.course-grid{max-width:1080px;margin:0 auto;padding:0 var(--px) 60px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;}
-.course-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px;}
+.course-grid{max-width:1080px;margin:0 auto;padding:0 var(--px) 60px;display:grid;grid-template-columns:1fr;gap:14px;}
+@media (min-width:600px){.course-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));}}
+.course-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:9px;}
 .course-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
-.course-title{font-family:var(--serif);font-size:1.08rem;line-height:1.3;}
-.course-badge{flex:0 0 auto;font-size:.68rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.05em;background:var(--accent-light);color:var(--accent);padding:3px 8px;border-radius:6px;white-space:nowrap;}
-.course-meta{font-size:.8rem;color:var(--fg2);font-family:var(--mono);}
-.platform-tag{display:inline-block;width:fit-content;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--cta);}
+.course-title{font-family:var(--serif);font-size:1.05rem;line-height:1.3;}
+.course-badge{flex:0 0 auto;font-size:.66rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.04em;background:var(--accent-light);color:var(--accent);padding:3px 8px;border-radius:6px;white-space:nowrap;}
+.course-meta{font-size:.78rem;color:var(--fg2);font-family:var(--mono);}
+.platform-tag{display:inline-block;width:fit-content;font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--cta);}
 .skill-tags{display:flex;flex-wrap:wrap;gap:6px;}
-.skill-tag{font-size:.72rem;background:var(--bg2);color:var(--fg2);padding:3px 9px;border-radius:12px;}
-.course-footer{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--border);}
-.cert-link{font-size:.8rem;font-weight:600;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:4px;min-height:32px;}
+.skill-tag{font-size:.7rem;background:var(--bg2);color:var(--fg2);padding:3px 9px;border-radius:12px;}
+.course-footer{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;padding-top:10px;border-top:1px solid var(--border);flex-wrap:wrap;}
+.cert-link{font-size:.8rem;font-weight:600;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:4px;min-height:36px;}
 .cert-link:hover{text-decoration:underline;}
-.cert-id{font-size:.68rem;color:var(--fg2);font-family:var(--mono);opacity:.7;}
+.cert-id{font-size:.66rem;color:var(--fg2);font-family:var(--mono);opacity:.7;}
+.cert-note{font-size:.74rem;color:var(--fg2);font-style:italic;}
+.cert-link--verified{color:var(--fg2);cursor:default;}
 .no-results{max-width:1080px;margin:0 auto;padding:20px var(--px) 60px;color:var(--fg2);}
 
-footer{border-top:1px solid var(--border);padding:28px var(--px);text-align:center;font-size:.8rem;color:var(--fg2);}
+footer{border-top:1px solid var(--border);padding:24px var(--px);text-align:center;font-size:.78rem;color:var(--fg2);}
 footer a{color:var(--accent);text-decoration:none;}
 footer a:hover{text-decoration:underline;}
 
@@ -105,16 +129,21 @@ footer a:hover{text-decoration:underline;}
   <div class="nav-right">
     <a href="/#projects">Portfolio</a>
     <a href="/#contact">Contact</a>
-    <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode">◑ Theme</button>
+    <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode">◑</button>
   </div>
 </nav>
 
 <main id="main">
   <div class="hero">
-    <div class="eyebrow">Continuous Learning Record</div>
-    <h1>LinkedIn Learning<br><em style="font-style:italic;">dashboard.</em></h1>
-    <p>A searchable, verified log of course completions on LinkedIn Learning — the platform formerly known as Lynda.com — spanning 2019 to today. Every entry links to the original certificate PDF issued by the platform.</p>
-    <p class="hero-note">Lynda.com rebranded to LinkedIn Learning in 2017. Courses completed before the rebrand are labeled Lynda.com below; everything since carries LinkedIn Learning branding. A few adjacent, non-LinkedIn-Learning credentials appear under "Other Certifications" for a fuller professional-development picture.</p>
+    <div class="eyebrow">Verified Professional Development</div>
+    <h1>Learning &amp;<br><em style="font-style:italic;">credentials.</em></h1>
+    <p>A searchable record of formal education, honor societies, software certifications, and course completions — spanning Capella University, Adobe, Lynda.com, LinkedIn Learning, and other platforms from 2015 to today. Every entry links to its original certificate or transcript.</p>
+    <p class="hero-note">Lynda.com rebranded to LinkedIn Learning in 2017; entries from either era are labeled by their original platform. Degrees, honor-society inductions, and software certifications sit alongside course history rather than beneath it — no single platform is treated as primary.</p>
+  </div>
+
+  <div class="featured-section" id="featuredSection" style="display:none;">
+    <div class="featured-label">Highlighted Credentials</div>
+    <div class="featured-scroll" id="featuredScroll"></div>
   </div>
 
   <div class="stats-row" id="statsRow"></div>
@@ -126,23 +155,33 @@ footer a:hover{text-decoration:underline;}
     </div>
   </div>
 
-  <div class="controls">
-    <input type="search" class="search-input" id="searchInput" placeholder="Search courses, skills, or instructors…" aria-label="Search courses" />
-    <select class="sort-select" id="sortSelect" aria-label="Sort courses">
-      <option value="date-desc">Newest first</option>
-      <option value="date-asc">Oldest first</option>
-      <option value="title-asc">Title A–Z</option>
-      <option value="duration-desc">Longest first</option>
-    </select>
+  <div class="controls-wrap">
+    <div class="controls">
+      <input type="search" class="search-input" id="searchInput" placeholder="Search credentials, skills, issuers…" aria-label="Search credentials" />
+      <div class="select-row">
+        <select class="sort-select" id="sortSelect" aria-label="Sort credentials">
+          <option value="date-desc">Newest first</option>
+          <option value="date-asc">Oldest first</option>
+          <option value="title-asc">Title A–Z</option>
+          <option value="category-asc">By category</option>
+          <option value="duration-desc">Longest first</option>
+        </select>
+        <select class="sort-select" id="platformSelect" aria-label="Filter by platform or issuer">
+          <option value="All">All issuers</option>
+        </select>
+      </div>
+    </div>
   </div>
-  <div class="controls" id="filterChips" role="group" aria-label="Filter by category"></div>
+  <div class="controls-wrap">
+    <div class="chip-row" id="filterChips" role="group" aria-label="Filter by category"></div>
+  </div>
 
   <div class="results-count" id="resultsCount"></div>
   <div class="course-grid" id="courseGrid"></div>
 </main>
 
 <footer>
-  Data verified against original LinkedIn Learning certificate PDFs · <a href="/">Back to johntcrawford.com</a> · <a href="https://www.linkedin.com/in/careerjohntcrawford/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  Data verified against original certificates &amp; transcripts · <a href="/">Back to johntcrawford.com</a> · <a href="https://www.linkedin.com/in/careerjohntcrawford/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
 </footer>
 
 <script>
@@ -167,7 +206,7 @@ function fmtDate(iso){
   return dt.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
 }
 
-var ALL = [], activeCategory = 'All';
+var ALL = [], activeCategory = 'All', activePlatform = 'All';
 
 function render(){
   var q = document.getElementById('searchInput').value.trim().toLowerCase();
@@ -176,8 +215,10 @@ function render(){
   var filtered = ALL.filter(function(c){
     var inCat = activeCategory === 'All' || c.category === activeCategory;
     if(!inCat) return false;
+    var inPlat = activePlatform === 'All' || c.platform === activePlatform;
+    if(!inPlat) return false;
     if(!q) return true;
-    var hay = (c.title+' '+c.skills.join(' ')+' '+c.instructor+' '+c.category+' '+(c.platform||'')).toLowerCase();
+    var hay = (c.title+' '+c.skills.join(' ')+' '+c.instructor+' '+c.category+' '+(c.platform||'')+' '+(c.type||'')).toLowerCase();
     return hay.indexOf(q) !== -1;
   });
 
@@ -185,19 +226,26 @@ function render(){
     switch(sortMode){
       case 'date-asc': return a.date.localeCompare(b.date);
       case 'title-asc': return a.title.localeCompare(b.title);
+      case 'category-asc': return a.category.localeCompare(b.category) || b.date.localeCompare(a.date);
       case 'duration-desc': return b.durationMinutes - a.durationMinutes;
       default: return b.date.localeCompare(a.date);
     }
   });
 
-  document.getElementById('resultsCount').textContent = filtered.length + ' of ' + ALL.length + ' courses shown';
+  document.getElementById('resultsCount').textContent = filtered.length + ' of ' + ALL.length + ' credentials shown';
 
   var grid = document.getElementById('courseGrid');
-  grid.innerHTML = '';
   if(filtered.length === 0){
-    grid.outerHTML = '<div class="no-results" id="courseGrid-empty">No courses match your search.</div>';
+    grid.innerHTML = '';
+    grid.insertAdjacentHTML('afterend', '<div class="no-results" id="courseGrid-empty">No credentials match your search.</div>');
+    grid.style.display = 'none';
     return;
   }
+  grid.style.display = 'grid';
+  var existingEmpty = document.getElementById('courseGrid-empty');
+  if(existingEmpty) existingEmpty.remove();
+
+  grid.innerHTML = '';
   filtered.forEach(function(c){
     var card = document.createElement('article');
     card.className = 'course-card';
@@ -209,9 +257,10 @@ function render(){
       '<div class="course-meta">'+fmtDate(c.date)+(c.durationMinutes>0?' · '+fmtDuration(c.durationMinutes):'')+' · '+escapeHtml(c.category)+'</div>'+
       (c.platform?'<div class="platform-tag">'+escapeHtml(c.platform)+'</div>':'')+
       '<div class="skill-tags">'+c.skills.map(function(s){return '<span class="skill-tag">'+escapeHtml(s)+'</span>';}).join('')+'</div>'+
+      (c.note?'<div class="cert-note">'+escapeHtml(c.note)+'</div>':'')+
       '<div class="course-footer">'+
-        '<a class="cert-link" href="'+encodeURI(c.pdf)+'" target="_blank" rel="noopener noreferrer">View Certificate (PDF) ↗</a>'+
-        '<span class="cert-id">ID: '+c.certId.slice(0,10)+'…</span>'+
+        (c.pdf?'<a class="cert-link" href="'+encodeURI(c.pdf)+'" target="_blank" rel="noopener noreferrer">View Certificate ↗</a>':'<span class="cert-link cert-link--verified">Verified, not published ✓</span>')+
+        (c.pdf?'<span class="cert-id">ID: '+escapeHtml(String(c.certId).slice(0,10))+'…</span>':'')+
       '</div>';
     grid.appendChild(card);
   });
@@ -223,17 +272,35 @@ function escapeHtml(s){
   });
 }
 
+function buildFeatured(){
+  var featured = ALL.filter(function(c){ return c.featured; });
+  if(!featured.length) return;
+  featured.sort(function(a,b){ return a.date.localeCompare(b.date); });
+  document.getElementById('featuredSection').style.display = '';
+  document.getElementById('featuredScroll').innerHTML = featured.map(function(c){
+    return '<div class="featured-card">'+
+      '<div class="featured-kind">'+escapeHtml(c.type)+'</div>'+
+      '<div class="featured-title">'+escapeHtml(c.title)+'</div>'+
+      '<div class="featured-issuer">'+escapeHtml(c.platform||c.instructor)+'</div>'+
+      '<div class="featured-date">'+fmtDate(c.date)+'</div>'+
+      (c.pdf?'<a class="featured-link" href="'+encodeURI(c.pdf)+'" target="_blank" rel="noopener noreferrer">View ↗</a>':'<span class="featured-link">Verified, not published ✓</span>')+
+    '</div>';
+  }).join('');
+}
+
 function buildStats(){
   var totalMin = ALL.reduce(function(s,c){return s+c.durationMinutes;},0);
   var totalHrs = (totalMin/60).toFixed(1);
   var skillSet = new Set();
   ALL.forEach(function(c){c.skills.forEach(function(s){skillSet.add(s);});});
   var years = new Set(ALL.map(function(c){return c.date.slice(0,4);}));
+  var minYear = Math.min.apply(null, Array.from(years).map(Number));
+  var maxYear = Math.max.apply(null, Array.from(years).map(Number));
   var stats = [
-    {n: ALL.length, l: 'Courses Completed'},
-    {n: totalHrs, l: 'Hours of Learning'},
+    {n: ALL.length, l: 'Credentials'},
+    {n: totalHrs, l: 'Hours Logged'},
     {n: skillSet.size, l: 'Distinct Skills'},
-    {n: years.size, l: 'Active Years'}
+    {n: minYear+'–'+maxYear, l: 'Span'}
   ];
   document.getElementById('statsRow').innerHTML = stats.map(function(s){
     return '<div class="stat-card"><div class="stat-num">'+s.n+'</div><div class="stat-label">'+s.l+'</div></div>';
@@ -245,13 +312,12 @@ function buildCategoryBars(){
   ALL.forEach(function(c){
     byCat[c.category] = (byCat[c.category]||0) + c.durationMinutes;
   });
-  var entries = Object.entries(byCat).sort(function(a,b){return b[1]-a[1];});
+  var entries = Object.entries(byCat).filter(function(e){return e[1]>0;}).sort(function(a,b){return b[1]-a[1];});
   var max = entries.length ? entries[0][1] : 1;
   document.getElementById('categoryBars').innerHTML = entries.map(function(e){
     var pct = Math.round((e[1]/max)*100);
-    return '<div class="bar-row"><span>'+escapeHtml(e[0])+'</span>'+
-      '<div class="bar-track"><div class="bar-fill" style="width:'+pct+'%"></div></div>'+
-      '<span class="bar-val">'+fmtDuration(e[1])+'</span></div>';
+    return '<div class="bar-row"><div class="bar-row-head"><span>'+escapeHtml(e[0])+'</span><span class="bar-val">'+fmtDuration(e[1])+'</span></div>'+
+      '<div class="bar-track"><div class="bar-fill" style="width:'+pct+'%"></div></div></div>';
   }).join('');
 }
 
@@ -276,14 +342,30 @@ function buildFilterChips(){
   });
 }
 
+function buildPlatformSelect(){
+  var platforms = Array.from(new Set(ALL.map(function(c){return c.platform;}).filter(Boolean))).sort();
+  var sel = document.getElementById('platformSelect');
+  platforms.forEach(function(p){
+    var opt = document.createElement('option');
+    opt.value = p; opt.textContent = p;
+    sel.appendChild(opt);
+  });
+  sel.addEventListener('change', function(){
+    activePlatform = sel.value;
+    render();
+  });
+}
+
 fetch('/learning/data.json').then(function(r){return r.json();}).then(function(data){
   ALL = data.courses;
+  buildFeatured();
   buildStats();
   buildCategoryBars();
   buildFilterChips();
+  buildPlatformSelect();
   render();
 }).catch(function(err){
-  document.getElementById('courseGrid').innerHTML = '<div class="no-results">Could not load course data.</div>';
+  document.getElementById('courseGrid').innerHTML = '<div class="no-results">Could not load credential data.</div>';
   console.error(err);
 });
 

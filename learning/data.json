@@ -483,6 +483,34 @@
       "durationMinutes": 0,
       "certId": "72891994-7644",
       "pdf": "certs/safe-4-practitioner.pdf"
+    },
+    {
+      "title": "M.S. in Education — Instructional Design for Online Learning",
+      "type": "Degree",
+      "platform": "Capella University",
+      "category": "Academic Credentials",
+      "skills": ["Instructional Design", "Distance Education", "Learning Sciences"],
+      "instructor": "Capella University",
+      "date": "2011-12-31",
+      "durationMinutes": 0,
+      "certId": "Verified via official transcript (not published — see note)",
+      "pdf": null,
+      "featured": true,
+      "note": "4.000 cumulative GPA. Transcript verified but not published publicly to protect personal information it contains (address, student ID, date of birth)."
+    },
+    {
+      "title": "B.S., Web Design",
+      "type": "Degree",
+      "platform": "Westwood College",
+      "category": "Academic Credentials",
+      "skills": ["Web Design", "Digital Media", "Graphic Design"],
+      "instructor": "Westwood College",
+      "date": "2006-07-27",
+      "durationMinutes": 0,
+      "certId": "Verified via official transcript (not published — see note)",
+      "pdf": null,
+      "featured": true,
+      "note": "3.958 cumulative GPA, Dean's List. Transcript verified but not published publicly to protect personal information it contains (student ID, SSN field)."
     }
   ]
 }
