@@ -1,12 +1,13 @@
 {
   "profile": {
     "platform": "LinkedIn Learning (formerly Lynda.com)",
-    "note": "Lynda.com rebranded to LinkedIn Learning in 2017. All certificates below carry the current LinkedIn Learning branding."
+    "note": "Lynda.com rebranded to LinkedIn Learning in 2017. Courses completed before the rebrand are labeled Lynda.com; everything since carries LinkedIn Learning branding. A few adjacent, non-LinkedIn-Learning credentials are included under \"Other Certifications\" for a fuller professional-development picture."
   },
   "courses": [
     {
       "title": "Mapping to Learn with Figma",
       "type": "Course",
+      "platform": "LinkedIn Learning",
       "category": "Design & Creative Tools",
       "skills": ["Concept Mapping", "Figma (Software)"],
       "instructor": "Head of Content Strategy, Learning",
@@ -18,6 +19,7 @@
     {
       "title": "Premiere Pro Essential Training (2022–2024)",
       "type": "Course",
+      "platform": "LinkedIn Learning",
       "category": "Design & Creative Tools",
       "skills": ["Adobe Premiere Pro"],
       "instructor": "Head of Content Strategy, Learning",
@@ -29,6 +31,7 @@
     {
       "title": "Essential Skills in Adobe Premiere Pro Professional Certificate",
       "type": "Learning Path",
+      "platform": "LinkedIn Learning",
       "category": "Design & Creative Tools",
       "skills": ["Adobe Premiere Pro"],
       "instructor": "Head of Content Strategy, Learning",
@@ -40,6 +43,7 @@
     {
       "title": "InDesign Quick Tips",
       "type": "Course",
+      "platform": "LinkedIn Learning",
       "category": "Design & Creative Tools",
       "skills": ["Adobe InDesign"],
       "instructor": "Head of Content Strategy, Learning",
@@ -51,6 +55,7 @@
     {
       "title": "Getting Started with AI Assistant in Articulate 360",
       "type": "Course",
+      "platform": "LinkedIn Learning",
       "category": "AI & Prompt Engineering",
       "skills": ["Articulate 360", "Artificial Intelligence (AI)"],
       "instructor": "Shea Hanson, Head of Learning Content Strategy",
@@ -62,6 +67,7 @@
     {
       "title": "Introduction to Conversational AI",
       "type": "Course",
+      "platform": "LinkedIn Learning",
       "category": "AI & Prompt Engineering",
       "skills": ["Generative AI", "Artificial Intelligence for Business", "Conversational AI"],
       "instructor": "Shea Hanson, Head of Learning Content Strategy",
@@ -73,6 +79,7 @@
     {
       "title": "Prompt Engineering: How to Talk to the AIs",
       "type": "Course",
+      "platform": "LinkedIn Learning",
       "category": "AI & Prompt Engineering",
       "skills": ["Generative AI", "Large Language Models (LLM)", "Artificial Intelligence (AI)"],
       "instructor": "Shea Hanson, Head of Learning Content Strategy",
@@ -84,6 +91,7 @@
     {
       "title": "Accessible Elearning in Articulate 360",
       "type": "Course",
+      "platform": "LinkedIn Learning",
       "category": "Instructional Design & eLearning",
       "skills": ["Distance Learning", "Instructional Design", "Higher Education"],
       "instructor": "Shea Hanson, Head of Learning Content Strategy",
@@ -95,6 +103,7 @@
     {
       "title": "Transform Classroom Training to E-Learning with Articulate 360",
       "type": "Course",
+      "platform": "LinkedIn Learning",
       "category": "Instructional Design & eLearning",
       "skills": ["Education", "Instructional Design", "Articulate 360"],
       "instructor": "Shea Hanson, Head of Learning Content Strategy",
@@ -106,6 +115,7 @@
     {
       "title": "Google Gemini: Get Started with Google's AI Assistant",
       "type": "Course",
+      "platform": "LinkedIn Learning",
       "category": "AI & Prompt Engineering",
       "skills": ["Artificial Intelligence (AI)", "Artificial Intelligence for Business", "Google Gemini"],
       "instructor": "Shea Hanson, Head of Learning Content Strategy",
@@ -117,6 +127,7 @@
     {
       "title": "Becoming Indistractable",
       "type": "Course",
+      "platform": "LinkedIn Learning",
       "category": "Productivity",
       "skills": ["Productivity Improvement"],
       "instructor": "Shea Hanson, Head of Learning Content Strategy",
@@ -128,6 +139,7 @@
     {
       "title": "Claude Code 101: From Prompt to Product",
       "type": "Course",
+      "platform": "LinkedIn Learning",
       "category": "AI & Prompt Engineering",
       "skills": ["Anthropic Claude", "Software Development", "Artificial Intelligence (AI)"],
       "instructor": "Shea Hanson, Head of Learning Content Strategy",
@@ -139,6 +151,7 @@
     {
       "title": "Applying Learning Science to Training and Development",
       "type": "Course",
+      "platform": "LinkedIn Learning",
       "category": "Instructional Design & eLearning",
       "skills": ["Training and Development (HR)", "Learning Sciences", "Employee Learning & Development"],
       "instructor": "Shea Hanson, Head of Learning Content Strategy",
@@ -146,6 +159,330 @@
       "durationMinutes": 35,
       "certId": "72ceecb56efff9cdf29e2b61380bde36893ff121138bd2d99d0f1978465dd4d0",
       "pdf": "certs/applying-learning-science.pdf"
+    },
+    {
+      "title": "Azure DevOps First Look",
+      "type": "Course",
+      "platform": "Lynda.com",
+      "category": "Microsoft & Cloud Platforms",
+      "skills": ["Azure DevOps", "Cloud Platforms"],
+      "instructor": "Lynda.com",
+      "date": "2019-07-01",
+      "durationMinutes": 18,
+      "certId": "4DDA0C5F16DA45B2AB307242EA2277DC",
+      "pdf": "certs/azure-devops-first-look.pdf"
+    },
+    {
+      "title": "Box.com Essential Training",
+      "type": "Course",
+      "platform": "Lynda.com",
+      "category": "Web & Business Tools",
+      "skills": ["Box (Software)", "Cloud Storage"],
+      "instructor": "Lynda.com",
+      "date": "2019-05-01",
+      "durationMinutes": 186,
+      "certId": "77EB11933ABF416989A7A171B40773A5",
+      "pdf": "certs/boxcom-essential-training.pdf"
+    },
+    {
+      "title": "Google Analytics Essential Training",
+      "type": "Course",
+      "platform": "Lynda.com",
+      "category": "Web & Business Tools",
+      "skills": ["Google Analytics", "Web Analytics"],
+      "instructor": "Lynda.com",
+      "date": "2019-11-01",
+      "durationMinutes": 156,
+      "certId": "40FC8B00D1AB41448043F2DAF67C1208",
+      "pdf": "certs/google-analytics-essential-training.pdf"
+    },
+    {
+      "title": "Learning Microsoft Stream",
+      "type": "Course",
+      "platform": "Lynda.com",
+      "category": "Microsoft & Cloud Platforms",
+      "skills": ["Microsoft Stream", "Video Management"],
+      "instructor": "Lynda.com",
+      "date": "2019-12-01",
+      "durationMinutes": 60,
+      "certId": "7EDFBFE14D854A5AA70F3AD2D2C73F75",
+      "pdf": "certs/learning-microsoft-stream.pdf"
+    },
+    {
+      "title": "SharePoint Quick Tips",
+      "type": "Course",
+      "platform": "Lynda.com",
+      "category": "Microsoft & Cloud Platforms",
+      "skills": ["Microsoft SharePoint"],
+      "instructor": "Lynda.com",
+      "date": "2019-07-01",
+      "durationMinutes": 26,
+      "certId": "98395B7228B941A6B2C5B5720325320B",
+      "pdf": "certs/sharepoint-quick-tips.pdf"
+    },
+    {
+      "title": "SharePoint Workflow Automation: Nintex",
+      "type": "Course",
+      "platform": "Lynda.com",
+      "category": "Microsoft & Cloud Platforms",
+      "skills": ["Microsoft SharePoint", "Nintex", "Workflow Automation"],
+      "instructor": "Lynda.com",
+      "date": "2020-01-01",
+      "durationMinutes": 75,
+      "certId": "FFEABA96D19440339EA3507F57BE4BCA",
+      "pdf": "certs/sharepoint-workflow-automation-nintex.pdf"
+    },
+    {
+      "title": "Developing a Style Guide",
+      "type": "Course",
+      "platform": "Lynda.com",
+      "category": "Productivity",
+      "skills": ["Style Guides", "Content Strategy"],
+      "instructor": "Lynda.com",
+      "date": "2020-02-01",
+      "durationMinutes": 22,
+      "certId": "68101079A5DE4AADBBD118B805C47008",
+      "pdf": "certs/developing-a-style-guide.pdf"
+    },
+    {
+      "title": "Office 365 New Features",
+      "type": "Course",
+      "platform": "Lynda.com",
+      "category": "Microsoft & Cloud Platforms",
+      "skills": ["Microsoft Office 365"],
+      "instructor": "Lynda.com",
+      "date": "2020-03-01",
+      "durationMinutes": 45,
+      "certId": "83A8BBC916DB43E1A6BFB8D0850F739C",
+      "pdf": "certs/office-365-new-features.pdf"
+    },
+    {
+      "title": "Acrobat DC: Creating Forms",
+      "type": "Course",
+      "platform": "Lynda.com",
+      "category": "Design & Creative Tools",
+      "skills": ["Adobe Acrobat DC", "Forms"],
+      "instructor": "Lynda.com",
+      "date": "2020-03-01",
+      "durationMinutes": 110,
+      "certId": "9A5D5964665F46BCBAFC2D1770DF2663",
+      "pdf": "certs/acrobat-dc-creating-forms.pdf"
+    },
+    {
+      "title": "Power BI: Dashboards for Beginners",
+      "type": "Course",
+      "platform": "LinkedIn Learning",
+      "category": "Microsoft & Cloud Platforms",
+      "skills": ["Microsoft Power BI", "Dashboards"],
+      "instructor": "Head of Content Strategy, Learning",
+      "date": "2022-09-17",
+      "durationMinutes": 33,
+      "certId": "Af5YSRZ1p38maIcEMJdwb1D_Hs13",
+      "pdf": "certs/power-bi-dashboards-for-beginners.pdf"
+    },
+    {
+      "title": "Using Power BI with Excel",
+      "type": "Course",
+      "platform": "LinkedIn Learning",
+      "category": "Microsoft & Cloud Platforms",
+      "skills": ["Microsoft Power BI", "Microsoft Excel"],
+      "instructor": "Head of Content Strategy, Learning",
+      "date": "2022-09-18",
+      "durationMinutes": 48,
+      "certId": "AUJQAHS_PGkK1fP3tCVbQ_2Ku2VW",
+      "pdf": "certs/using-power-bi-with-excel.pdf"
+    },
+    {
+      "title": "Power Apps: Building Data-Driven Apps",
+      "type": "Course",
+      "platform": "LinkedIn Learning",
+      "category": "Microsoft & Cloud Platforms",
+      "skills": ["Microsoft Power Apps", "Low-Code Development"],
+      "instructor": "Head of Content Strategy, Learning",
+      "date": "2023-01-02",
+      "durationMinutes": 121,
+      "certId": "AZ6NdJZnlXl5aNRut7VtIB-H4ECx",
+      "pdf": "certs/power-apps-building-data-driven-apps.pdf"
+    },
+    {
+      "title": "Live Video Streaming: Essential Skills",
+      "type": "Course",
+      "platform": "LinkedIn Learning",
+      "category": "Video & Live Production",
+      "skills": ["Live Video Streaming"],
+      "instructor": "Head of Content Strategy, Learning",
+      "date": "2023-12-13",
+      "durationMinutes": 67,
+      "certId": "f636ff62c526487884f371670c042535a8f9b8689e7405787a35359206b61e10",
+      "pdf": "certs/live-video-streaming-essential-skills.pdf"
+    },
+    {
+      "title": "Build Your Own Professional Training: Quick Start Guide",
+      "type": "Course",
+      "platform": "LinkedIn Learning",
+      "category": "Productivity",
+      "skills": ["Corporate Training"],
+      "instructor": "Head of Content Strategy, Learning",
+      "date": "2024-01-18",
+      "durationMinutes": 36,
+      "certId": "7cd5d3b4d7402833d58fe47caaddf53d14d958cd75d45e86ae17163e4e5b9935",
+      "pdf": "certs/build-your-own-professional-training.pdf"
+    },
+    {
+      "title": "Instructional Design Essentials: Models of ID",
+      "type": "Course",
+      "platform": "LinkedIn Learning",
+      "category": "Instructional Design & eLearning",
+      "skills": ["Instructional Design"],
+      "instructor": "Head of Content Strategy, Learning",
+      "date": "2024-01-18",
+      "durationMinutes": 45,
+      "certId": "71efeb042a04da5770772ecb08837e6fa76b67534793a149a86d5223c101aab3",
+      "pdf": "certs/instructional-design-essentials-models-of-id.pdf"
+    },
+    {
+      "title": "Elearning Essentials: Instructional Design",
+      "type": "Course",
+      "platform": "LinkedIn Learning",
+      "category": "Instructional Design & eLearning",
+      "skills": ["Instructional Design", "E-Learning"],
+      "instructor": "Head of Content Strategy, Learning",
+      "date": "2024-01-20",
+      "durationMinutes": 69,
+      "certId": "0f966514dbcfca6f364f57da8b9663ef0c71140531e9570c0e364d909a927b92",
+      "pdf": "certs/elearning-essentials-instructional-design.pdf"
+    },
+    {
+      "title": "Creating Fun and Engaging Video Training: The Why",
+      "type": "Course",
+      "platform": "LinkedIn Learning",
+      "category": "Video & Live Production",
+      "skills": ["Employee Training", "Video Production"],
+      "instructor": "Head of Content Strategy, Learning",
+      "date": "2024-01-20",
+      "durationMinutes": 21,
+      "certId": "d864bf806fc03be529641a7256f87fa63767510fb53f261d02e5e9baed498d4b",
+      "pdf": "certs/video-training-the-why.pdf"
+    },
+    {
+      "title": "Training with Stories",
+      "type": "Course",
+      "platform": "LinkedIn Learning",
+      "category": "Productivity",
+      "skills": ["Corporate Training"],
+      "instructor": "Head of Content Strategy, Learning",
+      "date": "2024-01-20",
+      "durationMinutes": 33,
+      "certId": "81ba8861bdb2f25ba6f327acf972e686d6dc919e1954d4cfc5e868e40f790ab4",
+      "pdf": "certs/training-with-stories.pdf"
+    },
+    {
+      "title": "Components of Effective Learning",
+      "type": "Course",
+      "platform": "LinkedIn Learning",
+      "category": "Instructional Design & eLearning",
+      "skills": ["Instructional Design"],
+      "instructor": "Head of Content Strategy, Learning",
+      "date": "2024-01-21",
+      "durationMinutes": 51,
+      "certId": "233054234ff08114828d38ee1c9b6202061f658768093d35eea00e95329f18ac",
+      "pdf": "certs/components-of-effective-learning.pdf"
+    },
+    {
+      "title": "Creating Fun and Engaging Video Training: The How",
+      "type": "Course",
+      "platform": "LinkedIn Learning",
+      "category": "Video & Live Production",
+      "skills": ["Training and Development (HR)", "Video Production"],
+      "instructor": "Head of Content Strategy, Learning",
+      "date": "2024-01-21",
+      "durationMinutes": 29,
+      "certId": "8dac6cb80080f24eab0cb03f7fd13d0dd2ab3845ad8aa255329f9be8f77186a5",
+      "pdf": "certs/video-training-the-how.pdf"
+    },
+    {
+      "title": "Elearning Essentials: Storyboarding",
+      "type": "Course",
+      "platform": "LinkedIn Learning",
+      "category": "Instructional Design & eLearning",
+      "skills": ["E-Learning Development"],
+      "instructor": "Head of Content Strategy, Learning",
+      "date": "2024-01-22",
+      "durationMinutes": 65,
+      "certId": "f08775aa3240d8c01f1cebc9dfbafa5b66db7be861f7d0fbe68d2e83dd5a25b6",
+      "pdf": "certs/elearning-essentials-storyboarding.pdf"
+    },
+    {
+      "title": "Designing the Learner's Journey",
+      "type": "Course",
+      "platform": "LinkedIn Learning",
+      "category": "Instructional Design & eLearning",
+      "skills": ["Instructional Design"],
+      "instructor": "Head of Content Strategy, Learning",
+      "date": "2024-01-23",
+      "durationMinutes": 67,
+      "certId": "1bfd63ed2080d82944853bc90042ef439d9008238e574748033c79fc06345466",
+      "pdf": "certs/designing-the-learners-journey.pdf"
+    },
+    {
+      "title": "Build Your Skills as an Instructional Designer",
+      "type": "Learning Path",
+      "platform": "LinkedIn Learning",
+      "category": "Instructional Design & eLearning",
+      "skills": ["Instructional Design"],
+      "instructor": "Head of Content Strategy, Learning",
+      "date": "2024-01-23",
+      "durationMinutes": 463,
+      "certId": "66f53d8b4e40c1af4e61ecd1f1243a699d019c176ec61b6b4981099dba6b6303",
+      "pdf": "certs/build-your-skills-instructional-designer.pdf"
+    },
+    {
+      "title": "Career Essentials in Generative AI by Microsoft and LinkedIn",
+      "type": "Learning Path",
+      "platform": "LinkedIn Learning",
+      "category": "AI & Prompt Engineering",
+      "skills": ["Generative AI", "Computer Ethics", "Artificial Intelligence (AI)"],
+      "instructor": "Head of Global Content, Learning",
+      "date": "2025-01-04",
+      "durationMinutes": 291,
+      "certId": "78e02bbbc775550643df44ba07e2402cad543b2940d5f66a9f372ad737d70849",
+      "pdf": "certs/career-essentials-generative-ai.pdf"
+    },
+    {
+      "title": "Box: Terms and Agreement",
+      "type": "Certificate of Merit",
+      "platform": "Box",
+      "category": "Other Certifications",
+      "skills": ["Box (Software)"],
+      "instructor": "Box",
+      "date": "2019-05-23",
+      "durationMinutes": 0,
+      "certId": "N/A",
+      "pdf": "certs/box-terms-and-agreement.pdf"
+    },
+    {
+      "title": "Google Analytics for Beginners",
+      "type": "Certification (Expired)",
+      "platform": "Google Analytics Academy",
+      "category": "Other Certifications",
+      "skills": ["Google Analytics", "Web Analytics"],
+      "instructor": "Google Analytics Academy",
+      "date": "2022-11-04",
+      "durationMinutes": 0,
+      "certId": "N/A — expired Nov 4, 2022",
+      "pdf": "certs/google-analytics-for-beginners.pdf"
+    },
+    {
+      "title": "Certified SAFe 4 Practitioner",
+      "type": "Certification (Expired)",
+      "platform": "Scaled Agile, Inc.",
+      "category": "Other Certifications",
+      "skills": ["Scaled Agile Framework (SAFe)", "Agile Methodologies"],
+      "instructor": "Scaled Agile, Inc.",
+      "date": "2020-02-01",
+      "durationMinutes": 0,
+      "certId": "72891994-7644",
+      "pdf": "certs/safe-4-practitioner.pdf"
     }
   ]
 }
