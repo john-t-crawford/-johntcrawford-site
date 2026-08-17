@@ -65,6 +65,19 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(1.75rem,7vw,2.75rem)
 .featured-date{font-size:.72rem;color:var(--fg2);font-family:var(--mono);margin-top:auto;}
 .featured-link{font-size:.78rem;font-weight:600;color:var(--accent);text-decoration:none;min-height:32px;display:inline-flex;align-items:center;}
 
+.timeline-section{max-width:1080px;margin:0 auto;padding:0 var(--px) 28px;}
+.timeline-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);}
+.timeline-scroll::-webkit-scrollbar{display:none;}
+.timeline-track{position:relative;display:flex;gap:22px;padding:14px 20px 8px;min-width:max-content;}
+.timeline-line{position:absolute;left:20px;right:20px;top:23px;height:2px;background:var(--border);z-index:0;}
+.timeline-node{position:relative;z-index:1;width:148px;text-align:center;background:none;border:none;cursor:pointer;font-family:var(--sans);padding:0;}
+.timeline-dot{width:18px;height:18px;border-radius:50%;background:var(--card);border:3px solid var(--accent);margin:0 auto 10px;transition:background .18s,transform .18s;}
+.timeline-node:hover .timeline-dot,.timeline-node:focus-visible .timeline-dot{background:var(--accent);transform:scale(1.15);}
+.timeline-year{font-family:var(--mono);font-size:.72rem;font-weight:700;color:var(--accent);margin-bottom:4px;}
+.timeline-title{font-size:.8rem;color:var(--fg);line-height:1.35;}
+.timeline-hint{font-size:.7rem;color:var(--fg2);margin-top:2px;}
+@media (min-width:640px){.timeline-track{gap:26px;}.timeline-node{width:160px;}}
+
 .stats-row{max-width:1080px;margin:0 auto;padding:0 var(--px) 28px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
 .stat-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;}
 .stat-num{font-family:var(--serif);font-size:1.6rem;color:var(--accent);}
@@ -87,13 +100,24 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(1.75rem,7vw,2.75rem)
 .search-input:focus{outline:2px solid var(--accent);outline-offset:1px;}
 .select-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
 .select-row select{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:11px 10px;color:var(--fg);font-family:var(--sans);font-size:.84rem;min-height:44px;width:100%;}
-@media (min-width:640px){.controls{flex-direction:row;flex-wrap:wrap;align-items:center;}.search-input{flex:1;min-width:220px;width:auto;}.select-row{display:contents;}.select-row select{width:auto;}}
+@media (min-width:640px){
+  .controls{flex-direction:row;flex-wrap:wrap;align-items:center;gap:13px;}
+  .search-input{flex:1;min-width:220px;width:auto;font-size:1.15rem;padding:17px 19px;min-height:56px;border-radius:12px;}
+  .select-row{display:contents;}
+  .select-row select{width:auto;font-size:1.05rem;padding:15px 14px;min-height:56px;border-radius:12px;}
+}
 
 .chip-row{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
 .chip-row::-webkit-scrollbar{display:none;}
 .filter-chip{flex:0 0 auto;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:9px 15px;font-size:.78rem;cursor:pointer;color:var(--fg2);min-height:40px;white-space:nowrap;}
 .filter-chip.active{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:600;}
 .filter-chip:hover{border-color:var(--accent);}
+@media (min-width:640px){
+  /* Desktop has room to spare — wrap chips instead of horizontally scrolling them
+     out of view with no visual cue (that's what was clipping the last chip). */
+  .chip-row{flex-wrap:wrap;overflow-x:visible;gap:11px;padding:4px 0 12px;}
+  .filter-chip{font-size:1.04rem;padding:12px 20px;min-height:53px;}
+}
 
 .results-count{max-width:1080px;margin:0 auto;padding:0 var(--px) 12px;font-size:.8rem;color:var(--fg2);font-family:var(--mono);}
 
@@ -144,6 +168,16 @@ footer a:hover{text-decoration:underline;}
   <div class="featured-section" id="featuredSection" style="display:none;">
     <div class="featured-label">Highlighted Credentials</div>
     <div class="featured-scroll" id="featuredScroll"></div>
+  </div>
+
+  <div class="timeline-section" id="timelineSection" style="display:none;">
+    <div class="featured-label">Learning Timeline</div>
+    <div class="timeline-scroll">
+      <div class="timeline-track" id="timelineTrack" role="group" aria-label="Learning timeline milestones, click to filter credentials below">
+        <div class="timeline-line" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="timeline-hint">Tap a milestone to jump to that part of the record.</div>
   </div>
 
   <div class="stats-row" id="statsRow"></div>
@@ -207,6 +241,19 @@ function fmtDate(iso){
 }
 
 var ALL = [], activeCategory = 'All', activePlatform = 'All';
+
+// Curated career-learning milestones, last ~10 years. Hand-picked, not
+// auto-derived from ALL — most entries are single micro-courses and don't
+// carry milestone weight on their own.
+var MILESTONES = [
+  {year:'2019', title:'Started building cloud & platform skills', cat:'Microsoft & Cloud Platforms'},
+  {year:'2020', title:'Certified SAFe 4 Practitioner', cat:'Other Certifications', q:'SAFe'},
+  {year:'2022', title:'Added data-dashboard skills with Power BI', cat:'Microsoft & Cloud Platforms', q:'Power BI'},
+  {year:'2024', title:'Formalized video production, Adobe Premiere Pro certified', cat:'Design & Creative Tools', q:'Premiere'},
+  {year:'2024', title:'Deep dive into instructional design fundamentals', cat:'Instructional Design & eLearning'},
+  {year:'2025', title:'Pivoted into generative AI & prompt engineering', cat:'AI & Prompt Engineering'},
+  {year:'2026', title:'Hands-on with agentic AI coding tools', cat:'AI & Prompt Engineering', q:'Claude Code'}
+];
 
 function render(){
   var q = document.getElementById('searchInput').value.trim().toLowerCase();
@@ -330,15 +377,42 @@ function buildFilterChips(){
     btn.className = 'filter-chip' + (cat===activeCategory ? ' active' : '');
     btn.textContent = cat;
     btn.setAttribute('aria-pressed', cat===activeCategory ? 'true':'false');
-    btn.addEventListener('click', function(){
-      activeCategory = cat;
-      Array.from(wrap.children).forEach(function(b){
-        b.classList.toggle('active', b.textContent===cat);
-        b.setAttribute('aria-pressed', b.textContent===cat ? 'true':'false');
-      });
-      render();
-    });
+    btn.addEventListener('click', function(){ setCategory(cat); });
     wrap.appendChild(btn);
+  });
+}
+
+function setCategory(cat){
+  activeCategory = cat;
+  var wrap = document.getElementById('filterChips');
+  Array.from(wrap.children).forEach(function(b){
+    b.classList.toggle('active', b.textContent===cat);
+    b.setAttribute('aria-pressed', b.textContent===cat ? 'true':'false');
+  });
+  render();
+}
+
+function buildTimeline(){
+  if(!MILESTONES.length) return;
+  document.getElementById('timelineSection').style.display = '';
+  document.getElementById('timelineTrack').innerHTML =
+    '<div class="timeline-line" aria-hidden="true"></div>' +
+    MILESTONES.map(function(m,i){
+      return '<button type="button" class="timeline-node" data-i="'+i+'">'+
+        '<span class="timeline-dot" aria-hidden="true"></span>'+
+        '<span class="timeline-year">'+escapeHtml(m.year)+'</span>'+
+        '<span class="timeline-title">'+escapeHtml(m.title)+'</span>'+
+      '</button>';
+    }).join('');
+  Array.from(document.querySelectorAll('.timeline-node')).forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var m = MILESTONES[Number(btn.dataset.i)];
+      var search = document.getElementById('searchInput');
+      search.value = m.q || '';
+      setCategory(m.cat);
+      var target = document.querySelector('.controls-wrap');
+      if(target) target.scrollIntoView({behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start'});
+    });
   });
 }
 
@@ -359,6 +433,7 @@ function buildPlatformSelect(){
 fetch('/learning/data.json').then(function(r){return r.json();}).then(function(data){
   ALL = data.courses;
   buildFeatured();
+  buildTimeline();
   buildStats();
   buildCategoryBars();
   buildFilterChips();

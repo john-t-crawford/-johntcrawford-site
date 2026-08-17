@@ -1037,17 +1037,6 @@
     .btn:hover { border-color:var(--accent); color:var(--accent); }
     .btn--primary { background:var(--cta); color:white; border-color:var(--cta); }
     .btn--primary:hover { background:var(--cta-hover); border-color:var(--cta-hover); color:white; }
-    .btn--outline-gold { border-color:var(--md-gold); color:var(--md-gold); background:transparent; white-space:nowrap; flex-shrink:0; }
-    .btn--outline-gold:hover { background:rgba(240,165,0,0.12); }
-    .whitepaper-callout { margin-top:36px; background:var(--md-navy); border-radius:4px; padding:28px 24px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; position:relative; overflow:hidden; }
-    [data-dark="true"] .whitepaper-callout { background:var(--bg); border:1px solid var(--md-gold); }
-    .whitepaper-callout::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(240,165,0,0.04) 40px,rgba(240,165,0,0.04) 41px); }
-    .whitepaper-callout > * { position:relative; }
-    .whitepaper-badge { display:inline-block; background:var(--md-gold); color:var(--md-navy); font-size:0.62rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; padding:3px 10px; border-radius:2px; margin-bottom:8px; }
-    .whitepaper-callout-text h3 { font-family:var(--serif); font-size:1.05rem; font-weight:400; color:white; margin-bottom:6px; }
-    [data-dark="true"] .whitepaper-callout-text h3 { color:var(--fg); }
-    .whitepaper-callout-text p { font-size:0.85rem; color:rgba(255,255,255,0.65); max-width:520px; line-height:1.6; }
-    [data-dark="true"] .whitepaper-callout-text p { color:var(--fg2); }
     @media (min-width:768px) { .services-grid { grid-template-columns:2fr 1fr 1fr; } }
 
   </style>
@@ -1975,14 +1964,6 @@ function App() {
             React.createElement("p", { style: { fontSize:"0.9rem", color:"var(--fg2)", lineHeight:"1.7", marginBottom:"12px" } }, "Instructional video, screen capture, and motion graphics that drive retention."),
             React.createElement("a", { href: "#projects", className: "btn" }, "View Sample Work")
           )
-        ),
-        React.createElement("div", { className: "whitepaper-callout" },
-          React.createElement("div", { className: "whitepaper-callout-text" },
-            React.createElement("span", { className: "whitepaper-badge" }, "Free Download"),
-            React.createElement("h3", null, "The ID’s Guide to WCAG 2.2 for Government Programs"),
-            React.createElement("p", null, "A practical whitepaper for instructional designers and government contractors navigating Section 508 and the shift to WCAG 2.2.")
-          ),
-          React.createElement("a", { href: "/wcag22-guide", className: "btn btn--outline-gold" }, "Download Free →")
         )
       ),
       /* EXPERTISE / SKILLS — with ToolStack replacing ToolStackGame */

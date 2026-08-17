@@ -11,8 +11,6 @@ gdrive_personal_filelist.txt
 # Backups
 index_original.html
 
-# Word processor source (keep PDF, not DOCX)
-WCAG22_Government_Whitepaper.docx
 wp_build/
 
 # Stream Deck source icons (not needed on server)

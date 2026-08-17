@@ -325,16 +325,6 @@
     .btn{display:inline-flex;align-items:center;justify-content:center;background:none;color:var(--fg);padding:12px 20px;border-radius:4px;font-size:0.85rem;font-weight:600;border:1.5px solid var(--border);cursor:pointer;font-family:var(--sans);min-height:44px;transition:border-color 0.2s,color 0.2s,background 0.2s;text-decoration:none;margin-top:auto;}
     .btn:hover{border-color:var(--accent);color:var(--accent);}
     .btn--primary{background:var(--cta);color:white;border-color:var(--cta);}.btn--primary:hover{background:var(--cta-hover);border-color:var(--cta-hover);color:white;}
-    .btn--outline-gold{border-color:var(--md-gold);color:var(--md-gold);background:transparent;white-space:nowrap;flex-shrink:0;}.btn--outline-gold:hover{background:rgba(240,165,0,0.12);}
-    .whitepaper-callout{margin-top:36px;background:var(--md-navy);border-radius:4px;padding:28px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;position:relative;overflow:hidden;}
-    [data-dark="true"] .whitepaper-callout{background:var(--bg);border:1px solid var(--md-gold);}
-    .whitepaper-callout::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(240,165,0,0.04) 40px,rgba(240,165,0,0.04) 41px);}
-    .whitepaper-callout>*{position:relative;}
-    .whitepaper-badge{display:inline-block;background:var(--md-gold);color:var(--md-navy);font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-bottom:8px;}
-    .whitepaper-callout-text h3{font-family:var(--serif);font-size:1.05rem;font-weight:400;color:white;margin-bottom:6px;}
-    [data-dark="true"] .whitepaper-callout-text h3{color:var(--fg);}
-    .whitepaper-callout-text p{font-size:0.85rem;color:rgba(255,255,255,0.65);max-width:520px;line-height:1.6;}
-    [data-dark="true"] .whitepaper-callout-text p{color:var(--fg2);}
     @media(min-width:768px){.services-grid{grid-template-columns:2fr 1fr 1fr;}}
     body.holiday-theme{position:relative;}
     body.holiday-theme::before{content:'';position:fixed;top:0;left:0;right:0;height:4px;z-index:101;background:linear-gradient(90deg,#B31942 0 33.33%,#FFFFFF 33.33% 66.66%,#0A3161 66.66% 100%);pointer-events:none;}
@@ -394,7 +384,7 @@
       <h1 style="font-family:Georgia,serif;font-size:1.6rem;font-weight:400">John T. Crawford</h1>
       <p>Instructional Designer &amp; Digital Media Specialist &middot; Annapolis, MD</p>
       <p>I design accessible, evidence-based learning experiences for government, education, and enterprise programs: eLearning (Articulate Storyline &amp; Rise, Section 508 / WCAG 2.2 compliant), web design &amp; development, and instructional video. M.S. Instructional Design, Summa Cum Laude.</p>
-      <p>This portfolio's interactive demos require JavaScript. To get in touch: <a href="https://www.linkedin.com/in/careerjohntcrawford/">LinkedIn</a> &middot; <a href="/WCAG22_Government_Whitepaper.pdf">Free WCAG 2.2 whitepaper</a></p>
+      <p>This portfolio's interactive demos require JavaScript. To get in touch: <a href="https://www.linkedin.com/in/careerjohntcrawford/">LinkedIn</a></p>
     </div>
   </noscript>
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -600,8 +590,7 @@ function App(){
           React.createElement("div",{className:"service-card service-card--primary"},React.createElement("h3",null,"Instructional Design"),React.createElement("p",{className:"service-lead"},"Learning that actually changes behavior."),React.createElement("p",{style:{fontSize:"0.9rem",color:"var(--fg2)",lineHeight:"1.7",marginBottom:"12px"}},"I design training programs built around how adults retain and apply skills, from needs analysis to final delivery."),React.createElement("ul",{className:"service-list"},React.createElement("li",null,"eLearning in Articulate Storyline & Rise"),React.createElement("li",null,"Section 508 / WCAG 2.2 compliant"),React.createElement("li",null,"Facilitator guides & job aids"),React.createElement("li",null,"Government, healthcare & corporate")),React.createElement("a",{href:"#contact",className:"btn btn--primary"},"Let's Talk Training")),
           React.createElement("div",{className:"service-card"},React.createElement("h3",null,"Web Design & Development"),React.createElement("p",{className:"service-lead"},"Sites that work as hard as you do."),React.createElement("p",{style:{fontSize:"0.9rem",color:"var(--fg2)",lineHeight:"1.7",marginBottom:"12px"}},"Accessible, fast, and built to perform, from portfolio sites to custom web apps."),React.createElement("a",{href:"#projects",className:"btn"},"See My Work")),
           React.createElement("div",{className:"service-card"},React.createElement("h3",null,"Video Production"),React.createElement("p",{className:"service-lead"},"Video that teaches, not just shows."),React.createElement("p",{style:{fontSize:"0.9rem",color:"var(--fg2)",lineHeight:"1.7",marginBottom:"12px"}},"Instructional video, screen capture, and motion graphics that drive retention."),React.createElement("a",{href:"#projects",className:"btn"},"View Sample Work"))
-        ),
-        React.createElement("div",{className:"whitepaper-callout"},React.createElement("div",{className:"whitepaper-callout-text"},React.createElement("span",{className:"whitepaper-badge"},"Free Download"),React.createElement("h3",null,"The ID's Guide to WCAG 2.2 for Government Programs"),React.createElement("p",null,"A practical whitepaper for instructional designers and government contractors navigating Section 508 and the shift to WCAG 2.2.")),React.createElement("a",{href:"/WCAG22_Government_Whitepaper.pdf",download:true,className:"btn btn--outline-gold"},"Download Free →"))
+        )
       ),
       React.createElement("section",{className:"skills-section",id:"expertise",ref:skillsRef,"aria-label":"Expertise and skills"},
         React.createElement("div",{className:"section-label"},"Expertise"),
