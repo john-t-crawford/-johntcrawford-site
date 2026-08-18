@@ -376,7 +376,25 @@
     .al-log-line{white-space:nowrap}
     .wf-btn:disabled{opacity:.45;cursor:default}
   
-  </style>
+      /* ── RESUME SECTION ─────────────────────────────────────── */
+    .resume-section{background:var(--bg2);}
+    .resume-card{background:var(--card);border:1px solid var(--border);border-radius:4px;margin-top:48px;overflow:hidden;}
+    .resume-card-top{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:20px;padding:32px;border-bottom:1px solid var(--border);}
+    .resume-card-name{font-family:var(--serif);font-size:1.6rem;letter-spacing:-0.02em;margin-bottom:6px;}
+    .resume-card-role{font-size:0.88rem;color:var(--fg2);margin-bottom:4px;}
+    .resume-card-loc{font-size:0.78rem;color:var(--fg2);font-family:var(--mono);letter-spacing:0.06em;}
+    .resume-card-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0;}
+    .resume-highlights{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;}
+    .rh-col{padding:24px 32px;border-right:1px solid var(--border);}
+    .rh-col:last-child{border-right:none;}
+    .rh-head{font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+    .rh-item{font-size:0.82rem;color:var(--fg2);line-height:1.5;margin-bottom:8px;padding-left:12px;position:relative;}
+    .rh-item::before{content:"—";position:absolute;left:0;color:var(--accent);opacity:0.5;}
+    .rh-item strong{color:var(--fg);font-weight:600;}
+    .btn-tertiary{display:inline-flex;align-items:center;background:none;color:var(--fg2);padding:14px 16px;border-radius:4px;font-size:0.82rem;font-weight:500;border:1.5px solid transparent;cursor:pointer;font-family:var(--sans);min-height:44px;transition:color 0.2s;text-decoration:none;}
+    .btn-tertiary:hover{color:var(--accent);}
+    @media(max-width:767px){.resume-card-top{flex-direction:column;}.rh-col{border-right:none;border-bottom:1px solid var(--border);}.rh-col:last-child{border-bottom:none;}}
+    </style>
 </head>
 <body>
   <noscript>
@@ -566,7 +584,7 @@ function App(){
         React.createElement("div",{className:"hero-eyebrow"},"Instructional Design & Digital Media"),
         React.createElement("h1",{style:{letterSpacing:"-2.176px"}},"Learning design that",React.createElement("br"),React.createElement("em",null,"performs.")),
         React.createElement("p",{className:"hero-sub"},"Crafting evidence-based learning experiences for enterprise teams and government programs. M.S. Instructional Design · Summa Cum Laude."),
-        React.createElement("div",{className:"hero-ctas"},React.createElement("a",{href:"#projects",className:"btn-primary"},"Explore My Work"),React.createElement("a",{href:`mailto:${_e}`,className:"btn-secondary"},"Get In Touch")),
+        React.createElement("div",{className:"hero-ctas"},React.createElement("a",{href:"#projects",className:"btn-primary"},"Explore My Work"),React.createElement("a",{href:`mailto:${_e}`,className:"btn-secondary"},"Get In Touch"),React.createElement("a",{href:"#resume",className:"btn-tertiary"},"Résumé ↓")),
         React.createElement("div",{className:"hero-stats"},React.createElement("div",null,React.createElement("div",{className:"stat-num"},"10",React.createElement("span",null,"+")),React.createElement("div",{className:"stat-label"},"Years Experience")),React.createElement("div",null,React.createElement("div",{className:"stat-num"},"60",React.createElement("span",null,"%")),React.createElement("div",{className:"stat-label"},"Admin Reduction")),React.createElement("div",null,React.createElement("div",{className:"stat-num"},"Zero"),React.createElement("div",{className:"stat-label"},"Compliance Gaps")),React.createElement("div",null,React.createElement("div",{className:"stat-num"},React.createElement("span",null,"§"),"508"),React.createElement("div",{className:"stat-label"},"Accessible")))
       ),
       React.createElement("section",{id:"about"},
@@ -614,6 +632,38 @@ function App(){
         React.createElement("h2",{className:"section-title"},"Education &",React.createElement("br"),React.createElement("em",null,"Certifications.")),
         React.createElement("div",{className:"creds-grid"},creds.map((c,i)=>React.createElement("div",{key:i,className:"cred-card"},React.createElement("div",{className:"cred-icon"},credIconComponents[c.icon]),React.createElement("div",null,React.createElement("div",{className:"cred-issuer"},c.issuer),React.createElement("div",{className:"cred-name"},c.name))))),
         React.createElement("div",{style:{textAlign:"center",marginTop:"28px"}},React.createElement("a",{href:"/learning/",className:"btn-secondary","aria-label":"View full LinkedIn Learning course history and certificates"},"View Full Learning Dashboard →"))
+      ),
+      React.createElement("section",{className:"resume-section",id:"resume","aria-label":"Résumé"},
+        React.createElement("div",{className:"section-label"},"On Paper"),
+        React.createElement("h2",{className:"section-title"},"The full picture,",React.createElement("br"),React.createElement("em",null,"in writing.")),
+        React.createElement("div",{className:"resume-card"},
+          React.createElement("div",{className:"resume-card-top"},
+            React.createElement("div",null,
+              React.createElement("div",{className:"resume-card-name"},"John T. Crawford"),
+              React.createElement("div",{className:"resume-card-role"},"Instructional Designer & Digital Media Specialist"),
+              React.createElement("div",{className:"resume-card-loc"},"Annapolis, MD")
+            ),
+            React.createElement("div",{className:"resume-card-btns"},
+              React.createElement("a",{href:"/resume.pdf",className:"btn-primary",download:true},"Download PDF"),
+              React.createElement("a",{href:"#",className:"btn-secondary",onClick:function(e){e.preventDefault();window.print();}},"Print / Save PDF")
+            )
+          ),
+          React.createElement("div",{className:"resume-highlights"},
+            React.createElement("div",{className:"rh-col"},
+              React.createElement("div",{className:"rh-head"},"Education"),
+              React.createElement("div",{className:"rh-item"},React.createElement("strong",null,"M.S. Instructional Design & Technology")," — Capella University · Summa Cum Laude"),
+              React.createElement("div",{className:"rh-item"},React.createElement("strong",null,"B.A.S. Web Design & Multimedia")," — Westwood College")
+            ),
+            React.createElement("div",{className:"rh-col"},
+              React.createElement("div",{className:"rh-head"},"Certifications"),
+              ["Google Cloud — Generative AI Fundamentals","Microsoft · LinkedIn — AI & Prompt Engineering","Articulate — Storyline 360 & Rise 360","Section 508 & WCAG 2.2 Compliance"].map(function(cert,i){return React.createElement("div",{key:i,className:"rh-item"},cert);})
+            ),
+            React.createElement("div",{className:"rh-col"},
+              React.createElement("div",{className:"rh-head"},"Core Skills"),
+              ["ADDIE · SAM · Agile ID","Articulate 360 · Captivate","Power Platform · SharePoint","xAPI · SCORM · Kirkpatrick L1-4","Premiere Pro · Camtasia","Generative AI Integration"].map(function(sk,i){return React.createElement("div",{key:i,className:"rh-item"},sk);})
+            )
+          )
+        )
       ),
       React.createElement("section",{className:"contact-section",id:"contact"},
         React.createElement("div",{className:"section-label",style:{textAlign:'center'}},"Contact"),
