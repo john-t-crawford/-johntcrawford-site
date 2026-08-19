@@ -54,6 +54,14 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(1.75rem,7vw,2.75rem)
 .hero p{color:var(--fg2);max-width:680px;font-size:.98rem;}
 .hero-note{margin-top:12px;font-size:.82rem;color:var(--fg2);border-left:2px solid var(--accent);padding-left:12px;}
 
+.course-promo{max-width:1080px;margin:0 auto 28px;padding:0 var(--px);}
+.course-promo-card{background:linear-gradient(155deg,var(--card),var(--bg2));border:1px solid var(--accent);border-radius:16px;padding:20px 22px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;text-decoration:none;color:var(--fg);}
+.course-promo-text .featured-label{margin-bottom:6px;}
+.course-promo-title{font-family:var(--serif);font-size:1.15rem;margin-bottom:4px;}
+.course-promo-sub{font-size:.84rem;color:var(--fg2);max-width:520px;}
+.course-promo-cta{flex:0 0 auto;font-size:.82rem;font-weight:600;color:var(--accent);white-space:nowrap;}
+.course-promo-card:hover .course-promo-cta{text-decoration:underline;}
+
 .featured-section{max-width:1080px;margin:0 auto;padding:0 var(--px) 28px;}
 .featured-label{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg2);margin-bottom:10px;}
 .featured-scroll{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
@@ -166,6 +174,17 @@ footer a:hover{text-decoration:underline;}
     <h1>Learning &amp;<br><em style="font-style:italic;">credentials.</em></h1>
     <p>A searchable record of formal education, honor societies, software certifications, and course completions — spanning Capella University, Adobe, Lynda.com, LinkedIn Learning, and other platforms from 2015 to today. Every entry links to its original certificate or transcript.</p>
     <p class="hero-note">Lynda.com rebranded to LinkedIn Learning in 2017; entries from either era are labeled by their original platform. Degrees, honor-society inductions, and software certifications sit alongside course history rather than beneath it — no single platform is treated as primary.</p>
+  </div>
+
+  <div class="course-promo">
+    <a class="course-promo-card" href="/learning/claude-code/">
+      <div class="course-promo-text">
+        <div class="featured-label">New · Built, Not Just Taken</div>
+        <div class="course-promo-title">Claude Code: Zero to Proficient</div>
+        <div class="course-promo-sub">A hands-on course I designed myself — slash commands, skills, hooks, subagents, MCP, memory, and plan mode, with a security-first throughline. Lesson 0 is free.</div>
+      </div>
+      <div class="course-promo-cta">Start the course →</div>
+    </a>
   </div>
 
   <div class="featured-section" id="featuredSection" style="display:none;">
