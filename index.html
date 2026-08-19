@@ -476,14 +476,16 @@ function OnboardingDiagram(){
       React.createElement("rect",{x:380,y:0,width:140,height:60,rx:6,fill:"var(--accent-light)",stroke:"var(--accent)"}),
       React.createElement("text",{x:450,y:34,textAnchor:"middle",fontSize:"11",fill:"var(--accent)",fontWeight:"600",fontFamily:"var(--sans)"},"Work order"),
       React.createElement("text",{x:450,y:48,textAnchor:"middle",fontSize:"11",fill:"var(--accent)",fontWeight:"600",fontFamily:"var(--sans)"},"created"),
-      React.createElement("line",{x1:450,y1:60,x2:450,y2:top-16,stroke:"var(--border)",strokeWidth:"1.5"}),
+      React.createElement("line",{x1:450,y1:60,x2:450,y2:top-30,stroke:"var(--border)",strokeWidth:"1.5"}),
+      React.createElement("line",{x1:450,y1:top-30,x2:spineX,y2:top-30,stroke:"var(--border)",strokeWidth:"1.5"}),
+      React.createElement("line",{x1:spineX,y1:top-30,x2:spineX,y2:top-16,stroke:"var(--border)",strokeWidth:"1.5"}),
       React.createElement("text",{x:10,y:top-22,fontSize:"10",letterSpacing:"0.08em",fill:"var(--fg2)",fontFamily:"var(--mono)"},"PROVISIONING LAYER (parallel, conditional)"),
       React.createElement("rect",{x:0,y:top-14,width:620,height:onboardingBranches.length*rowH+14,rx:6,fill:"var(--bg2)",opacity:"0.5"}),
       onboardingBranches.map((b,i)=>{
         const cy=top+i*rowH+rowH/2-14;
         return React.createElement(React.Fragment,{key:i},
-          React.createElement("line",{x1:450,y1:i===0?60:top-14,x2:450,y2:cy,stroke:"var(--border)",strokeWidth:"1.5"}),
-          React.createElement("line",{x1:diaX+40,y1:cy,x2:450,y2:cy,stroke:"var(--border)",strokeWidth:"1.5"}),
+          React.createElement("line",{x1:spineX,y1:i===0?top-16:top-14,x2:spineX,y2:cy,stroke:"var(--border)",strokeWidth:"1.5"}),
+          React.createElement("line",{x1:diaX+40,y1:cy,x2:spineX,y2:cy,stroke:"var(--border)",strokeWidth:"1.5"}),
           React.createElement("rect",{x:diaX,y:cy-16,width:80,height:32,rx:16,fill:"var(--card)",stroke:"var(--border)"}),
           React.createElement("text",{x:diaX+40,y:cy+4,textAnchor:"middle",fontSize:"9.5",fill:"var(--fg2)",fontFamily:"var(--sans)"},b.q),
           React.createElement("line",{x1:boxRight,y1:cy,x2:diaX,y2:cy,stroke:"var(--border)",strokeWidth:"1.5",markerEnd:"url(#jtc-arrow-rev)"}),
@@ -619,8 +621,7 @@ function App(){
       React.createElement("section",{id:"projects","aria-label":"Portfolio projects"},
         React.createElement("div",{className:"section-label"},"Portfolio"),
         React.createElement("h2",{className:"section-title"},"Featured",React.createElement("br"),React.createElement("em",null,"Projects.")),
-        React.createElement("div",{className:"projects-grid"},projects.map((p,i)=>React.createElement(ProjectCard,{key:i,p,index:i}))),
-        React.createElement("div",{style:{textAlign:"center",marginTop:"28px"}},React.createElement("a",{href:"/projects-archive.html",className:"btn-secondary","aria-label":"View 2 more projects"},"View 2 More Projects →"))
+        React.createElement("div",{className:"projects-grid"},projects.map((p,i)=>React.createElement(ProjectCard,{key:i,p,index:i})))
       ),
       React.createElement("section",{id:"testimonials","aria-label":"Testimonials"},
         React.createElement("div",{className:"section-label"},"Testimonials"),

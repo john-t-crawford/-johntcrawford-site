@@ -138,6 +138,9 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(1.75rem,7vw,2.75rem)
 .cert-note{font-size:.74rem;color:var(--fg2);font-style:italic;}
 .cert-link--verified{color:var(--fg2);cursor:default;}
 .no-results{max-width:1080px;margin:0 auto;padding:20px var(--px) 60px;color:var(--fg2);}
+.load-more-wrap{max-width:1080px;margin:-6px auto 60px;padding:0 var(--px);text-align:center;}
+.load-more-btn{background:none;border:1px solid var(--border);color:var(--fg);border-radius:20px;padding:11px 22px;font-family:var(--sans);font-size:.82rem;font-weight:600;cursor:pointer;min-height:44px;}
+.load-more-btn:hover{border-color:var(--accent);color:var(--accent);}
 
 footer{border-top:1px solid var(--border);padding:24px var(--px);text-align:center;font-size:.78rem;color:var(--fg2);}
 footer a{color:var(--accent);text-decoration:none;}
@@ -212,6 +215,9 @@ footer a:hover{text-decoration:underline;}
 
   <div class="results-count" id="resultsCount"></div>
   <div class="course-grid" id="courseGrid"></div>
+  <div class="load-more-wrap" id="loadMoreWrap" style="display:none;">
+    <button type="button" class="load-more-btn" id="loadMoreBtn">Show more credentials</button>
+  </div>
 </main>
 
 <footer>
@@ -241,6 +247,8 @@ function fmtDate(iso){
 }
 
 var ALL = [], activeCategory = 'All', activePlatform = 'All';
+var PAGE_SIZE = 12, visibleCount = PAGE_SIZE;
+function resetPaging(){ visibleCount = PAGE_SIZE; }
 
 // Curated career-learning milestones, last ~10 years. Hand-picked, not
 // auto-derived from ALL — most entries are single micro-courses and don't
@@ -279,21 +287,27 @@ function render(){
     }
   });
 
-  document.getElementById('resultsCount').textContent = filtered.length + ' of ' + ALL.length + ' credentials shown';
+  var shown = filtered.slice(0, visibleCount);
+  document.getElementById('resultsCount').textContent = shown.length < filtered.length
+    ? ('Showing ' + shown.length + ' of ' + filtered.length + ' matching credentials (' + ALL.length + ' total)')
+    : (filtered.length + ' of ' + ALL.length + ' credentials shown');
 
   var grid = document.getElementById('courseGrid');
+  var loadMoreWrap = document.getElementById('loadMoreWrap');
   if(filtered.length === 0){
     grid.innerHTML = '';
     grid.insertAdjacentHTML('afterend', '<div class="no-results" id="courseGrid-empty">No credentials match your search.</div>');
     grid.style.display = 'none';
+    loadMoreWrap.style.display = 'none';
     return;
   }
   grid.style.display = 'grid';
   var existingEmpty = document.getElementById('courseGrid-empty');
   if(existingEmpty) existingEmpty.remove();
+  loadMoreWrap.style.display = shown.length < filtered.length ? '' : 'none';
 
   grid.innerHTML = '';
-  filtered.forEach(function(c){
+  shown.forEach(function(c){
     var card = document.createElement('article');
     card.className = 'course-card';
     card.innerHTML =
@@ -389,6 +403,7 @@ function setCategory(cat){
     b.classList.toggle('active', b.textContent===cat);
     b.setAttribute('aria-pressed', b.textContent===cat ? 'true':'false');
   });
+  resetPaging();
   render();
 }
 
@@ -426,6 +441,7 @@ function buildPlatformSelect(){
   });
   sel.addEventListener('change', function(){
     activePlatform = sel.value;
+    resetPaging();
     render();
   });
 }
@@ -444,8 +460,9 @@ fetch('/learning/data.json').then(function(r){return r.json();}).then(function(d
   console.error(err);
 });
 
-document.getElementById('searchInput').addEventListener('input', render);
-document.getElementById('sortSelect').addEventListener('change', render);
+document.getElementById('searchInput').addEventListener('input', function(){ resetPaging(); render(); });
+document.getElementById('sortSelect').addEventListener('change', function(){ resetPaging(); render(); });
+document.getElementById('loadMoreBtn').addEventListener('click', function(){ visibleCount += PAGE_SIZE; render(); });
 </script>
 </body>
 </html>
