@@ -127,13 +127,11 @@ footer a:hover{text-decoration:underline;}
     <p>{{HERO_SUB}}</p>
     <div class="hero-actions">
       <a class="btn-primary" href="#lesson-00">Start Lesson 0 — free</a>
-      <a class="btn-secondary" href="#access">Request full access</a>
+      {{SECONDARY_BUTTON}}
     </div>
   </div>
 
-  <div class="hero-image">
-    <img src="{{HERO_IMAGE}}" alt="{{HERO_IMAGE_ALT}}" loading="lazy" width="1600" height="700" />
-  </div>
+  {{HERO_IMAGE_BLOCK}}
 
   <section>
     <div class="section-label">Curriculum</div>
@@ -153,13 +151,7 @@ footer a:hover{text-decoration:underline;}
     </div>
   </section>
 
-  <section id="access">
-    <div class="gate-cta">
-      <h2>{{GATE_HEADLINE}}</h2>
-      <p>{{GATE_BODY}}</p>
-      <a class="btn-primary" href="mailto:{{CONTACT_EMAIL}}?subject={{GATE_SUBJECT}}">Request access</a>
-    </div>
-  </section>
+  {{ACCESS_SECTION}}
 </main>
 
 <footer>

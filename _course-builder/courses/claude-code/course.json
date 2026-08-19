@@ -4,10 +4,11 @@
   "eyebrow": "New Course · Lesson 0 Free",
   "heroHeadline": "Claude Code, from<br><em style=\"font-style:italic;\">zero to proficient.</em>",
   "heroSub": "A hands-on course I built for myself first — designed the way I'd design any course: clear objectives, real practice, and a security thread running through every lesson instead of bolted on at the end. Eight lessons, one entry point, taught live inside the tool itself.",
-  "heroImage": "assets/hero.png",
-  "heroImageAlt": "Illustration of a terminal window at the center of a dashed orbit, connected to icons for skills, MCP, subagents, and hooks, with a checkmark badge in the corner.",
+  "heroImage": "",
+  "heroImageAlt": "",
   "description": "A hands-on Claude Code course by instructional designer John Crawford — slash commands, skills, hooks, subagents, MCP, memory, and plan mode, taught with a security-first throughline. Lesson 0 free.",
   "curriculumIntro": "Each one builds on the last — mental model first, then a real exercise in your own environment, then a check for understanding before you move on.",
+  "showAccessGate": false,
   "gateHeadline": "Want the rest of the lessons?",
   "gateBody": "The rest of the course is invite-only while it's in early release. Request access and I'll set you up with a login.",
   "contactEmail": "contact@crawfordcreationsllc.com"

@@ -172,6 +172,16 @@ function buildCourse(slug) {
       </a>`;
   }).join("\n");
 
+  const heroImageBlock = course.heroImage
+    ? `  <div class="hero-image">\n    <img src="${course.heroImage}" alt="${course.heroImageAlt || ""}" loading="lazy" width="1600" height="700" />\n  </div>`
+    : "";
+  const secondaryButton = course.showAccessGate
+    ? `<a class="btn-secondary" href="#access">Request full access</a>`
+    : "";
+  const accessSection = course.showAccessGate
+    ? `<section id="access">\n    <div class="gate-cta">\n      <h2>${course.gateHeadline}</h2>\n      <p>${course.gateBody}</p>\n      <a class="btn-primary" href="mailto:${course.contactEmail}?subject=${encodeURIComponent(`${course.title} course access`)}">Request access</a>\n    </div>\n  </section>`
+    : "";
+
   const indexHtml = tpl(indexTplRaw, {
     TITLE: course.title,
     DESCRIPTION: course.description,
@@ -179,8 +189,8 @@ function buildCourse(slug) {
     EYEBROW: course.eyebrow,
     HERO_HEADLINE: course.heroHeadline,
     HERO_SUB: course.heroSub,
-    HERO_IMAGE: course.heroImage,
-    HERO_IMAGE_ALT: course.heroImageAlt,
+    HERO_IMAGE_BLOCK: heroImageBlock,
+    SECONDARY_BUTTON: secondaryButton,
     ICON_SYMBOLS: buildIconSymbols(lessons),
     LESSON_COUNT: String(lessons.length),
     CURRICULUM_INTRO: course.curriculumIntro,
@@ -188,10 +198,7 @@ function buildCourse(slug) {
     LESSON00_TITLE: free ? free.title : "",
     LESSON00_SUMMARY: free ? free.summary : "",
     LESSON00_CONTENT: free ? free.contentHtml : "",
-    GATE_HEADLINE: course.gateHeadline,
-    GATE_BODY: course.gateBody,
-    CONTACT_EMAIL: course.contactEmail,
-    GATE_SUBJECT: encodeURIComponent(`${course.title} course access`)
+    ACCESS_SECTION: accessSection
   });
   fs.writeFileSync(path.join(outDir, "index.html"), indexHtml);
 
