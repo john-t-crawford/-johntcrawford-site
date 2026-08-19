@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none';">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Lesson 03 — Hooks | Claude Code: Zero to Proficient | John Crawford</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="canonical" href="https://johntcrawford.com/learning/claude-code/lessons/03-hooks.html" />
+<meta name="theme-color" content="#F0A500" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0F1B2D" media="(prefers-color-scheme: dark)" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#F7F4EE;--bg2:#EDE9E0;--fg:#111111;--fg2:#4A4035;--accent:#B87D00;--accent-light:#FEF3D0;--cta:#CE1126;--border:#D5CEBC;--card:#FFFFFF;
+  --serif:'DM Serif Display',Georgia,serif;--sans:'Plus Jakarta Sans',system-ui,sans-serif;--mono:'DM Mono','Courier New',monospace;
+  --nav-h:60px;--px:16px;
+}
+[data-dark="true"]{--bg:#0F1B2D;--bg2:#162236;--fg:#F7F4EE;--fg2:#C8B99A;--accent:#F0A500;--accent-light:#2A1F00;--cta:#E8253D;--border:#243450;--card:#162236;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);line-height:1.6;transition:background .2s,color .2s;min-height:100vh;overflow-x:hidden;}
+a{color:inherit;}
+::selection{background:var(--accent);color:var(--bg);}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--accent);color:var(--bg);padding:10px 16px;z-index:200;}
+.skip-link:focus{left:12px;top:12px;}
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);padding:0 var(--px);background:var(--bg);border-bottom:1px solid var(--border);gap:8px;}
+.nav-logo{font-family:var(--serif);font-size:1rem;flex:0 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.nav-logo a{text-decoration:none;}
+.nav-right{display:flex;align-items:center;gap:10px;flex:0 0 auto;}
+.nav-right a{font-size:.74rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--fg2);text-decoration:none;min-height:44px;display:none;align-items:center;}
+.nav-right a:hover{color:var(--accent);}
+.dark-toggle{background:none;border:1px solid var(--border);color:var(--fg);border-radius:20px;padding:8px 12px;font-family:var(--sans);font-size:.74rem;cursor:pointer;min-height:40px;min-width:40px;}
+.dark-toggle:hover{border-color:var(--accent);color:var(--accent);}
+@media (min-width:560px){.nav-right a{display:flex;}}
+
+main{max-width:720px;margin:0 auto;padding:32px var(--px) 60px;}
+.crumb{font-family:var(--mono);font-size:.74rem;color:var(--fg2);margin-bottom:18px;}
+.crumb a{color:var(--accent);text-decoration:none;}
+.lesson-header{display:flex;gap:16px;align-items:center;margin-bottom:26px;}
+.lesson-header svg{width:52px;height:52px;flex:0 0 auto;}
+.lesson-num{font-family:var(--mono);font-size:.72rem;color:var(--accent);letter-spacing:.05em;text-transform:uppercase;}
+h1{font-family:var(--serif);font-weight:400;font-size:1.9rem;line-height:1.15;}
+article h2{font-family:var(--sans);font-weight:700;font-size:1rem;margin:26px 0 10px;}
+article p{font-size:.94rem;color:var(--fg2);margin-bottom:12px;}
+article ul,article ol{margin:0 0 14px 20px;color:var(--fg2);font-size:.94rem;}
+article li{margin-bottom:6px;}
+code{font-family:var(--mono);background:var(--bg2);padding:2px 6px;border-radius:4px;font-size:.86rem;color:var(--fg);}
+.security-note{border-left:3px solid var(--cta);background:var(--accent-light);border-radius:0 10px 10px 0;padding:14px 16px;margin:18px 0;font-size:.88rem;}
+[data-dark="true"] .security-note{background:#2A1414;}
+.security-note strong{color:var(--cta);}
+.checkpoint{border-left:3px solid var(--accent);padding-left:14px;margin:20px 0;font-size:.88rem;color:var(--fg2);}
+.checkpoint strong{color:var(--fg);}
+.exercise{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin:18px 0;}
+.exercise-label{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:8px;}
+.capstone-banner{background:linear-gradient(155deg,var(--card),var(--bg2));border:1px solid var(--accent);border-radius:14px;padding:16px 18px;margin-bottom:22px;font-size:.88rem;}
+.capstone-banner strong{color:var(--accent);}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:40px;padding-top:20px;border-top:1px solid var(--border);}
+.pager a{font-size:.84rem;font-weight:600;color:var(--accent);text-decoration:none;}
+footer{border-top:1px solid var(--border);padding:24px var(--px);text-align:center;font-size:.78rem;color:var(--fg2);}
+footer a{color:var(--accent);text-decoration:none;}
+footer a:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<svg style="display:none" aria-hidden="true">
+<symbol id="i03" viewBox="0 0 96 96"><circle cx="31" cy="47" r="17" fill="none" stroke="var(--fg)" stroke-width="3"/><circle cx="57" cy="61" r="17" fill="none" stroke="var(--accent)" stroke-width="3"/></symbol>
+</svg>
+
+<nav role="navigation" aria-label="Main navigation">
+  <div class="nav-logo"><a href="/">John T Crawford</a></div>
+  <div class="nav-right">
+    <a href="/learning/claude-code/">Course Home</a>
+    <a href="/#contact">Contact</a>
+    <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode">◑</button>
+  </div>
+</nav>
+
+<main id="main">
+  <div class="crumb"><a href="/learning/claude-code/">Claude Code: Zero to Proficient</a> / Lesson 03</div>
+  <div class="lesson-header">
+    <svg><use href="#i03"/></svg>
+    <div>
+      <div class="lesson-num">Lesson 03</div>
+      <h1>Hooks</h1>
+    </div>
+  </div>
+
+  <article>
+<p>A hook is a shell command the harness runs automatically around an event — before a tool call, after a file edit, when a session stops — configured once in your settings, then fired every time the condition matches. No confirmation, no per-invocation review. That's the whole point of a hook, and it's also exactly why this lesson leads with security instead of ending with it.</p>
+<div class="security-note"><p>Security is not negotiable here. A hook runs with no per-invocation confirmation, which means a bad hook does something dangerous silently, every single time.</p>
+<ul><li>Never wire a hook to skip verification, auto-approve destructive commands, or blanket-bypass permission checks.</li><li>Don't let a hook shell out to anything holding secrets in plaintext environment variables — treat hook scripts like production code, not scratch scripts.</li><li>Prefer hooks that are read-only or clearly reversible (logging, formatting, linting) over anything that deletes, pushes, or deploys.</li><li>If a hook is copied from somewhere else, read every line before enabling it. A hook is code that runs automatically and silently.</li></ul></div>
+<h2>Where hooks live</h2>
+<p>Hooks are configured in your settings, keyed to lifecycle events. The event determines when the hook fires; the command is whatever shell command you've told it to run.</p>
+<div class="exercise"><div class="exercise-label">Try it — safely</div><p>Add one low-risk hook: something that fires after a file edit and just logs which file changed to a local log file. Nothing destructive, nothing touching git remotes, network calls, or credentials. Trigger the condition and confirm the log file recorded it.</p></div>
+<div class="checkpoint"><strong>Check for understanding:</strong> Name one category of hook you should never write, and why. A vague "be careful" doesn't count — name the actual risk (destructive ops, secrets exposure, or bypassing confirmation).</div>
+  </article>
+
+  <div class="pager">
+    <a href="02-skills.html">← Lesson 02 — Skills</a>
+    <a href="04-subagents.html">Lesson 04 — Subagents →</a>
+  </div>
+</main>
+
+<footer>
+  Claude Code: Zero to Proficient · <a href="/learning/claude-code/">Back to curriculum</a> · <a href="/">johntcrawford.com</a>
+</footer>
+
+<script>
+(function(){
+  var d = localStorage.getItem('jc-dark') !== null ? localStorage.getItem('jc-dark') === 'true' : true;
+  document.documentElement.setAttribute('data-dark', d);
+  document.getElementById('darkToggle').addEventListener('click', function(){
+    d = !d;
+    document.documentElement.setAttribute('data-dark', d);
+    localStorage.setItem('jc-dark', d);
+  });
+})();
+</script>
+</body>
+</html>

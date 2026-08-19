@@ -1,0 +1,38 @@
+# ============================================================
+# .htaccess — Password-protect the Claude Code course lessons
+# (learning/claude-code/lessons/) on johntcrawford.com
+# ============================================================
+# This uses a SEPARATE .htpasswd file from the family-tree one
+# (tree.html), so credentials you hand out for this course don't
+# also unlock genealogy content.
+#
+# INSTRUCTIONS:
+#   1. Find your server home path via Web SSH Terminal:
+#      Run:  echo $HOME
+#      Example result: /home/johntcra  (use YOUR actual path)
+#
+#   2. Edit the AuthUserFile line below to use your actual path
+#
+#   3. Save this block into a new file named ".htaccess" inside
+#      learning/claude-code/lessons/  (a separate .htaccess from
+#      the one at your site root — Apache applies both, most
+#      specific directory wins for overlapping rules)
+#
+#   4. Create .htpasswd_learning via Web SSH Terminal:
+#      Run:  htpasswd -c ~/.htpasswd_learning <name>
+#      (prompts you to set a password for that person — type it
+#      twice). Repeat WITHOUT -c for each additional person you
+#      grant access to, e.g.:
+#      Run:  htpasswd ~/.htpasswd_learning <another-name>
+#      (-c creates a NEW file and would wipe out existing users —
+#      only use it the very first time)
+#
+#   5. To revoke someone's access later:
+#      Run:  htpasswd -D ~/.htpasswd_learning <name>
+#
+# ============================================================
+
+AuthType Basic
+AuthName "Claude Code Course — Members Only"
+AuthUserFile /home/YOUR_USERNAME_HERE/.htpasswd_learning
+Require valid-user
