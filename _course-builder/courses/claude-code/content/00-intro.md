@@ -3,6 +3,7 @@ title: Intro
 icon: i00
 gated: false
 summary: What Claude Code is, how it differs from a chat app, install check, and your first real prompt.
+youtube: 7-OOgkQs0Y0
 ---
 
 ## What Claude Code actually is

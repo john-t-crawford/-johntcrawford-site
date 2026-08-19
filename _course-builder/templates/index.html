@@ -55,6 +55,8 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(1.75rem,7vw,2.75rem)
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
 .btn-primary{background:var(--accent);color:var(--bg);font-weight:600;font-size:.88rem;padding:13px 22px;border-radius:10px;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;}
 .btn-secondary{background:none;color:var(--fg);font-weight:600;font-size:.88rem;padding:13px 22px;border-radius:10px;text-decoration:none;border:1px solid var(--border);min-height:44px;display:inline-flex;align-items:center;}
+.video-link{font-size:.86rem;font-weight:600;color:var(--cta);text-decoration:none;}
+.video-link:hover{text-decoration:underline;}
 .btn-primary:hover,.btn-secondary:hover{border-color:var(--accent);}
 
 .hero-image{max-width:1080px;margin:20px auto 0;padding:0 var(--px);}
@@ -132,6 +134,7 @@ footer a:hover{text-decoration:underline;}
     <p>{{HERO_SUB}}</p>
     <div class="hero-actions">
       <a class="btn-primary" href="#lesson-00">Start Lesson 0 — free</a>
+      {{YOUTUBE_BUTTON}}
       {{SECONDARY_BUTTON}}
     </div>
   </div>
@@ -151,6 +154,7 @@ footer a:hover{text-decoration:underline;}
     <div class="section-label">Free Preview</div>
     <h2>Lesson 00 — {{LESSON00_TITLE}}</h2>
     <p class="section-sub">{{LESSON00_SUMMARY}}</p>
+    {{LESSON00_VIDEO}}
     <div class="lesson-00">
 {{LESSON00_CONTENT}}
     </div>

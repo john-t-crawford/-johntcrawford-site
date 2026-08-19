@@ -138,6 +138,7 @@ function loadLessons(courseDir) {
       gated: meta.gated !== false,
       capstone: meta.capstone === true,
       summary: meta.summary || "",
+      youtube: meta.youtube || "",
       contentHtml
     };
   });
@@ -189,6 +190,12 @@ function buildCourse(slug) {
   const secondaryButton = course.showAccessGate
     ? `<a class="btn-secondary" href="#access">Request full access</a>`
     : "";
+  const youtubeButton = course.youtubePlaylistUrl
+    ? `<a class="btn-secondary" href="${course.youtubePlaylistUrl}" target="_blank" rel="noopener noreferrer">▶ Watch on YouTube</a>`
+    : "";
+  const lesson00Video = free && free.youtube
+    ? `<p><a class="video-link" href="https://youtu.be/${free.youtube}" target="_blank" rel="noopener noreferrer">▶ Watch this lesson on YouTube</a></p>`
+    : "";
   const accessSection = course.showAccessGate
     ? `<section id="access">\n    <div class="gate-cta">\n      <h2>${course.gateHeadline}</h2>\n      <p>${course.gateBody}</p>\n      <a class="btn-primary" href="mailto:${course.contactEmail}?subject=${encodeURIComponent(`${course.title} course access`)}">Request access</a>\n    </div>\n  </section>`
     : "";
@@ -202,6 +209,7 @@ function buildCourse(slug) {
     HERO_SUB: course.heroSub,
     HERO_IMAGE_BLOCK: heroImageBlock,
     SECONDARY_BUTTON: secondaryButton,
+    YOUTUBE_BUTTON: youtubeButton,
     ICON_SYMBOLS: buildIconSymbols(lessons),
     LESSON_COUNT: String(lessons.length),
     CURRICULUM_INTRO: course.curriculumIntro,
@@ -209,6 +217,7 @@ function buildCourse(slug) {
     LESSON00_TITLE: free ? free.title : "",
     LESSON00_SUMMARY: free ? free.summary : "",
     LESSON00_CONTENT: free ? free.contentHtml : "",
+    LESSON00_VIDEO: lesson00Video,
     ACCESS_SECTION: accessSection,
     VERIFIED_VERSION: course.verifiedVersion || "",
     VERIFIED_DATE: course.verifiedDate || ""
@@ -232,6 +241,9 @@ function buildCourse(slug) {
       COURSE_TITLE: course.title,
       LESSON_NUM: lessonNumLabel(lesson),
       LESSON_TITLE: lesson.title,
+      LESSON_VIDEO: lesson.youtube
+        ? `<p><a class="video-link" href="https://youtu.be/${lesson.youtube}" target="_blank" rel="noopener noreferrer">▶ Watch this lesson on YouTube</a></p>`
+        : "",
       CONTENT_HTML: lesson.contentHtml,
       PREV_LINK: `<a href="${prev.href}">← ${prev.label}</a>`,
       NEXT_LINK: `<a href="${next.href}">${next.label} →</a>`,
