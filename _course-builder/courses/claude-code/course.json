@@ -9,6 +9,8 @@
   "description": "A hands-on Claude Code course by instructional designer John Crawford — slash commands, skills, hooks, subagents, MCP, memory, and plan mode, taught with a security-first throughline. Lesson 0 free.",
   "curriculumIntro": "Each one builds on the last — mental model first, then a real exercise in your own environment, then a check for understanding before you move on.",
   "showAccessGate": false,
+  "verifiedVersion": "2.1.223",
+  "verifiedDate": "2026-08-19",
   "gateHeadline": "Want the rest of the lessons?",
   "gateBody": "The rest of the course is invite-only while it's in early release. Request access and I'll set you up with a login.",
   "contactEmail": "contact@crawfordcreationsllc.com"

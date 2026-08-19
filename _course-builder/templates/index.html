@@ -86,6 +86,9 @@ h2{font-family:var(--serif);font-weight:400;font-size:1.5rem;margin-bottom:6px;}
 .lesson-00 p{font-size:.92rem;color:var(--fg2);margin-bottom:12px;max-width:680px;}
 .lesson-00 ul{margin:0 0 12px 20px;color:var(--fg2);font-size:.92rem;}
 .lesson-00 li{margin-bottom:6px;}
+.lesson-00 code{font-family:var(--mono);background:var(--bg2);padding:2px 6px;border-radius:4px;font-size:.86rem;color:var(--fg);}
+.lesson-00 pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:14px 0;overflow-x:auto;}
+.lesson-00 pre code{background:none;padding:0;font-size:.84rem;line-height:1.6;white-space:pre;}
 .security-note{border-left:3px solid var(--cta);background:var(--accent-light);border-radius:0 10px 10px 0;padding:14px 16px;margin:16px 0;font-size:.88rem;}
 [data-dark="true"] .security-note{background:#2A1414;}
 .security-note strong{color:var(--cta);}
@@ -101,6 +104,7 @@ h2{font-family:var(--serif);font-weight:400;font-size:1.5rem;margin-bottom:6px;}
 footer{border-top:1px solid var(--border);padding:24px var(--px);text-align:center;font-size:.78rem;color:var(--fg2);}
 footer a{color:var(--accent);text-decoration:none;}
 footer a:hover{text-decoration:underline;}
+.verified-badge{font-family:var(--mono);font-size:.7rem;color:var(--fg2);opacity:.8;margin-top:6px;}
 </style>
 </head>
 <body>
@@ -156,6 +160,7 @@ footer a:hover{text-decoration:underline;}
 
 <footer>
   Built by an instructional designer who also writes the automation · <a href="/learning/">Back to Learning &amp; Credentials</a> · <a href="/">johntcrawford.com</a>
+  <div class="verified-badge">Verified against Claude Code v{{VERIFIED_VERSION}} · Last checked {{VERIFIED_DATE}}</div>
 </footer>
 
 <script>

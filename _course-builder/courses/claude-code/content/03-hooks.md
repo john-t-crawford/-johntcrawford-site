@@ -18,7 +18,24 @@ Security is not negotiable here. A hook runs with no per-invocation confirmation
 
 ## Where hooks live
 
-Hooks are configured in your settings, keyed to lifecycle events. The event determines when the hook fires; the command is whatever shell command you've told it to run.
+Hooks are configured in your settings, keyed to lifecycle events. The event determines when the hook fires; the command is whatever shell command you've told it to run. For example, this logs the path of every file edited, in your project's `.claude/settings.json`:
+
+```
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          { "type": "command", "command": "echo \"$CLAUDE_TOOL_INPUT\" >> ~/edit-log.txt" }
+        ]
+      }
+    ]
+  }
+}
+```
+
+`PostToolUse` fires after a tool call completes; `matcher` limits it to specific tools (here, file edits); `command` is the shell command that runs. This is intentionally the simplest possible hook — read-only, appends to a local file, touches nothing destructive.
 
 ::: exercise Try it — safely
 Add one low-risk hook: something that fires after a file edit and just logs which file changed to a local log file. Nothing destructive, nothing touching git remotes, network calls, or credentials. Trigger the condition and confirm the log file recorded it.

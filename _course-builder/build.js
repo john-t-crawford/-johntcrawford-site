@@ -30,6 +30,17 @@ function renderMarkdown(lines) {
     const line = lines[i];
     if (line.trim() === "") { i++; continue; }
 
+    if (line.startsWith("```")) {
+      i++;
+      const codeLines = [];
+      while (i < lines.length && !lines[i].startsWith("```")) { codeLines.push(lines[i]); i++; }
+      i++; // skip closing fence
+      const escaped = codeLines.join("\n")
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      out.push(`<pre><code>${escaped}</code></pre>`);
+      continue;
+    }
+
     if (line.startsWith(":::")) {
       const header = line.slice(3).trim();
       const spaceIdx = header.indexOf(" ");
@@ -198,7 +209,9 @@ function buildCourse(slug) {
     LESSON00_TITLE: free ? free.title : "",
     LESSON00_SUMMARY: free ? free.summary : "",
     LESSON00_CONTENT: free ? free.contentHtml : "",
-    ACCESS_SECTION: accessSection
+    ACCESS_SECTION: accessSection,
+    VERIFIED_VERSION: course.verifiedVersion || "",
+    VERIFIED_DATE: course.verifiedDate || ""
   });
   fs.writeFileSync(path.join(outDir, "index.html"), indexHtml);
 
@@ -221,7 +234,9 @@ function buildCourse(slug) {
       LESSON_TITLE: lesson.title,
       CONTENT_HTML: lesson.contentHtml,
       PREV_LINK: `<a href="${prev.href}">← ${prev.label}</a>`,
-      NEXT_LINK: `<a href="${next.href}">${next.label} →</a>`
+      NEXT_LINK: `<a href="${next.href}">${next.label} →</a>`,
+      VERIFIED_VERSION: course.verifiedVersion || "",
+      VERIFIED_DATE: course.verifiedDate || ""
     });
     fs.writeFileSync(path.join(lessonsOutDir, lesson.file), html);
   });

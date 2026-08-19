@@ -54,6 +54,8 @@ article p{font-size:.94rem;color:var(--fg2);margin-bottom:12px;}
 article ul,article ol{margin:0 0 14px 20px;color:var(--fg2);font-size:.94rem;}
 article li{margin-bottom:6px;}
 code{font-family:var(--mono);background:var(--bg2);padding:2px 6px;border-radius:4px;font-size:.86rem;color:var(--fg);}
+pre{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:14px 0;overflow-x:auto;}
+pre code{background:none;padding:0;font-size:.84rem;line-height:1.6;white-space:pre;}
 .security-note{border-left:3px solid var(--cta);background:var(--accent-light);border-radius:0 10px 10px 0;padding:14px 16px;margin:18px 0;font-size:.88rem;}
 [data-dark="true"] .security-note{background:#2A1414;}
 .security-note strong{color:var(--cta);}
@@ -68,6 +70,7 @@ code{font-family:var(--mono);background:var(--bg2);padding:2px 6px;border-radius
 footer{border-top:1px solid var(--border);padding:24px var(--px);text-align:center;font-size:.78rem;color:var(--fg2);}
 footer a{color:var(--accent);text-decoration:none;}
 footer a:hover{text-decoration:underline;}
+.verified-badge{font-family:var(--mono);font-size:.7rem;color:var(--fg2);opacity:.8;margin-top:6px;}
 </style>
 </head>
 <body>
@@ -115,6 +118,7 @@ footer a:hover{text-decoration:underline;}
 
 <footer>
   Claude Code: Zero to Proficient · <a href="/learning/claude-code/">Back to curriculum</a> · <a href="/">johntcrawford.com</a>
+  <div class="verified-badge">Verified against Claude Code v2.1.223 · Last checked 2026-08-19</div>
 </footer>
 
 <script>
