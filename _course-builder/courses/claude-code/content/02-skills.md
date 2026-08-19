@@ -3,6 +3,7 @@ title: Skills
 icon: i02
 gated: true
 summary: Reusable, self-triggering capabilities — what makes a Skill different from a command.
+youtube: 9MqenTLuQ18
 ---
 
 A Skill is a step up from a slash command: instead of something you type deliberately every time, it's a packaged capability Claude can reach for on its own when it's relevant — triggered by matching your request against the Skill's description, not by you typing its name.

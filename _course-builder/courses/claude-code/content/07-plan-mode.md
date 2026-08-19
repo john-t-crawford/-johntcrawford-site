@@ -4,6 +4,7 @@ icon: i07
 gated: true
 capstone: true
 summary: Read-only planning, permission modes, and the principle tying the whole course together.
+youtube: hmkvKpNdPzk
 ---
 
 ::: capstone

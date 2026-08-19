@@ -3,6 +3,7 @@ title: Hooks
 icon: i03
 gated: true
 summary: Automating around tool calls — and the security rules that keep automation safe.
+youtube: KqC-TTlhaD4
 ---
 
 A hook is a shell command the harness runs automatically around an event — before a tool call, after a file edit, when a session stops — configured once in your settings, then fired every time the condition matches. No confirmation, no per-invocation review. That's the whole point of a hook, and it's also exactly why this lesson leads with security instead of ending with it.

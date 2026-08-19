@@ -3,6 +3,7 @@ title: MCP Servers
 icon: i05
 gated: true
 summary: Connecting outside tools and services — and treating each connection as a trust boundary.
+youtube: uxp1b5H0I5M
 ---
 
 MCP (Model Context Protocol) is how Claude Code talks to outside systems in a structured way — email, cloud storage, design tools, a database — instead of you copy-pasting data back and forth by hand. Connect an MCP server and Claude gains whatever capabilities that server exposes.

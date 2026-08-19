@@ -3,6 +3,7 @@ title: Memory
 icon: i06
 gated: true
 summary: CLAUDE.md vs. persistent memory vs. context compression — what belongs where.
+youtube: fNYqd3Y24AA
 ---
 
 Three separate mechanisms handle "not forgetting things," and mixing them up is the most common mistake at this stage: `CLAUDE.md`, persistent memory, and automatic context compression.

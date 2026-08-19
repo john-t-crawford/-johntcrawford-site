@@ -3,6 +3,7 @@ title: Slash Commands
 icon: i01
 gated: true
 summary: Built-in commands, and how to write your own from a single markdown file.
+youtube: rfn0LX8OnMo
 ---
 
 Slash commands are the simplest way to hand Claude Code a repeatable instruction. Type `/` followed by a name, and Claude runs whatever that command's file tells it to do. This lesson covers the built-ins worth knowing, then has you write your own.

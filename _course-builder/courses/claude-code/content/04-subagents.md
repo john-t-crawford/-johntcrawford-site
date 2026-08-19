@@ -3,6 +3,7 @@ title: Subagents
 icon: i04
 gated: true
 summary: Delegating work to specialized agents — parallel research without losing the thread.
+youtube: Lx9dJv8hZ7g
 ---
 
 A subagent runs in its own context window, separate from your main conversation. Launch several in parallel and you can fan out independent research instead of working through it one step at a time. The tradeoff: a subagent starts cold, with no memory of what you and Claude have already discussed — so the prompt you hand it has to stand on its own.
