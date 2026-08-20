@@ -485,6 +485,18 @@
       "pdf": "certs/safe-4-practitioner.pdf"
     },
     {
+      "title": "Adobe Captivate Specialist",
+      "type": "Certification",
+      "platform": "Adobe",
+      "category": "Other Certifications",
+      "skills": ["Adobe Captivate", "eLearning Development"],
+      "instructor": "Adobe",
+      "date": "2019-03-13",
+      "durationMinutes": 0,
+      "certId": "N/A",
+      "pdf": "certs/adobe-captivate-specialist.jpg"
+    },
+    {
       "title": "M.S. in Education — Instructional Design for Online Learning",
       "type": "Degree",
       "platform": "Capella University",
