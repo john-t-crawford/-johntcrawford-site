@@ -32,3 +32,9 @@
 
 # ── Working custom 404 (fixes the current double-404 ErrorDocument error) ──
 ErrorDocument 404 /404.html
+
+# ── Never leak PHP errors (paths, usernames) to visitors; log them instead ──
+<IfModule mod_php.c>
+  php_flag display_errors off
+  php_flag log_errors on
+</IfModule>

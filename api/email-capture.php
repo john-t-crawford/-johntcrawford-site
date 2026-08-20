@@ -206,4 +206,3 @@ if (SEND_DOWNLOAD) {
 respond(200, 'ok', 'Thanks — check your inbox for the download link.', [
     'download' => SEND_DOWNLOAD ? DOWNLOAD_URL : null,
 ]);
- 
