@@ -20,6 +20,19 @@ bench, specimen sheets, and four Node build scripts.
 **Every illustration is generated, not drawn.** A plant is a spec object; the plate
 is a render. 121 species × 4 views = **484 plates**, none of them artwork.
 
+**`houseplants.html`** is a separate, smaller sibling: a browse + multiple-choice
+quiz over 23 hand-authored indoor houseplant records (light/water/humidity/toxicity/
+care level), same generated-plate doctrine, same design system. It does not share
+`WOODY.PLANTS` or any woody-species data — its own `PLANTS` array, its own plate
+generator (leaf-unit shapes composed by habit: rosette / trailing / single-stem),
+scoped down from the full trainer (no narrated lesson track, no learn slideshow —
+Browse + Quiz only). Care data was hand-authored after surveying free plant APIs
+(Perenual, Trefle) and university extension fact sheets for content ideas; nothing
+is fetched live — same "no external requests" rule as everything else here, and the
+same reasoning as the photo licence policy below: a live API dependency in public
+client-side JS can't hide a key, can't guarantee uptime, and can't guarantee licence
+terms the way a hand-authored, offline record can.
+
 ---
 
 ## Hard constraints — do not violate
