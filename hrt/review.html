@@ -166,6 +166,13 @@ input::placeholder{color:var(--print-faint)}
 .qthumb.done .badge{background:rgba(234,170,0,.9);color:#1A1200}
 .qthumb.unsure .badge{background:rgba(159,192,220,.85);color:#0A1626}
 
+.log{display:flex;flex-direction:column;gap:.4rem}
+.inboxrow{display:flex;align-items:center;gap:.7rem;padding:.5rem;background:rgba(10,22,38,.4);border:1px solid var(--rule);border-radius:4px}
+.inboxrow img{width:56px;height:56px;object-fit:cover;border-radius:3px;flex-shrink:0;background:#06101c}
+.inboxrow .meta{flex:1 1 auto;min-width:0;font-size:.82rem;color:var(--print-dim)}
+.inboxrow .meta b{display:block;color:var(--print);font:400 .95rem/1.2 var(--serif)}
+.inboxrow .btn{flex-shrink:0;padding:.5rem .8rem;font-size:.82rem;min-height:36px}
+
 .warn{border-left:3px solid var(--red);padding:.7rem .85rem;background:rgba(206,17,38,.1);border-radius:0 4px 4px 0;margin:.8rem 0;font-size:.88rem}
 .warn b{display:block;font:600 .7rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--red-lift);margin-bottom:.3rem}
 .note{font:400 .79rem/1.55 var(--mono);color:var(--print-faint);margin:.7rem 0 0}
@@ -212,6 +219,30 @@ code{font:400 .85em/1 var(--mono);background:rgba(159,192,220,.12);padding:.12em
       <input type="file" id="files" accept="image/jpeg,image/png,image/webp" multiple>
     </label>
     <p class="note">If your files came off an iPhone as HEIC, convert them to JPEG first with <code>python convert-heic.py</code> &mdash; browsers cannot read HEIC.</p>
+  </div>
+
+  <div class="card hide" id="adminCard">
+    <h2><span class="stepnum">&#9733;</span>Admin &mdash; pull from your phone</h2>
+    <p class="note">Photos shot in <a href="./capture.html">capture.html</a> land in a private server inbox, not
+    here automatically. Check the inbox, load whichever shots you want to work on into the bench above, and
+    identify them exactly as you would a local file. When you confirm one, a <b>Publish to server</b> button
+    appears below &mdash; that's what writes it into <code>photos/</code>, <code>photos.js</code>, and the
+    manifest on the live server. Nothing local-only in step 1 is affected.</p>
+    <div class="btnrow">
+      <button class="btn btn-ghost" id="refreshInbox">Check inbox</button>
+      <button class="btn btn-primary hide" id="publishRemote">Publish confirmed to server</button>
+    </div>
+    <div class="log" id="inboxList" style="margin-top:.8rem"></div>
+    <div class="warn hide" id="syncWarn">
+      <b>Commit before the next deploy sync</b>
+      Publishing just edited <code>photos.js</code> and <code>photos-manifest.json</code> on the live server,
+      not in git. Running <code>deploy.php</code> before you commit those two files will silently overwrite
+      them back to whatever git still has &mdash; your published photos would still be in <code>photos/</code>,
+      but the site would stop listing them. Pull the current copies and commit them now.
+      <div class="btnrow" style="margin-top:.6rem">
+        <button class="btn btn-ghost" id="downloadServerFiles">Download photos.js + manifest</button>
+      </div>
+    </div>
   </div>
 
   <div class="card hide" id="benchCard">
@@ -1004,6 +1035,13 @@ window.WOODY.PLANTS = [
 
   var items = [], cur = 0, candidate = null, view = null;
 
+  /* ---------------- admin: server inbox ----------------
+     Only reachable with ?key=... matching the server's secret. Everything
+     here talks to hrt-admin.php; no key means every call 403s and this
+     panel stays hidden. See hrt-admin.EDIT_ME.php for setup. */
+  var ADMIN_KEY = new URLSearchParams(location.search).get('key') || '';
+  var ADMIN_API = 'api/hrt-admin.php';
+
 var CRC = (function () {
     var t = new Uint32Array(256);
     for (var n = 0; n < 256; n++) {
@@ -1301,7 +1339,10 @@ var CRC = (function () {
     items[cur].status = 'unsure'; toast('Held back from the export'); advance();
   });
   $('reject').addEventListener('click', function () {
-    items[cur].status = 'rejected'; toast('Discarded'); advance();
+    var it = items[cur];
+    it.status = 'rejected';
+    if (it.remote && !it.published) discardRemote(it);
+    toast('Discarded'); advance();
   });
 
   $('files').addEventListener('change', function (e) { loadFiles(e.target.files); e.target.value = ''; });
@@ -1399,6 +1440,133 @@ var CRC = (function () {
       'photos-manifest.fragment.json');
     toast('Manifest exported');
   });
+
+  /* ---------------- admin: server inbox ---------------- */
+  var inboxItems = [];
+
+  function guessSpeciesById(id) { return id ? byId(id) : null; }
+
+  function renderInbox() {
+    var wrap = $('inboxList'); wrap.innerHTML = '';
+    if (!inboxItems.length) {
+      wrap.innerHTML = '<p class="note">Inbox is empty.</p>';
+      return;
+    }
+    inboxItems.forEach(function (meta) {
+      var row = document.createElement('div');
+      row.className = 'inboxrow';
+      var sp = guessSpeciesById(meta.speciesGuess);
+      row.innerHTML = '<img alt=""><span class="meta"><b></b><span></span></span><button type="button" class="btn btn-ghost">Load</button>';
+      row.querySelector('img').src = ADMIN_API + '?action=image&file=' + encodeURIComponent(meta.file) + '&key=' + encodeURIComponent(ADMIN_KEY);
+      row.querySelector('b').textContent = sp ? sp.latin : 'Unlabeled shot';
+      row.querySelector('.meta > span').textContent =
+        (meta.view || 'view unset') + (meta.note ? ' — ' + meta.note : '') +
+        ' — ' + new Date(meta.uploadedAt).toLocaleString();
+      row.querySelector('button').addEventListener('click', function () { loadFromInbox(meta); });
+      wrap.appendChild(row);
+    });
+  }
+
+  function refreshPublishButton() {
+    var pending = items.some(function (it) { return it.remote && it.status === 'done' && !it.published; });
+    $('publishRemote').classList.toggle('hide', !pending);
+  }
+
+  function loadFromInbox(meta) {
+    var already = items.some(function (it) { return it.remoteFile === meta.file; });
+    if (already) { toast('Already loaded'); return; }
+    fetch(ADMIN_API + '?action=image&file=' + encodeURIComponent(meta.file) + '&key=' + encodeURIComponent(ADMIN_KEY))
+      .then(function (r) { if (!r.ok) throw new Error('fetch failed'); return r.arrayBuffer(); })
+      .then(function (buf) {
+        var bytes = new Uint8Array(buf);
+        var ext = (meta.file.split('.').pop() || 'jpg').toLowerCase();
+        var mime = ext === 'png' ? 'image/png' : ext === 'webp' ? 'image/webp' : 'image/jpeg';
+        var sp = guessSpeciesById(meta.speciesGuess);
+        items.push({
+          name: meta.file, size: bytes.length, type: mime, bytes: bytes,
+          url: URL.createObjectURL(new Blob([bytes], { type: mime })),
+          exif: false, // stripped server-side on upload
+          suggested: sp ? [sp] : [],
+          view: meta.view || null,
+          species: null, status: 'pending',
+          remote: true, remoteFile: meta.file, published: false
+        });
+        $('benchCard').classList.remove('hide');
+        $('exportCard').classList.remove('hide');
+        cur = items.length - 1;
+        show();
+        toast('Loaded ' + (sp ? sp.latin : 'shot') + ' into the bench');
+      })
+      .catch(function () { toast('Could not load that image'); });
+  }
+
+  function refreshInbox() {
+    if (!ADMIN_KEY) return;
+    fetch(ADMIN_API + '?action=list&key=' + encodeURIComponent(ADMIN_KEY))
+      .then(function (r) { if (!r.ok) throw new Error('denied'); return r.json(); })
+      .then(function (j) {
+        $('adminCard').classList.remove('hide');
+        inboxItems = j.items || [];
+        renderInbox();
+      })
+      .catch(function () { $('adminCard').classList.add('hide'); });
+  }
+
+  $('refreshInbox').addEventListener('click', refreshInbox);
+
+  $('publishRemote').addEventListener('click', function () {
+    var pending = items.filter(function (it) { return it.remote && it.status === 'done' && !it.published; });
+    if (!pending.length) return;
+    var ok = 0, fail = 0, left = pending.length;
+    pending.forEach(function (it) {
+      // The server publishes the inbox file it already has (EXIF-stripped
+      // on upload) by filename — nothing to re-send here.
+      var fd = new FormData();
+      fd.append('key', ADMIN_KEY);
+      fd.append('file', it.remoteFile);
+      fd.append('id', it.species);
+      fd.append('view', it.view);
+      fetch(ADMIN_API + '?action=publish&key=' + encodeURIComponent(ADMIN_KEY), { method: 'POST', body: fd })
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          left--;
+          if (j.status === 'ok') { it.published = true; ok++; } else { fail++; }
+          if (left === 0) finishPublish(ok, fail);
+        })
+        .catch(function () { left--; fail++; if (left === 0) finishPublish(ok, fail); });
+    });
+  });
+
+  function finishPublish(ok, fail) {
+    toast(ok + ' published' + (fail ? ', ' + fail + ' failed' : ''));
+    refreshPublishButton();
+    refreshInbox();
+    renderQueue();
+    if (ok) $('syncWarn').classList.remove('hide');
+  }
+
+  $('downloadServerFiles').addEventListener('click', function () {
+    Promise.all([
+      fetch('photos.js?t=' + Date.now()).then(function (r) { return r.text(); }),
+      fetch('photos-manifest.json?t=' + Date.now()).then(function (r) { return r.text(); })
+    ]).then(function (files) {
+      download(new Blob([files[0]], { type: 'application/javascript' }), 'photos.js');
+      download(new Blob([files[1]], { type: 'application/json' }), 'photos-manifest.json');
+      toast('Downloaded — commit these two files to git before the next deploy sync');
+    }).catch(function () { toast('Could not fetch the live files'); });
+  });
+
+  function discardRemote(it) {
+    var fd = new FormData();
+    fd.append('key', ADMIN_KEY);
+    fd.append('file', it.remoteFile);
+    fetch(ADMIN_API + '?action=discard&key=' + encodeURIComponent(ADMIN_KEY), { method: 'POST', body: fd }).catch(function () {});
+  }
+
+  var _updateCounts = updateCounts;
+  updateCounts = function () { _updateCounts(); refreshPublishButton(); };
+
+  if (ADMIN_KEY) refreshInbox();
 })();
 </script>
 </body>

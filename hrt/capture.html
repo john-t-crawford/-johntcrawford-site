@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Admin Capture — Woody Ornamentals</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0A1626">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%230F2A47'/%3E%3Cpath d='M32 54V34' stroke='%23E8F1FA' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M32 34 L11 21 A25 25 0 0 1 30 10 L32 17 L34 10 A25 25 0 0 1 53 21 Z' fill='none' stroke='%23EAAA00' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ground-deep:#0A1626;--ground:#0F2A47;--ground-lift:#16406B;
+  --print:#E8F1FA;--print-dim:#9FC0DC;--print-faint:#5C87AD;
+  --gold:#EAAA00;--red:#CE1126;--red-lift:#FF5C6E;
+  --rule:rgba(159,192,220,.28);--rule-firm:rgba(159,192,220,.55);
+  --serif:Georgia,"Iowan Old Style","Palatino Linotype",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --tap:44px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--ground-deep);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground-deep);color:var(--print);font:400 16px/1.55 var(--sans);padding-bottom:env(safe-area-inset-bottom)}
+.shell{max-width:640px;margin:0 auto;padding:1.25rem 1rem 4rem}
+:where(a,button,input,select,summary,[tabindex]):focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:3px}
+
+header{border-bottom:1px solid var(--rule-firm);padding-bottom:.8rem;margin-bottom:1rem}
+h1{margin:0;font:400 1.4rem/1.15 var(--serif)}
+h1 em{font-style:italic;color:var(--gold)}
+.sub{margin:.3rem 0 0;font:400 .72rem/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--print-dim)}
+
+.card{border:1px solid var(--rule-firm);border-radius:5px;background:rgba(18,52,86,.4);padding:1rem;margin-bottom:1rem}
+.card h2{margin:0 0 .5rem;font:600 .95rem/1.2 var(--sans)}
+.note{margin:.5rem 0 0;color:var(--print-dim);font-size:.86rem}
+.warn{border-left:3px solid var(--red-lift);padding:.6rem .8rem;background:rgba(206,17,38,.1);border-radius:0 4px 4px 0;color:var(--print);font-size:.9rem}
+
+input[type=search],textarea{
+  width:100%;min-height:var(--tap);padding:.65rem .8rem;
+  background:rgba(10,22,38,.55);border:1px solid var(--rule-firm);border-radius:4px;
+  color:var(--print);font:400 1rem/1.4 var(--sans);
+}
+textarea{min-height:2.6rem;resize:vertical}
+input::placeholder,textarea::placeholder{color:var(--print-faint)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:var(--tap);padding:.7rem 1.1rem;border-radius:5px;border:1px solid transparent;font:600 .92rem/1.2 var(--sans);cursor:pointer}
+.btn-primary{background:var(--gold);color:#1A1200;border-color:var(--gold)}
+.btn-ghost{background:transparent;color:var(--print);border-color:var(--rule-firm)}
+.btn-ghost:hover{background:var(--ground-lift)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btnrow{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.6rem}
+
+.splist{display:flex;flex-direction:column;gap:.4rem;max-height:52vh;overflow-y:auto;margin-top:.7rem}
+.sprow{
+  display:flex;align-items:center;justify-content:space-between;gap:.6rem;
+  min-height:var(--tap);padding:.55rem .7rem;background:rgba(10,22,38,.4);
+  border:1px solid var(--rule);border-radius:4px;cursor:pointer;text-align:left;color:var(--print);
+  font:inherit;width:100%;
+}
+.sprow:hover,.sprow.sel{border-color:var(--gold);background:rgba(234,170,0,.1)}
+.spname{display:flex;flex-direction:column;min-width:0}
+.spname i{font-style:italic;font-size:.95rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.spname small{color:var(--print-dim);font-size:.78rem}
+.badges{display:flex;gap:.25rem;flex-shrink:0}
+.badge{font:600 .62rem/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;padding:.3rem .4rem;border-radius:3px;background:rgba(159,192,220,.15);color:var(--print-dim)}
+.badge.need{background:rgba(234,170,0,.18);color:var(--gold)}
+
+.viewgrid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.8rem}
+.shoot{
+  position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;
+  min-height:88px;cursor:pointer;background:rgba(234,170,0,.1);border:2px dashed rgba(234,170,0,.55);
+  border-radius:8px;color:var(--gold);font:600 .92rem/1.2 var(--sans);text-align:center;padding:.5rem;
+}
+.shoot.have{border-style:solid;border-color:rgba(159,192,220,.4);background:rgba(159,192,220,.08);color:var(--print-dim)}
+.shoot:hover{background:rgba(234,170,0,.18)}
+.shoot input{position:absolute;width:1px;height:1px;opacity:0}
+.shoot small{font:400 .72rem/1.2 var(--sans);color:var(--print-dim)}
+
+.picked{border-left:3px solid var(--gold);padding:.6rem .8rem;background:rgba(10,22,38,.5);border-radius:0 4px 4px 0;margin-top:.8rem}
+.picked b{display:block;font:400 1.05rem/1.2 var(--serif);color:var(--gold)}
+.picked span{font-size:.85rem;color:var(--print-dim)}
+
+.log{display:flex;flex-direction:column;gap:.35rem;margin-top:.6rem}
+.logrow{display:flex;justify-content:space-between;gap:.6rem;font-size:.85rem;padding:.4rem .55rem;border-radius:4px;background:rgba(10,22,38,.4)}
+.logrow.ok{color:var(--print)}
+.logrow.err{color:var(--red-lift)}
+
+.toast{position:fixed;left:50%;bottom:1.2rem;transform:translateX(-50%);background:var(--gold);color:#1A1200;padding:.65rem 1.1rem;border-radius:6px;font:600 .88rem/1.2 var(--sans);z-index:99;transition:opacity .25s}
+.toast.hide{opacity:0;pointer-events:none}
+.hide{display:none !important}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<header>
+  <h1>Admin <em>Capture</em></h1>
+  <p class="sub">Field upload &middot; woody ornamentals</p>
+</header>
+
+<div id="gate" class="card">
+  <h2>Checking access&hellip;</h2>
+  <p class="note">This page needs the key from your bookmarked link. It does nothing without it.</p>
+</div>
+
+<div id="app" class="hide">
+
+  <div class="card">
+    <h2>1&nbsp; Pick the species you're standing in front of</h2>
+    <label class="sr" for="search"></label>
+    <input type="search" id="search" placeholder="Search Latin, common name, or synonym" autocomplete="off">
+    <div class="splist" id="splist"></div>
+  </div>
+
+  <div id="pickedCard" class="card hide">
+    <h2>2&nbsp; Shoot a view</h2>
+    <div class="picked" id="picked"></div>
+    <div class="viewgrid" id="viewgrid"></div>
+    <label class="fld" style="display:block;margin-top:.8rem">
+      <span class="note" style="margin:0 0 .3rem">Note (optional — location, which plant if more than one)</span>
+      <textarea id="note" placeholder="e.g. north side of the library, the smaller of the two"></textarea>
+    </label>
+  </div>
+
+  <div class="card">
+    <h2>Uploaded this session</h2>
+    <p class="note" id="sessionCount">Nothing yet.</p>
+    <div class="log" id="log"></div>
+    <p class="note">Nothing here is published to the trainer yet — every upload lands in a private inbox.
+    Open <code>review.html?key=&hellip;</code> to confirm the species against the drawn plates and publish it.</p>
+  </div>
+
+</div>
+
+<div id="denied" class="card hide">
+  <div class="warn"><b>Not authorized.</b> This page needs a valid <code>?key=</code> in the URL.</div>
+</div>
+
+</div>
+<div class="toast hide" id="toast" role="status" aria-live="polite"></div>
+
+<script src="photos.js" onerror="window.WOODY=window.WOODY||{};WOODY.PHOTOS=WOODY.PHOTOS||{};"></script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var VIEWS = ['foliage', 'bark', 'habit', 'flower', 'fruit'];
+  var key = new URLSearchParams(location.search).get('key') || '';
+  var API = 'api/hrt-admin.php';
+  var species = [];       // from species-index.json
+  var covered = (window.WOODY && window.WOODY.PHOTOS) || {};
+  var current = null;     // selected species row
+  var uploaded = 0;
+
+  function toast(m) {
+    var t = $('toast'); t.textContent = m; t.classList.remove('hide');
+    clearTimeout(toast._t); toast._t = setTimeout(function () { t.classList.add('hide'); }, 3200);
+  }
+
+  function missingViews(id) {
+    var have = (covered[id] || []).map(function (r) { return r.view; });
+    return VIEWS.filter(function (v) { return have.indexOf(v) === -1; });
+  }
+
+  function renderList(filter) {
+    var wrap = $('splist'); wrap.innerHTML = '';
+    var f = (filter || '').toLowerCase().trim();
+    var rows = species.filter(function (s) {
+      if (!f) return true;
+      return s.latin.toLowerCase().indexOf(f) > -1 ||
+             s.common.toLowerCase().indexOf(f) > -1 ||
+             (s.syn || []).some(function (x) { return x.toLowerCase().indexOf(f) > -1; });
+    }).slice(0, 40);
+    rows.forEach(function (s) {
+      var miss = missingViews(s.id);
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'sprow' + (current && current.id === s.id ? ' sel' : '');
+      var badges = miss.map(function (v) { return '<span class="badge need">' + v + '</span>'; }).join('');
+      if (!miss.length) badges = '<span class="badge">complete</span>';
+      b.innerHTML = '<span class="spname"><i></i><small></small></span><span class="badges">' + badges + '</span>';
+      b.querySelector('i').textContent = s.latin;
+      b.querySelector('small').textContent = s.common;
+      b.addEventListener('click', function () { selectSpecies(s); });
+      wrap.appendChild(b);
+    });
+    if (!rows.length) wrap.innerHTML = '<p class="note">No match.</p>';
+  }
+
+  function selectSpecies(s) {
+    current = s;
+    $('pickedCard').classList.remove('hide');
+    var p = $('picked');
+    p.innerHTML = '<b></b><span></span>';
+    p.querySelector('b').textContent = s.latin;
+    p.querySelector('span').textContent = s.common;
+    renderViews();
+    renderList($('search').value);
+    $('pickedCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function renderViews() {
+    var wrap = $('viewgrid'); wrap.innerHTML = '';
+    var have = (covered[current.id] || []).map(function (r) { return r.view; });
+    VIEWS.forEach(function (v) {
+      var already = have.indexOf(v) > -1;
+      var label = document.createElement('label');
+      label.className = 'shoot' + (already ? ' have' : '');
+      label.innerHTML = '<span></span><small></small><input type="file" accept="image/*" capture="environment">';
+      label.querySelector('span').textContent = v;
+      label.querySelector('small').textContent = already ? 'already covered — shoot anyway?' : 'tap to shoot';
+      label.querySelector('input').addEventListener('change', function (e) {
+        var f = e.target.files && e.target.files[0];
+        e.target.value = '';
+        if (f) upload(f, v);
+      });
+      wrap.appendChild(label);
+    });
+  }
+
+  function logRow(cls, text) {
+    var row = document.createElement('div');
+    row.className = 'logrow ' + cls;
+    row.textContent = text;
+    $('log').insertBefore(row, $('log').firstChild);
+  }
+
+  function upload(file, view) {
+    var fd = new FormData();
+    fd.append('key', key);
+    fd.append('action', 'upload');
+    fd.append('photo', file);
+    fd.append('view', view);
+    fd.append('speciesGuess', current ? current.id : '');
+    fd.append('note', $('note').value || '');
+    toast('Uploading…');
+    fetch(API + '?action=upload&key=' + encodeURIComponent(key), { method: 'POST', body: fd })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) {
+        if (!res.ok) { logRow('err', (current ? current.common + ' — ' : '') + view + ': ' + res.j.message); toast('Upload failed'); return; }
+        uploaded++;
+        $('sessionCount').textContent = uploaded + ' photo' + (uploaded === 1 ? '' : 's') + ' uploaded, pending review.';
+        logRow('ok', (current ? current.common : 'Unlabeled') + ' — ' + view + ' ✓');
+        toast('Uploaded');
+      })
+      .catch(function () { logRow('err', view + ': network error'); toast('Upload failed'); });
+  }
+
+  $('search').addEventListener('input', function () { renderList(this.value); });
+
+  function boot() {
+    if (!key) { $('gate').classList.add('hide'); $('denied').classList.remove('hide'); return; }
+    fetch(API + '?action=list&key=' + encodeURIComponent(key))
+      .then(function (r) { if (!r.ok) throw new Error('denied'); return r.json(); })
+      .then(function () {
+        return fetch('species-index.json').then(function (r) { return r.json(); });
+      })
+      .then(function (rows) {
+        species = rows.slice().sort(function (a, b) { return a.common.localeCompare(b.common); });
+        $('gate').classList.add('hide');
+        $('app').classList.remove('hide');
+        renderList('');
+      })
+      .catch(function () { $('gate').classList.add('hide'); $('denied').classList.remove('hide'); });
+  }
+  boot();
+})();
+</script>
+</body>
+</html>

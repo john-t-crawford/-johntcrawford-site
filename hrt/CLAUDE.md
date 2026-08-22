@@ -51,7 +51,8 @@ sessionStorage — that would silently destroy a morning's fieldwork.
 ```
 index.html          302 KB  trainer + learn branch. The main artifact
 field.html           91 KB  mobile field capture, GPS goals, ZIP export
-review.html         107 KB  photo identification bench, resize + EXIF strip
+capture.html          —    admin-only phone capture, uploads to the server inbox
+review.html         107 KB  photo identification bench, resize + EXIF strip, admin server-sync
 sheets.html          86 KB  specimen sheets — photos beside plates
 worksheet.html       14 KB  sourcing worksheet, rendered
 case-study.html      14 KB  build notes, public-facing
@@ -61,6 +62,9 @@ build-photos.js       5 KB  ingest photos into a photos.js sidecar
 verify-photos.js      5 KB  licence + reachability audit, exits non-zero on failure
 scan-images.js       13 KB  scan local drives for candidate images, hand-rolled EXIF reader
 photos-manifest.json 25 KB  121 entries, src fields intentionally blank
+
+api/hrt-admin.EDIT_ME.php  template for the field-capture endpoint — copy to
+                            hrt-admin.php (gitignored, holds a live secret) and configure
 
 PHOTO-SOURCING.md          which 30 photographs are worth taking, and why
 FIELD-PLAN.md              capture routes and seasons, scoped to Odenton 21113
@@ -228,15 +232,55 @@ Photographs are optional throughout. With no sidecar, everything runs on drawn p
 ```
 camera / archive
    │
-   ├─ field.html    capture in the field, GPS-derived goals, ZIP export
+   ├─ field.html      capture in the field, GPS-derived goals, ZIP export
    ├─ scan-images.js  find candidates on local drives (text + EXIF only)
+   ├─ capture.html    admin-only phone capture → hrt-admin.php inbox (see below)
    │
    └─ review.html   ← the identification bench
         resize to 1600 px · strip EXIF · confirm species against the drawn plates
-        exports: photos/<id>-<view>.jpg  +  photos.js  +  manifest fragment
-             │
-             └─ upload to /hrt/ → index.html and sheets.html pick it up automatically
+        LOCAL mode  → exports: photos/<id>-<view>.jpg + photos.js + manifest fragment
+                       upload to /hrt/ → index.html and sheets.html pick it up automatically
+        ADMIN mode  → publishes straight to the server: same files, no manual upload
 ```
+
+### Admin capture — phone to server, no manual upload
+
+`capture.html` and the "Admin — pull from your phone" panel in `review.html` are an
+admin-only shortcut around the manual zip/upload step above, gated by a shared secret
+(`?key=...` in the URL, checked server-side by `hrt-admin.php`). There is no user
+system and no visible link to either from the public site — the gate is that nobody
+without the key can list, view, upload, or publish anything.
+
+```
+iPhone → capture.html?key=...          pick species, shoot a view, upload
+              │  (POST, EXIF stripped server-side on arrival)
+              ▼
+   hrt-admin.php  →  private inbox, ABOVE the web root
+              │
+              ▼
+   review.html?key=...  "Admin" panel   load a pending shot into the normal bench,
+                                          confirm against the drawn plates exactly
+                                          as a local file — doctrine below still
+                                          applies, nothing is auto-identified
+              │  Publish to server
+              ▼
+   hrt-admin.php  →  writes hrt/photos/<id>-<view>.jpg, rewrites photos.js,
+                      appends photos-manifest.json, deletes the inbox entry
+```
+
+`hrt-admin.EDIT_ME.php` is the checked-in template (mirrors `htaccess_EDIT_ME.txt`'s
+pattern). Copy it to `hrt-admin.php` — gitignored, holds the live secret, same
+convention as `/deploy.php` at the site root — and set `SECRET` and `INBOX_DIR`.
+
+**Standing gotcha, not a bug to fix:** publishing edits `photos.js` and
+`photos-manifest.json` directly on the server, but both files are also tracked in
+git and pulled by `deploy.php`. Running a deploy sync after a phone-publish session
+without first committing the server's updated copies back to git will silently
+revert them to whatever git still has — `deploy.php` overwrites, it never merges.
+After a publish session, pull the current `photos.js` / `photos-manifest.json` off
+the server and commit them before the next `deploy.php?key=...` run. The photographs
+themselves in `photos/` are safe either way — `deploy.php` only ever writes files
+that exist in the git tree, it never deletes.
 
 `build-photos.js` and `verify-photos.js` are the Node path for the same thing. Run
 verify before build; it exits non-zero on a blocked licence, a missing credit, or a

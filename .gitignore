@@ -24,3 +24,6 @@ deploy.php
 
 # Deploy webhook receiver (server infra, contains .htdigest credentials)
 johntcrawford-site.git/
+
+# Field-capture admin endpoint (contains a live secret key, must not be public)
+hrt/api/hrt-admin.php
