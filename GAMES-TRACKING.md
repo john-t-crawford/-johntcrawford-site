@@ -23,10 +23,10 @@ This is a bigger, standalone expansion of the "Bay Quest" trivia quiz already
 embedded as a `GameDemo` inside `index.html`'s project cards — same IP, much
 more built out here.
 
-## Status: untracked in git
+## Status: tracked in git (2026-08-22)
 
-Not yet `git add`ed. Whether to commit it (and the intro photo assets) is an
-open decision — not made unilaterally as part of this tracking pass.
+Added to git after the CSP fix and SRI hashes were both in place —
+`games/index.html`, `games/bay-quest.html`, and all 8 intro photos.
 
 ## Findings from the 2026-08-22 review
 
