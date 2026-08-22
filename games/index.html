@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Learning | John T Crawford</title>
+<meta name="description" content="Interactive, gamified learning tools by John T Crawford — instructional design applied to real ecosystems, starting with the Chesapeake Bay.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://johntcrawford.com/games/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --md-gold: #F0A500;
+    --md-red: #CE1126;
+    --md-navy: #0F1B2D;
+    --bg: #F7F4EE;
+    --bg2: #EDE9E0;
+    --fg: #111111;
+    --fg2: #4A4035;
+    --accent: #B87D00;
+    --border: #D5CEBC;
+    --card: #FFFFFF;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0F1B2D; --bg2: #162236; --fg: #F7F4EE; --fg2: #C8B99A;
+      --accent: #F0A500; --border: #243450; --card: #162236;
+    }
+  }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  header {
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+  header a.back {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  header img { width: 22px; height: 22px; }
+  main {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 56px 24px 80px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    margin-bottom: 12px;
+  }
+  .lede {
+    color: var(--fg2);
+    font-size: 1.05rem;
+    max-width: 620px;
+    margin-bottom: 48px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px;
+    text-decoration: none;
+    color: var(--fg);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color 0.18s, transform 0.18s;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .card .eyebrow {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .card h2 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+  }
+  .card p { color: var(--fg2); font-size: 0.92rem; }
+  .card .cta {
+    margin-top: auto;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .card.placeholder {
+    border-style: dashed;
+    color: var(--fg2);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 200px;
+  }
+  .card.placeholder h2 { color: var(--fg2); font-size: 1.1rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="back" href="../index.html#projects">
+    <img src="../maryland-crab.svg" alt="" aria-hidden="true"> John T Crawford
+  </a>
+</header>
+
+<main>
+  <h1>Interactive Learning</h1>
+  <p class="lede">
+    Instructional design applied outside the LMS — small, self-contained games and tools built to teach
+    a real subject through play. This section starts with the Chesapeake Bay and grows from there.
+  </p>
+
+  <div class="grid">
+    <a class="card" href="bay-quest.html">
+      <span class="eyebrow">Gamification · Chesapeake Bay · Maryland DNR</span>
+      <h2>Bay Quest: Nano Edition</h2>
+      <p>Catch male blue crabs, dodge invasive blue catfish, and pick up AI-guided ecology facts
+        from an on-device "Nano Crab" companion as you play.</p>
+      <span class="cta">Play the game →</span>
+    </a>
+
+    <div class="card placeholder">
+      <h2>More coming soon</h2>
+      <p>Future interactive learning pieces will appear here.</p>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>

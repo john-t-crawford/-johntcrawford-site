@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bay Quest: The Maryland Blue Crab Challenge — Nano Edition | John T Crawford</title>
+    <meta name="description" content="An interactive Chesapeake Bay learning game — catch male blue crabs, dodge invasive blue catfish, and pick up AI-guided ecology facts from Nano Crab.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://johntcrawford.com/games/bay-quest.html">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <script src="https://cdn.tailwindcss.com/3.4.17" integrity="sha384-igm5BeiBt36UU4gqwWS7imYmelpTsZlQ45FZf+XBn9MuJbn4nQr7yx1yFydocC/K" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js" integrity="sha384-OIQZlttB2MRaZyoi526rVHiNUGYEq4MAMxDbTkwghmmqxs556T5g5LY926GH7NYM" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Inter:wght@400;600;700&family=Plus+Jakarta+Sans:wght@500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --brand-blue: #0d47a1;
+            --brand-yellow: #EBAC00;
+            --brand-red: #9E1D32;
+            --brand-blue-alt: #3b82f6;
+            --nano-yellow: #FFD700;
+            --nano-purple: #9b59b6;
+            --site-navy: #0F1B2D;
+            --site-gold: #F0A500;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--site-navy);
+            color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+
+        .font-bungee {
+            font-family: 'Bungee', cursive;
+        }
+
+        .custom-cursor {
+            cursor: auto;
+        }
+
+        /* ── SITE HEADER BAR ─────────────────────────────────────── */
+        #site-bar {
+            height: 44px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            background: var(--site-navy);
+            border-bottom: 1px solid rgba(240, 165, 0, 0.25);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        #site-bar a {
+            color: var(--site-gold);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        #site-bar a:hover { text-decoration: underline; }
+
+        #site-bar .badge {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #9fb3cc;
+        }
+
+        .screen {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .screen.active {
+            display: flex;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .modal-content {
+            background-color: var(--brand-blue);
+            border: 4px solid var(--nano-yellow);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            max-width: 90%;
+            width: 550px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            background-color: var(--nano-yellow);
+            color: #000;
+            font-family: 'Bungee', sans-serif;
+            font-size: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            border-bottom: 4px solid #c89200;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        .btn-purple {
+            background-color: var(--nano-purple);
+            color: white;
+            border-bottom-color: #7d3c98;
+        }
+
+        .btn-red {
+            background-color: var(--brand-red);
+            color: white;
+            border-bottom-color: #7a1727;
+        }
+
+        #game-canvas {
+            background-color: #0d47a1;
+            background-image:
+                linear-gradient(to bottom, transparent 30%, rgba(0, 0, 0, 0.4) 100%),
+                url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDgwMCI+CiAgICA8ZGVmcz4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imd1cCIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxZTkwZmYiIHN0b3Atb3BhY2l0eT0iMC44IiAvPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwZDQ3YTEiIHN0b3Atb3BhY2l0eT0iMSIgLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICAgIDxyYWRpYWxHcmFkaWVudCBpZD0icmF5cyIgY3g9IjUwJSIgY3k9Ii01MCUiIHI9IjE1MCU F9lZz0iNTAlIiBmeT0iLTUwJSIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIDApIj4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0id2hpdGUiIHN0b3Atb3BhY2l0eT0iMC4xIiAvPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjQwJSIgc3RvcC1jb2xvcj0id2hpdGUiIHN0b3Atb3BhY2l0eT0iMC4wNSIgLz4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSJ3aGl0ZSIgc3RvcC1b3BhY2l0eT0iMCIgLz4KICAgICAgICA8L3JhZGlhbEdyYWRpZW50PgogICAgICAgIDxmaWx0ZXIgaWQ9InR1cmJ1bGVuY2UiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogICAgICAgICAgICA8ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY2k9IjAuMDIgMC4wMiIgbnVtT2N0YXZlcz0iMiIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY2RhbE5vaXNlIiAvPgogICAgICAgICAgICA8ZmVDb2xvcjJGaWx0ZXIgaW49IlNvdXJjZUdyYXBoaWMiIHJlc3VsdD0idGV4dCIgdHlwZT0ibHVtaW5hbmNlVG9BbHBoYSIgLz4KICAgICAgICA8L2ZpbHRlcj4KICAgIDwvZGVmcz4KICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3VwKSIgLz4KICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcmF5cykiIC8+CiAgICA8cGF0aCBkPSJNMCA4MDAgTDAgNzUwIFEgMjUwIDcyMCA1MDAgNzQwIFQgMTAwMCA3NjAgVjgwMCBaIiBmaWxsPSIjYzg5NjYyIiBvcGFjaXR5PSIwLjUiIGZpbHRlcj0idXJsKCN0dXJidWxlbmNlKSIgLz4KPC9zdmc+");
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Nano Banana Floating Animation */
+        .nano-float {
+            animation: nanoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes nanoFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+
+        /* Nano Scan VFX */
+        .scan-active {
+            filter: contrast(1.2) brightness(1.2) saturate(1.5);
+        }
+
+        .scan-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, rgba(155, 89, 182, 0.1) 100%);
+            mix-blend-mode: overlay;
+            pointer-events: none;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .scan-overlay.active {
+            opacity: 1;
+        }
+
+        .nano-gauge {
+            width: 150px;
+            height: 12px;
+            background: #2c3e50;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 2px solid var(--nano-yellow);
+        }
+
+        .nano-gauge-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--nano-yellow), #f1c40f);
+            width: 100%;
+            transition: width 0.1s linear;
+        }
+
+        .nano-speech {
+            background: rgba(155, 89, 182, 0.9);
+            border: 2px solid var(--nano-yellow);
+            padding: 10px 15px;
+            border-radius: 15px;
+            border-bottom-left-radius: 2px;
+            font-size: 0.9rem;
+            max-width: 250px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            pointer-events: auto;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            20% {
+                transform: translateX(-10px);
+            }
+
+            40% {
+                transform: translateX(10px);
+            }
+
+            60% {
+                transform: translateX(-5px);
+            }
+
+            80% {
+                transform: translateX(5px);
+            }
+        }
+
+        .vfx-shake {
+            animation: shake 0.3s ease-in-out;
+        }
+
+        #game-wrap {
+            width: 100%;
+            height: calc(100% - 44px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        /* ── INTRO SEQUENCE ─────────────────────────────────────── */
+        #intro-screen {
+            background: #000;
+        }
+
+        #app-container:has(#intro-screen.active) #nano-guide {
+            opacity: 0 !important;
+            pointer-events: none;
+        }
+
+        .intro-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .intro-slide.active {
+            opacity: 1;
+            animation: kenburns 3.75s ease-out forwards;
+        }
+
+        .intro-slide.active.zoom-out {
+            animation-name: kenburnsOut;
+        }
+
+        @keyframes kenburns {
+            from { transform: scale(1) translate(0, 0); }
+            to   { transform: scale(1.12) translate(-1.5%, -1.5%); }
+        }
+
+        @keyframes kenburnsOut {
+            from { transform: scale(1.12) translate(1.5%, 1.5%); }
+            to   { transform: scale(1) translate(0, 0); }
+        }
+
+        .intro-caption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 64px;
+            text-align: center;
+            padding: 0 2rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+            opacity: 0;
+            transition: opacity 0.8s ease 0.3s;
+        }
+
+        .intro-slide.active .intro-caption {
+            opacity: 1;
+        }
+
+        .intro-quote {
+            font-family: 'Bungee', cursive;
+            font-size: 1.6rem;
+            color: var(--nano-yellow);
+        }
+
+        #intro-skip-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 20;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 999px;
+            padding: 8px 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        #intro-skip-btn:hover {
+            background: rgba(0, 0, 0, 0.75);
+        }
+
+        #intro-progress {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 20;
+        }
+
+        #intro-progress .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.35);
+            transition: background 0.3s ease;
+        }
+
+        #intro-progress .dot.active {
+            background: var(--nano-yellow);
+        }
+    </style>
+</head>
+
+<body class="custom-cursor" style="display:flex; flex-direction:column; width:100%; height:100%;">
+
+    <div id="site-bar">
+        <a href="../index.html#projects" aria-label="Back to John T Crawford portfolio">
+            <img src="../maryland-crab.svg" alt="" width="20" height="20" aria-hidden="true"> John T Crawford
+        </a>
+        <span class="badge">Bay Quest · Nano Edition</span>
+    </div>
+
+    <div id="game-wrap">
+    <div id="app-container"
+        class="w-full h-full max-w-5xl max-h-[760px] bg-black rounded-lg shadow-2xl relative overflow-hidden">
+
+        <!-- Nano Crab Guide Overlay -->
+        <div id="nano-guide"
+            class="absolute bottom-20 right-8 z-50 flex flex-col items-center pointer-events-none opacity-0 transition-opacity duration-500">
+            <div id="nano-bubble" class="nano-speech mb-4 text-white font-semibold">
+                "Hi! I'm Nano Crab. Ready to explore the Bay with AI-powered insights?"
+            </div>
+            <img id="nano-sprite" class="w-24 h-24 nano-float pointer-events-auto cursor-pointer" alt="Nano Crab" />
+        </div>
+
+        <div id="intro-screen" class="screen active">
+            <button id="intro-skip-btn">Skip Intro →</button>
+            <div id="intro-slides" style="position:absolute; inset:0;">
+                <div class="intro-slide" data-index="0" style="background-image:url('assets/intro/01_launch.jpg')">
+                    <div class="intro-caption">Before sunrise, the boat gets loaded.</div>
+                </div>
+                <div class="intro-slide" data-index="1" style="background-image:url('assets/intro/02_enroute.jpg')">
+                    <div class="intro-caption">Out to the flats, rope coiled on the bow.</div>
+                </div>
+                <div class="intro-slide" data-index="2" style="background-image:url('assets/intro/03_sunrise.jpg')">
+                    <div class="intro-caption">Sunrise over the Chesapeake.</div>
+                </div>
+                <div class="intro-slide" data-index="3" style="background-image:url('assets/intro/04_bridge.jpg')">
+                    <div class="intro-caption">Past the old pilings near Benedict.</div>
+                </div>
+                <div class="intro-slide" data-index="4" style="background-image:url('assets/intro/05_catch.jpg')">
+                    <div class="intro-caption">First crab in the net.</div>
+                </div>
+                <div class="intro-slide" data-index="5" style="background-image:url('assets/intro/06_trotline.jpg')">
+                    <div class="intro-caption">A morning's haul of Maryland blue crabs.</div>
+                </div>
+                <div class="intro-slide" data-index="6" style="background-image:url('assets/intro/07_bucket.jpg')">
+                    <div class="intro-caption">The bucket fills up fast.</div>
+                </div>
+                <div class="intro-slide" data-index="7" style="background-image:url('assets/intro/08_closing.jpg')">
+                    <div class="intro-caption intro-quote">"Fun and educational — from 8 to 80."</div>
+                </div>
+            </div>
+            <div id="intro-progress">
+                <div class="dot" data-dot="0"></div><div class="dot" data-dot="1"></div><div class="dot" data-dot="2"></div><div class="dot" data-dot="3"></div>
+                <div class="dot" data-dot="4"></div><div class="dot" data-dot="5"></div><div class="dot" data-dot="6"></div><div class="dot" data-dot="7"></div>
+            </div>
+        </div>
+
+        <div id="home-screen" class="screen flex-col justify-center items-center text-center p-8">
+            <div class="mb-6">
+                <img id="nano-hero" class="w-32 h-32 mx-auto nano-float" alt="Nano Crab Hero" />
+            </div>
+            <h1 class="font-bungee text-6xl md:text-8xl text-white drop-shadow-lg leading-tight">Bay Quest</h1>
+            <h2 class="font-bungee text-4xl md:text-6xl text-yellow-400 mb-8 drop-shadow-lg">Nano Edition</h2>
+            <div class="w-full max-w-sm space-y-4">
+                <button id="start-btn" class="btn">Start Adventure</button>
+                <button id="explore-btn" class="btn btn-purple">AI Knowledge Hub</button>
+                <button id="about-btn" class="btn btn-red">About Project</button>
+            </div>
+            <p class="text-xs mt-8 opacity-60">Featuring Nano Crab AI Assistant | Inspired by MD DNR</p>
+        </div>
+
+        <div id="difficulty-screen" class="screen flex-col justify-center items-center text-center p-8">
+            <h2 class="font-bungee text-5xl text-yellow-400 mb-8">Select Your Intel Level</h2>
+            <div class="w-full max-w-xl grid grid-cols-1 md:grid-cols-3 gap-6 text-white">
+                <div class="difficulty-card bg-gray-800 p-6 rounded-lg border-2 border-transparent hover:border-yellow-400 transition-all cursor-pointer"
+                    data-difficulty="easy">
+                    <h3 class="font-bungee text-2xl text-green-400">Casual<br>Explorer</h3>
+                    <p class="text-sm mt-2">Perfect for beginners. Nano Crab gives more tips.</p>
+                </div>
+                <div class="difficulty-card bg-gray-800 p-6 rounded-lg border-2 border-transparent hover:border-yellow-400 transition-all cursor-pointer"
+                    data-difficulty="medium">
+                    <h3 class="font-bungee text-2xl text-yellow-400">Bay<br>Captain</h3>
+                    <p class="text-sm mt-2">Standard challenge. Balance speed and accuracy.</p>
+                </div>
+                <div class="difficulty-card bg-gray-800 p-6 rounded-lg border-2 border-transparent hover:border-red-500 transition-all cursor-pointer"
+                    data-difficulty="hard">
+                    <h3 class="font-bungee text-2xl text-red-500">Expert<br>Specialist</h3>
+                    <p class="text-sm mt-2">High stakes. Hazards are faster and harder to see.</p>
+                </div>
+            </div>
+            <button class="back-home-btn btn btn-red mt-8 max-w-xs mx-auto">Back</button>
+        </div>
+
+        <div id="explore-screen" class="screen flex-col p-8 overflow-y-auto">
+            <div class="max-w-4xl mx-auto w-full">
+                <h2 class="font-bungee text-5xl text-yellow-400 mb-6 text-center">AI Knowledge Hub</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-gray-800 p-6 rounded-xl border-l-4 border-yellow-400">
+                        <h3 class="font-bungee text-xl text-yellow-400 mb-4">Blue Crab Biology</h3>
+                        <p class="text-sm leading-relaxed mb-4">Callinectes sapidus: The "Beautiful Savory Swimmer".
+                            Nano AI detects unique growth plate patterns in blue crabs. Did you know they molt their
+                            entire shell to grow?</p>
+                        <div class="bg-black/30 p-4 rounded text-xs italic">"Nano Crab Note: Male crabs have a T-shaped
+                            abdomen (the 'Washington Monument'), while females have a rounded one (the 'Capitol Dome')."
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-xl border-l-4 border-purple-500">
+                        <h3 class="font-bungee text-xl text-purple-400 mb-4">AI Ecosystems</h3>
+                        <p class="text-sm leading-relaxed mb-4">Just like the Bay, AI models like Gemini Nano live in a
+                            complex ecosystem. On-device AI ensures your data stays private and reacts instantly to your
+                            commands.</p>
+                        <div class="bg-black/30 p-4 rounded text-xs italic">"Insight: Running models locally saves
+                            energy and reduces latency, making digital 'Bay Quests' faster than ever."</div>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-xl border-l-4 border-red-500">
+                        <h3 class="font-bungee text-xl text-red-400 mb-4">Invasive Threats</h3>
+                        <p class="text-sm leading-relaxed mb-4">The Blue Catfish is a voracious predator. AI monitoring
+                            helps scientists track their movements to protect native bridge species and maintain
+                            balance.</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-xl border-l-4 border-blue-500">
+                        <h3 class="font-bungee text-xl text-blue-400 mb-4">Gemini Nano</h3>
+                        <p class="text-sm leading-relaxed mb-4">Google's most efficient model, designed for on-device
+                            tasks. It's the 'Nano' behind this Crab's intelligence!</p>
+                    </div>
+                </div>
+                <button class="back-home-btn btn btn-red max-w-xs mx-auto mb-10">Back to Base</button>
+            </div>
+        </div>
+
+        <div id="about-screen" class="screen flex-col p-8 overflow-y-auto">
+            <div class="max-w-3xl mx-auto w-full text-center">
+                <h2 class="font-bungee text-4xl text-yellow-400 mb-6">About This Project</h2>
+                <p class="text-sm leading-relaxed mb-4 text-left">
+                    Bay Quest is a gamified environmental-education piece built to make Chesapeake Bay ecology
+                    engaging for a broad adult audience. It uses Maryland DNR reference data on blue crab biology
+                    and invasive species to turn static facts into an active, scored challenge — then layers an
+                    on-device "Nano Crab" AI guide on top to surface facts contextually as you play.
+                </p>
+                <p class="text-xs opacity-60 text-left">Part of the Interactive Learning series at
+                    johntcrawford.com/games.</p>
+                <button class="back-home-btn btn btn-red max-w-xs mx-auto mt-8">Back to Base</button>
+            </div>
+        </div>
+
+        <div id="game-screen" class="screen p-4 flex-col">
+            <div id="game-hud"
+                class="w-full flex justify-between items-center bg-black bg-opacity-60 p-4 rounded-t-lg font-bungee text-xl">
+                <div class="text-yellow-400">SCORE: <span id="score">0</span></div>
+                <div id="objective" class="text-sm md:text-md text-white px-4 text-center max-w-[40%]">Objective:
+                    Analyzing...</div>
+                <div class="flex flex-col items-end">
+                    <div class="text-blue-400">TIME: <span id="time">60</span>s</div>
+                    <div class="flex items-center gap-2 mt-1">
+                        <span class="text-[10px] text-yellow-200">NANO SCAN</span>
+                        <div class="nano-gauge">
+                            <div id="nano-gauge-fill" class="nano-gauge-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative w-full flex-grow">
+                <div id="scan-overlay" class="scan-overlay"></div>
+                <canvas id="game-canvas" class="w-full h-full rounded-b-lg"></canvas>
+
+                <!-- Nano Crab Fact Toast -->
+                <div id="fact-display"
+                    class="absolute top-8 left-1/2 -translate-x-1/2 w-11/12 md:w-2/3 pointer-events-none z-30 opacity-0 transition-opacity duration-300 bg-purple-900 bg-opacity-90 border-2 border-yellow-400 p-4 rounded-xl flex items-center gap-4 shadow-2xl">
+                    <img id="fact-icon" class="w-16 h-16 flex-shrink-0" src="" alt="" />
+                    <div>
+                        <div class="font-bungee text-xs text-yellow-400 mb-1">NANO-AI INSIGHT</div>
+                        <span id="fact-text" class="text-white text-sm md:text-base leading-snug"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-2 text-[10px] opacity-70">TIP: PRESS [SPACE] OR CLICK NANO CRAB TO SCAN FOR
+                TARGETS</div>
+        </div>
+
+        <!-- Overlays/Modals similar to original but themed -->
+        <div id="game-over-modal" class="modal-overlay hidden">
+            <div class="modal-content text-center">
+                <img id="nano-result" class="w-24 h-24 mx-auto mb-4" alt="Nano Result" />
+                <h2 id="game-over-title" class="font-bungee text-5xl">Mission End</h2>
+                <p id="game-over-message" class="text-xl my-4 text-gray-300">Data collection complete.</p>
+                <div class="bg-black/30 p-4 rounded-lg mb-6">
+                    <p class="text-2xl mb-1">FINAL SCORE</p>
+                    <p id="final-score" class="font-bungee text-5xl text-yellow-400">0</p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <button id="restart-btn" class="btn">Re-run Simulation</button>
+                    <button id="main-menu-btn" class="btn btn-red">Main Menu</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- ASSETS (Nano Integrated) ---
+            const svgs = {
+                nanoCrab: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50,20 C20,20 10,40 10,50 S20,80 50,80 S90,60 90,50 S80,20 50,20 Z" fill="#FFD700" stroke="#EBAC00" stroke-width="3"/>
+                <path d="M10,50 C0,40 0,30 15,25 L30,40 Z" fill="#9b59b6" stroke="#8e44ad" stroke-width="2"/>
+                <path d="M90,50 C100,40 100,30 85,25 L70,40 Z" fill="#9b59b6" stroke="#8e44ad" stroke-width="2"/>
+                <circle cx="40" cy="42" r="4" fill="white"/><circle cx="60" cy="42" r="4" fill="white"/>
+                <circle cx="40" cy="42" r="2" fill="black"/><circle cx="60" cy="42" r="2" fill="black"/>
+                <path d="M45,28 L35,10 M65,28 L75,10" stroke="#EBAC00" stroke-width="3"/>
+                <text x="50" y="30" font-family="Arial" font-size="10" font-weight="bold" fill="#EBAC00" text-anchor="middle">NANO</text>
+            </svg>`,
+                playerNet: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="60" r="50" fill="rgba(66, 135, 245, 0.2)" stroke="#fff" stroke-width="3" stroke-dasharray="5 5"/><path d="M30 30 L 90 90 M 90 30 L 30 90" stroke="rgba(255,255,255,0.3)" stroke-width="2"/><circle cx="60" cy="60" r="20" fill="none" stroke="var(--nano-yellow)" stroke-width="2" opacity="0.6"/></svg>`,
+                maleCrab: `<svg viewBox="0 0 140 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="crabShell" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#6b8f5e"/>
+                        <stop offset="55%" stop-color="#3f6d6e"/>
+                        <stop offset="100%" stop-color="#2c5b78"/>
+                    </linearGradient>
+                </defs>
+                <g stroke="#2b5f86" stroke-width="3" stroke-linecap="round" fill="none">
+                    <path d="M32,42 L14,34 L4,40"/>
+                    <path d="M30,52 L10,50 L2,58"/>
+                    <path d="M32,62 L14,68 L6,78"/>
+                    <path d="M108,42 L126,34 L136,40"/>
+                    <path d="M110,52 L130,50 L138,58"/>
+                    <path d="M108,62 L126,68 L134,78"/>
+                </g>
+                <polygon points="108,38 138,30 110,48" fill="url(#crabShell)" stroke="#173a55" stroke-width="1.5"/>
+                <polygon points="32,38 2,30 30,48" fill="url(#crabShell)" stroke="#173a55" stroke-width="1.5"/>
+                <ellipse cx="70" cy="48" rx="40" ry="26" fill="url(#crabShell)" stroke="#173a55" stroke-width="2.5"/>
+                <ellipse cx="58" cy="40" rx="10" ry="5" fill="#87ab6f" opacity="0.35"/>
+                <ellipse cx="88" cy="52" rx="12" ry="6" fill="#2c5b78" opacity="0.3"/>
+                <ellipse cx="70" cy="60" rx="14" ry="5" fill="#264a63" opacity="0.3"/>
+                <ellipse cx="46" cy="70" rx="10" ry="5.5" fill="#2f6fa8" stroke="#173a55" stroke-width="1.5" transform="rotate(-30 46 70)"/>
+                <ellipse cx="94" cy="70" rx="10" ry="5.5" fill="#2f6fa8" stroke="#173a55" stroke-width="1.5" transform="rotate(30 94 70)"/>
+                <g stroke="#173a55" stroke-width="2" fill="none">
+                    <path d="M60,26 L55,14"/>
+                    <path d="M80,26 L85,14"/>
+                </g>
+                <circle cx="55" cy="12" r="4" fill="#111" stroke="#173a55" stroke-width="1"/>
+                <circle cx="85" cy="12" r="4" fill="#111" stroke="#173a55" stroke-width="1"/>
+                <path d="M38,34 Q20,20 14,26" fill="none" stroke="#1f6fb2" stroke-width="7" stroke-linecap="round"/>
+                <path d="M14,26 Q6,22 4,16 Q10,18 14,22 Q18,16 22,18 Q18,24 14,26 Z" fill="#1f6fb2" stroke="#173a55" stroke-width="1.5"/>
+                <path d="M6,18 Q10,16 14,20" fill="none" stroke="#d9491f" stroke-width="2" stroke-linecap="round"/>
+                <path d="M100,34 Q122,14 132,21" fill="none" stroke="#1f6fb2" stroke-width="10" stroke-linecap="round"/>
+                <path d="M132,21 Q144,14 139,3 Q131,6 126,14 Q121,4 114,7 Q122,17 132,21 Z" fill="#1f6fb2" stroke="#173a55" stroke-width="1.5"/>
+                <path d="M115,8 Q123,5 131,13" fill="none" stroke="#d9491f" stroke-width="3" stroke-linecap="round"/>
+            </svg>`,
+                blueCatfish: `<svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg"><path d="M5,25 Q 50,0 95,25 Q 50,50 5,25" fill="#34495e" stroke="#000" stroke-width="2"/><path d="M10,25 Q 0,20 -5,10 M 10,25 Q 0,30 -5,40" stroke="#000" stroke-width="1.5"/><circle cx="20" cy="22" r="2" fill="#fff"/></svg>`,
+                hazardSpark: `<svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"><path d="M25,5 L 30,20 L 45,25 L 30,30 L 25,45 L 20,30 L 5,25 L 20,20 Z" fill="#e74c3c"/></svg>`
+            };
+
+            const state = {
+                currentScreen: 'home',
+                difficulty: 'medium',
+                score: 0,
+                time: 60,
+                gameActive: false,
+                objective: null,
+                nanoScore: 50, // For Nano Scan energy
+                isScanning: false,
+                collectedItems: {},
+                assets: {}
+            };
+
+            const itemTypes = {
+                'target': { name: 'Male Blue Crab', points: 15, asset: 'maleCrab', fact: "Nano AI identified: A male blue crab ('Jimmy'). They have blue-tipped claws and are vital for the Bay's crab population." },
+                'hazard': { name: 'Invasive Catfish', points: -20, asset: 'blueCatfish', fact: "Warning! Invasive Blue Catfish detected. These predators consume young crabs and disrupt the ecosystem." }
+            };
+
+            const audio = {
+                init: () => { Tone.start(); console.log("Audio Ready"); },
+                play: (freq, length = "8n") => {
+                    const synth = new Tone.Synth().toDestination();
+                    synth.triggerAttackRelease(freq, length);
+                }
+            };
+
+            const assetManager = {
+                load: async () => {
+                    const ps = Object.entries(svgs).map(([key, svg]) => {
+                        return new Promise((res) => {
+                            const img = new Image();
+                            img.onload = () => { state.assets[key] = img; res(); };
+                            img.src = `data:image/svg+xml;base64,${btoa(svg)}`;
+                        });
+                    });
+                    await Promise.all(ps);
+                    document.getElementById('nano-sprite').src = state.assets.nanoCrab.src;
+                    document.getElementById('nano-hero').src = state.assets.nanoCrab.src;
+                    document.getElementById('nano-result').src = state.assets.nanoCrab.src;
+                }
+            };
+
+            // --- GAME ENGINE ---
+            const canvas = document.getElementById('game-canvas');
+            const ctx = canvas.getContext('2d');
+            let player = { x: 0, y: 0, radius: 40 };
+            let items = [];
+            let particles = [];
+            let gameLoopId;
+
+            function spawnItem() {
+                if (!state.gameActive) return;
+                const isHazard = Math.random() < (state.difficulty === 'easy' ? 0.2 : state.difficulty === 'hard' ? 0.5 : 0.35);
+                const typeKey = isHazard ? 'hazard' : 'target';
+                items.push({
+                    x: Math.random() * canvas.width,
+                    y: -50,
+                    vy: (1.5 + Math.random() * 2) * (state.difficulty === 'hard' ? 1.5 : 1),
+                    size: 50,
+                    type: typeKey,
+                    data: itemTypes[typeKey]
+                });
+            }
+
+            function gameLoop() {
+                if (!state.gameActive) return;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Water Effect
+                ctx.fillStyle = "rgba(13, 71, 161, 0.4)";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Update Items
+                items.forEach((it, idx) => {
+                    it.y += it.vy;
+
+                    // Drawing
+                    const img = state.assets[it.data.asset];
+                    if (img) {
+                        if (state.isScanning && it.type === 'target') {
+                            ctx.shadowBlur = 15;
+                            ctx.shadowColor = "#FFD700";
+                        }
+                        ctx.drawImage(img, it.x - it.size / 2, it.y - it.size / 2, it.size, it.size);
+                        ctx.shadowBlur = 0;
+
+                        if (state.isScanning) {
+                            ctx.fillStyle = it.type === 'target' ? '#2ecc71' : '#e74c3c';
+                            ctx.font = "bold 12px Inter";
+                            ctx.fillText(it.type === 'target' ? 'TARGET' : 'HAZARD', it.x - 20, it.y - 30);
+                        }
+                    }
+
+                    // Collision
+                    const d = Math.hypot(it.x - player.x, it.y - player.y);
+                    if (d < player.radius + it.size / 3) {
+                        handleCatch(it);
+                        items.splice(idx, 1);
+                    } else if (it.y > canvas.height + 60) {
+                        items.splice(idx, 1);
+                    }
+                });
+
+                // Player (Net)
+                const netImg = state.assets.playerNet;
+                if (netImg) {
+                    ctx.drawImage(netImg, player.x - 60, player.y - 60, 120, 120);
+                }
+
+                // Energy update
+                if (!state.isScanning && state.nanoScore < 100) {
+                    state.nanoScore += 0.2;
+                    updateNanoGauge();
+                }
+
+                gameLoopId = requestAnimationFrame(gameLoop);
+            }
+
+            function handleCatch(it) {
+                state.score += it.data.points;
+                if (it.data.points > 0) {
+                    audio.play("C5", "16n");
+                    state.objective.collected++;
+                    if (state.objective.collected >= state.objective.count) endGame(true, "All data patterns collected!");
+                } else {
+                    audio.play("C3", "8n");
+                    canvas.parentElement.classList.add('vfx-shake');
+                    setTimeout(() => canvas.parentElement.classList.remove('vfx-shake'), 300);
+                }
+                updateHUD();
+                showFact(it.data);
+            }
+
+            function useNanoScan() {
+                if (state.nanoScore < 100 || state.isScanning) return;
+                state.isScanning = true;
+                state.nanoScore = 0;
+                updateNanoGauge();
+                document.getElementById('scan-overlay').classList.add('active');
+                audio.play("E6", "4n");
+
+                speak("Simulation Scanned! Targets highlighted.");
+
+                setTimeout(() => {
+                    state.isScanning = false;
+                    document.getElementById('scan-overlay').classList.remove('active');
+                    state.nanoScore = 0;
+                    updateNanoGauge();
+                }, 3000);
+            }
+
+            function showFact(data) {
+                const factDisplay = document.getElementById('fact-display');
+                document.getElementById('fact-icon').src = state.assets[data.asset].src;
+                document.getElementById('fact-text').textContent = data.fact;
+                factDisplay.classList.remove('opacity-0');
+                setTimeout(() => factDisplay.classList.add('opacity-0'), 4000);
+            }
+
+            function speak(text) {
+                const bubble = document.getElementById('nano-bubble');
+                bubble.textContent = text;
+                const guide = document.getElementById('nano-guide');
+                guide.classList.remove('opacity-0');
+            }
+
+            function updateHUD() {
+                document.getElementById('score').textContent = state.score;
+                document.getElementById('time').textContent = state.time;
+                const remaining = Math.max(0, state.objective.count - state.objective.collected);
+                document.getElementById('objective').textContent = `Target: Collect ${remaining} more data samples!`;
+            }
+
+            function updateNanoGauge() {
+                document.getElementById('nano-gauge-fill').style.width = state.nanoScore + '%';
+            }
+
+            function startGame(diff) {
+                state.difficulty = diff;
+                state.gameActive = true;
+                state.score = 0;
+                state.time = 60;
+                state.nanoScore = 100;
+                state.objective = { collected: 0, count: 5 + (diff === 'hard' ? 5 : 0) };
+
+                items = [];
+                document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+                document.getElementById('game-screen').classList.add('active');
+
+                updateHUD();
+                updateNanoGauge();
+                resize();
+
+                setInterval(() => { if (state.gameActive) { state.time--; updateHUD(); if (state.time <= 0) endGame(false, "Simulation timed out."); } }, 1000);
+                setInterval(spawnItem, 1000);
+
+                gameLoop();
+                speak("Starting scan... Stay focused!");
+            }
+
+            function endGame(win, msg) {
+                state.gameActive = false;
+                document.getElementById('game-over-title').textContent = win ? "Success!" : "Offline";
+                document.getElementById('game-over-title').className = `font-bungee text-5xl ${win ? 'text-green-400' : 'text-red-500'}`;
+                document.getElementById('game-over-message').textContent = msg;
+                document.getElementById('final-score').textContent = state.score;
+                document.getElementById('game-over-modal').classList.remove('hidden');
+            }
+
+            function resize() {
+                canvas.width = canvas.parentElement.clientWidth;
+                canvas.height = canvas.parentElement.clientHeight;
+            }
+
+            // --- INTRO SEQUENCE ---
+            (function initIntro() {
+                const slides = Array.from(document.querySelectorAll('.intro-slide'));
+                const dots = Array.from(document.querySelectorAll('#intro-progress .dot'));
+                const introScreen = document.getElementById('intro-screen');
+                let idx = 0;
+                let introTimer = null;
+
+                function showSlide(i) {
+                    slides.forEach((s, si) => s.classList.toggle('active', si === i));
+                    dots.forEach((d, di) => d.classList.toggle('active', di === i));
+                }
+
+                function endIntro() {
+                    clearTimeout(introTimer);
+                    introScreen.classList.remove('active');
+                    document.getElementById('home-screen').classList.add('active');
+                }
+
+                function advance() {
+                    idx++;
+                    if (idx >= slides.length) { endIntro(); return; }
+                    showSlide(idx);
+                    introTimer = setTimeout(advance, 3750);
+                }
+
+                showSlide(0);
+                introTimer = setTimeout(advance, 3750);
+                document.getElementById('intro-skip-btn').onclick = endIntro;
+            })();
+
+            // --- BINDINGS ---
+            document.getElementById('start-btn').onclick = () => { document.querySelectorAll('.screen').forEach(s => s.classList.remove('active')); document.getElementById('difficulty-screen').classList.add('active'); };
+            document.getElementById('explore-btn').onclick = () => { document.querySelectorAll('.screen').forEach(s => s.classList.remove('active')); document.getElementById('explore-screen').classList.add('active'); };
+            document.getElementById('about-btn').onclick = () => { document.querySelectorAll('.screen').forEach(s => s.classList.remove('active')); document.getElementById('about-screen').classList.add('active'); };
+            document.querySelectorAll('.back-home-btn').forEach(btn => btn.onclick = () => { document.querySelectorAll('.screen').forEach(s => s.classList.remove('active')); document.getElementById('home-screen').classList.add('active'); });
+            document.querySelectorAll('.difficulty-card').forEach(c => c.onclick = () => startGame(c.dataset.difficulty));
+            document.getElementById('main-menu-btn').onclick = () => location.reload();
+            document.getElementById('restart-btn').onclick = () => location.reload();
+
+            window.onresize = resize;
+            canvas.onmousemove = (e) => { const r = canvas.getBoundingClientRect(); player.x = e.clientX - r.left; player.y = e.clientY - r.top; };
+
+            window.onkeydown = (e) => { if (e.code === 'Space') useNanoScan(); };
+            document.getElementById('nano-sprite').onclick = useNanoScan;
+
+            assetManager.load().then(() => {
+                document.getElementById('nano-guide').classList.remove('opacity-0');
+            });
+        });
+    </script>
+</body>
+
+</html>
