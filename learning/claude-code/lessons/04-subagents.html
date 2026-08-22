@@ -72,6 +72,10 @@ pre code{background:none;padding:0;font-size:.84rem;line-height:1.6;white-space:
 .checkpoint strong{color:var(--fg);}
 .exercise{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin:18px 0;}
 .exercise-label{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:8px;}
+.lesson-brief{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;font-size:.86rem;color:var(--fg2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:20px;}
+.lesson-brief b{color:var(--fg);}
+.chunk-badge{display:inline-block;font-family:var(--mono);font-size:.66rem;font-weight:700;color:var(--accent);background:var(--accent-light);border-radius:20px;padding:3px 10px;margin-bottom:8px;letter-spacing:.04em;}
+.microcheck{border-left:2px solid var(--border);padding-left:12px;margin:10px 0 28px;font-size:.82rem;color:var(--fg2);font-style:italic;}
 .video-link{font-size:.86rem;font-weight:600;color:var(--cta);text-decoration:none;margin-bottom:18px;display:inline-block;}
 .video-link:hover{text-decoration:underline;}
 .capstone-banner{background:linear-gradient(155deg,var(--card),var(--bg2));border:1px solid var(--accent);border-radius:14px;padding:16px 18px;margin-bottom:22px;font-size:.88rem;}
@@ -118,12 +122,18 @@ footer a:hover{text-decoration:underline;}
   </div>
 
   <article>
+<div class="lesson-brief">🕐 <b>~3 min</b> · In this lesson: why delegate work to a subagent, and when to run one in the foreground vs. background.</div>
+<div class="chunk"><span class="chunk-badge">Step 1 of 2</span>
 <p>A subagent runs in its own context window, separate from your main conversation. Launch several in parallel and you can fan out independent research instead of working through it one step at a time. The tradeoff: a subagent starts cold, with no memory of what you and Claude have already discussed — so the prompt you hand it has to stand on its own.</p>
 <h2>Why delegate at all</h2>
 <p>Three things a subagent buys you: parallelism (several run at once instead of serially), context isolation (a big search doesn't bloat your main conversation), and a narrower toolset when that's useful (a read-only research agent, for instance, can't accidentally edit anything).</p>
 <div class="exercise"><div class="exercise-label">Try it</div><p>Delegate one small, real research task from your own work to a subagent — something like "find every file in this project that references X." Launch it, and when it reports back, remember that its summary describes what it intended to do, not necessarily a guaranteed account of what happened. For anything you're about to act on, verify the actual result rather than trusting the summary blindly.</p></div>
+<p class="microcheck">Quick check: name one of the three things delegating to a subagent buys you.</p>
+</div>
+<div class="chunk"><span class="chunk-badge">Step 2 of 2</span>
 <h2>Foreground vs. background</h2>
 <p>Background is the default — you keep working while the subagent runs, and get notified when it's done. Foreground blocks until it returns, which you want only when its output has to inform your very next step.</p>
+</div>
 <div class="checkpoint"><strong>Check for understanding:</strong> Why does a subagent need a self-contained prompt instead of something like "continue what we were just discussing"?</div>
   </article>
 

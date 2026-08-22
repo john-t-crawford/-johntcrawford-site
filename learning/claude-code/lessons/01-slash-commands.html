@@ -72,6 +72,10 @@ pre code{background:none;padding:0;font-size:.84rem;line-height:1.6;white-space:
 .checkpoint strong{color:var(--fg);}
 .exercise{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin:18px 0;}
 .exercise-label{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:8px;}
+.lesson-brief{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;font-size:.86rem;color:var(--fg2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:20px;}
+.lesson-brief b{color:var(--fg);}
+.chunk-badge{display:inline-block;font-family:var(--mono);font-size:.66rem;font-weight:700;color:var(--accent);background:var(--accent-light);border-radius:20px;padding:3px 10px;margin-bottom:8px;letter-spacing:.04em;}
+.microcheck{border-left:2px solid var(--border);padding-left:12px;margin:10px 0 28px;font-size:.82rem;color:var(--fg2);font-style:italic;}
 .video-link{font-size:.86rem;font-weight:600;color:var(--cta);text-decoration:none;margin-bottom:18px;display:inline-block;}
 .video-link:hover{text-decoration:underline;}
 .capstone-banner{background:linear-gradient(155deg,var(--card),var(--bg2));border:1px solid var(--accent);border-radius:14px;padding:16px 18px;margin-bottom:22px;font-size:.88rem;}
@@ -118,14 +122,23 @@ footer a:hover{text-decoration:underline;}
   </div>
 
   <article>
+<div class="lesson-brief">🕐 <b>~3 min</b> · In this lesson: the built-in slash commands, what a command file actually is, and where to save your own.</div>
+<div class="chunk"><span class="chunk-badge">Step 1 of 3</span>
 <p>Slash commands are the simplest way to hand Claude Code a repeatable instruction. Type <code>/</code> followed by a name, and Claude runs whatever that command's file tells it to do. This lesson covers the built-ins worth knowing, then has you write your own.</p>
 <h2>The built-ins worth knowing</h2>
 <ul><li><code>/help</code> — lists what's available in your current setup.</li><li><code>/clear</code> — wipes context and starts fresh. Use it after finishing one task and starting something unrelated, so old context doesn't bleed into the next request.</li><li><code>/compact</code> — manually summarizes the conversation so far, instead of waiting for it to happen automatically as context fills up.</li><li><code>/config</code> — opens your settings.</li></ul>
+<p class="microcheck">Quick check: which built-in wipes context and starts fresh, so old context doesn't bleed into an unrelated task?</p>
+</div>
+<div class="chunk"><span class="chunk-badge">Step 2 of 3</span>
 <h2>What a slash command actually is</h2>
 <p>There's no special syntax to learn. A slash command is a markdown file with a short frontmatter <code>description</code>, followed by plain-language instructions in the body — nothing else. Claude reads the file and follows the instructions when you invoke it. That's the entire mechanism.</p>
 <div class="exercise"><div class="exercise-label">Try it</div><p>Create a trivial custom command of your own — for example, one that reads a status file and prints a one-line summary. Save it, then invoke it with <code>/</code> and your command's name, and confirm it runs.</p></div>
+<p class="microcheck">Quick check: besides frontmatter, what else does a slash command file contain?</p>
+</div>
+<div class="chunk"><span class="chunk-badge">Step 3 of 3</span>
 <h2>Project scope vs. global scope</h2>
 <p>A command saved inside a project's own hidden config folder is available only in that project. A command saved in your personal, machine-wide config folder is available everywhere, in every project you open. Put habits and personal shortcuts in the global location; put anything specific to one codebase in that project's local one.</p>
+</div>
 <div class="checkpoint"><strong>Check for understanding:</strong> If you wanted a command available only in one specific project, where does the file go? If you wanted it everywhere? You should be able to answer both without looking back.</div>
   </article>
 

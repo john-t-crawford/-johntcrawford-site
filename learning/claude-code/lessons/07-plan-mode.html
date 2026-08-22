@@ -72,6 +72,10 @@ pre code{background:none;padding:0;font-size:.84rem;line-height:1.6;white-space:
 .checkpoint strong{color:var(--fg);}
 .exercise{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin:18px 0;}
 .exercise-label{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:8px;}
+.lesson-brief{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;font-size:.86rem;color:var(--fg2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:20px;}
+.lesson-brief b{color:var(--fg);}
+.chunk-badge{display:inline-block;font-family:var(--mono);font-size:.66rem;font-weight:700;color:var(--accent);background:var(--accent-light);border-radius:20px;padding:3px 10px;margin-bottom:8px;letter-spacing:.04em;}
+.microcheck{border-left:2px solid var(--border);padding-left:12px;margin:10px 0 28px;font-size:.82rem;color:var(--fg2);font-style:italic;}
 .video-link{font-size:.86rem;font-weight:600;color:var(--cta);text-decoration:none;margin-bottom:18px;display:inline-block;}
 .video-link:hover{text-decoration:underline;}
 .capstone-banner{background:linear-gradient(155deg,var(--card),var(--bg2));border:1px solid var(--accent);border-radius:14px;padding:16px 18px;margin-bottom:22px;font-size:.88rem;}
@@ -118,13 +122,19 @@ footer a:hover{text-decoration:underline;}
   </div>
 
   <article>
+<div class="lesson-brief">🕐 <b>~3 min</b> · In this lesson: reversibility as the axis for when to pause and confirm — the security thread from every earlier lesson, tied together.</div>
 <div class="capstone-banner">This is the capstone lesson — it doesn't introduce a new isolated feature so much as tie together the security thread that's run under every lesson since Hooks.</div>
 <p>Plan mode is a mode where Claude can only read, explore, and write to a plan file — no edits, no commands, no destructive actions — until you explicitly approve the plan. Research and design happen read-only; nothing executes until you say go.</p>
+<div class="chunk"><span class="chunk-badge">Step 1 of 2</span>
 <h2>Reversibility is the real axis</h2>
 <p>Freely reversible actions — reading files, editing local drafts — don't need this ceremony. Hard-to-reverse or wide-blast-radius actions — force pushes, deletes, sending messages, spending money — do. Plan mode is one tool for that; asking before risky shell commands is another; hooks and permission settings are how you tune the default to your own risk tolerance.</p>
 <div class="exercise"><div class="exercise-label">Capstone exercise</div><p>Design — on paper or just in conversation, not necessarily executed — a plan-mode task for something real in your own work. Articulate which parts of it are reversible (fine to just do) and which need a stop-and-confirm before anything happens.</p></div>
+<p class="microcheck">Quick check: name one action that's freely reversible, and one that needs a stop-and-confirm.</p>
+</div>
+<div class="chunk"><span class="chunk-badge">Step 2 of 2</span>
 <h2>The throughline</h2>
 <p>Lesson 03 (Hooks) said never wire automation to bypass confirmation on destructive actions. Lesson 05 (MCP) said every connected server is a trust boundary you should understand before granting it access. Both are the same principle, applied to a different mechanism: <strong>powerful automation stays safe only when a human can review it before consequential action happens.</strong> Plan mode is that principle made into a feature — research and propose, then wait for a yes.</p>
+</div>
 <div class="checkpoint"><strong>Check for understanding:</strong> Final check for understanding: state that one security principle in your own words. Don't settle for "just be careful" — name the actual mechanism: review before automate, least privilege, reversibility-awareness.</div>
 <p>That's the core curriculum. You don't need anything further to consider yourself proficient — the rest is practice in your own real work.</p>
   </article>

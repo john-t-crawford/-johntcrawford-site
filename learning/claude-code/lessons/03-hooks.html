@@ -72,6 +72,10 @@ pre code{background:none;padding:0;font-size:.84rem;line-height:1.6;white-space:
 .checkpoint strong{color:var(--fg);}
 .exercise{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin:18px 0;}
 .exercise-label{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:8px;}
+.lesson-brief{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;font-size:.86rem;color:var(--fg2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:20px;}
+.lesson-brief b{color:var(--fg);}
+.chunk-badge{display:inline-block;font-family:var(--mono);font-size:.66rem;font-weight:700;color:var(--accent);background:var(--accent-light);border-radius:20px;padding:3px 10px;margin-bottom:8px;letter-spacing:.04em;}
+.microcheck{border-left:2px solid var(--border);padding-left:12px;margin:10px 0 28px;font-size:.82rem;color:var(--fg2);font-style:italic;}
 .video-link{font-size:.86rem;font-weight:600;color:var(--cta);text-decoration:none;margin-bottom:18px;display:inline-block;}
 .video-link:hover{text-decoration:underline;}
 .capstone-banner{background:linear-gradient(155deg,var(--card),var(--bg2));border:1px solid var(--accent);border-radius:14px;padding:16px 18px;margin-bottom:22px;font-size:.88rem;}
@@ -118,9 +122,11 @@ footer a:hover{text-decoration:underline;}
   </div>
 
   <article>
+<div class="lesson-brief">🕐 <b>~3 min</b> · In this lesson: what a hook is, the security rules that come first, and where hooks live in your settings.</div>
 <p>A hook is a shell command the harness runs automatically around an event — before a tool call, after a file edit, when a session stops — configured once in your settings, then fired every time the condition matches. No confirmation, no per-invocation review. That's the whole point of a hook, and it's also exactly why this lesson leads with security instead of ending with it.</p>
 <div class="security-note"><p>Security is not negotiable here. A hook runs with no per-invocation confirmation, which means a bad hook does something dangerous silently, every single time.</p>
 <ul><li>Never wire a hook to skip verification, auto-approve destructive commands, or blanket-bypass permission checks.</li><li>Don't let a hook shell out to anything holding secrets in plaintext environment variables — treat hook scripts like production code, not scratch scripts.</li><li>Prefer hooks that are read-only or clearly reversible (logging, formatting, linting) over anything that deletes, pushes, or deploys.</li><li>If a hook is copied from somewhere else, read every line before enabling it. A hook is code that runs automatically and silently.</li></ul></div>
+<div class="chunk"><span class="chunk-badge">Step 1 of 1</span>
 <h2>Where hooks live</h2>
 <p>Hooks are configured in your settings, keyed to lifecycle events. The event determines when the hook fires; the command is whatever shell command you've told it to run. For example, this logs the path of every file edited, in your project's <code>.claude/settings.json</code>:</p>
 <pre><code>{
@@ -136,6 +142,8 @@ footer a:hover{text-decoration:underline;}
   }
 }</code></pre>
 <p><code>PostToolUse</code> fires after a tool call completes; <code>matcher</code> limits it to specific tools (here, file edits); <code>command</code> is the shell command that runs. This is intentionally the simplest possible hook — read-only, appends to a local file, touches nothing destructive.</p>
+<p class="microcheck">Quick check: which part of this hook config controls which tools it fires on — <code>matcher</code> or <code>command</code>?</p>
+</div>
 <div class="exercise"><div class="exercise-label">Try it — safely</div><p>Add one low-risk hook: something that fires after a file edit and just logs which file changed to a local log file. Nothing destructive, nothing touching git remotes, network calls, or credentials. Trigger the condition and confirm the log file recorded it.</p></div>
 <div class="checkpoint"><strong>Check for understanding:</strong> Name one category of hook you should never write, and why. A vague "be careful" doesn't count — name the actual risk (destructive ops, secrets exposure, or bypassing confirmation).</div>
   </article>
