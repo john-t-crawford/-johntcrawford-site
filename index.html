@@ -242,14 +242,17 @@
     .game-opt.wrong{border-color:#ef4444;background:#FEE2E2;color:#991b1b;}
     .game-feedback{font-size:0.82rem;margin-top:10px;font-weight:500;min-height:20px;}
     .game-cite{font-family:var(--mono);font-size:0.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg2);margin-top:6px;opacity:0.7;padding-left:2px;}
-    .testimonials-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-top:48px;}
-    .testimonial-card{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:28px 24px;border-left:3px solid var(--accent);transition:box-shadow 0.2s;}
+    .testimonials-viewport{overflow:hidden;margin-top:48px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);}
+    .testimonials-track{display:flex;gap:20px;width:max-content;animation:t-scroll 40s linear infinite;}
+    .testimonials-track:hover{animation-play-state:paused;}
+    .testimonial-card{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:28px 24px;border-left:3px solid var(--accent);transition:box-shadow 0.2s;width:320px;flex-shrink:0;}
     .testimonial-card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.07);}
+    @keyframes t-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
     .t-quote{font-size:2.8rem;color:var(--accent);font-family:var(--serif);line-height:0.8;margin-bottom:16px;opacity:0.7;}
     .t-text{font-size:0.9rem;line-height:1.75;color:var(--fg);margin-bottom:24px;}
     .t-author{display:flex;align-items:center;gap:12px;}
-    .t-avatar{width:40px;height:40px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.82rem;color:var(--accent);flex-shrink:0;}
-    .t-name{font-weight:600;font-size:0.86rem;}.t-role{font-size:0.73rem;color:var(--fg2);margin-top:2px;}
+    .t-avatar{width:40px;height:40px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.62rem;letter-spacing:0.02em;color:var(--accent);flex-shrink:0;}
+    .t-role{font-weight:600;font-size:0.86rem;}
     .t-read-more{display:inline;font-size:0.82rem;font-weight:600;color:var(--accent);text-decoration:none;white-space:nowrap;margin-left:0.35em;transition:color 0.2s,letter-spacing 0.2s;}
     .t-read-more:hover{color:var(--cta);letter-spacing:0.01em;}
     .creds-section{background:var(--bg2);}
@@ -307,7 +310,6 @@
       .project-header{padding:32px 40px 32px 44px;}.project-index{font-size:6rem;right:80px;}
       .project-body{grid-template-columns:1fr 1.2fr;}.project-body.open{max-height:560px;}
       .project-details{padding:40px 44px;border-bottom:none;border-right:1px solid var(--border);}.project-demo{padding:40px;}
-      .testimonials-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
       .creds-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
       footer{flex-direction:row;justify-content:space-between;text-align:left;}
     }
@@ -443,7 +445,7 @@ React.createElement("div",{className:"al-log-title","aria-hidden":"true"},"xAPI 
 log.map((e,i)=>React.createElement("div",{key:i,className:"al-log-line"},'{ actor:"visitor", verb:"'+e.verb+'", object:"SC '+e.sc+' '+e.label+'", timestamp:"'+e.t+'" }'))),
 React.createElement("button",{type:"button",className:"wf-btn",onClick:reset,disabled:count===0&&log.length===0},"Reset Component"));}
 const projects=[{meta:"Microsoft Power Platform · Teams Integration",title:"Automated Onboarding Workflow System",tagline:"60% reduction in manual HR touchpoints across enterprise onboarding.",problem:"Fragmented onboarding created high administrative friction and inconsistent employee experiences across departments.",solution:"Architected a hands-free lifecycle system using Power Automate and SharePoint to trigger notifications and auto-route documentation.",outcome:"60% reduction in manual HR touchpoints while ensuring 100% compliance on all new-hire documentation workflows.",demo:"workflow"},{meta:"Section 508 \u00b7 WCAG 2.2 \u00b7 xAPI Evidence",title:"Section 508 Remediation Lab",tagline:"Experience why accessibility fails \u2014 then fix it yourself, one criterion at a time.",problem:"Most eLearning fails Section 508 audits after delivery \u2014 when remediation is most expensive \u2014 because teams can\u2019t see what a screen-reader user actually experiences.",solution:"Built an interactive lab around a deliberately non-compliant course component: each WCAG 2.2 fix you apply updates a simulated screen-reader announcement and emits an xAPI statement, turning compliance into observable evidence.",outcome:"A hands-on teaching tool proving accessibility can be engineered into the build \u2014 not bolted on at audit time. Every interaction in this demo is itself keyboard- and screen-reader-accessible.",demo:"a11y"},{meta:"React · Procedural SVG · WCAG 2.2 AA",title:"Name That Plant — Maryland Tree & Shrub ID",tagline:"A free game that teaches 121 Maryland trees and shrubs. No photos, no licensing, no app.",problem:"A 1988 college plant-ID course had no digital equivalent, and sourcing 121 licensed reference photographs turned out to be a legal dead end: most usable images carried share-alike terms incompatible with the project.",solution:"Built a single-file offline trainer that generates all 484 identification plates procedurally from morphological data instead of photographs, with a narrated lesson track and a scored practice game with side-by-side look-alike comparison.",outcome:"121 species, zero licensing risk, fully offline, and WCAG 2.2 AA compliant. A teaching tool that runs entirely client-side with no build step.",demo:"link",href:"/hrt/"}];
-const testimonials=[{preview:"He was instrumental in helping us successfully import over 20,000 team members into our LMS…",name:"Katie",role:"Vice President of Learning and Development",initials:"KW"},{preview:"John has an incredible eye for design and thinks outside the box when faced with a challenge.",name:"Donovan",role:"Corporate Talent Specialist",initials:"DP"},{preview:"John is wonderful to work with!",name:"Jennifer",role:"Learning and Development Specialist",initials:"JH"}];
+const testimonials=[{preview:"He was instrumental in helping us successfully import over 20,000 team members into our LMS…",role:"Vice President of Learning and Development"},{preview:"John has an incredible eye for design and thinks outside the box when faced with a challenge.",role:"Corporate Talent Specialist"},{preview:"John is wonderful to work with!",role:"Learning and Development Specialist"}];
 const G="#F0A500",GL="#FEF3D0";
 const _e=['contact','johntcrawford.com'].join('\u0040');
 function IconCapella(){return React.createElement("svg",{viewBox:"0 0 64 64",width:"48",height:"48",fill:"none",xmlns:"http://www.w3.org/2000/svg"},React.createElement("rect",{x:"12",y:"34",width:"40",height:"20",rx:"2",fill:GL,stroke:G,strokeWidth:"1.5"}),React.createElement("polygon",{points:"32,8 56,22 32,28 8,22",fill:G,opacity:"0.85"}),React.createElement("rect",{x:"52",y:"22",width:"3",height:"14",rx:"1.5",fill:G}),React.createElement("circle",{cx:"53.5",cy:"38",r:"3",fill:G,opacity:"0.7"}),React.createElement("rect",{x:"20",y:"38",width:"10",height:"2",rx:"1",fill:G,opacity:"0.4"}),React.createElement("rect",{x:"20",y:"43",width:"16",height:"2",rx:"1",fill:G,opacity:"0.3"}),React.createElement("rect",{x:"20",y:"48",width:"12",height:"2",rx:"1",fill:G,opacity:"0.2"}),React.createElement("path",{d:"M38 46 L44 46 L44 54 L38 54 Z",fill:G,opacity:"0.6"}),React.createElement("path",{d:"M38 46 L41 42 L44 46",fill:G,opacity:"0.8"}));}
@@ -627,7 +629,12 @@ function App(){
       React.createElement("section",{id:"testimonials","aria-label":"Testimonials"},
         React.createElement("div",{className:"section-label"},"Testimonials"),
         React.createElement("h2",{className:"section-title"},"Heard from",React.createElement("br"),React.createElement("em",null,"the field.")),
-        React.createElement("div",{className:"testimonials-grid"},testimonials.map((t,i)=>React.createElement("div",{key:i,className:"testimonial-card"},React.createElement("div",{className:"t-quote"},'"'),React.createElement("div",{className:"t-text"},t.preview,React.createElement("a",{href:"https://www.linkedin.com/in/careerjohntcrawford/",target:"_blank",rel:"noopener noreferrer",className:"t-read-more","aria-label":`Read full recommendation from ${t.name} on LinkedIn`},"Read more on LinkedIn →")),React.createElement("div",{className:"t-author"},React.createElement("div",{className:"t-avatar"},t.initials[0]),React.createElement("div",null,React.createElement("div",{className:"t-name"},t.name),React.createElement("div",{className:"t-role"},t.role))))))
+        React.createElement("div",{className:"testimonials-viewport"},
+          React.createElement("div",{className:"testimonials-track"},
+            [...testimonials,...testimonials].map((t,i)=>React.createElement("div",{key:i,className:"testimonial-card","aria-hidden":i>=testimonials.length?"true":undefined},
+              React.createElement("div",{className:"t-quote"},'"'),
+              React.createElement("div",{className:"t-text"},t.preview,React.createElement("a",{href:"https://www.linkedin.com/in/careerjohntcrawford/",target:"_blank",rel:"noopener noreferrer",className:"t-read-more","aria-label":"Read the full recommendation on LinkedIn"},"Read more on LinkedIn →")),
+              React.createElement("div",{className:"t-author"},React.createElement("div",{className:"t-avatar","aria-hidden":"true"},"JTC"),React.createElement("div",{className:"t-role"},t.role))))))
       ),
       React.createElement("section",{className:"creds-section","aria-label":"Education and Certifications"},
         React.createElement("div",{className:"section-label"},"Credentials"),

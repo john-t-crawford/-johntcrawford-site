@@ -126,14 +126,9 @@ body::before{
 }
 
 /* ---------- Maryland corner mark ---------- */
-/* the top+right border forms an L-shaped bracket that wraps the
-   masthead's top-right corner, like a registration mark on an old
-   survey sheet — opposite the title, same idea as the "accession"
-   ledger language used throughout the lesson slides. */
 .md-mark{
   display:flex;flex-direction:column;align-items:center;gap:.3rem;
   padding:.4rem .8rem .35rem 0;margin-left:auto;
-  border-top:1px solid var(--rule-firm);border-right:1px solid var(--rule-firm);
   color:var(--print-faint);
 }
 .md-mark svg{width:82px;height:auto;display:block}
@@ -2640,17 +2635,15 @@ window.WOODY.NARRATION = {};
 
   /* =============================================================
      MARYLAND MARK — a corner mark, outline only, sitting opposite
-     the masthead title. The path is the real state boundary (not a
-     stylized guess): extracted from Wikimedia Commons' "Blank US
-     Map (states only).svg", released CC0 — public domain, no
-     attribution required, same licence tier verify-photos.js treats
-     as CLEAN. Traced from US Census Bureau cb_500k boundary data.
+     the masthead title. Two leaves, same shape and gold (#EAAA00)
+     as Sage's own top leaf-pair, echoing the plant-ID theme instead
+     of a state-boundary trace.
      ============================================================= */
-  var MD_PATH = 'm 822.9,269.3 0,-1.7 h -.8 l 0,1.8 z m 11.8,-3.9 1.2,-2.2 .1,-2.5 -.6,-.6 -.7,.9 -.2,2.1 -.8,1.4 -.3,1.1 -4.6,1.6 -.7,.8 -1.3,.2 -.4,.9 -1.3,.6 -.3,-2.5 .4,-.7 -.8,-.5 .2,-1.5 -1.6,1 v -2 l 1.2,-.3 -1.9,-.4 -.7,-.8 .4,-1.3 -.8,-.6 -.7,1.6 .5,.8 -.7,.6 -1.1,.5 -2,-1 -.2,-1.2 -1,-1.1 -1.4,-1.7 1.5,-.8 -1,-.6 v -.9 l .6,-1 1.7,-.3 -1.4,-.6 -.1,-.7 -1.3,-.1 -.4,1.1 -.6,.3 .1,-3.4 1,-1 .8,.7 .1,-1.6 -1,-.9 -.9,1.1 -1,1.4 -.6,-1 .2,-2.4 .9,-1 .9,.9 1.2,-.7 -.4,-1.7 -1,1 -.9,-2.1 -.2,-1.7 1.1,-2.4 1.1,-1.4 1.4,-.2 -.5,-.8 .5,-.6 -.3,-.7 .2,-2.1 -1.5,.4 -.8,1.1 1,1.3 -2.6,3.6 -.9,-.4 -.7,.9 -.6,2.2 -1.8,.5 1.3,.6 1.3,1.3 -.2,.7 .9,1.2 -1.1,1 .5,.3 -.5,1.3 v 2.1 l -.5,1.3 .9,1.1 .7,3.4 1.3,1.4 1.6,1.4 .4,2.8 1.6,2 .4,1.4 v 1 h -.7 l -1.5,-1.2 -.4,.2 -1.2,-.2 -1.7,-1.4 -1.4,-.3 -1,.5 -1.2,-.3 -.4,.2 -1.7,-.8 -1,-1 -1,-1.3 -.6,-.2 -.8,.7 -1.6,1.3 -1.1,-.8 -.4,-2.3 .8,-2.1 -.3,-.5 .3,-.4 -.7,-1 1,-.1 1,-.9 .4,-1.8 1.7,-2.6 -2.6,-1.8 -1,1.7 -.6,-.6 h -1 l -.6,-.1 -.4,-.4 .1,-.5 -1.7,-.6 -.8,.3 -1.2,-.1 -.7,-.7 -.5,-.2 -.2,-.7 .6,-.8 v -.9 l -1.2,-.2 -1,-.9 -.9,.1 -1.6,-.3 -.9,-.4 .2,-1.6 -1,-.5 -.2,-.7 h -.7 l -.8,-1.2 .2,-1 -2.6,.4 -2.2,-1.6 -1.4,.3 -.9,1.4 h -1.3 l -1.7,2.9 -3.3,.4 -1.9,-1 -2.6,3.8 -2.2,-.3 -3.1,3.9 -.9,1.6 -1.8,1.6 -1.7,-11.4 60.5,-11.8 7.6,27.1 10.9,-2.3 0,5.3 -.1,3.1 -1,1.8 z m -13.4,-1.8 -1.3,.9 .8,1.8 1.7,.8 -.4,-1.6 z';
   function MarylandMark() {
     return h('div', { className: 'md-mark', 'aria-hidden': 'true' },
-      h('svg', { viewBox: '753 227 86 46', xmlns: 'http://www.w3.org/2000/svg' },
-        h('path', { d: MD_PATH, fill: 'none', stroke: 'currentColor', strokeWidth: 1.1, strokeLinejoin: 'round' })),
+      h('svg', { viewBox: '10 1 12 10', xmlns: 'http://www.w3.org/2000/svg' },
+        h('path', { d: 'M16,9 Q12,7 12,3 Q16,4 16,9', fill: 'rgba(234,170,0,.16)', stroke: '#EAAA00', strokeWidth: 1.4, strokeLinejoin: 'round' }),
+        h('path', { d: 'M16,9 Q20,7 20,3 Q16,4 16,9', fill: 'rgba(234,170,0,.16)', stroke: '#EAAA00', strokeWidth: 1.4, strokeLinejoin: 'round' })),
       h('span', null, 'Maryland'));
   }
 
