@@ -1052,8 +1052,20 @@ window.WOODY.PLANTS = [
   /* ---------------- admin: server inbox ----------------
      Only reachable with ?key=... matching the server's secret. Everything
      here talks to hrt-admin.php; no key means every call 403s and this
-     panel stays hidden. See hrt-admin.EDIT_ME.php for setup. */
-  var ADMIN_KEY = new URLSearchParams(location.search).get('key') || '';
+     panel stays hidden. See hrt-admin.EDIT_ME.php for setup.
+     The key is read from the URL once, then immediately stripped from the
+     address bar (kept in sessionStorage for the rest of this tab's session)
+     so it doesn't linger in browser history or on-screen after the first
+     load — see SECURITY-AUDIT.md M1. */
+  var ADMIN_KEY = new URLSearchParams(location.search).get('key') || (function () {
+    try { return sessionStorage.getItem('hrt-admin-key') || ''; } catch (e) { return ''; }
+  })();
+  if (ADMIN_KEY) {
+    try { sessionStorage.setItem('hrt-admin-key', ADMIN_KEY); } catch (e) {}
+    if (location.search.indexOf('key=') !== -1) {
+      history.replaceState(null, '', location.pathname + location.hash);
+    }
+  }
   var ADMIN_API = 'api/hrt-admin.php';
 
 var CRC = (function () {

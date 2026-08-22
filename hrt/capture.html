@@ -146,7 +146,18 @@ input::placeholder,textarea::placeholder{color:var(--print-faint)}
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
   var VIEWS = ['foliage', 'bark', 'habit', 'flower', 'fruit'];
-  var key = new URLSearchParams(location.search).get('key') || '';
+  // Read the admin key from the URL once, then strip it from the address
+  // bar (kept in sessionStorage for the rest of this tab's session) so it
+  // doesn't linger in browser history — see SECURITY-AUDIT.md M1.
+  var key = new URLSearchParams(location.search).get('key') || (function () {
+    try { return sessionStorage.getItem('hrt-admin-key') || ''; } catch (e) { return ''; }
+  })();
+  if (key) {
+    try { sessionStorage.setItem('hrt-admin-key', key); } catch (e) {}
+    if (location.search.indexOf('key=') !== -1) {
+      history.replaceState(null, '', location.pathname + location.hash);
+    }
+  }
   var API = 'api/hrt-admin.php';
   var species = [];       // from species-index.json
   var covered = (window.WOODY && window.WOODY.PHOTOS) || {};
