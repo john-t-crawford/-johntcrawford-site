@@ -46,6 +46,15 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .nav-right a:hover{color:var(--accent);}
 .dark-toggle{background:none;border:1px solid var(--border);color:var(--fg);border-radius:20px;padding:8px 12px;font-family:var(--sans);font-size:.74rem;cursor:pointer;min-height:40px;min-width:40px;}
 .dark-toggle:hover{border-color:var(--accent);color:var(--accent);}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+html[data-textsize="large"]{font-size:112.5%}
+.text-toggle{background:none;border:1px solid var(--border);color:var(--fg);border-radius:20px;padding:8px 10px;font-family:var(--sans);font-size:.74rem;font-weight:700;cursor:pointer;min-height:40px;min-width:40px;}
+.text-toggle:hover{border-color:var(--accent);color:var(--accent);}
+.lesson-progress{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--fg2);margin-bottom:8px;}
+.listen-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:18px;}
+.listen-btn{font-size:.86rem;font-weight:600;color:var(--accent);background:none;border:1px solid var(--border);border-radius:8px;padding:9px 14px;cursor:pointer;font-family:var(--sans);min-height:44px;display:inline-flex;align-items:center;gap:6px;}
+.listen-btn:hover{border-color:var(--accent);}
+.listen-btn[aria-pressed="true"]{background:var(--accent-light);border-color:var(--accent);}
 @media (min-width:560px){.nav-right a{display:flex;}}
 
 .hero{max-width:1080px;margin:0 auto;padding:36px var(--px) 8px;}
@@ -131,6 +140,7 @@ footer a:hover{text-decoration:underline;}
     <a href="/#projects">Portfolio</a>
     <a href="/#contact">Contact</a>
     <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode">◑</button>
+    <button class="text-toggle" id="textToggle" aria-label="Increase text size" aria-pressed="false">A+</button>
   </div>
 </nav>
 
@@ -232,7 +242,11 @@ footer a:hover{text-decoration:underline;}
     <div class="section-label">Free Preview</div>
     <h2>Lesson 00 — Intro</h2>
     <p class="section-sub">What Claude Code is, how it differs from a chat app, install check, and your first real prompt.</p>
-    <p><a class="video-link" href="https://youtu.be/7-OOgkQs0Y0" target="_blank" rel="noopener noreferrer">▶ Watch this lesson on YouTube</a></p>
+    <div class="lesson-progress">Lesson 1 of 8</div>
+    <div class="listen-row">
+      <a class="video-link" href="https://youtu.be/7-OOgkQs0Y0" target="_blank" rel="noopener noreferrer">▶ Watch this lesson on YouTube</a>
+      <button class="listen-btn" id="listenBtn" type="button" aria-pressed="false">🔊 Listen to this lesson</button>
+    </div>
     <div class="lesson-00">
 <h2>What Claude Code actually is</h2>
 <p>Claude Code is an agent that runs in your terminal or your editor — not a chat window. The difference isn't cosmetic. A chat app like claude.ai can talk with you about your code; Claude Code can read your files, edit them, run shell commands, and call tools, with your explicit or pre-configured permission for each action. That's the entire value proposition, and it's also the entire risk surface — which is why this course treats security as a running thread rather than a footnote.</p>
@@ -264,6 +278,58 @@ footer a:hover{text-decoration:underline;}
     document.documentElement.setAttribute('data-dark', d);
     localStorage.setItem('jc-dark', d);
   });
+
+  var ts = localStorage.getItem('jc-textsize') || 'normal';
+  document.documentElement.setAttribute('data-textsize', ts);
+  var textBtn = document.getElementById('textToggle');
+  if (textBtn) {
+    textBtn.setAttribute('aria-pressed', ts === 'large' ? 'true' : 'false');
+    textBtn.addEventListener('click', function () {
+      ts = ts === 'large' ? 'normal' : 'large';
+      document.documentElement.setAttribute('data-textsize', ts);
+      localStorage.setItem('jc-textsize', ts);
+      textBtn.setAttribute('aria-pressed', ts === 'large' ? 'true' : 'false');
+    });
+  }
+  var listenBtn = document.getElementById('listenBtn');
+  if (listenBtn && 'speechSynthesis' in window) {
+    var articleEl = document.querySelector('article') || document.querySelector('.lesson-00');
+    var speaking = false;
+    function pickVoice() {
+      var vs = window.speechSynthesis.getVoices() || [];
+      var en = vs.filter(function (v) { return /^en(-|_|$)/i.test(v.lang); });
+      var pool = en.length ? en : vs;
+      var local = pool.filter(function (v) { return v.localService; });
+      var ranked = local.length ? local : pool;
+      var better = ranked.filter(function (v) { return /natural|enhanced|premium|neural/i.test(v.name); })[0];
+      return better || ranked[0];
+    }
+    listenBtn.addEventListener('click', function () {
+      if (speaking) {
+        window.speechSynthesis.cancel();
+        speaking = false;
+        listenBtn.setAttribute('aria-pressed', 'false');
+        listenBtn.textContent = '🔊 Listen to this lesson';
+        return;
+      }
+      var text = articleEl ? articleEl.innerText : document.title;
+      var u = new SpeechSynthesisUtterance(text);
+      var v = pickVoice();
+      if (v) { u.voice = v; u.lang = v.lang; }
+      u.rate = 0.95;
+      u.onend = function () {
+        speaking = false;
+        listenBtn.setAttribute('aria-pressed', 'false');
+        listenBtn.textContent = '🔊 Listen to this lesson';
+      };
+      window.speechSynthesis.speak(u);
+      speaking = true;
+      listenBtn.setAttribute('aria-pressed', 'true');
+      listenBtn.textContent = '⏸ Stop listening';
+    });
+  } else if (listenBtn) {
+    listenBtn.style.display = 'none';
+  }
 })();
 </script>
 </body>
