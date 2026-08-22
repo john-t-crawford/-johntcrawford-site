@@ -1989,6 +1989,7 @@ window.WOODY.NARRATION = {};
     var vS = useState(0.14), vol = vS[0], setVol = vS[1];
     var aS = useState(false), auto = aS[0], setAuto = aS[1];
     var voS = useState(function () { return speech.list(); }), voices = voS[0], setVoices = voS[1];
+    var abS = useState(!props.simplified), showAudioBar = abS[0], setShowAudioBar = abS[1];
     var headRef = useRef(null), autoRef = useRef(auto), iRef = useRef(i);
     autoRef.current = auto; iRef.current = i;
 
@@ -2099,7 +2100,8 @@ window.WOODY.NARRATION = {};
           ? h('button', { className: 'btn btn-primary', onClick: props.onFinish }, 'Finish \u2014 start practising')
           : h('button', { className: 'btn btn-primary', onClick: function () { go(1); } }, 'Next \u2192')),
 
-      h('div', { className: 'audiobar', role: 'group', 'aria-label': 'Audio controls' },
+      !showAudioBar ? h('button', { className: 'linkish', onClick: function () { setShowAudioBar(true); } }, '🔊 Audio & narration ▾') : null,
+      showAudioBar ? h('div', { className: 'audiobar', role: 'group', 'aria-label': 'Audio controls' },
         h('button', {
           className: 'ev-btn', 'aria-pressed': narrating ? 'true' : 'false',
           onClick: toggleNarration, disabled: !speech.available
@@ -2137,7 +2139,7 @@ window.WOODY.NARRATION = {};
           'Voice-over reads this slide aloud and stops when you leave it. Ambience is a quiet background drone with its own volume. ' +
           'Auto-advance turns on only while voice-over is running, and moves to the next slide when the narration finishes. ' +
           (voices.length > 1 ? 'If the default narrator voice sounds flat, the voice picker lists every option your browser already has installed \u2014 some sound noticeably more natural than others. ' : '') +
-          'Nothing plays until you press it. If you use a screen reader, leave voice-over off \u2014 you would hear the slide twice.'))
+          'Nothing plays until you press it. If you use a screen reader, leave voice-over off \u2014 you would hear the slide twice.')) : null
     );
   }
 
@@ -2150,7 +2152,8 @@ window.WOODY.NARRATION = {};
     return h(Slideshow, {
       track: track,
       onExit: function () { setTrack(null); },
-      onFinish: props.onFinish
+      onFinish: props.onFinish,
+      simplified: props.simplified
     });
   };
   W.TRACKS = TRACKS;
@@ -2522,6 +2525,7 @@ window.WOODY.NARRATION = {};
     var tierS = useState('all'), tier = tierS[0], setTier = tierS[1];
     var modeS = useState(4), mode = modeS[0], setMode = modeS[1];
     var nameS = useState('either'), naming = nameS[0], setNaming = nameS[1];
+    var custS = useState(!props.simplified), customizing = custS[0], setCustomizing = custS[1];
 
     var tierMap = { all: [1, 2, 3], easy: [1, 2], hard: [2, 3] };
     function begin() {
@@ -2543,17 +2547,21 @@ window.WOODY.NARRATION = {};
         h('li', null, h('b', null, 'Stuck? Ask for another clue.'), ' Bark and shape cost 15 points each, fruit or flowers cost 20. The score you would still earn is shown above those buttons, and never drops below 25.'),
         h('li', null, h('b', null, 'See how you did.'), ' It lists what actually gives the plant away, so a miss tells you what to look for next time \u2014 and you can see it side-by-side with what you guessed instead.'),
         h('li', null, h('b', null, 'Finish the round to see your results.'), ' You can immediately replay anything you missed.')),
-      h('p', null, 'Set the three options below, then start. Your progress is kept until you close the tab.'),
-      h('fieldset', null, h('legend', null, 'How many plants'),
-        radios('len', len, setLen, [{ v: 10, t: '10' }, { v: 20, t: '20' }, { v: 40, t: '40' }, { v: 999, t: 'All ' + PLANTS.length }])),
-      h('fieldset', null, h('legend', null, 'How hard'),
-        radios('tier', tier, setTier, [{ v: 'all', t: 'Mix it up' }, { v: 'easy', t: 'Easier' }, { v: 'hard', t: 'Tricky look-alikes' }])),
-      h('fieldset', null, h('legend', null, 'How you answer'),
-        radios('mode', mode, setMode, [{ v: 4, t: 'Choose from 4' }, { v: 6, t: 'Choose from 6' }, { v: 0, t: 'Type the name' }])),
-      mode === 0 ? h('fieldset', null, h('legend', null, 'Scientific names'),
-        radios('naming', naming, setNaming, [{ v: 'either', t: 'Common name is fine' }, { v: 'latin', t: 'Show scientific names only' }]),
-        h('p', { className: 'setup-note' },
-          'Common names can be fuzzy \u2014 one plant can have several, and some names are shared between unrelated plants. Scientific-names-only is stricter, and closer to how this material was originally taught.')) : null,
+      h('p', null, customizing
+        ? 'Set the three options below, then start. Your progress is kept until you close the tab.'
+        : 'Quick start: 20 plants, mixed difficulty, choose from 4. Your progress is kept until you close the tab.'),
+      !customizing ? h('button', { className: 'linkish', onClick: function () { setCustomizing(true); } }, 'Customize \u25be') : null,
+      customizing ? h(React.Fragment, null,
+        h('fieldset', null, h('legend', null, 'How many plants'),
+          radios('len', len, setLen, [{ v: 10, t: '10' }, { v: 20, t: '20' }, { v: 40, t: '40' }, { v: 999, t: 'All ' + PLANTS.length }])),
+        h('fieldset', null, h('legend', null, 'How hard'),
+          radios('tier', tier, setTier, [{ v: 'all', t: 'Mix it up' }, { v: 'easy', t: 'Easier' }, { v: 'hard', t: 'Tricky look-alikes' }])),
+        h('fieldset', null, h('legend', null, 'How you answer'),
+          radios('mode', mode, setMode, [{ v: 4, t: 'Choose from 4' }, { v: 6, t: 'Choose from 6' }, { v: 0, t: 'Type the name' }])),
+        mode === 0 ? h('fieldset', null, h('legend', null, 'Scientific names'),
+          radios('naming', naming, setNaming, [{ v: 'either', t: 'Common name is fine' }, { v: 'latin', t: 'Show scientific names only' }]),
+          h('p', { className: 'setup-note' },
+            'Common names can be fuzzy \u2014 one plant can have several, and some names are shared between unrelated plants. Scientific-names-only is stricter, and closer to how this material was originally taught.')) : null) : null,
       h('button', { className: 'btn btn-primary', onClick: begin }, 'Let\u2019s play')
     );
   }
@@ -2566,6 +2574,7 @@ window.WOODY.NARRATION = {};
     var right = log.filter(function (e) { return e.ok; }).length;
     var pct = Math.round(right / log.length * 100);
     var missed = log.filter(function (e) { return !e.ok; });
+    var detS = useState(!props.simplified), showDetail = detS[0], setShowDetail = detS[1];
     return h('div', null,
       h('div', { className: 'card' },
         h('h2', null, 'Nice work!'),
@@ -2574,7 +2583,8 @@ window.WOODY.NARRATION = {};
         h('div', { style: { display: 'flex', gap: '.6rem', flexWrap: 'wrap' } },
           h('button', { className: 'btn btn-primary', onClick: props.onAgain }, 'Play again'),
           missed.length ? h('button', { className: 'btn btn-ghost', onClick: props.onDrill }, 'Try the ' + missed.length + ' I missed') : null)),
-      h('div', { className: 'card' },
+      !showDetail ? h('button', { className: 'linkish', onClick: function () { setShowDetail(true); } }, 'Show full results \u25be') : null,
+      showDetail ? h('div', { className: 'card' },
         h('h2', null, 'How you did, plant by plant'),
         h('table', { className: 'tally' },
           h('caption', { className: 'visually-hidden' }, 'Every plant in this round with your guess'),
@@ -2585,7 +2595,7 @@ window.WOODY.NARRATION = {};
               h('td', null, h('span', { className: 'common' }, e.plant.common), h('br'), h('span', { className: 'latin' }, e.plant.latin)),
               h('td', null, e.given || '\u2014'),
               h('td', null, h('span', { className: 'res ' + (e.ok ? 'ok' : 'no') }, e.ok ? 'right' : 'missed')));
-          }))))
+          })))) : null
     );
   }
 
@@ -2711,6 +2721,24 @@ window.WOODY.NARRATION = {};
     var i2 = useState([]), log = i2[0], setLog = i2[1];
     var vRef = useRef(null), inRef = useRef(null);
 
+    /* Mobile gets a trimmed-down default view — fewer setup choices,
+       collapsed audio controls, a shorter summary — auto-selected by
+       viewport width. "Show full experience" is a plain in-place
+       override, not a second page: same content, same URL, just
+       everything expanded. */
+    var asS = useState(function () {
+      try { return window.matchMedia('(max-width: 640px)').matches; } catch (err) { return false; }
+    }), autoSimplify = asS[0], setAutoSimplify = asS[1];
+    var fvS = useState(false), fullView = fvS[0], setFullView = fvS[1];
+    useEffect(function () {
+      if (!window.matchMedia) return;
+      var mq = window.matchMedia('(max-width: 640px)');
+      function onChange(e) { setAutoSimplify(e.matches); }
+      if (mq.addEventListener) mq.addEventListener('change', onChange); else mq.addListener(onChange);
+      return function () { if (mq.removeEventListener) mq.removeEventListener('change', onChange); else mq.removeListener(onChange); };
+    }, []);
+    var simplified = autoSimplify && !fullView;
+
     /* restore an interrupted run */
     useEffect(function () {
       try {
@@ -2788,6 +2816,10 @@ window.WOODY.NARRATION = {};
         h('h1', null, 'Name That ', h('em', null, 'Plant')),
         h('p', { className: 'sub' }, 'Trees & shrubs of Maryland \u00b7 ' + PLANTS.length + ' plants, zero small talk required')),
       mode && !run ? h('button', { className: 'linkish top', onClick: function () { setMode(null); setRun(null); } }, 'Switch mode') : null,
+      autoSimplify ? h('button', {
+        className: 'linkish top', 'aria-pressed': fullView,
+        onClick: function () { setFullView(function (v) { return !v; }); }
+      }, fullView ? '📱 Simplify view' : '🖥 Show full experience') : null,
       run ? h('div', { className: 'strip' },
         h('div', null, 'Score', h('b', null, score)),
         h('div', { className: streak > 2 ? 'hot' : '' }, 'Streak', h('b', null, streak))) : null,
@@ -2800,12 +2832,13 @@ window.WOODY.NARRATION = {};
     } else if (mode === 'learn') {
       body = h(W.Learn, {
         onBack: function () { setMode(null); },
-        onFinish: function () { setMode('practice'); }
+        onFinish: function () { setMode('practice'); },
+        simplified: simplified
       });
     } else if (!run) {
-      body = h(Setup, { onStart: start });
+      body = h(Setup, { onStart: start, simplified: simplified });
     } else if (!q) {
-      body = h(Summary, { log: log, score: score, onAgain: function () { setRun(null); }, onDrill: drillMissed });
+      body = h(Summary, { log: log, score: score, onAgain: function () { setRun(null); }, onDrill: drillMissed, simplified: simplified });
     } else {
       var plant = q.plant;
       body = h('div', null,
@@ -2913,17 +2946,18 @@ window.WOODY.NARRATION = {};
         'horticulture course; eleven of the 121 plants are flagged as invasive or discouraged in Maryland today, ' +
         'even though they were standard nursery stock back then.'),
       h('p', { className: 'footnote' },
-        h('a', { href: './case-study.html', style: { color: 'var(--gold)' } }, 'How this was built \u2192'),
-        ' \u00b7 ',
-        h('a', { href: './worksheet.html', style: { color: 'var(--gold)' } }, 'Sourcing worksheet'),
-        ' \u00b7 ',
-        h('a', { href: './field.html', style: { color: 'var(--gold)' } }, 'Field capture'),
-        ' \u00b7 ',
         h('a', { href: './sheets.html', style: { color: 'var(--gold)' } }, 'Specimen sheets'),
         ' \u00b7 ',
-        h('a', { href: './houseplants.html', style: { color: 'var(--gold)' } }, 'Houseplant expedition'),
-        ' \u00b7 ',
-        h('a', { href: 'https://johntcrawford.com/#projects', style: { color: 'var(--gold)' } }, 'johntcrawford.com'))
+        h('a', { href: 'https://johntcrawford.com/#projects', style: { color: 'var(--gold)' } }, 'johntcrawford.com'),
+        simplified ? h('a', {
+          href: '#', className: 'linkish', style: { marginLeft: '.5rem' },
+          onClick: function (e) { e.preventDefault(); setFullView(true); }
+        }, 'More \u25be') : null,
+        !simplified ? h(React.Fragment, null,
+          ' \u00b7 ',
+          h('a', { href: './case-study.html', style: { color: 'var(--gold)' } }, 'How this was built'),
+          ' \u00b7 ',
+          h('a', { href: './houseplants.html', style: { color: 'var(--gold)' } }, 'Houseplant expedition')) : null)
     );
   }
 
