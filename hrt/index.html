@@ -527,6 +527,16 @@ body{
 .nowdo.quiet{background:rgba(159,192,220,.08);border-left-color:var(--print-faint)}
 .nowdo.quiet .lbl{color:var(--print-faint)}
 
+/* ---------- Sage, the guide ---------- */
+.sage-intro{
+  display:flex;align-items:flex-start;gap:.65rem;
+  margin:0 0 .8rem;padding:.7rem .85rem;
+  background:rgba(234,170,0,.06);border:1px solid rgba(234,170,0,.25);border-radius:6px;
+}
+.sage-intro svg{flex-shrink:0}
+.sage-intro p{margin:0;font:400 var(--step--1)/1.5 var(--sans);color:var(--print)}
+.sage-badge{display:inline-flex;flex-shrink:0}
+
 /* ---------- evidence block gets a heading and a live score ---------- */
 .evhead{
   display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.5rem;
@@ -1937,6 +1947,11 @@ window.WOODY.NARRATION = {};
     autoRef.current = auto; iRef.current = i;
 
     var slide = slides[i], last = i === slides.length - 1;
+    var sageLine = useMemo(function () {
+      if (i === 0) return sageSay(SAGE_LESSON_START);
+      if (last) return sageSay(SAGE_LESSON_END);
+      return '';
+    }, [i === 0 || last, props.track]);
 
     function speakSlide(n) {
       speech.say(narrationFor(props.track, n, slides[n]), 0.95, function () {
@@ -2000,6 +2015,9 @@ window.WOODY.NARRATION = {};
       h('div', { className: 'progress', role: 'progressbar', 'aria-label': 'Lesson progress',
         'aria-valuemin': 1, 'aria-valuemax': slides.length, 'aria-valuenow': i + 1 },
         h('span', { style: { width: ((i + 1) / slides.length * 100) + '%' } })),
+
+      (i === 0 || last) ? h('div', { className: 'sage-intro' }, h(SageAvatar, { size: 26 }),
+        h('p', null, sageLine)) : null,
 
       h('div', { className: 'nowdo quiet' },
         h('span', { className: 'lbl' }, 'Do this'),
@@ -2528,12 +2546,55 @@ window.WOODY.NARRATION = {};
   /* =============================================================
      APP
      ============================================================= */
+
+  /* =============================================================
+     SAGE — the guide. A generated sprig, same doctrine as the
+     plates: nothing here is drawn, and the quips never replace the
+     actual instructions — they lead into them, once per moment
+     that calls for it, not on every slide.
+     ============================================================= */
+  var SAGE_INK = '#E8F1FA', SAGE_GOLD = '#EAAA00';
+  function sageSVG(size) {
+    size = size || 30;
+    return '<svg width="' + size + '" height="' + size + '" viewBox="0 0 32 32" aria-hidden="true">' +
+      '<path d="M16,30 L16,16" stroke="' + SAGE_INK + '" stroke-width="1.7" stroke-linecap="round"/>' +
+      '<path d="M16,22 Q10,20 9,15 Q14,16 16,22" fill="rgba(232,241,250,.14)" stroke="' + SAGE_INK + '" stroke-width="1.3" stroke-linejoin="round"/>' +
+      '<path d="M16,22 Q22,20 23,15 Q18,16 16,22" fill="rgba(232,241,250,.14)" stroke="' + SAGE_INK + '" stroke-width="1.3" stroke-linejoin="round"/>' +
+      '<path d="M16,16 Q11,13 11,9 Q15,11 16,16" fill="rgba(232,241,250,.14)" stroke="' + SAGE_INK + '" stroke-width="1.3" stroke-linejoin="round"/>' +
+      '<path d="M16,16 Q21,13 21,9 Q17,11 16,16" fill="rgba(232,241,250,.14)" stroke="' + SAGE_INK + '" stroke-width="1.3" stroke-linejoin="round"/>' +
+      '<path d="M16,9 Q12,7 12,3 Q16,4 16,9" fill="rgba(234,170,0,.16)" stroke="' + SAGE_GOLD + '" stroke-width="1.4" stroke-linejoin="round"/>' +
+      '<path d="M16,9 Q20,7 20,3 Q16,4 16,9" fill="rgba(234,170,0,.16)" stroke="' + SAGE_GOLD + '" stroke-width="1.4" stroke-linejoin="round"/>' +
+      '<circle cx="14.3" cy="5.3" r="0.9" fill="' + SAGE_INK + '"/>' +
+      '<circle cx="17.7" cy="5.3" r="0.9" fill="' + SAGE_INK + '"/></svg>';
+  }
+  function SageAvatar(props) {
+    return h('span', { className: 'sage-badge', dangerouslySetInnerHTML: { __html: sageSVG(props.size) } });
+  }
+  var SAGE_APP_GREETINGS = [
+    'Hi, I’m Sage — I’ll point things out as we go. No pressure; I’ve been rooted in this stuff a while.',
+    'I’m Sage. Consider me the wise one in the room — emphasis on “herb.”',
+    'Sage here. I’ll try not to be too much of a know-it-all, though, well… look at my name.'
+  ];
+  var SAGE_LESSON_START = [
+    'One slide at a time — I’ll leaf you to it.',
+    'Ready when you are. No rush; roots take time.',
+    'Let’s branch out into this one.'
+  ];
+  var SAGE_LESSON_END = [
+    'That’s the lesson — nicely sprouted. On to practice.',
+    'You’ve got the roots of it now. Time to test the branches.',
+    'That wraps it up. I think you’re ready to leaf the nest.'
+  ];
+  function sageSay(pool) { return pool[Math.floor(Math.random() * pool.length)]; }
+
   /* =============================================================
      MODE GATE
      Two doors: learn the characters, or be tested on them.
      ============================================================= */
   function ModeGate(props) {
+    var gS = useState(function () { return sageSay(SAGE_APP_GREETINGS); }), greet = gS[0];
     return h('div', { className: 'card gate' },
+      h('div', { className: 'sage-intro' }, h(SageAvatar, { size: 34 }), h('p', null, greet)),
       h('h2', null, 'What brings you here?'),
       h('p', null, 'Ever walked past a tree or shrub in Maryland and thought, we should really be on a first-name basis by now? This is a free way to get acquainted with 121 of them: no signup, no app, works offline, unlike most relationships. Same 121 plants either way; pick how you want to meet them. You can switch anytime using the link in the header.'),
       h('div', { className: 'gate-grid' },
