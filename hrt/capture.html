@@ -24,8 +24,9 @@ body{margin:0;background:var(--ground-deep);color:var(--print);font:400 16px/1.5
 .shell{max-width:640px;margin:0 auto;padding:1.25rem 1rem 4rem}
 :where(a,button,input,select,summary,[tabindex]):focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:3px}
 
-header{border-bottom:1px solid var(--rule-firm);padding-bottom:.8rem;margin-bottom:1rem}
-h1{margin:0;font:400 1.4rem/1.15 var(--serif)}
+header{border-bottom:1px solid var(--rule-firm);padding-bottom:.8rem;margin-bottom:1rem;background:linear-gradient(135deg, rgba(234,170,0,.08), rgba(159,192,220,.03));border-radius:8px;padding:1rem 1.1rem .9rem;}
+.leaf-glyph{width:18px;height:auto;flex-shrink:0}
+h1{margin:0;font:400 1.4rem/1.15 var(--serif);display:flex;align-items:center;gap:.4rem}
 h1 em{font-style:italic;color:var(--gold)}
 .sub{margin:.3rem 0 0;font:400 .75rem/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--print-dim)}
 
@@ -94,7 +95,7 @@ input::placeholder,textarea::placeholder{color:var(--print-faint)}
 <div class="shell">
 
 <header>
-  <h1>Admin <em>Capture</em></h1>
+  <h1><svg class="leaf-glyph" viewBox="10 1 12 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16,9 Q12,7 12,3 Q16,4 16,9" fill="rgba(234,170,0,.16)" stroke="#EAAA00" stroke-width="1.4" stroke-linejoin="round"/><path d="M16,9 Q20,7 20,3 Q16,4 16,9" fill="rgba(234,170,0,.16)" stroke="#EAAA00" stroke-width="1.4" stroke-linejoin="round"/></svg>Admin <em>Capture</em></h1>
   <p class="sub">Field upload &middot; woody ornamentals</p>
 </header>
 
