@@ -37,19 +37,22 @@ open decision — not made unilaterally as part of this tracking pass.
   this would have silently broken the page — no Tailwind styling, no audio
   (every `Tone.js` call throws). **Fixed**: both domains added to `script-src`
   in `.htaccess` (2026-08-22).
+- **No SRI hashes on either CDN script.** `index.html`'s own script tags
+  (React/ReactDOM/Chart.js) carry `integrity` + `crossorigin="anonymous"`;
+  these two didn't. **Fixed** (2026-08-22): the unversioned
+  `cdn.tailwindcss.com` URL was itself a problem for SRI — it's a redirect
+  (currently to `/3.4.17`) that Tailwind can silently repoint, which would
+  either break SRI or defeat its purpose. Pinned the script tag directly to
+  `cdn.tailwindcss.com/3.4.17`, then computed real SHA-384 hashes for both
+  scripts from their actual downloaded bytes (not copied from anywhere) and
+  added `integrity` + `crossorigin="anonymous"` to both. Same-origin as the
+  CSP allowlist added earlier, no `.htaccess` change needed.
+  Still true and unresolved: the Tailwind CDN build is documented by
+  Tailwind as **not meant for production** (regenerates CSS client-side on
+  every load, no purging) regardless of SRI — the real fix is still dropping
+  the CDN dependency entirely, not attempted.
 
 ### Open / not yet addressed
-- **No SRI hashes** on either CDN script. `index.html`'s own script tags
-  (React/ReactDOM/Chart.js) all carry `integrity` + `crossorigin="anonymous"`;
-  these two don't. If either CDN were compromised, the page would run
-  injected code with no protection. Lower priority than the CSP break, but
-  worth closing — especially since the Tailwind CDN build is explicitly
-  documented by Tailwind as **not meant for production** (regenerates CSS
-  client-side on every load, no purging). Real fix is dropping the CDN
-  dependency entirely (compiled/purged Tailwind, or hand-written CSS; the
-  Tone.js usage is 2-3 simple beep calls that don't need a full synthesis
-  library) — that's a much bigger rewrite than adding an SRI hash, not
-  attempted yet.
 - **Accessibility regression relative to the rest of the site.** hrt/ and the
   Claude Code course are WCAG 2.2 AA-diligent throughout. This game is
   mouse-only (`canvas.onmousemove` drives the player, no keyboard movement
@@ -66,8 +69,9 @@ open decision — not made unilaterally as part of this tracking pass.
 ## Next steps (not yet actioned, listed for future reference)
 
 1. Decide whether to `git add` and commit `games/` (code + intro photos).
-2. Decide whether to drop the Tailwind/Tone.js CDN dependencies vs. just add
-   SRI hashes as an interim measure.
+2. Decide whether to drop the Tailwind/Tone.js CDN dependencies entirely
+   (SRI is now in place as an interim measure, but Tailwind's CDN build
+   still isn't meant for production use).
 3. Decide whether the "Nano Crab" AI-hype voice is intentional for this page
    or should be toned down to match the rest of the site.
 4. Add real keyboard controls + `aria-live` gameplay announcements if this
