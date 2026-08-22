@@ -458,6 +458,11 @@ legend{
 .vol{display:flex;align-items:center;gap:.6rem;min-height:var(--tap)}
 .vol span{font:600 var(--step--1)/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--print-faint)}
 .vol input{accent-color:var(--gold);min-width:110px;height:var(--tap)}
+.vol select{
+  min-height:var(--tap);max-width:220px;padding:.4rem .6rem;
+  background:rgba(10,22,38,.6);border:1px solid var(--rule);border-radius:4px;
+  color:var(--print);font:400 13px/1.3 var(--sans);
+}
 .audionote{flex:1 1 100%;margin:.4rem 0 0;font:400 var(--step--1)/1.5 var(--mono);color:var(--print-faint)}
 
 .linkish{
@@ -1690,18 +1695,44 @@ window.WOODY.NARRATION = {};
   var speech = {
     available: typeof window.speechSynthesis !== 'undefined',
     voice: null,
+    chosenURI: (function () { try { return sessionStorage.getItem('woody-voice-uri') || ''; } catch (e) { return ''; } })(),
+    listeners: [], // components subscribe here to hear about a voice list refresh
+
+    // English voices this browser/OS actually has, falling back to
+    // everything if none are tagged English. Never a network call —
+    // getVoices() only ever returns what's already installed.
+    list: function () {
+      if (!this.available) return [];
+      var vs = window.speechSynthesis.getVoices() || [];
+      var en = vs.filter(function (v) { return /^en(-|_|$)/i.test(v.lang); });
+      return en.length ? en : vs;
+    },
 
     pick: function () {
       if (!this.available) return null;
       if (this.voice) return this.voice;
-      var vs = window.speechSynthesis.getVoices() || [];
-      if (!vs.length) return null;
-      var en = vs.filter(function (v) { return /^en(-|_|$)/i.test(v.lang); });
-      var pool = en.length ? en : vs;
-      // prefer a local voice so nothing reaches the network
-      this.voice = pool.filter(function (v) { return v.localService; })[0] || pool[0];
+      var pool = this.list();
+      if (!pool.length) return null;
+      if (this.chosenURI) {
+        var chosen = pool.filter(function (v) { return v.voiceURI === this.chosenURI; }, this)[0];
+        if (chosen) { this.voice = chosen; return this.voice; }
+      }
+      // prefer a local voice so nothing reaches the network, then prefer
+      // whichever local voice the platform itself labels as higher quality
+      var local = pool.filter(function (v) { return v.localService; });
+      var ranked = local.length ? local : pool;
+      var better = ranked.filter(function (v) { return /natural|enhanced|premium|neural/i.test(v.name); })[0];
+      this.voice = better || ranked[0];
       return this.voice;
     },
+
+    setVoice: function (uri) {
+      this.chosenURI = uri || '';
+      this.voice = null;
+      try { sessionStorage.setItem('woody-voice-uri', this.chosenURI); } catch (e) {}
+    },
+
+    notify: function () { this.listeners.forEach(function (fn) { fn(); }); },
 
     say: function (text, rate, onEnd) {
       if (!this.available) { if (onEnd) onEnd(); return; }
@@ -1722,7 +1753,7 @@ window.WOODY.NARRATION = {};
     }
   };
   if (speech.available && window.speechSynthesis.onvoiceschanged !== undefined) {
-    window.speechSynthesis.onvoiceschanged = function () { speech.voice = null; speech.pick(); };
+    window.speechSynthesis.onvoiceschanged = function () { speech.voice = null; speech.pick(); speech.notify(); };
   }
 
   /* =============================================================
@@ -1901,6 +1932,7 @@ window.WOODY.NARRATION = {};
     var bS = useState(false), bed = bS[0], setBed = bS[1];
     var vS = useState(0.14), vol = vS[0], setVol = vS[1];
     var aS = useState(false), auto = aS[0], setAuto = aS[1];
+    var voS = useState(function () { return speech.list(); }), voices = voS[0], setVoices = voS[1];
     var headRef = useRef(null), autoRef = useRef(auto), iRef = useRef(i);
     autoRef.current = auto; iRef.current = i;
 
@@ -1930,6 +1962,14 @@ window.WOODY.NARRATION = {};
     // everything stops when the lesson unmounts
     useEffect(function () {
       return function () { speech.stop(); audio.stopBed(); };
+    }, []);
+
+    // pick up the OS voice list once it loads (some browsers populate it
+    // asynchronously) and whenever it changes
+    useEffect(function () {
+      function refresh() { setVoices(speech.list()); }
+      speech.listeners.push(refresh);
+      return function () { speech.listeners = speech.listeners.filter(function (fn) { return fn !== refresh; }); };
     }, []);
 
     function toggleBed() {
@@ -2014,11 +2054,25 @@ window.WOODY.NARRATION = {};
             type: 'range', min: 0, max: 40, step: 1, value: Math.round(vol * 100),
             onChange: function (ev) { setVol(Number(ev.target.value) / 100); }
           })),
+        speech.available && voices.length > 1 ? h('label', { className: 'vol' },
+          h('span', null, 'Narrator voice'),
+          h('select', {
+            value: speech.chosenURI && voices.some(function (v) { return v.voiceURI === speech.chosenURI; })
+              ? speech.chosenURI
+              : (speech.pick() ? speech.pick().voiceURI : ''),
+            onChange: function (ev) {
+              speech.setVoice(ev.target.value);
+              if (narrating) speakSlide(i);
+            }
+          }, voices.map(function (v) {
+            return h('option', { key: v.voiceURI, value: v.voiceURI }, v.name + (v.localService ? '' : ' — network'));
+          }))) : null,
         !speech.available ? h('p', { className: 'audionote' },
           'This browser has no speech synthesis, so voice-over is unavailable. Every word of the narration is on the slide.') : null,
         h('p', { className: 'audionote' },
           'Voice-over reads this slide aloud and stops when you leave it. Ambience is a quiet background drone with its own volume. ' +
           'Auto-advance turns on only while voice-over is running, and moves to the next slide when the narration finishes. ' +
+          (voices.length > 1 ? 'If the default narrator voice sounds flat, the voice picker lists every option your browser already has installed \u2014 some sound noticeably more natural than others. ' : '') +
           'Nothing plays until you press it. If you use a screen reader, leave voice-over off \u2014 you would hear the slide twice.'))
     );
   }

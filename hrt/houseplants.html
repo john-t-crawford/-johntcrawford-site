@@ -50,21 +50,29 @@ h1 em{font-style:italic;color:var(--gold)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.8rem}
 .pcard{border:1px solid var(--rule);border-radius:6px;background:rgba(10,22,38,.4);padding:.8rem;text-align:left;cursor:pointer;color:var(--print);font:inherit}
 .pcard:hover{border-color:var(--gold)}
-.pcard svg{width:100%;height:120px;display:block}
+.pcard svg.plate{width:100%;height:120px;display:block}
 .pcard b{display:block;font:400 1.05rem/1.2 var(--serif);margin-top:.4rem}
 .pcard span{display:block;font-style:italic;color:var(--print-dim);font-size:.82rem}
 .tags{display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.5rem}
 .tag{font:600 .75rem/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;padding:.28rem .42rem;border-radius:3px;background:rgba(159,192,220,.15);color:var(--print-dim)}
 .tag.warn{background:rgba(206,17,38,.18);color:var(--red-lift)}
 .tag.safe{background:rgba(127,216,160,.15);color:var(--green-lift)}
+.tag.icon-tag{display:inline-flex;align-items:center;gap:.32rem;padding:.22rem .42rem .22rem .32rem}
+
+.attricon{width:18px;height:18px;flex-shrink:0;vertical-align:middle;display:inline-block}
+.dropgroup{display:inline-flex;gap:1px;vertical-align:middle}
+.dropgroup .attricon{width:9px;height:12px}
+@keyframes dropbob{0%,100%{transform:translateY(0)}50%{transform:translateY(2px)}}
+.drop-anim{animation:dropbob 2.6s ease-in-out infinite}
 
 .detail{display:none}
 .detail.show{display:block}
 .detail .platewrap{display:flex;gap:1.2rem;flex-wrap:wrap;align-items:flex-start}
-.detail svg{width:180px;height:180px;flex-shrink:0}
+.detail svg.plate{width:180px;height:180px;flex-shrink:0}
 .detail dl{display:grid;grid-template-columns:auto 1fr;gap:.4rem 1rem;margin:0;font-size:.92rem}
 .detail dt{font:600 .75rem/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--print-faint)}
 .detail dd{margin:0 0 .3rem}
+.detail dd.dd-icon{display:flex;align-items:center;gap:.5rem}
 .backbtn{margin-bottom:.8rem}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:var(--tap);padding:.7rem 1.2rem;border-radius:5px;border:1px solid transparent;font:600 .95rem/1.2 var(--sans);cursor:pointer}
@@ -78,7 +86,7 @@ h1 em{font-style:italic;color:var(--gold)}
 .score{font:600 .78rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--print-dim)}
 .score b{color:var(--gold);font-size:1rem}
 .qplate{display:flex;justify-content:center;padding:1rem;background:rgba(10,22,38,.5);border-radius:6px;margin-bottom:1rem}
-.qplate svg{width:220px;height:220px}
+.qplate svg.plate{width:220px;height:220px}
 .choices{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
 .choice{min-height:var(--tap);padding:.7rem .9rem;background:rgba(10,22,38,.4);border:1px solid var(--rule-firm);border-radius:5px;color:var(--print);font:400 .95rem/1.25 var(--sans);text-align:left;cursor:pointer}
 .choice:hover{border-color:var(--gold)}
@@ -173,116 +181,139 @@ h1 em{font-style:italic;color:var(--gold)}
     { id:'gol-pot', latin:'Epipremnum aureum', common:'Golden pothos', syn:['devil’s ivy'],
       shape:'heart', habit:'trailing', light:'Low to bright, indirect', water:'Let the top 2″ dry between waterings',
       humidity:'Average room humidity is fine', difficulty:1,
+      lightLevel:2, waterLevel:2,
       toxicPets:true, toxicHumans:true,
       problems:'Yellow leaves usually mean overwatering, not underwatering — check the soil before adding more.' },
     { id:'phi-hed', latin:'Philodendron hederaceum', common:'Heartleaf philodendron', syn:[],
       shape:'heart', habit:'trailing', light:'Medium to bright, indirect', water:'Let the top 1–2″ dry between waterings',
       humidity:'Average is fine, tolerates dry air', difficulty:1,
+      lightLevel:2, waterLevel:2,
       toxicPets:true, toxicHumans:true,
       problems:'Leggy, sparse growth means it wants more light — pothos and this are easy to mix up; philodendron’s new leaves emerge from a thin papery sheath, pothos’ don’t.' },
     { id:'eng-ivy', latin:'Hedera helix', common:'English ivy', syn:[],
       shape:'lobed', habit:'trailing', light:'Medium to bright, indirect', water:'Keep lightly moist, don’t let it fully dry',
       humidity:'Prefers higher humidity — dry air invites spider mites', difficulty:2,
+      lightLevel:2, waterLevel:3,
       toxicPets:true, toxicHumans:true,
       problems:'Regulated as invasive in parts of the mid-Atlantic if planted outdoors — keep it indoors or in a contained pot.' },
     { id:'mon-del', latin:'Monstera deliciosa', common:'Swiss cheese plant', syn:['monstera'],
       shape:'fenestrate', habit:'upright', light:'Bright, indirect', water:'Let the top 2–3″ dry between waterings',
       humidity:'Average to high', difficulty:2,
+      lightLevel:3, waterLevel:2,
       toxicPets:true, toxicHumans:true,
       problems:'No leaf splits (fenestrations) on new growth usually means not enough light, not a watering problem.' },
     { id:'sna-pla', latin:'Dracaena trifasciata', common:'Snake plant', syn:['mother-in-law’s tongue','sansevieria'],
       shape:'sword', habit:'rosette', light:'Low to bright — the most forgiving plant on this list', water:'Let it dry completely between waterings, even in winter',
       humidity:'Tolerates dry indoor air well', difficulty:1,
+      lightLevel:1, waterLevel:1,
       toxicPets:true, toxicHumans:false,
       problems:'Mushy, collapsing leaves are almost always root rot from overwatering — the single most common way to kill this plant.' },
     { id:'zz-pla', latin:'Zamioculcas zamiifolia', common:'ZZ plant', syn:[],
       shape:'paddle', habit:'rosette', light:'Low to bright, indirect', water:'Let it dry completely between waterings',
       humidity:'Tolerates dry air well', difficulty:1,
+      lightLevel:1, waterLevel:1,
       toxicPets:true, toxicHumans:true,
       problems:'Grows from thick rhizomes that store water — treat it like a succulent, not a tropical.' },
     { id:'spi-pla', latin:'Chlorophytum comosum', common:'Spider plant', syn:[],
       shape:'sword', habit:'rosette', light:'Medium to bright, indirect', water:'Keep lightly moist, let the top dry between waterings',
       humidity:'Average is fine', difficulty:1,
+      lightLevel:2, waterLevel:2,
       toxicPets:false, toxicHumans:false,
       problems:'Brown leaf tips are usually fluoride or chlorine sensitivity — filtered or distilled water helps. Pet-safe, unlike most of this list.' },
     { id:'pea-lil', latin:'Spathiphyllum wallisii', common:'Peace lily', syn:[],
       shape:'paddle', habit:'rosette', light:'Low to medium, indirect', water:'Keep lightly moist — it wilts dramatically when thirsty, then recovers fast once watered',
       humidity:'Prefers higher humidity', difficulty:2,
+      lightLevel:1, waterLevel:3,
       toxicPets:true, toxicHumans:true,
       problems:'Dramatic drooping is its own watering reminder — it usually bounces back within an hour of a good soak.' },
     { id:'rub-pla', latin:'Ficus elastica', common:'Rubber plant', syn:[],
       shape:'oval-large', habit:'single-stem', light:'Bright, indirect', water:'Let the top 2″ dry between waterings',
       humidity:'Average is fine', difficulty:2,
+      lightLevel:3, waterLevel:2,
       toxicPets:true, toxicHumans:false,
       problems:'Sap is a skin irritant and can stain fabric — wipe pruning cuts, wear sleeves if you’re trimming it.' },
     { id:'fid-lea', latin:'Ficus lyrata', common:'Fiddle-leaf fig', syn:[],
       shape:'oval-large', habit:'single-stem', light:'Bright, indirect — fussy about consistency', water:'Let the top 2″ dry, then water thoroughly',
       humidity:'Average to high', difficulty:3,
+      lightLevel:3, waterLevel:2,
       toxicPets:true, toxicHumans:false,
       problems:'Drops leaves in protest of almost any change — new location, draft, or watering schedule shift. The touchiest plant on this list.' },
     { id:'alo-ver', latin:'Aloe vera', common:'Aloe', syn:[],
       shape:'succulent-rosette', habit:'rosette', light:'Bright, direct to indirect', water:'Let it dry completely between waterings',
       humidity:'Tolerates dry air well', difficulty:1,
+      lightLevel:4, waterLevel:1,
       toxicPets:true, toxicHumans:false,
       problems:'The inner gel is used topically for minor burns, but the whole plant is toxic if eaten — keep it away from pets that chew houseplants.' },
     { id:'bos-fer', latin:'Nephrolepis exaltata', common:'Boston fern', syn:[],
       shape:'frond', habit:'rosette', light:'Medium, indirect', water:'Keep consistently moist, never soggy',
       humidity:'Wants high humidity — a bathroom or a pebble tray helps', difficulty:3,
+      lightLevel:2, waterLevel:3,
       toxicPets:false, toxicHumans:false,
       problems:'Crispy, dropping fronds almost always mean the air is too dry, not the soil.' },
     { id:'chi-eve', latin:'Aglaonema commutatum', common:'Chinese evergreen', syn:[],
       shape:'paddle', habit:'rosette', light:'Low to medium, indirect', water:'Let the top 1–2″ dry between waterings',
       humidity:'Average is fine', difficulty:1,
+      lightLevel:1, waterLevel:2,
       toxicPets:true, toxicHumans:true,
       problems:'One of the most tolerant plants on this list for a low-light apartment — rarely the cause of its own problems.' },
     { id:'jad-pla', latin:'Crassula ovata', common:'Jade plant', syn:[],
       shape:'succulent-paddle', habit:'rosette', light:'Bright, direct to indirect', water:'Let it dry completely between waterings',
       humidity:'Tolerates dry air well', difficulty:1,
+      lightLevel:4, waterLevel:1,
       toxicPets:true, toxicHumans:false,
       problems:'Wrinkled leaves mean thirsty; mushy, translucent leaves mean overwatered — the two look similar from across the room.' },
     { id:'chr-cac', latin:'Schlumbergera truncata', common:'Christmas cactus', syn:['holiday cactus'],
       shape:'segment', habit:'trailing', light:'Medium, bright indirect', water:'Let the top inch dry, keep more consistent than a desert cactus',
       humidity:'Average is fine', difficulty:2,
+      lightLevel:2, waterLevel:2,
       toxicPets:false, toxicHumans:false,
       problems:'Despite the name it’s a rainforest cactus, not a desert one — it wants more water than a typical cactus, not less.' },
     { id:'afr-vio', latin:'Saintpaulia ionantha', common:'African violet', syn:[],
       shape:'rosette-fuzzy', habit:'rosette', light:'Bright, indirect — no direct sun', water:'Water the soil, never the leaves — wet foliage spots permanently',
       humidity:'Average to high', difficulty:3,
+      lightLevel:3, waterLevel:2,
       toxicPets:false, toxicHumans:false,
       problems:'Won’t bloom without enough light, and cold tap water splashed on a leaf leaves a permanent pale ring.' },
     { id:'pep-obt', latin:'Peperomia obtusifolia', common:'Baby rubber plant', syn:['peperomia'],
       shape:'round-clump', habit:'rosette', light:'Medium, indirect', water:'Let the top 1–2″ dry between waterings',
       humidity:'Average is fine', difficulty:1,
+      lightLevel:2, waterLevel:2,
       toxicPets:false, toxicHumans:false,
       problems:'Thick, water-storing leaves mean it forgives a missed watering more than most — overwatering is the bigger risk.' },
     { id:'cal-orb', latin:'Goeppertia orbifolia', common:'Calathea', syn:['prayer-plant family'],
       shape:'paddle', habit:'rosette', light:'Medium, indirect', water:'Keep consistently moist with filtered or distilled water',
       humidity:'Wants high humidity', difficulty:3,
+      lightLevel:2, waterLevel:3,
       toxicPets:false, toxicHumans:false,
       problems:'Crispy leaf edges are usually tap-water mineral sensitivity or dry air, not underwatering — the trickiest plant on this list to keep looking good.' },
     { id:'dra-mar', latin:'Dracaena marginata', common:'Dragon tree', syn:['madagascar dragon tree'],
       shape:'sword', habit:'single-stem', light:'Medium to bright, indirect', water:'Let the top 2″ dry between waterings',
       humidity:'Tolerates dry air well', difficulty:1,
+      lightLevel:2, waterLevel:2,
       toxicPets:true, toxicHumans:false,
       problems:'Brown leaf tips are usually fluoride sensitivity, same as spider plant — filtered water helps.' },
     { id:'cro-var', latin:'Codiaeum variegatum', common:'Croton', syn:[],
       shape:'paddle', habit:'rosette', light:'Bright, direct to indirect — color fades without enough light', water:'Keep consistently moist',
       humidity:'Average to high', difficulty:3,
+      lightLevel:4, waterLevel:3,
       toxicPets:true, toxicHumans:true,
       problems:'Drops leaves hard when moved or under-lit — pick one spot and leave it there.' },
     { id:'ant-and', latin:'Anthurium andraeanum', common:'Anthurium', syn:['flamingo flower'],
       shape:'heart', habit:'rosette', light:'Bright, indirect', water:'Let the top 1–2″ dry between waterings',
       humidity:'Wants high humidity', difficulty:2,
+      lightLevel:3, waterLevel:2,
       toxicPets:true, toxicHumans:true,
       problems:'The waxy red “flower” is a modified leaf (a spathe) around a true flower spike — it isn’t a petal in the usual sense.' },
     { id:'mar-leu', latin:'Maranta leuconeura', common:'Prayer plant', syn:[],
       shape:'paddle', habit:'rosette', light:'Medium, indirect', water:'Keep consistently moist with filtered or distilled water',
       humidity:'Wants high humidity', difficulty:2,
+      lightLevel:2, waterLevel:3,
       toxicPets:false, toxicHumans:false,
       problems:'Leaves fold upright at night like praying hands — normal behavior, not a sign of distress.' },
     { id:'are-pal', latin:'Dypsis lutescens', common:'Areca palm', syn:['butterfly palm'],
       shape:'frond', habit:'rosette', light:'Bright, indirect', water:'Let the top 1–2″ dry between waterings',
       humidity:'Average to high', difficulty:2,
+      lightLevel:3, waterLevel:2,
       toxicPets:false, toxicHumans:false,
       problems:'Brown frond tips usually mean tap-water salt buildup — flush the pot with distilled water every few months. One of the few pet-safe plants here.' }
   ];
@@ -448,7 +479,56 @@ h1 em{font-style:italic;color:var(--gold)}
   }
 
   function svgWrap(inner, extraAttrs) {
-    return '<svg viewBox="0 0 200 200" role="img" ' + (extraAttrs || '') + '>' + inner + '</svg>';
+    return '<svg class="plate" viewBox="0 0 200 200" role="img" ' + (extraAttrs || '') + '>' + inner + '</svg>';
+  }
+
+  /* =============================================================
+     ATTRIBUTE ICONS — small generated gauges, never a stock icon
+     font or imported glyph set, same "everything is generated"
+     doctrine as the plates. Every icon is paired with a visible
+     text label (never icon-only) so nothing depends on color or
+     shape alone to carry meaning — WCAG 1.4.1.
+     ============================================================= */
+  var LIGHT_LABEL = ['', 'Low light', 'Medium light', 'Bright, indirect', 'Bright, direct sun'];
+  var WATER_LABEL = ['', 'Dry-tolerant', 'Moderate', 'Keep evenly moist'];
+  var CARE_LABEL = ['', 'Easy', 'Moderate', 'Fussy'];
+  var WATER_BLUE = '#7FB8FF';
+  var CARE_COLOR = ['', '#7FD8A0', GOLD, '#FF5C6E'];
+
+  function sunIcon(level) {
+    var rays = '', lit = level * 2; // 2 rays per level, 8 total
+    for (var i = 0; i < 8; i++) {
+      var on = i < lit;
+      var rad = (i * 45) * Math.PI / 180;
+      var x1 = 14 + Math.cos(rad) * 8, y1 = 14 + Math.sin(rad) * 8;
+      var x2 = 14 + Math.cos(rad) * 12, y2 = 14 + Math.sin(rad) * 12;
+      rays += '<line x1="' + n2(x1) + '" y1="' + n2(y1) + '" x2="' + n2(x2) + '" y2="' + n2(y2) + '" stroke="' + (on ? GOLD : FAINT) + '" stroke-width="1.8" stroke-linecap="round" opacity="' + (on ? 1 : .5) + '"/>';
+    }
+    var core = '<circle cx="14" cy="14" r="5" fill="' + (level > 0 ? GOLD : 'none') + '" stroke="' + GOLD + '" stroke-width="1.4"/>';
+    return '<svg class="attricon" viewBox="0 0 28 28" aria-hidden="true">' + rays + core + '</svg>';
+  }
+
+  function dropletIcon(level) {
+    var out = '';
+    for (var i = 0; i < 3; i++) {
+      var on = i < level;
+      var animate = on && i === level - 1;
+      out += '<svg class="attricon' + (animate ? ' drop-anim' : '') + '" viewBox="0 0 16 20" aria-hidden="true">' +
+        '<path d="M8,1 C8,1 2,9 2,13 A6,6 0 0 0 14,13 C14,9 8,1 8,1 Z" fill="' + (on ? WATER_BLUE : 'none') + '" stroke="' + (on ? WATER_BLUE : FAINT) + '" stroke-width="1.4" opacity="' + (on ? 1 : .5) + '"/></svg>';
+    }
+    return '<span class="dropgroup">' + out + '</span>';
+  }
+
+  function thumbIcon(difficulty) {
+    var rot = difficulty === 1 ? -90 : difficulty === 2 ? 0 : 90;
+    var color = CARE_COLOR[difficulty];
+    return '<svg class="attricon" viewBox="0 0 24 24" aria-hidden="true" style="transform:rotate(' + rot + 'deg)">' +
+      '<path d="M8,21 L8,11 Q8,9 10,9 L10,5 Q10,2 13,2 Q16,2 16,5 L16,9 L19,9 Q21,9 21,11 L21,18 Q21,21 18,21 Z" fill="none" stroke="' + color + '" stroke-width="1.7" stroke-linejoin="round"/>' +
+      '<rect x="3" y="9" width="4" height="12" rx="1.5" fill="none" stroke="' + color + '" stroke-width="1.7"/></svg>';
+  }
+
+  function attrChip(icon, label) {
+    return '<span class="tag icon-tag">' + icon + '<b>' + label + '</b></span>';
   }
 
   /* ---------------- BROWSE ---------------- */
@@ -465,8 +545,9 @@ h1 em{font-style:italic;color:var(--gold)}
       b.querySelector('span').textContent = rec.latin;
       var tags = b.querySelector('.tags');
       tags.innerHTML =
-        '<span class="tag">' + rec.light.split(',')[0] + '</span>' +
-        '<span class="tag">' + ['easy', 'moderate', 'fussy'][rec.difficulty - 1] + '</span>' +
+        attrChip(sunIcon(rec.lightLevel), LIGHT_LABEL[rec.lightLevel]) +
+        attrChip(dropletIcon(rec.waterLevel), WATER_LABEL[rec.waterLevel]) +
+        attrChip(thumbIcon(rec.difficulty), CARE_LABEL[rec.difficulty]) +
         (rec.toxicPets ? '<span class="tag warn">toxic to pets</span>' : '<span class="tag safe">pet-safe</span>');
       b.addEventListener('click', function () { showDetail(rec); });
       wrap.appendChild(b);
@@ -483,10 +564,10 @@ h1 em{font-style:italic;color:var(--gold)}
           '<h2 style="margin:0 0 .2rem"><i style="font-style:italic">' + rec.latin + '</i></h2>' +
           '<p style="margin:0 0 .8rem;color:var(--print-dim)">' + rec.common + (rec.syn.length ? ' &middot; ' + rec.syn.join(', ') : '') + '</p>' +
           '<dl>' +
-            '<dt>Light</dt><dd>' + rec.light + '</dd>' +
-            '<dt>Water</dt><dd>' + rec.water + '</dd>' +
+            '<dt>Light</dt><dd class="dd-icon">' + sunIcon(rec.lightLevel) + '<span>' + rec.light + '</span></dd>' +
+            '<dt>Water</dt><dd class="dd-icon">' + dropletIcon(rec.waterLevel) + '<span>' + rec.water + '</span></dd>' +
             '<dt>Humidity</dt><dd>' + rec.humidity + '</dd>' +
-            '<dt>Care level</dt><dd>' + ['Easy', 'Moderate', 'Fussy'][rec.difficulty - 1] + '</dd>' +
+            '<dt>Care level</dt><dd class="dd-icon">' + thumbIcon(rec.difficulty) + '<span>' + CARE_LABEL[rec.difficulty] + '</span></dd>' +
             '<dt>Toxicity</dt><dd>' + (rec.toxicPets ? 'Toxic to pets. ' : 'Not known to be toxic to pets. ') + (rec.toxicHumans ? 'Toxic if ingested by humans.' : '') + '</dd>' +
             '<dt>Watch for</dt><dd>' + rec.problems + '</dd>' +
           '</dl>' +
@@ -566,8 +647,13 @@ h1 em{font-style:italic;color:var(--gold)}
     var v = $('qVerdict');
     v.classList.remove('hide');
     v.innerHTML = '<h3>' + (right ? 'Correct — ' : 'Not quite — ') + '<em>' + correct.latin + '</em></h3>' +
-      '<p style="margin:.3rem 0 0">' + correct.common + '. Light: ' + correct.light + '. Water: ' + correct.water + '.</p>' +
-      '<p style="margin:.3rem 0 0;color:var(--print-dim)">' + correct.problems + '</p>';
+      '<p style="margin:.3rem 0 0">' + correct.common + '</p>' +
+      '<div class="tags" style="margin-top:.5rem">' +
+        attrChip(sunIcon(correct.lightLevel), LIGHT_LABEL[correct.lightLevel]) +
+        attrChip(dropletIcon(correct.waterLevel), WATER_LABEL[correct.waterLevel]) +
+        attrChip(thumbIcon(correct.difficulty), CARE_LABEL[correct.difficulty]) +
+      '</div>' +
+      '<p style="margin:.5rem 0 0;color:var(--print-dim)">' + correct.problems + '</p>';
     $('qNext').classList.remove('hide');
     updateScore();
   }
