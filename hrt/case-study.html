@@ -30,11 +30,11 @@ body{
 .shell{max-width:680px;margin:0 auto;padding:3.5rem 1.5rem 6rem}
 a{color:var(--gold);text-decoration-color:rgba(234,170,0,.4)}
 a:hover{text-decoration-color:var(--gold)}
+.nav{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2.5rem}
 .back{
-  display:inline-block;font:600 13px/1 var(--mono);letter-spacing:.08em;
+  display:inline-flex;align-items:center;min-height:44px;font:600 13px/1 var(--mono);letter-spacing:.08em;
   text-transform:uppercase;color:var(--print-dim);text-decoration:none;
   border:1px solid rgba(159,192,220,.3);border-radius:999px;padding:.5rem 1rem;
-  margin-bottom:2.5rem;
 }
 .back:hover{color:var(--gold);border-color:rgba(234,170,0,.5)}
 .kicker{
@@ -75,7 +75,7 @@ blockquote{
 }
 .callout p:last-child{margin-bottom:0}
 .callout .label{
-  font:600 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
   color:var(--print-faint);margin-bottom:.5rem;display:block;
 }
 .cta{
@@ -95,7 +95,15 @@ blockquote{
 <body>
 <div class="shell">
 
-  <a class="back" href="./">&larr; Open the trainer</a>
+  <nav class="nav" aria-label="Related pages">
+    <a class="back" href="./">Trainer</a>
+    <a class="back" href="./houseplants.html">Houseplant expedition</a>
+    <a class="back" href="./field.html">Field capture</a>
+    <a class="back" href="./review.html">Photo review</a>
+    <a class="back" href="./sheets.html">Specimen sheets</a>
+    <a class="back" href="./worksheet.html">Sourcing worksheet</a>
+    <a class="back" href="https://johntcrawford.com/#projects">johntcrawford.com</a>
+  </nav>
 
   <p class="kicker">Case study</p>
   <h1>Teaching a computer to <em>see</em> a hophornbeam</h1>
