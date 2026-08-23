@@ -66,13 +66,19 @@ Added to git after the CSP fix and SRI hashes were both in place —
   standalone game page — flagged as a judgment call for the owner, not
   something I changed.
 
+## Main-site visibility
+
+Briefly added as a fourth project card on the main portfolio (2026-08-22),
+then removed the same night — owner wants more work done on it first, plans
+to revisit tomorrow or later. The game itself is still live and tracked in
+git at `/games/`, just not linked from the main site's showcase for now.
+
 ## Next steps (not yet actioned, listed for future reference)
 
-1. Decide whether to `git add` and commit `games/` (code + intro photos).
-2. Decide whether to drop the Tailwind/Tone.js CDN dependencies entirely
+1. Decide whether to drop the Tailwind/Tone.js CDN dependencies entirely
    (SRI is now in place as an interim measure, but Tailwind's CDN build
    still isn't meant for production use).
-3. Decide whether the "Nano Crab" AI-hype voice is intentional for this page
+2. Decide whether the "Nano Crab" AI-hype voice is intentional for this page
    or should be toned down to match the rest of the site.
-4. Add real keyboard controls + `aria-live` gameplay announcements if this
+3. Add real keyboard controls + `aria-live` gameplay announcements if this
    page is meant to meet the same accessibility bar as the rest of the site.
