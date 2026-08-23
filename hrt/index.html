@@ -2020,7 +2020,14 @@ window.WOODY.NARRATION = {};
       return function () { speech.stop(); };
     }, [i, narrating]);
 
-    useEffect(function () { if (headRef.current) headRef.current.focus(); }, [i]);
+    useEffect(function () {
+      if (!headRef.current) return;
+      headRef.current.scrollIntoView({
+        block: 'start',
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+      });
+      headRef.current.focus({ preventScroll: true });
+    }, [i]);
 
     useEffect(function () { audio.setLevel(bed ? vol : 0.00001); }, [vol, bed]);
 
@@ -2681,9 +2688,9 @@ window.WOODY.NARRATION = {};
           return h('path', { key: i, d: d, fill: 'none', stroke: 'currentColor', strokeWidth: 1.1, strokeLinejoin: 'round', opacity: 0.5 });
         }),
         h('path', { d: MD_PATH, fill: 'none', stroke: 'currentColor', strokeWidth: 1.1, strokeLinejoin: 'round' }),
-        h('g', { transform: 'translate(794,244)' },
-          h('path', { d: 'M16,9 Q12,7 12,3 Q16,4 16,9', fill: 'rgba(234,170,0,.5)', stroke: '#EAAA00', strokeWidth: 1.4, strokeLinejoin: 'round' }),
-          h('path', { d: 'M16,9 Q20,7 20,3 Q16,4 16,9', fill: 'rgba(234,170,0,.5)', stroke: '#EAAA00', strokeWidth: 1.4, strokeLinejoin: 'round' }))),
+        h('g', { transform: 'translate(794,244) translate(16,9) scale(1.33) translate(-16,-9)' },
+          h('path', { d: 'M16,9 Q12,7 12,3 Q16,4 16,9', fill: 'rgba(234,170,0,.5)', stroke: '#EAAA00', strokeWidth: 1, strokeLinejoin: 'round' }),
+          h('path', { d: 'M16,9 Q20,7 20,3 Q16,4 16,9', fill: 'rgba(234,170,0,.5)', stroke: '#EAAA00', strokeWidth: 1, strokeLinejoin: 'round' }))),
       h('span', null, 'Maryland'));
   }
 
