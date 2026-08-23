@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>This page has moved | John T Crawford</title>
+<meta name="description" content="This content has moved — redirecting to johntcrawford.com.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta http-equiv="refresh" content="4;url=https://johntcrawford.com/#projects">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0F1B2D;--bg2:#162236;--fg:#F7F4EE;--fg2:#C8B99A;
+    --accent:#F0A500;--accent-light:#2A1F00;--border:#243450;--card:#162236;
+    --serif:'DM Serif Display',Georgia,serif;--sans:'Plus Jakarta Sans',system-ui,sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+  }
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+  }
+  .card {
+    max-width: 420px;
+  }
+  .medallion {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    display: block;
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.75; transform: scale(0.97); }
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+  p {
+    font-size: 0.95rem;
+    color: var(--fg2);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  a.cta {
+    display: inline-block;
+    background: var(--accent);
+    color: #1A1200;
+    font-weight: 600;
+    font-size: 0.88rem;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 6px;
+  }
+  a.cta:hover { opacity: 0.9; }
+  .fallback {
+    margin-top: 16px;
+    font-size: 0.78rem;
+    color: var(--fg2);
+  }
+  .fallback a { color: var(--accent); }
+  @media (prefers-reduced-motion: reduce) {
+    .medallion { animation: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <img class="medallion" src="../jtc-medallion-400.png" alt="John T Crawford">
+    <h1>This page has moved</h1>
+    <p>The content that used to live here has been reorganized. You're being taken to the current portfolio and project showcase at johntcrawford.com.</p>
+    <a class="cta" href="https://johntcrawford.com/#projects">Continue to johntcrawford.com →</a>
+    <div class="fallback">Redirecting automatically — if nothing happens, <a href="https://johntcrawford.com/#projects">click here</a>.</div>
+  </div>
+  <script>
+    setTimeout(function () {
+      window.location.replace('https://johntcrawford.com/#projects');
+    }, 3500);
+  </script>
+</body>
+</html>
