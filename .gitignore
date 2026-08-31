@@ -27,3 +27,6 @@ johntcrawford-site.git/
 
 # Field-capture admin endpoint (contains a live secret key, must not be public)
 hrt/api/hrt-admin.php
+
+# Internal reports/planning docs — must never be deployed as public web content
+MASTER-REVIEW/
