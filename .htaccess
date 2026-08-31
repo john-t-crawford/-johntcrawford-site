@@ -33,6 +33,12 @@
 # ── Working custom 404 (fixes the current double-404 ErrorDocument error) ──
 ErrorDocument 404 /404.html
 
+# ── Retired personal scripts, never meant to be public web content ──
+# Returns 410 Gone at the URL layer, before the file (if still present on
+# disk from a prior deploy) would ever be served — no source is exposed.
+Redirect gone /AnalyzeDates.ps1
+Redirect gone /CleanupArchive.ps1
+
 # ── Never leak PHP errors (paths, usernames) to visitors; log them instead ──
 <IfModule mod_php.c>
   php_flag display_errors off
