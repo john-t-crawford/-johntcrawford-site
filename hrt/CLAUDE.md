@@ -320,6 +320,30 @@ any deployed HTML file.
 
 ---
 
+## Design-tooling suggestions
+
+Free/no-build tools worth reaching for on visual work here (the `MarylandMark`
+leaf, plate stroke weights, future icon tweaks), chosen to fit this project's
+constraints — single-file HTML, no build step, no CDN scripts, WCAG 2.2 AA,
+no-cost by default:
+
+- **Figma MCP server** — pull an SVG component (e.g. `MarylandMark`, a plate
+  generator's output) into Figma to iterate on scale/stroke visually, then read
+  the exact numbers back into the `h('path', ...)` call, instead of eyeballing
+  transform math by hand.
+- **axe DevTools / axe-core browser extension** (free) — automated WCAG 2.2 AA
+  spot-checks that complement, not replace, the manual alt-text contract above.
+- **SVGO** (free, run standalone — not wired into any build step) — tightens
+  generated plate path data if the 484-plate library's size ever becomes a
+  concern; doesn't conflict with "every illustration is generated, not drawn."
+- **Claude in Chrome** — for driving mobile-viewport verification of narration,
+  auto-advance, and scroll behavior interactively, including reading console
+  output when something misbehaves on a specific browser.
+
+No paid/subscription tools — matches this project's offline, no-cost posture.
+
+---
+
 ## Deliberate non-features
 
 Do not "fix" these. Each is a considered decision.
