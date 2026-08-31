@@ -122,12 +122,10 @@
     .hero h1 em{font-style:italic;color:var(--accent);}
     .hero-sub{margin-top:24px;font-size:0.98rem;color:var(--fg2);line-height:1.75;}
     .hero-ctas{margin-top:36px;display:flex;gap:12px;flex-wrap:wrap;}
-    .hero-stats{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:24px 32px;padding-top:36px;border-top:1px solid var(--border);}
-    .stat-num{font-family:var(--serif);font-size:2rem;line-height:1;}
-    .stat-num span{color:var(--accent);}
+    .hero-stats{margin-top:48px;display:grid;grid-template-columns:1fr;gap:20px;padding-top:36px;border-top:1px solid var(--border);}
     .hero-stats>div{position:relative;padding-bottom:12px;}
     .hero-stats>div::after{content:'';position:absolute;bottom:0;left:0;width:24px;height:1.5px;background:var(--accent);opacity:0.45;}
-    .stat-label{margin-top:4px;font-size:0.7rem;font-weight:500;letter-spacing:0.04em;color:var(--fg2);text-transform:uppercase;}
+    .proof-item{font-family:var(--sans);font-size:0.95rem;font-weight:600;color:var(--fg);line-height:1.5;}
     .btn-primary{display:inline-flex;align-items:center;justify-content:center;background:var(--cta);color:white;padding:14px 24px;border-radius:4px;font-size:0.88rem;font-weight:600;border:none;cursor:pointer;font-family:var(--sans);min-height:44px;transition:background 0.2s,transform 0.2s;text-decoration:none;}
     .btn-primary:hover{background:var(--cta-hover);transform:translateY(-1px);}
     .btn-secondary{display:inline-flex;align-items:center;justify-content:center;background:none;color:var(--fg);padding:14px 24px;border-radius:4px;font-size:0.88rem;font-weight:500;border:1.5px solid var(--border);cursor:pointer;font-family:var(--sans);min-height:44px;transition:border-color 0.2s;text-decoration:none;}
@@ -299,7 +297,7 @@
       .nav-links a{font-size:0.8rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--fg2);transition:color 0.2s;min-height:44px;display:flex;align-items:center;}
       .nav-links a:hover{color:var(--accent);}
       .hero-deco{top:80px;right:-30px;width:150px;height:150px;}
-      .hero-stats{grid-template-columns:repeat(4,auto);gap:48px;}.stat-num{font-size:2.4rem;}
+      .hero-stats{grid-template-columns:repeat(3,auto);gap:48px;}
       .about-grid{flex-direction:row;align-items:flex-start;gap:64px;}.about-photo{width:148px;height:148px;}
       .skills-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;}
       .project-header{padding:32px 40px 32px 44px;}.project-index{font-size:6rem;right:80px;}
@@ -590,11 +588,11 @@ function App(){
       React.createElement("section",{className:"hero",id:"hero","aria-label":"Introduction"},
         React.createElement("div",{className:"hero-deco","aria-hidden":"true"},React.createElement("svg",{viewBox:"0 0 180 180",xmlns:"http://www.w3.org/2000/svg",width:"100%",height:"100%",focusable:"false",role:"presentation"},React.createElement("circle",{cx:"90",cy:"90",r:"90",fill:"#0F1B2D"}),React.createElement("path",{d:"M90 90 L90 0 A90 90 0 0 0 0 90 Z",fill:"#F0A500",opacity:"0.20"}),React.createElement("path",{d:"M90 90 L90 180 A90 90 0 0 0 180 90 Z",fill:"#CE1126",opacity:"0.15"}),React.createElement("circle",{cx:"90",cy:"90",r:"78",fill:"none",stroke:"#F0A500",strokeWidth:"0.8",opacity:"0.40"}),React.createElement("line",{x1:"90",y1:"12",x2:"90",y2:"168",stroke:"#F0A500",strokeWidth:"0.5",opacity:"0.18"}),React.createElement("line",{x1:"12",y1:"90",x2:"168",y2:"90",stroke:"#F0A500",strokeWidth:"0.5",opacity:"0.18"}))),
         holidayTheme&&React.createElement("div",null,React.createElement("span",{className:"holiday-chip"},"🎆 Celebrating Independence Day")),
-        React.createElement("div",{className:"hero-eyebrow"},"Instructional Design & Digital Media"),
-        React.createElement("h1",{style:{letterSpacing:"-2.176px"}},"Learning design that",React.createElement("br"),React.createElement("em",null,"performs.")),
-        React.createElement("p",{className:"hero-sub"},"Crafting evidence-based learning experiences for enterprise teams and government programs. M.S. Instructional Design · Summa Cum Laude."),
+        React.createElement("div",{className:"hero-eyebrow"},"Instructional design · Digital media · Accessible technology"),
+        React.createElement("h1",{style:{letterSpacing:"-2.176px"}},"I make complex work",React.createElement("br"),React.createElement("em",null,"clear, useful, and accessible.")),
+        React.createElement("p",{className:"hero-sub"},"I design accessible learning, digital tools, and instructional media that help people understand information and perform with confidence."),
         React.createElement("div",{className:"hero-ctas"},React.createElement("a",{href:"#projects",className:"btn-primary"},"Explore My Work"),React.createElement("a",{href:`mailto:${_e}`,className:"btn-secondary"},"Get In Touch"),React.createElement("a",{href:"#resume",className:"btn-tertiary"},"Résumé ↓")),
-        React.createElement("div",{className:"hero-stats"},React.createElement("div",null,React.createElement("div",{className:"stat-num"},"10",React.createElement("span",null,"+")),React.createElement("div",{className:"stat-label"},"Years Experience")),React.createElement("div",null,React.createElement("div",{className:"stat-num"},"60",React.createElement("span",null,"%")),React.createElement("div",{className:"stat-label"},"Admin Reduction")),React.createElement("div",null,React.createElement("div",{className:"stat-num"},"Zero"),React.createElement("div",{className:"stat-label"},"Compliance Gaps")),React.createElement("div",null,React.createElement("div",{className:"stat-num"},React.createElement("span",null,"§"),"508"),React.createElement("div",{className:"stat-label"},"Accessible")))
+        React.createElement("div",{className:"hero-stats"},React.createElement("div",null,React.createElement("p",{className:"proof-item"},"M.S. Instructional Design, Summa Cum Laude")),React.createElement("div",null,React.createElement("p",{className:"proof-item"},"23+ years — SCORM & LMS delivery")),React.createElement("div",null,React.createElement("p",{className:"proof-item"},"20+ years — digital media production")))
       ),
       React.createElement("section",{id:"about"},
         React.createElement("div",{className:"section-label"},"About"),
