@@ -8,12 +8,12 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <!-- This meta CSP is a fallback for the response-header CSP set at the host; browsers enforce
+  <!-- This meta CSP is a fallback for the response-header CSP set in .htaccess; browsers enforce
        the intersection of both, so an origin missing here still gets blocked even if the header
-       allows it, and vice versa. As of 2026-09-22 the response header additionally allowed
-       https://cdn.tailwindcss.com and https://cdnjs.cloudflare.com in script-src, but no script
-       on this page references either origin -- that looks like leftover header config from an
-       earlier build and should be verified/removed at the host, not mirrored here.
+       allows it, and vice versa. As of 2026-09-22 the header additionally allows
+       https://cdn.tailwindcss.com and https://cdnjs.cloudflare.com in script-src -- confirmed
+       genuinely needed by games/bay-quest.html (Tailwind CDN + Tone.js), not stale, so left as-is
+       in .htaccess and intentionally NOT mirrored here since this page doesn't use them.
        frame-ancestors is intentionally omitted below: the CSP spec disallows delivering it via
        meta element (browsers silently ignore it there), so it belongs only in the response
        header, where it is already present and enforced. -->
